@@ -910,7 +910,7 @@
 
   <div class="mode-switch" role="tablist" aria-label="Learning mode">
     <button id="modeRomaji" role="tab" aria-selected="true" onclick="setMode('romaji')"><span class="ms-icon">🔤</span> Romaji lessons <small>Units 1–7</small></button>
-    <button id="modeKanji" role="tab" aria-selected="false" onclick="setMode('kanji')"><span class="ms-icon" lang="ja">漢</span> Kanji lessons <small>Lessons 0–6 · 水 木 金 …</small></button>
+    <button id="modeKanji" role="tab" aria-selected="false" onclick="setMode('kanji')"><span class="ms-icon" lang="ja">漢</span> Kanji lessons <small>Lessons 0–7 · Review</small></button>
   </div>
 
   <div class="jp-toggle" id="jpToggle"><span class="jt-label"><span lang="ja">日本語</span> Original writing</span>
@@ -4753,6 +4753,91 @@ const L6 = {
 
 const GEN_LESSONS = [L3, L4, L5, L6].map(mkLesson);
 
+/* ---------- Lesson 7: review of lessons 1-6 ---------- */
+const L7_GROUPS = [[1, '一二三'], [2, '日月火'], [3, '水木金'], [4, '土山川'], [5, '人口目'], [6, '耳手足']];
+function l7Overview() {
+  let h = `<p>Lesson 7 is a review. No new kanji — we go back over the <strong>18 kanji</strong> from Lessons 1–6 and the main ideas behind their readings.</p><div class="k-goal">⏱ About 30 minutes · then the big quiz</div>`;
+  L7_GROUPS.forEach(function(g) {
+    h += `<h4 class="k-h4">Lesson ${g[0]}</h4><div class="k-cards">` + [...g[1]].map(function(c) {
+      const k = KANJI_ITEMS[c];
+      return gcard(c, k.meaning.split(' / ')[0], k.kun[0] + ' · ' + k.on[0]);
+    }).join('') + `</div>`;
+  });
+  return h + `<p class="k-note">Cover the right-hand side of each card and try to recall the meaning, the kun'yomi (hiragana) and the on'yomi (katakana).</p>`;
+}
+function l7Logic() {
+  return `<p>Five ideas explain almost every reading you met so far:</p>
+    <div class="k-event"><span class="k-badge">1</span><div><h5>Kun'yomi alone, on'yomi in compounds</h5><p class="k-jp-line" lang="ja">水 みず → 水曜日 すいようび</p><p>A tendency, not a rule: ${J('山')} やま, but ${J('火山')} かざん.</p></div></div>
+    <div class="k-event"><span class="k-badge">2</span><div><h5>Rendaku (連濁)</h5><p class="k-jp-line" lang="ja">花火 はなび · 小川 おがわ · 出口 でぐち · 手紙 てがみ</p><p>The first sound of the second part is voiced: h → b, k → g.</p></div></div>
+    <div class="k-event"><span class="k-badge">3</span><div><h5>Special whole-word readings (熟字訓)</h5><p class="k-jp-line" lang="ja">今日 きょう · 大人 おとな · 上手 じょうず · 下手 へた</p><p>Learn the word as a whole.</p></div></div>
+    <div class="k-event"><span class="k-badge">4</span><div><h5>Counters have their own forms</h5><p class="k-jp-line" lang="ja">一つ ひとつ · 二人 ふたり · 三人 さんにん · 三足 さんぞく</p><p>The number and the thing counted belong together.</p></div></div>
+    <div class="k-event"><span class="k-badge">5</span><div><h5>One kanji, several on'yomi</h5><p class="k-jp-line" lang="ja">月 ゲツ / ガツ · 山 サン / ザン · 土 ド / ト</p><p>Different word groups choose different forms.</p></div></div>`;
+}
+function l7Words() {
+  const week = [['Monday', '月曜日', 'げつようび'], ['Tuesday', '火曜日', 'かようび'], ['Wednesday', '水曜日', 'すいようび'], ['Thursday', '木曜日', 'もくようび'], ['Friday', '金曜日', 'きんようび'], ['Saturday', '土曜日', 'どようび'], ['Sunday', '日曜日', 'にちようび']];
+  const rows = [['一つ 二つ 三つ', 'ひとつ ふたつ みっつ', 'One, two, three items'], ['一人 二人 三人', 'ひとり ふたり さんにん', 'One, two, three people'], ['二月 三月', 'にがつ さんがつ', 'February, March'], ['今日 毎日', 'きょう まいにち', 'Today, every day'], ['花火 火山', 'はなび かざん', 'Fireworks, volcano'], ['お金 金魚', 'おかね きんぎょ', 'Money, goldfish'], ['富士山 小川', 'ふじさん おがわ', 'Mt. Fuji, stream'], ['日本人 大人', 'にほんじん おとな', 'Japanese person, adult'], ['出口 入口', 'でぐち いりぐち', 'Exit, entrance'], ['上手 下手', 'じょうず へた', 'Good at, not good at'], ['手紙 歌手', 'てがみ かしゅ', 'Letter, singer']];
+  return `<h4 class="k-h4">The week</h4><div class="k-table-wrap">${vocabTable(week.map(function(w) { return [w[0], J(w[1]), w[2]]; }), ['Day', 'Japanese', 'Reading'])}</div>
+    <h4 class="k-h4">Key words</h4><div class="k-table-wrap">${vocabTable(rows.map(function(r) { return [J(r[0]), r[1], r[2]]; }), ['Words', 'Readings', 'Meaning'])}</div>`;
+}
+const L7_CARDS = [
+  ['三つ', 'みっつ', 'mittsu', 'Three items'], ['二人', 'ふたり', 'futari', 'Two people'], ['二月', 'にがつ', 'nigatsu', 'February'], ['今日', 'きょう', 'kyou', 'Today'],
+  ['花火', 'はなび', 'hanabi', 'Fireworks'], ['月曜日', 'げつようび', 'getsuyoubi', 'Monday'], ['一日', 'ついたち', 'tsuitachi', '1st of the month'], ['水曜日', 'すいようび', 'suiyoubi', 'Wednesday'],
+  ['お金', 'おかね', 'okane', 'Money'], ['金魚', 'きんぎょ', 'kingyo', 'Goldfish'], ['土曜日', 'どようび', 'doyoubi', 'Saturday'], ['富士山', 'ふじさん', 'fujisan', 'Mt. Fuji'],
+  ['小川', 'おがわ', 'ogawa', 'Stream'], ['大人', 'おとな', 'otona', 'Adult'], ['出口', 'でぐち', 'deguchi', 'Exit'], ['日本人', 'にほんじん', 'nihonjin', 'Japanese person'],
+  ['一番目', 'いちばんめ', 'ichibanme', 'The first'], ['上手', 'じょうず', 'jouzu', 'Good at'], ['手紙', 'てがみ', 'tegami', 'Letter'], ['歌手', 'かしゅ', 'kashu', 'Singer'],
+  ['手足', 'てあし', 'teashi', 'Arms and legs'], ['三足', 'さんぞく', 'sanzoku', 'Three pairs of shoes'], ['火山', 'かざん', 'kazan', 'Volcano'], ['木曜日', 'もくようび', 'mokuyoubi', 'Thursday']
+].map(function(c) { return { w: c[0], kana: c[1], rom: c[2], en: c[3] }; });
+const L7_SENTENCES = [
+  ['今日は水曜日です。', 'きょうは すいようびです。', 'Kyou wa suiyoubi desu.', 'Today is Wednesday.', ''],
+  ['土日は山へ行きます。', 'どにちは やまへ いきます。', 'Donichi wa yama e ikimasu.', 'On weekends I go to the mountains.', ''],
+  ['金曜日に手紙を書きます。', 'きんようびに てがみを かきます。', 'Kinyoubi ni tegami o kakimasu.', 'I write a letter on Friday.', ''],
+  ['二人の日本人がいます。', 'ふたりの にほんじんが います。', 'Futari no Nihonjin ga imasu.', 'There are two Japanese people.', ''],
+  ['川の水がきれいです。', 'かわの みずが きれいです。', 'Kawa no mizu ga kirei desu.', 'The river water is beautiful.', ''],
+  ['火曜日は休みです。', 'かようびは やすみです。', 'Kayoubi wa yasumi desu.', 'Tuesday is a day off.', '']
+];
+function jq(q, opts, a) { return { q: q, opts: opts, a: a }; }
+function kj(a) { return a.map(function(t) { return [t[0], t[1] || '', 'k-jp']; }); }
+const L7_QUIZ = [
+  jq('<b>L1</b> How is <span class="k-jp">三つ</span> read?', kj([['さんつ', 'santsu'], ['みっつ', 'mittsu'], ['みつ', 'mitsu']]), 1),
+  jq('<b>L1</b> How is <span class="k-jp">二人</span> read?', kj([['ふたり', 'futari'], ['ににん', 'ninin'], ['にひと', 'nihito']]), 0),
+  jq('<b>L1</b> How is <span class="k-jp">二月</span> read?', kj([['ふたつき', 'futatsuki'], ['にげつ', 'nigetsu'], ['にがつ', 'nigatsu']]), 2),
+  jq('<b>L1</b> How is <span class="k-jp">三人</span> read?', kj([['みたり', 'mitari'], ['さんにん', 'sannin'], ['さんひと', 'sanhito']]), 1),
+  jq('<b>L2</b> Why is <span class="k-jp">今日</span> read きょう?', [['A special whole-word reading', ''], ['日 is always きょう', ''], ['今 is read きょ', '']], 0),
+  jq('<b>L2</b> Why is <span class="k-jp">花火</span> read はなび?', [['火 is always び', ''], ['Rendaku: ひ becomes び', ''], ['花 is read か', '']], 1),
+  jq('<b>L2</b> How is <span class="k-jp">月曜日</span> read?', kj([['つきようび', 'tsukiyoubi'], ['げつようにち', 'getsuyounichi'], ['げつようび', 'getsuyoubi']]), 2),
+  jq('<b>L2</b> How is <span class="k-jp">一日</span> read when it means “the 1st of the month”?', kj([['ついたち', 'tsuitachi'], ['いちにち', 'ichinichi'], ['ひとひ', 'hitohi']]), 0),
+  jq('<b>L3</b> How is <span class="k-jp">水曜日</span> read?', kj([['みずようび', 'mizuyoubi'], ['すいようび', 'suiyoubi'], ['みずようにち', 'mizuyounichi']]), 1),
+  jq('<b>L3</b> How is <span class="k-jp">お金</span> read?', kj([['おきん', 'okin'], ['おこん', 'okon'], ['おかね', 'okane']]), 2),
+  jq('<b>L3</b> What does <span class="k-jp">金魚</span> mean?', [['Fishing', ''], ['Goldfish', ''], ['A gold coin', '']], 1),
+  jq('<b>L3</b> What is the kun\'yomi of 木 (tree)?', kj([['き', 'ki'], ['もく', 'moku'], ['ぼく', 'boku']]), 0),
+  jq('<b>L4</b> How is <span class="k-jp">土曜日</span> read?', kj([['どようび', 'doyoubi'], ['つちようび', 'tsuchiyoubi'], ['とようび', 'toyoubi']]), 0),
+  jq('<b>L4</b> How is 山 read in <span class="k-jp">火山</span>?', kj([['やま', 'yama'], ['さん', 'san'], ['ざん', 'zan']]), 2),
+  jq('<b>L4</b> Why is <span class="k-jp">小川</span> read おがわ?', [['Rendaku: かわ becomes がわ', ''], ['川 is always がわ', ''], ['小 is read おか', '']], 0),
+  jq('<b>L4</b> How is <span class="k-jp">富士山</span> read?', kj([['ふじやま', 'fujiyama'], ['ふじざん', 'fujizan'], ['ふじさん', 'fujisan']]), 2),
+  jq('<b>L5</b> How is <span class="k-jp">大人</span> read?', kj([['だいにん', 'dainin'], ['おとな', 'otona'], ['おおひと', 'oohito']]), 1),
+  jq('<b>L5</b> Why is <span class="k-jp">出口</span> read でぐち?', [['Rendaku: くち becomes ぐち', ''], ['口 is always ぐち', ''], ['出 is read でぐ', '']], 0),
+  jq('<b>L5</b> What does <span class="k-jp">一番目</span> mean?', [['One eye', ''], ['One place', ''], ['The first', '']], 2),
+  jq('<b>L5</b> How is <span class="k-jp">日本人</span> read?', kj([['にほんじん', 'nihonjin'], ['にほんひと', 'nihonhito'], ['にっぽんにん', 'nipponnin']]), 0),
+  jq('<b>L6</b> How is <span class="k-jp">上手</span> read?', kj([['じょうしゅ', 'joushu'], ['うえて', 'uete'], ['じょうず', 'jouzu']]), 2),
+  jq('<b>L6</b> What does <span class="k-jp">手紙</span> mean?', [['A letter', ''], ['A glove', ''], ['A paper hand', '']], 0),
+  jq('<b>L6</b> How is <span class="k-jp">歌手</span> read?', kj([['うたて', 'utate'], ['かて', 'kate'], ['かしゅ', 'kashu']]), 2),
+  jq('<b>L6</b> How is <span class="k-jp">三足</span> (three pairs of shoes) read?', kj([['さんぞく', 'sanzoku'], ['さんそく', 'sansoku'], ['みあし', 'miashi']]), 0)
+];
+const LESSON7 = {
+  id: 'd7', short: 'Lesson 7', icon: '🔁', title: 'Lesson 7 — Review of Lessons 1–6',
+  quiz: L7_QUIZ, cards: L7_CARDS,
+  checklist: ['I reviewed all 18 kanji and can recall their meanings.', 'I can explain rendaku, special readings and counters.', 'I reviewed the weekday and key word tables.', 'I went through the 24 review cards.', 'I solved the big quiz.'],
+  pages: [
+    { icon: '🗂️', title: 'All 18 kanji', html: l7Overview },
+    { icon: '🧭', title: 'Five ideas behind the readings', html: l7Logic },
+    { icon: '📋', title: 'Words to know', html: l7Words },
+    { icon: '🃏', title: 'Review cards', html: d1Cards, after: function() { kfIdx = 0; kfFlipped = false; kfRender(); } },
+    { icon: '📖', title: 'Reading practice', html: function() { return kReading('<p>Mixed sentences with kanji from all six lessons. Read first, then open.</p>', L7_SENTENCES); } },
+    { icon: '🧠', title: 'Big quiz (24 questions)', html: d1Quiz, after: renderQuizBody },
+    { icon: '✅', title: 'Checklist', html: function() { return kcBlock(KANJI_DAYS[7]) + '<div class="culture-box"><strong>Well done!</strong> You can now read and explain 18 kanji and dozens of words. Send the next lesson when it is ready.</div>'; } }
+  ]
+};
+
 const KANJI_DAYS = [{
   id: 'd0', short: 'Lesson 0', icon: '🧭', title: 'Lesson 0 — The logic of kanji',
   quiz: L0_QUIZ,
@@ -4826,9 +4911,9 @@ const KANJI_DAYS = [{
     { icon: '✍️', title: 'Writing and daily task', html: l2Writing, after: initPads },
     { icon: '✅', title: 'Checklist', html: l2Checklist }
   ]
-}].concat(GEN_LESSONS);
+}].concat(GEN_LESSONS, [LESSON7]);
 const KANJI_UPCOMING = [
-  { icon: '🔜', title: 'Lesson 7' }
+  { icon: '🔜', title: 'Lesson 8' }
 ];
 
 /* ---------- kanji navigation + rendering ---------- */
