@@ -910,7 +910,7 @@
 
   <div class="mode-switch" role="tablist" aria-label="Learning mode">
     <button id="modeRomaji" role="tab" aria-selected="true" onclick="setMode('romaji')"><span class="ms-icon">🔤</span> Romaji lessons <small>Units 1–7</small></button>
-    <button id="modeKanji" role="tab" aria-selected="false" onclick="setMode('kanji')"><span class="ms-icon" lang="ja">漢</span> Kanji lessons <small>Lessons 0–2 · 日 月 火</small></button>
+    <button id="modeKanji" role="tab" aria-selected="false" onclick="setMode('kanji')"><span class="ms-icon" lang="ja">漢</span> Kanji lessons <small>Lessons 0–6 · 水 木 金 …</small></button>
   </div>
 
   <div class="jp-toggle" id="jpToggle"><span class="jt-label"><span lang="ja">日本語</span> Original writing</span>
@@ -4358,6 +4358,401 @@ function l2Checklist() {
     </ul></div>`;
 }
 
+/* ---------- Lessons 3-6: generated from data ---------- */
+Object.assign(KSTROKES, {
+  '水': [['M50.3 9.2 Q53.2 11.2 54.4 12.5 Q55.5 13.8 54.8 30.6 Q54.1 47.4 54.0 66.8 Q54 86.1 52.8 88.7 Q51.6 91.3 49.3 90.5 Q47 89.8 43.3 87.9 Q39.5 86.1 39.4 85.8 Q39.3 85.4 38.7 85.4 L38.1 85.4', 44, 10], ['M15.6 43.5 Q22.2 44.5 30.0 42.9 Q37.7 41.3 39.2 41.6 Q40.6 42 41.2 42.5 Q41.7 43.1 41.3 45.0 Q40.9 46.9 39.3 50.8 Q37.6 54.6 33.7 61.3 Q29.8 68 24.9 73.4 Q19.9 78.8 15.9 81.4 L12 84.1', 10, 42], ['M78.5 23.2 Q79.8 24.4 80.7 26.2 Q81.5 28 79.1 30.9 Q76.7 33.7 69.8 40.2 Q62.9 46.7 62.8 47.2 L62.8 47.7', 73, 21], ['M57.4 42.6 Q58.5 46.3 62.1 50.5 Q65.8 54.6 71.7 60.8 Q77.6 67 80.4 69.2 Q83.2 71.4 85.3 72.6 Q87.3 73.8 96.3 74.9 L105.4 76.1', 51, 41]],
+  '木': [['M24.3 39 Q29.8 40.2 51.9 36.9 Q74 33.6 75.8 33.6 Q77.5 33.6 79.5 34.2 L81.5 34.7', 18, 37], ['M48.2 8 Q53.9 13.7 53.5 43.1 Q53 72.6 52.4 85.8 L51.7 98.9', 42, 10], ['M50.5 40.6 Q48.9 42.2 48.3 44.5 Q47.6 46.8 45.3 50.6 Q43 54.4 39.1 59.3 Q35.3 64.2 30.6 69.1 Q26 73.9 22.6 76.7 Q19.1 79.4 16.5 81.0 L13.8 82.6', 45, 39], ['M56.2 41.2 Q58.4 45.8 63.3 52.5 Q68.2 59.2 74.0 65.8 Q79.7 72.4 81.8 73.5 Q84 74.5 92.6 76.7 L101.2 78.9', 50, 39]],
+  '金': [['M49.3 9 Q51.9 12.1 52.3 13.3 Q52.7 14.5 50.1 19.4 Q47.5 24.2 42.8 30.5 Q38 36.9 34.5 40.7 Q31.1 44.5 28.1 47.1 Q25.2 49.7 19.8 53.8 Q14.4 57.8 10.4 60.1 L6.4 62.4', 43, 10], ['M56.3 19.1 Q56.3 20.4 60.5 25.0 Q64.7 29.7 70.8 35.6 Q76.9 41.6 79.7 43.9 Q82.4 46.1 83.3 46.5 Q84.1 47 86.5 47.5 Q89 48 96.0 48.9 L102.9 49.8', 50, 17], ['M34.7 49.2 Q36.8 49.8 39.3 49.8 Q41.8 49.8 52.6 47.5 Q63.4 45.1 66.3 45.2 L69.1 45.2', 29, 47], ['M31.4 66.5 Q33.7 67.3 36.3 67.3 Q38.9 67.4 47.9 65.9 Q56.9 64.4 62.0 63.2 Q67.1 62 69.2 62.3 L71.2 62.6', 25, 65], ['M49.2 51.1 Q52.9 53.9 53.0 57.0 Q53.2 60.1 52.9 73.5 Q52.6 86.9 51.5 88.1 L50.5 89.3', 43, 49], ['M28.1 74.2 Q36.3 80.6 37.2 82.4 L38.1 84.3', 22, 72], ['M71 67.7 Q73.2 72 66.5 77.1 L59.8 82.2', 65, 66], ['M18.6 94.3 Q24.5 95.6 35.4 94.1 Q46.3 92.6 62.2 91.3 Q78.1 90.1 80.0 90.3 Q82 90.6 84.7 91.5 L87.4 92.5', 13, 92]],
+  '土': [['M30.1 49.2 Q33.2 50 36.8 50.0 Q40.3 50 46.0 49.2 Q51.7 48.4 62.7 46.2 Q73.7 44 76.3 44.1 L78.9 44.2', 24, 47], ['M49.1 14.9 Q55 19.8 55.0 21.4 Q55.1 22.9 54.0 50.2 Q53 77.4 51.9 78.5 L50.7 79.5', 43, 13], ['M13.7 85.3 Q20 86.5 30.1 85.0 Q40.2 83.6 63.6 81.4 Q87.1 79.2 89.7 79.6 Q92.2 79.9 95.2 81.0 L98.1 82.1', 8, 83]],
+  '山': [['M50.2 16.2 Q55.9 21.3 55.3 46.0 Q54.7 70.8 53.6 72.3 L52.5 73.7', 44, 14], ['M20.9 53.4 Q23.1 55.5 24.3 57.5 Q25.4 59.6 25.6 63.7 Q25.9 67.8 25.4 75.1 Q24.8 82.4 27.4 82.3 Q30 82.3 35.2 80.8 Q40.4 79.3 50.8 77.0 Q61.2 74.8 68.4 73.7 Q75.6 72.6 78.9 72.4 Q82.2 72.3 83.1 71.4 L83.9 70.6', 15, 51], ['M86.2 43.6 Q87.9 45 89.2 47.4 Q90.4 49.7 87.7 69.7 L84.9 89.7', 80, 42]],
+  '川': [['M26.4 26.8 Q28.4 27.8 29.9 29.4 Q31.5 31 31.6 40.3 Q31.7 49.6 31.0 55.2 Q30.3 60.7 29.3 64.5 Q28.2 68.3 26.4 72.0 Q24.6 75.8 21.5 79.7 Q18.3 83.5 15.6 85.5 L12.8 87.5', 20, 25], ['M50.3 30.5 Q53.8 34.6 53.3 56.3 L52.9 77.9', 44, 29], ['M72.5 13.2 Q75.6 15.5 76.8 17.1 Q78.1 18.8 78.0 44.6 Q78 70.4 77.5 79.1 Q77 87.7 77.2 92.6 L77.4 97.5', 67, 11]],
+  '人': [['M51.4 17.5 Q54.1 21.1 54.3 22.4 Q54.4 23.6 52.3 30.3 Q50.3 37 46.8 44.3 Q43.4 51.5 39.1 57.5 Q34.9 63.5 31.9 66.7 Q28.8 69.8 22.1 75.4 Q15.3 81 11.5 83.3 L7.7 85.7', 45, 16], ['M50.5 45 Q50.8 46.9 51.5 48.0 Q52.2 49.1 56.5 54.8 Q60.8 60.4 67.2 67.5 Q73.6 74.5 76.9 77.5 Q80.2 80.4 82.6 81.8 Q84.9 83.1 95.0 84.7 L105 86.2', 45, 43]],
+  '口': [['M24.4 33.6 Q29 37.5 29.8 39.1 Q30.5 40.8 32.8 57.5 Q35.1 74.2 36.0 76.9 L37 79.6', 18, 32], ['M32.4 35.2 Q35.4 37 43.6 35.9 Q51.9 34.7 61.3 32.9 Q70.6 31.1 72.5 31.1 Q74.5 31.2 75.5 31.6 Q76.6 32.1 78.7 34.2 Q80.8 36.3 80.8 36.6 Q80.7 37 77.3 50.7 Q73.9 64.4 72.2 65.6 L70.4 66.7', 26, 33], ['M39.3 76.1 Q41.9 74.2 55.6 72.3 Q69.3 70.5 72.4 70.6 Q75.6 70.7 77.4 71.3 L79.2 72', 33, 74]],
+  '目': [['M29.9 18.8 Q32.9 22 33.5 23.4 Q34.1 24.8 34.2 26.0 Q34.2 27.1 34.0 46.3 Q33.7 65.4 32.9 72.8 Q32.1 80.2 32.5 84.0 L32.8 87.7', 24, 17], ['M36 20.1 Q38.9 21.5 40.0 21.4 Q41 21.3 54.4 18.8 Q67.7 16.3 69.3 17.2 Q70.8 18.1 71.9 19.4 Q73.1 20.7 73.7 50.1 Q74.2 79.6 73.5 81.8 Q72.7 84.1 68.6 82.9 L64.4 81.8', 30, 18], ['M37 42.8 Q39.2 41.5 47.0 40.4 Q54.9 39.2 58.2 39.2 L61.5 39.2', 31, 41], ['M36.8 59.4 Q38.9 58.2 44.0 57.9 Q49.2 57.6 53.4 56.9 Q57.5 56.2 59.6 56.4 L61.8 56.5', 31, 57], ['M35.7 82.9 Q38.4 81 44.9 80.3 Q51.4 79.6 56.3 79.2 Q61.3 78.8 63.9 79.3 L66.6 79.8', 30, 81]],
+  '耳': [['M23.8 15.2 Q26.5 16.1 28.9 16.2 Q31.4 16.3 54.4 13.3 Q77.4 10.3 81.1 10.9 L84.7 11.5', 18, 13], ['M35.3 19.1 Q38.5 21.7 38.5 23.4 Q38.6 25.1 38.5 40.3 Q38.5 55.5 37.5 56.1 L36.4 56.8', 29, 17], ['M60.6 16.1 Q65.6 18.7 65.8 20.5 Q65.9 22.4 65.5 61.0 L65 99.6', 55, 14], ['M42.3 31.2 Q43.7 30.1 49.2 29.4 Q54.6 28.6 55.8 28.7 L56.9 28.8', 36, 29], ['M41.9 44.4 Q44 43.4 48.0 42.8 Q52.1 42.3 55.3 42.3 L58.4 42.2', 36, 42], ['M11.4 62 Q17.2 63.1 31.1 61.1 Q45 59.1 66.3 57.3 Q87.6 55.4 90.8 55.8 Q94 56.3 96.2 57.1 L98.4 57.9', 6, 60]],
+  '手': [['M74.1 13.1 Q66.3 11.1 60.0 13.9 Q53.6 16.7 47.5 18.8 Q41.3 20.8 37.3 21.6 L33.4 22.4', 68, 11], ['M34 35.9 Q41.2 36.5 48.0 35.4 Q54.8 34.3 62.2 32.5 Q69.6 30.8 72.0 30.9 L74.5 30.9', 28, 34], ['M11.8 57.3 Q17.9 58.3 29.9 56.3 Q42 54.3 65.2 51.9 Q88.3 49.5 90.4 49.8 Q92.5 50 95.5 51.0 L98.6 51.9', 6, 55], ['M50.5 20.2 Q54.5 23.1 55.9 31.2 Q57.3 39.2 58.3 52.6 Q59.3 65.9 59.3 71.0 Q59.2 76 58.8 79.8 Q58.3 83.6 56.8 87.3 Q55.4 90.9 53.9 92.2 Q52.4 93.5 46.0 90.3 L39.6 87.2', 45, 18]],
+  '足': [['M34.3 15.2 Q37.5 17.6 38.0 19.0 Q38.5 20.3 40.9 30.5 L43.3 40.6', 28, 13], ['M41 15.5 Q42.4 16.8 53.2 14.8 Q64 12.7 65.8 13.1 Q67.6 13.5 69.1 15.2 Q70.6 16.9 70.4 17.5 Q70.3 18.2 68.3 23.5 Q66.3 28.8 64.8 29.9 L63.2 31', 35, 14], ['M45.6 38.2 Q47.2 36.6 54.7 35.2 Q62.1 33.8 64.8 33.8 Q67.5 33.7 68.8 34.2 L70.1 34.6', 40, 36], ['M51.2 38.5 Q52.9 39.3 53.8 40.3 Q54.8 41.4 54.5 55.2 Q54.3 68.9 55.3 70.6 L56.2 72.3', 45, 37], ['M57.9 55.1 Q59 53.9 65.2 52.8 Q71.3 51.7 74.1 52.1 L76.9 52.5', 52, 53], ['M31.5 49.6 Q34.9 54.1 31.9 61.7 Q28.8 69.2 24.8 75.1 Q20.7 80.9 15.6 85.6 L10.5 90.3', 26, 48], ['M37.6 60.2 Q37.5 61.6 37.9 62.1 Q38.2 62.6 43.5 66.8 Q48.9 71 55.1 75.3 Q61.4 79.5 67.3 82.6 Q73.1 85.7 75.1 86.5 Q77.1 87.3 78.8 87.4 Q80.5 87.6 88.8 87.4 Q97.1 87.3 98.5 86.9 L100 86.6', 32, 58]]
+});
+const SC = function(n) { return n + ' strokes'; };
+const GEN_TIP = 'Follow the numbers in the animation, then trace and write from memory.';
+
+function recapHtml(qs, from) {
+  let h = '<p>Before the new kanji, a quick memory test of Lesson ' + from + '. Tap an answer.</p>';
+  qs.forEach(function(q, i) {
+    h += '<div class="kq-q"><h5>' + (i + 1) + '. ' + q[0] + '</h5><div class="kq-opts">';
+    q[1].forEach(function(o) { h += '<button class="k-rc kq-opt" data-ok="' + o[1] + '" onclick="recapPick(this)"><span lang="ja">' + o[0] + '</span></button>'; });
+    h += '</div></div>';
+  });
+  return h;
+}
+function ks(c, no, meaning, on, kun, mnemonic, tip, words) {
+  KANJI_ITEMS[c] = { no: no, meaning: meaning, strokes: SC(KSTROKES[c].length), on: on, kun: kun, mnemonic: mnemonic, writing: (tip ? tip + ' ' : '') + GEN_TIP, words: words };
+}
+function mkLesson(cfg) {
+  const n = cfg.n;
+  const kc = cfg.kanji;
+  const names = kc.map(function(k) { return k.c; }).join('、');
+  const welcome = function() {
+    return `<p class="k-tag">30-day kanji programme · JLPT N5 · Lesson ${n} of 30</p>
+      <p>This lesson's topic: ${J(kc.map(function(k) { return k.c; }).join('、'))} — ${cfg.topic}.</p>
+      <p>${cfg.intro}</p>
+      <div class="k-goal">⏱ Lesson goal: ${cfg.minutes} minutes</div>
+      <div class="k-trio">${kc.map(function(k, i) { return `<button class="k-tile" onclick="openKanji(${n},${i + 2})"><span class="k-tile-glyph" lang="ja">${k.c}</span><span class="k-tile-mean">${k.tile}</span></button>`; }).join('')}</div>
+      <div class="lecture-block"><h4>🎯 By the end of this lesson</h4><ul class="goals">${cfg.goals.map(function(g) { return '<li>' + g + '</li>'; }).join('')}</ul></div>`;
+  };
+  const compare = function() {
+    return `<div class="k-table-wrap">${vocabTable(kc.map(function(k) { return [J(k.c), KANJI_ITEMS[k.c].meaning, KANJI_ITEMS[k.c].kun[0], KANJI_ITEMS[k.c].on[0]]; }), ['Kanji', 'Core meaning', "Kun'yomi", "On'yomi"])}</div>${cfg.compare}`;
+  };
+  const reading = function() {
+    return kReading('<p>Read each sentence first. Then open the reading and translation. Some words are new — your goal is to recognise the kanji from this lesson in real sentences.</p>', cfg.sentences);
+  };
+  const writing = function() {
+    return kWriting(kc.map(function(k) { return [k.c, KANJI_ITEMS[k.c].meaning, SC(KSTROKES[k.c].length)]; }),
+      '<p>Write ' + J(names) + ' <strong>5 times each</strong> in your notebook. Look at the stroke order for the first two tries, then write the last three from memory.</p>', 2) +
+      '<div class="lecture-block" style="margin-top:20px"><h4>📝 Daily task: copy these six words with their readings</h4>' + vocabTable(cfg.copy.map(function(r) { return [J(r[0]), r[1], r[2]]; }), ['Word', 'Reading', 'Meaning']) + '</div>';
+  };
+  const checklist = function() {
+    return kcBlock(KANJI_DAYS[n]) + `<div class="lecture-block" style="margin-top:22px"><h4>⭐ What to remember from this lesson</h4><ul class="goals">${cfg.remember.map(function(g) { return '<li>' + g + '</li>'; }).join('')}</ul></div>` + (cfg.next ? `<div class="culture-box">${cfg.next}</div>` : '');
+  };
+  const pages = [
+    { icon: '👋', title: 'Welcome and goals', html: welcome },
+    { icon: '🔁', title: 'Quick recap of Lesson ' + (n - 1), html: function() { return recapHtml(cfg.recap, n - 1); } }
+  ];
+  kc.forEach(function(k, i) {
+    pages.push({ icon: k.icon, title: 'Kanji ' + Number(KANJI_ITEMS[k.c].no) + ': ' + k.c + ' — ' + k.short, chip: k.c, html: function() { return kanjiPageHtml(k.c); }, after: playAllStrokes });
+  });
+  pages.push({ icon: '⚖️', title: cfg.compareTitle, html: compare });
+  pages.push({ icon: cfg.special.icon, title: cfg.special.title, html: function() { return cfg.special.html; } });
+  pages.push({ icon: '📖', title: 'Reading practice', html: reading });
+  pages.push({ icon: '🃏', title: 'Review cards', html: d1Cards, after: function() { kfIdx = 0; kfFlipped = false; kfRender(); } });
+  pages.push({ icon: '🧠', title: 'Final quiz', html: d1Quiz, after: renderQuizBody });
+  pages.push({ icon: '✍️', title: 'Writing and daily task', html: writing, after: initPads });
+  pages.push({ icon: '✅', title: 'Checklist', html: checklist });
+  return { id: 'd' + n, short: 'Lesson ' + n, icon: cfg.icon, title: 'Lesson ' + n + ' — ' + names.replace(/、/g, ' ') + ' ' + cfg.titleEn, quiz: cfg.quiz, cards: cfg.cards, checklist: cfg.checklist, pages: pages };
+}
+function W(title, parts, result, extra) { const o = { title: title, parts: parts, result: result }; return Object.assign(o, extra || {}); }
+
+/* ===== Lesson 3: 水 木 金 ===== */
+ks('水', '07', 'Water', ['スイ', 'sui', ''], ['みず', 'mizu', ''], `Imagine water splashing up from a stream: the middle stroke is the flow, the strokes at the sides are droplets flying out.`, '',
+  [
+    { title: `Word 1: 水（みず）— Water`, single: ['水', 'Water', 'みず'], logic: [`On its own, ${J('水')} is read ${J('みず')} (mizu).`, `This is the kun'yomi reading.`], sentence: ['水をください。', 'みずを ください。', 'Mizu o kudasai.', 'Water, please.'] },
+    W(`Word 2: 水曜日（すいようび）— Wednesday`, [['水', 'Water', 'すい'], ['曜', 'Weekday element', 'よう'], ['日', 'Day', 'び']], ['水曜日', 'Wednesday', 'すいようび'],
+      { whyQ: `Why すい here and not みず?`, why: `Weekday names are fixed compounds built with ${J('曜日')}（ようび）, and the element before it uses its on'yomi: ${J('水')} = ${J('スイ')}. The last ${J('日')} is voiced to ${J('び')}, as in the other weekday names.`, sentence: ['水曜日に勉強します。', 'すいようびに べんきょうします。', 'Suiyoubi ni benkyou shimasu.', 'I study on Wednesday.'] }),
+    W(`Word 3: 水道（すいどう）— Tap water / water supply`, [['水', 'Water', 'すい'], ['道', 'Road / way', 'どう']], ['水道', 'Water supply', 'すいどう'], { logic: [`Water + way = the pipes that bring water: the water supply.`, `Both characters use on'yomi in this compound.`] }),
+    W(`Word 4: 水着（みずぎ）— Swimsuit`, [['水', 'Water', 'みず'], ['着', 'Wear', 'ぎ']], ['水着', 'Swimsuit', 'みずぎ'], { logic: [`Water + wear = swimwear.`, `Here ${J('水')} keeps the kun'yomi ${J('みず')}, and ${J('着')} (き) becomes ${J('ぎ')} by rendaku.`], note: `A compound with two kanji does not always use on'yomi — and rendaku can voice the second part (き → ぎ).` }),
+    { title: `Link to Lesson 0`, extra: `<p>In Lesson 0 we promised to study ${J('水')} through this path: 水 → Water → みず → 水曜日（すいようび）→ 水道（すいどう）. Now you have walked it, and you can answer “Why is すい used in 水曜日?” — because weekday names and ${J('水道')} use the on'yomi ${J('スイ')}.</p>` }
+  ]);
+ks('木', '08', 'Tree / Wood', ['モク', 'moku', 'Also ボク (boku)'], ['き', 'ki', ''], `Imagine a tree with a trunk in the middle: the top horizontal line is the branches, and the two lower strokes are the roots spreading underground.`, 'Horizontal line, then the vertical, then the left-falling and right-falling strokes.',
+  [
+    { title: `Word 1: 木（き）— Tree`, single: ['木', 'Tree', 'き'], logic: [`On its own, ${J('木')} is read ${J('き')} (ki).`, `This is the kun'yomi reading.`], sentence: ['木の下に猫がいます。', 'きのしたに ねこが います。', 'Ki no shita ni neko ga imasu.', 'There is a cat under the tree.'], note: `${J('下')} (した) means “under”; ${J('の')} links the two nouns.` },
+    W(`Word 2: 木曜日（もくようび）— Thursday`, [['木', 'Tree', 'もく'], ['曜', 'Weekday element', 'よう'], ['日', 'Day', 'び']], ['木曜日', 'Thursday', 'もくようび'], { whyQ: `Why もく and not き?`, why: `Same weekday pattern: the element uses its on'yomi (${J('モク')}), then ${J('曜日')}（ようび）.`, sentence: ['木曜日は休みです。', 'もくようびは やすみです。', 'Mokuyoubi wa yasumi desu.', 'Thursday is a day off.'] }),
+    W(`Word 3: 木村（きむら）— Kimura (a surname)`, [['木', 'Tree', 'き'], ['村', 'Village', 'むら']], ['木村', 'Kimura', 'きむら'], { logic: [`Tree + village: a very common Japanese family name.`, `Names often keep kun'yomi readings.`], note: `You will often see ${J('木村さん')} (きむらさん, Mr./Ms. Kimura).` }),
+    { title: `Word 4: 林 and 森 — Grove and forest`, extra: `<p>Remember Lesson 0? One tree → two trees → three trees.</p><div class="k-cards">${gcard('木', 'Tree', 'き')}${gcard('林', 'Grove', 'はやし')}${gcard('森', 'Forest', 'もり')}</div><p class="k-note">You do not need to memorise 林 and 森 yet — just notice how the shape follows the meaning.</p>` }
+  ]);
+ks('金', '09', 'Gold / Metal / Money', ['キン', 'kin', 'Also コン (kon)'], ['かね', 'kane', 'Example: お金'], `Imagine gold nuggets buried under the ground: the roof-like shape on top is the earth, and the dots below are the glittering nuggets.`, '',
+  [
+    W(`Word 1: お金（おかね）— Money`, [['お', 'Polite prefix', 'お'], ['金', 'Money', 'かね']], ['お金', 'Money', 'おかね'], { logic: [`${J('金')} on its own is read ${J('かね')} (kane), the kun'yomi.`, `Japanese usually says ${J('お金')} with the polite prefix ${J('お')}.`], sentence: ['お金がありません。', 'おかねが ありません。', 'Okane ga arimasen.', 'I have no money.'] }),
+    W(`Word 2: 金曜日（きんようび）— Friday`, [['金', 'Metal / gold', 'きん'], ['曜', 'Weekday element', 'よう'], ['日', 'Day', 'び']], ['金曜日', 'Friday', 'きんようび'], { whyQ: `Why きん and not かね?`, why: `Weekday element + ${J('曜日')}: the on'yomi ${J('キン')} is used, like すい and もく.` }),
+    W(`Word 3: 金魚（きんぎょ）— Goldfish`, [['金', 'Gold', 'きん'], ['魚', 'Fish', 'ぎょ']], ['金魚', 'Goldfish', 'きんぎょ'], { logic: [`Gold + fish = goldfish.`, `Both characters use on'yomi: ${J('キン')} + ${J('ギョ')}.`], sentence: ['金魚が好きです。', 'きんぎょが すきです。', 'Kingyo ga suki desu.', 'I like goldfish.'] }),
+    W(`Word 4: 金色（きんいろ）— Gold colour`, [['金', 'Gold', 'きん'], ['色', 'Colour', 'いろ']], ['金色', 'Gold colour', 'きんいろ'], { logic: [`Gold + colour = the colour gold.`, `A mixed reading: on'yomi ${J('キン')} + kun'yomi ${J('いろ')}.`], note: `Mixed on'yomi + kun'yomi compounds exist too — another reason to learn words as wholes.` })
+  ]);
+const L3 = {
+  n: 3, icon: '💧', titleEn: 'Water, Tree, Metal', topic: 'Water, Tree and Gold', minutes: '45–55', minutesNote: '',
+  intro: `In Lesson 2 we saw that weekday names use ${J('曜日')} with an on'yomi element. Now we continue the week: ${J('水曜日')}, ${J('木曜日')} and ${J('金曜日')}.`,
+  goals: [`You will know the meaning, shape and stroke order of 水, 木 and 金.`, `You will read Wednesday, Thursday and Friday.`, `You will understand why お金 uses かね but 金曜日 uses きん.`, `You will see the five elements behind the weekday names.`, `You will read sentences with the new kanji.`],
+  kanji: [
+    { c: '水', icon: '💧', short: 'Water', tile: 'Water · みず · スイ' },
+    { c: '木', icon: '🌳', short: 'Tree', tile: 'Tree · き · モク' },
+    { c: '金', icon: '🪙', short: 'Gold / money', tile: 'Gold · かね · キン' }
+  ],
+  recap: [
+    ['How is ' + J('月曜日') + ' read?', [['げつようび', 1], ['つきようび', 0], ['がつようび', 0]]],
+    ['How is ' + J('今日') + ' read?', [['こんにち', 0], ['きょう', 1], ['いまひ', 0]]],
+    ['What does ' + J('火山') + ' mean?', [['Volcano', 1], ['Fire day', 0], ['A fire (blaze)', 0]]]
+  ],
+  compareTitle: 'Comparing the three kanji',
+  compare: `<p>Look at the pattern: in the weekday names the kanji uses its <strong>on'yomi</strong> (すい, もく, きん), but on its own it uses its <strong>kun'yomi</strong> (みず, き, かね).</p><div class="example-box">${J('水')} みず ↔ ${J('水曜日')} すいようび · ${J('木')} き ↔ ${J('木曜日')} もくようび · ${J('金')} かね ↔ ${J('金曜日')} きんようび</div><p class="k-note">This is the same “kun alone, on in compounds” tendency from Lesson 0 — a tendency, not a rule.</p>`,
+  special: { icon: '📅', title: 'The week and the five elements', html: `<p>Now you know six of the seven weekday kanji.</p><div class="k-table-wrap">${vocabTable([['Monday', J('月曜日'), 'げつようび', 'Moon'], ['Tuesday', J('火曜日'), 'かようび', 'Fire'], ['Wednesday', J('水曜日'), 'すいようび', 'Water'], ['Thursday', J('木曜日'), 'もくようび', 'Tree / wood'], ['Friday', J('金曜日'), 'きんようび', 'Metal / gold'], ['Saturday', J('土曜日'), 'どようび', 'Earth (Lesson 4)'], ['Sunday', J('日曜日'), 'にちようび', 'Sun']], ['Day', 'Japanese', 'Reading', 'Element'])}</div><div class="example-box"><strong>The five elements:</strong> ${J('火')} fire, ${J('水')} water, ${J('木')} wood, ${J('金')} metal, ${J('土')} earth. Together with the sun ${J('日')} and the moon ${J('月')}, they name the days of the week. Saturday's ${J('土')} comes next lesson.</div><p class="k-note">Learn each weekday as an established name, not as a word-for-word translation like “water day”.</p>` },
+  sentences: [
+    ['水をください。', 'みずを ください。', 'Mizu o kudasai.', 'Water, please.', ''],
+    ['水曜日に勉強します。', 'すいようびに べんきょうします。', 'Suiyoubi ni benkyou shimasu.', 'I study on Wednesday.', ''],
+    ['木の下に猫がいます。', 'きのしたに ねこが います。', 'Ki no shita ni neko ga imasu.', 'There is a cat under the tree.', '下 (した) means “under”.'],
+    ['木曜日は休みです。', 'もくようびは やすみです。', 'Mokuyoubi wa yasumi desu.', 'Thursday is a day off.', '休み (やすみ) means “day off / rest”.'],
+    ['お金がありません。', 'おかねが ありません。', 'Okane ga arimasen.', 'I have no money.', ''],
+    ['金魚が好きです。', 'きんぎょが すきです。', 'Kingyo ga suki desu.', 'I like goldfish.', '']
+  ],
+  cards: [
+    { w: '水', kana: 'みず · スイ', rom: 'mizu · sui', en: 'Water', why: 'Kun mizu, on sui.' },
+    { w: '木', kana: 'き · モク', rom: 'ki · moku', en: 'Tree / wood', why: 'Kun ki, on moku.' },
+    { w: '金', kana: 'かね · キン', rom: 'kane · kin', en: 'Gold / metal / money', why: 'Kun kane, on kin.' },
+    { w: '水曜日', kana: 'すいようび', rom: 'suiyoubi', en: 'Wednesday', why: 'On sui + youbi (voiced bi).' },
+    { w: '木曜日', kana: 'もくようび', rom: 'mokuyoubi', en: 'Thursday', why: 'On moku in a fixed weekday compound.' },
+    { w: '金曜日', kana: 'きんようび', rom: 'kinyoubi', en: 'Friday', why: 'On kin in a fixed weekday compound.' },
+    { w: '水道', kana: 'すいどう', rom: 'suidou', en: 'Water supply', why: 'Both on\'yomi: sui + dou.' },
+    { w: '水着', kana: 'みずぎ', rom: 'mizugi', en: 'Swimsuit', why: 'Kun mizu + ki voiced to gi (rendaku).' },
+    { w: 'お金', kana: 'おかね', rom: 'okane', en: 'Money', why: 'Kun kane with the polite prefix o.' },
+    { w: '金魚', kana: 'きんぎょ', rom: 'kingyo', en: 'Goldfish', why: 'On kin + gyo.' },
+    { w: '金色', kana: 'きんいろ', rom: 'kiniro', en: 'Gold colour', why: 'On kin + kun iro (mixed).' },
+    { w: '木の下', kana: 'きのした', rom: 'ki no shita', en: 'Under the tree', why: 'Kun ki + の + shita.' }
+  ],
+  quiz: [
+    { q: 'How is <span class="k-jp">水曜日</span> read?', opts: [['すいようび', 'suiyoubi', 'k-jp'], ['みずようび', 'mizuyoubi', 'k-jp'], ['みずようにち', 'mizuyounichi', 'k-jp']], a: 0 },
+    { q: 'Why is 水 read すい in <span class="k-jp">水曜日</span>?', opts: [['Because weekday names use the on\'yomi スイ', ''], ['Because 水 is always read すい', ''], ['Because みず is a wrong reading', '']], a: 0 },
+    { q: 'What is the on\'yomi of 木 used in <span class="k-jp">木曜日</span>?', opts: [['き', 'ki', 'k-jp'], ['もく', 'moku', 'k-jp'], ['すい', 'sui', 'k-jp']], a: 1 },
+    { q: 'How is <span class="k-jp">お金</span> read?', opts: [['おきん', 'okin', 'k-jp'], ['おかね', 'okane', 'k-jp'], ['おこん', 'okon', 'k-jp']], a: 1 },
+    { q: 'How is <span class="k-jp">金曜日</span> read?', opts: [['きんようび', 'kinyoubi', 'k-jp'], ['かねようび', 'kaneyoubi', 'k-jp'], ['ごんようび', 'gonyoubi', 'k-jp']], a: 0 },
+    { q: 'What does <span class="k-jp">水道</span> mean?', opts: [['Water supply / tap water', ''], ['Swimming', ''], ['Swimsuit', '']], a: 0 },
+    { q: 'Which kanji means “tree”?', opts: [['水', '', 'k-jp'], ['木', '', 'k-jp'], ['金', '', 'k-jp']], a: 1 },
+    { q: 'What does <span class="k-jp">金魚</span> mean?', opts: [['Goldfish', ''], ['A gold coin', ''], ['Fishing', '']], a: 0 },
+    { q: 'What is the kun\'yomi of 水?', opts: [['すい', 'sui', 'k-jp'], ['みず', 'mizu', 'k-jp'], ['き', 'ki', 'k-jp']], a: 1 },
+    { q: 'Which weekday is <span class="k-jp">木曜日</span>?', opts: [['Wednesday', ''], ['Thursday', ''], ['Friday', '']], a: 1 }
+  ],
+  copy: [['水曜日', 'すいようび', 'Wednesday'], ['木曜日', 'もくようび', 'Thursday'], ['金曜日', 'きんようび', 'Friday'], ['水', 'みず', 'Water'], ['お金', 'おかね', 'Money'], ['金魚', 'きんぎょ', 'Goldfish']],
+  checklist: ['I wrote 水, 木 and 金 five times each.', 'I learned the kun\'yomi and on\'yomi of the three characters.', 'I can read 水曜日, 木曜日 and 金曜日.', 'I understood why お金 uses かね but 金曜日 uses きん.', 'I copied the six words with their readings.', 'I read the sentences and solved the final quiz.'],
+  remember: [`${J('水、木、金')}: water, tree, gold/metal/money. Alone they use kun'yomi (みず、き、かね).`, `In weekday names they use on'yomi: すい, もく, きん + ようび.`, `${J('水着')} shows rendaku (き → ぎ); ${J('金色')} mixes on'yomi and kun'yomi.`],
+  next: `<strong>Lesson 4:</strong> ${J('土 山 川')} — earth, mountain and river. We will finish the week with Saturday and meet rendaku in place names.`
+};
+
+/* ===== Lesson 4: 土 山 川 ===== */
+ks('土', '10', 'Earth / Soil', ['ド', 'do', 'Also ト (to)'], ['つち', 'tsuchi', ''], `Imagine a sprout pushing up out of the ground: the vertical line is the shoot, the short line is the soil surface, and the long line at the bottom is the ground.`, 'Short horizontal line first, then the vertical line, then the long line at the bottom.',
+  [
+    { title: `Word 1: 土（つち）— Soil / earth`, single: ['土', 'Soil', 'つち'], logic: [`On its own, ${J('土')} is read ${J('つち')} (tsuchi).`, `This is the kun'yomi reading.`], note: `${J('土')} alone is the soil under your feet — the ground you plant things in.` },
+    W(`Word 2: 土曜日（どようび）— Saturday`, [['土', 'Earth', 'ど'], ['曜', 'Weekday element', 'よう'], ['日', 'Day', 'び']], ['土曜日', 'Saturday', 'どようび'], { whyQ: `Why ど and not つち?`, why: `Weekday pattern again: the element uses its on'yomi ${J('ド')}, followed by ${J('曜日')}（ようび）. Now the week is complete.`, sentence: ['土曜日は休みです。', 'どようびは やすみです。', 'Doyoubi wa yasumi desu.', 'Saturday is a day off.'] }),
+    W(`Word 3: 土日（どにち）— Weekend`, [['土', 'Saturday', 'ど'], ['日', 'Sunday', 'にち']], ['土日', 'Weekend', 'どにち'], { logic: [`Saturday + Sunday = the weekend.`, `Both use on'yomi: ${J('ド')} + ${J('ニチ')}.`], sentence: ['土日は日本語を勉強します。', 'どにちは にほんごを べんきょうします。', 'Donichi wa Nihongo o benkyou shimasu.', 'I study Japanese on weekends.'] }),
+    W(`Word 4: 土地（とち）— Land`, [['土', 'Earth', 'と'], ['地', 'Ground', 'ち']], ['土地', 'Land / plot', 'とち'], { logic: [`Earth + ground = a piece of land.`, `Here ${J('土')} uses its other on'yomi, ${J('ト')}.`], note: `${J('土')} has two on'yomi forms: ド (in 土曜日) and ト (in 土地).` })
+  ]);
+ks('山', '11', 'Mountain', ['サン', 'san', 'Also ザン (zan)'], ['やま', 'yama', ''], `Imagine three mountain peaks side by side: the tall one stands in the middle.`, 'The middle stroke first, then the left side, then the right side.',
+  [
+    { title: `Word 1: 山（やま）— Mountain`, single: ['山', 'Mountain', 'やま'], logic: [`On its own, ${J('山')} is read ${J('やま')} (yama).`, `This is the kun'yomi reading.`], sentence: ['山が好きです。', 'やまが すきです。', 'Yama ga suki desu.', 'I like mountains.'] },
+    W(`Word 2: 富士山（ふじさん）— Mount Fuji`, [['富', 'Wealth', 'ふ'], ['士', 'Gentleman', 'じ'], ['山', 'Mountain', 'さん']], ['富士山', 'Mt. Fuji', 'ふじさん'], { logic: [`${J('富士')} (ふじ) is the name; ${J('山')} here is read ${J('さん')}.`, `It is the on'yomi ${J('サン')}, not やま.`], sentence: ['富士山は日本の山です。', 'ふじさんは にほんの やまです。', 'Fujisan wa Nihon no yama desu.', 'Mt. Fuji is a mountain of Japan.'], note: `Mountain names often use ${J('山')} = さん. Do not read it やま automatically.` }),
+    W(`Word 3: 火山（かざん）— Volcano`, [['火', 'Fire', 'か'], ['山', 'Mountain', 'ざん']], ['火山', 'Volcano', 'かざん'], { logic: [`You met this in Lesson 0 and 2: ${J('山')} uses ${J('ザン')} here.`], note: `So ${J('山')} has three readings so far: やま (alone), さん (富士山), ざん (火山).` }),
+    W(`Word 4: 山登り（やまのぼり）— Mountain climbing`, [['山', 'Mountain', 'やま'], ['登', 'Climb', 'のぼ'], ['り', 'Verb ending', 'り']], ['山登り', 'Mountain climbing', 'やまのぼり'], { logic: [`Mountain + climb = climbing mountains.`, `A native Japanese word: kun'yomi everywhere.`], note: `${J('登')} is a new kanji — just notice that ${J('山')} keeps its kun'yomi やま here.` })
+  ]);
+ks('川', '12', 'River', ['セン', 'sen', ''], ['かわ', 'kawa', 'Also がわ (rendaku)'], `Imagine a river seen from above: three lines of flowing water running side by side.`, 'Three strokes, from left to right.',
+  [
+    { title: `Word 1: 川（かわ）— River`, single: ['川', 'River', 'かわ'], logic: [`On its own, ${J('川')} is read ${J('かわ')} (kawa).`, `This is the kun'yomi reading.`], sentence: ['川がきれいです。', 'かわが きれいです。', 'Kawa ga kirei desu.', 'The river is beautiful.'] },
+    W(`Word 2: 小川（おがわ）— Stream`, [['小', 'Small', 'お'], ['川', 'River', 'がわ']], ['小川', 'Brook / stream', 'おがわ'], { whyQ: `Why おがわ and not おかわ?`, why: `Rendaku (${J('連濁')}): the k of ${J('かわ')} becomes g in the compound. Small + river = a stream.`, note: `This is also the family name ${J('小川')} (Ogawa).` }),
+    W(`Word 3: 川辺（かわべ）— Riverside`, [['川', 'River', 'かわ'], ['辺', 'Edge', 'べ']], ['川辺', 'Riverside', 'かわべ'], { logic: [`River + edge = the riverside.`, `${J('辺')} (へ) is voiced to ${J('べ')} by rendaku.`] }),
+    { title: `Word 4: 山と川 — Mountains and rivers`, extra: sentBox('山と川がきれいです。', 'やまと かわが きれいです。', 'Yama to kawa ga kirei desu.', 'The mountains and rivers are beautiful.') + `<p class="k-note">${J('と')} means “and” between nouns.</p>` }
+  ]);
+const L4 = {
+  n: 4, icon: '⛰️', titleEn: 'Earth, Mountain, River', topic: 'Earth, Mountain and River', minutes: '45–55',
+  intro: `This lesson finishes the days of the week with ${J('土曜日')} and moves into nature: mountains and rivers. We will also see how readings like さん / ざん and かわ / がわ change.`,
+  goals: [`You will know the meaning, shape and stroke order of 土, 山 and 川.`, `You will read Saturday and the word for weekend.`, `You will tell apart やま, さん and ざん for 山.`, `You will see rendaku in 小川 and 川辺.`, `You will read sentences with the new kanji.`],
+  kanji: [
+    { c: '土', icon: '🌱', short: 'Earth', tile: 'Earth · つち · ド' },
+    { c: '山', icon: '⛰️', short: 'Mountain', tile: 'Mountain · やま · サン' },
+    { c: '川', icon: '🏞️', short: 'River', tile: 'River · かわ · セン' }
+  ],
+  recap: [
+    ['How is ' + J('水曜日') + ' read?', [['すいようび', 1], ['みずようび', 0], ['すいようにち', 0]]],
+    ['How is ' + J('お金') + ' read?', [['おかね', 1], ['おきん', 0], ['おかなえ', 0]]],
+    ['Which weekday is ' + J('木曜日') + '?', [['Thursday', 1], ['Wednesday', 0], ['Friday', 0]]]
+  ],
+  compareTitle: 'Three look-alike lines',
+  compare: `<p>Three kanji built from three strokes look a little alike. Learn to separate them:</p><div class="k-cards">${gcard('三', 'Three', 'horizontal lines')}${gcard('川', 'River', 'vertical lines')}${gcard('山', 'Mountain', 'a peak in the middle')}</div><div class="example-box">${J('三')} = three <em>horizontal</em> lines · ${J('川')} = three <em>vertical</em> flowing lines · ${J('山')} = a tall middle peak with a base.</div><p class="k-note">Compare ${J('三月')} (さんがつ, March) with ${J('山')} (やま) and ${J('川')} (かわ) — different shapes, completely different words.</p>`,
+  special: { icon: '🏷️', title: 'Place names and surnames', html: `<p>${J('山')} and ${J('川')} appear in countless Japanese place names and family names. These words are a good place to watch kun'yomi and rendaku at work.</p><div class="k-table-wrap">${vocabTable([[J('山田'), 'やまだ', 'Yamada', 'た → だ (rendaku)'], [J('山口'), 'やまぐち', 'Yamaguchi', 'くち → ぐち (rendaku)'], [J('川口'), 'かわぐち', 'Kawaguchi', 'くち → ぐち (rendaku)'], [J('小川'), 'おがわ', 'Ogawa', 'かわ → がわ (rendaku)'], [J('木村'), 'きむら', 'Kimura', 'no change']], ['Name', 'Reading', 'Romaji', 'Sound change'])}</div><div class="example-box">Some of these use kanji you will meet in later lessons (${J('田')}, ${J('口')}, ${J('村')}). For now, just notice the pattern: in names, kanji usually keep their native <strong>kun'yomi</strong>, and rendaku often voices the second part.</div><p class="k-note">Names can have unusual readings, so you always have to learn a name as a whole.</p>` },
+  sentences: [
+    ['土曜日は休みです。', 'どようびは やすみです。', 'Doyoubi wa yasumi desu.', 'Saturday is a day off.', ''],
+    ['山が好きです。', 'やまが すきです。', 'Yama ga suki desu.', 'I like mountains.', ''],
+    ['富士山は日本の山です。', 'ふじさんは にほんの やまです。', 'Fujisan wa Nihon no yama desu.', 'Mt. Fuji is a mountain of Japan.', '山 is さん in 富士山 but やま on its own.'],
+    ['川がきれいです。', 'かわが きれいです。', 'Kawa ga kirei desu.', 'The river is beautiful.', ''],
+    ['土日は日本語を勉強します。', 'どにちは にほんごを べんきょうします。', 'Donichi wa Nihongo o benkyou shimasu.', 'I study Japanese on weekends.', ''],
+    ['山と川が好きです。', 'やまと かわが すきです。', 'Yama to kawa ga suki desu.', 'I like mountains and rivers.', '']
+  ],
+  cards: [
+    { w: '土', kana: 'つち · ド', rom: 'tsuchi · do', en: 'Earth / soil', why: 'Kun tsuchi, on do / to.' },
+    { w: '山', kana: 'やま · サン', rom: 'yama · san', en: 'Mountain', why: 'Kun yama, on san / zan.' },
+    { w: '川', kana: 'かわ · セン', rom: 'kawa · sen', en: 'River', why: 'Kun kawa, on sen.' },
+    { w: '土曜日', kana: 'どようび', rom: 'doyoubi', en: 'Saturday', why: 'On do in a fixed weekday compound.' },
+    { w: '土日', kana: 'どにち', rom: 'donichi', en: 'Weekend', why: 'On do + on nichi.' },
+    { w: '土地', kana: 'とち', rom: 'tochi', en: 'Land', why: 'The other on\'yomi: to.' },
+    { w: '富士山', kana: 'ふじさん', rom: 'fujisan', en: 'Mt. Fuji', why: 'Mountain names use san.' },
+    { w: '火山', kana: 'かざん', rom: 'kazan', en: 'Volcano', why: 'On ka + zan.' },
+    { w: '山登り', kana: 'やまのぼり', rom: 'yamanobori', en: 'Mountain climbing', why: 'All kun\'yomi.' },
+    { w: '小川', kana: 'おがわ', rom: 'ogawa', en: 'Stream', why: 'Rendaku: kawa becomes gawa.' },
+    { w: '川辺', kana: 'かわべ', rom: 'kawabe', en: 'Riverside', why: 'Rendaku: he becomes be.' },
+    { w: '山田', kana: 'やまだ', rom: 'yamada', en: 'Yamada (surname)', why: 'Kun yama + ta voiced to da.' }
+  ],
+  quiz: [
+    { q: 'How is <span class="k-jp">土曜日</span> read?', opts: [['どようび', 'doyoubi', 'k-jp'], ['つちようび', 'tsuchiyoubi', 'k-jp'], ['とようび', 'toyoubi', 'k-jp']], a: 0 },
+    { q: 'Why is 土 read ど in <span class="k-jp">土曜日</span>?', opts: [['Weekday names use the on\'yomi ド', ''], ['土 is always ど', ''], ['つち is a wrong reading', '']], a: 0 },
+    { q: 'How is 山 read in <span class="k-jp">火山</span>?', opts: [['やま', 'yama', 'k-jp'], ['さん', 'san', 'k-jp'], ['ざん', 'zan', 'k-jp']], a: 2 },
+    { q: 'Why is <span class="k-jp">小川</span> read おがわ and not おかわ?', opts: [['Rendaku turns か into が', ''], ['川 is always がわ', ''], ['小 is read おか', '']], a: 0 },
+    { q: 'What does 川 mean?', opts: [['Mountain', ''], ['River', ''], ['Earth', '']], a: 1 },
+    { q: 'How is <span class="k-jp">富士山</span> read?', opts: [['ふじやま', 'fujiyama', 'k-jp'], ['ふじさん', 'fujisan', 'k-jp'], ['ふじざん', 'fujizan', 'k-jp']], a: 1 },
+    { q: 'Which kanji looks like three vertical flowing lines?', opts: [['三', '', 'k-jp'], ['川', '', 'k-jp'], ['山', '', 'k-jp']], a: 1 },
+    { q: 'What does <span class="k-jp">土日</span> mean?', opts: [['The weekend (Saturday and Sunday)', ''], ['Soil day', ''], ['Saturday only', '']], a: 0 },
+    { q: 'What is the kun\'yomi of 土?', opts: [['ど', 'do', 'k-jp'], ['つち', 'tsuchi', 'k-jp'], ['やま', 'yama', 'k-jp']], a: 1 },
+    { q: 'What does <span class="k-jp">山登り</span> mean?', opts: [['Mountain climbing', ''], ['River fishing', ''], ['A volcano', '']], a: 0 }
+  ],
+  copy: [['土曜日', 'どようび', 'Saturday'], ['土日', 'どにち', 'Weekend'], ['山', 'やま', 'Mountain'], ['川', 'かわ', 'River'], ['富士山', 'ふじさん', 'Mt. Fuji'], ['小川', 'おがわ', 'Stream']],
+  checklist: ['I wrote 土, 山 and 川 five times each.', 'I learned the kun\'yomi and on\'yomi of the three characters.', 'I can read 土曜日 and 土日.', 'I can tell やま, さん and ざん apart for 山.', 'I copied the six words with their readings.', 'I read the sentences and solved the final quiz.'],
+  remember: [`${J('土曜日')} completes the week: all seven weekday kanji are now known.`, `${J('山')} has several readings: やま (alone), さん (富士山), ざん (火山).`, `${J('小川')} and ${J('川辺')} show rendaku: かわ → がわ, へ → べ.`],
+  next: `<strong>Lesson 5:</strong> ${J('人 口 目')} — person, mouth and eye. We will revisit ${J('一人')} and see ${J('目')} used for “first, second, third”.`
+};
+
+/* ===== Lesson 5: 人 口 目 ===== */
+ks('人', '13', 'Person', ['ジン', 'jin', 'Also ニン (nin)'], ['ひと', 'hito', ''], `Imagine a person walking: two legs, one stepping forward and one behind.`, '',
+  [
+    { title: `Word 1: 人（ひと）— Person`, single: ['人', 'Person', 'ひと'], logic: [`On its own, ${J('人')} is read ${J('ひと')} (hito).`, `This is the kun'yomi reading.`], sentence: ['あの人は先生です。', 'あのひとは せんせいです。', 'Ano hito wa sensei desu.', 'That person is a teacher.'] },
+    W(`Word 2: 日本人（にほんじん）— A Japanese person`, [['日本', 'Japan', 'にほん'], ['人', 'Person', 'じん']], ['日本人', 'Japanese person', 'にほんじん'], { logic: [`Japan + person = a Japanese person.`, `After a country name, ${J('人')} is read ${J('じん')} (on'yomi): ${J('トルコ人')} (トルコじん), ${J('アメリカ人')} (アメリカじん).`], note: `You met this word in the romaji lessons as “Nihonjin”.` }),
+    W(`Word 3: 大人（おとな）— Adult`, [['大', 'Big', ''], ['人', 'Person', '']], ['大人', 'Adult', 'おとな'], { logic: [`Big + person = an adult.`], why: `The reading ${J('おとな')} belongs to the whole word — it is a special reading (${J('熟字訓')}). Do not try ${J('だいにん')} or ${J('おおひと')}.` }),
+    W(`Word 4: 人口（じんこう）— Population`, [['人', 'Person', 'じん'], ['口', 'Mouth', 'こう']], ['人口', 'Population', 'じんこう'], { logic: [`People + mouths = the population.`, `Both characters use on'yomi: ${J('ジン')} + ${J('コウ')}.`], sentence: ['人口は多いです。', 'じんこうは おおいです。', 'Jinkou wa ooi desu.', 'The population is large.'] }),
+    { title: `Link to Lesson 1`, extra: `<p>You already know ${J('人')} as a counter:</p><div class="k-cards">${gcard('一人', 'One person', 'ひとり')}${gcard('二人', 'Two people', 'ふたり')}${gcard('三人', 'Three people', 'さんにん')}</div><p class="k-note">Now you can see why: 一人 and 二人 are special words, and from three on the pattern number + にん appears.</p>` }
+  ]);
+ks('口', '14', 'Mouth', ['コウ', 'kou', 'Also ク (ku)'], ['くち', 'kuchi', 'Also ぐち (rendaku)'], `Imagine an open mouth seen from the front: a simple box with the opening in the middle.`, 'Left side, then the top and right side, then the bottom line closes the box.',
+  [
+    { title: `Word 1: 口（くち）— Mouth`, single: ['口', 'Mouth', 'くち'], logic: [`On its own, ${J('口')} is read ${J('くち')} (kuchi).`, `This is the kun'yomi reading.`], sentence: ['口が小さいです。', 'くちが ちいさいです。', 'Kuchi ga chiisai desu.', 'The mouth is small.'] },
+    W(`Word 2: 出口（でぐち）— Exit`, [['出', 'Go out', 'で'], ['口', 'Opening', 'ぐち']], ['出口', 'Exit', 'でぐち'], { whyQ: `Why ぐち and not くち?`, why: `Rendaku: the k of ${J('くち')} becomes g in the compound. The “mouth” is the opening you go out through.`, sentence: ['出口はどこですか。', 'でぐちは どこですか。', 'Deguchi wa doko desu ka?', 'Where is the exit?'] }),
+    W(`Word 3: 入口（いりぐち）— Entrance`, [['入', 'Enter', 'いり'], ['口', 'Opening', 'ぐち']], ['入口', 'Entrance', 'いりぐち'], { logic: [`Enter + opening = entrance.`, `Rendaku again: くち → ぐち.`], note: `You will see 出口 and 入口 on station and shop signs.` }),
+    { title: `Word 4: 人口（じんこう）— Population`, extra: `<p>${J('口')} here uses its on'yomi ${J('コウ')}: ${J('人口')} = じんこう. Same word as in the previous page, now seen from the 口 side.</p>` }
+  ]);
+ks('目', '15', 'Eye', ['モク', 'moku', 'Also ボク (boku)'], ['め', 'me', ''], `Imagine an eye turned on its side: the outer box is the eyelid and the two lines inside are the iris and pupil.`, '',
+  [
+    { title: `Word 1: 目（め）— Eye`, single: ['目', 'Eye', 'め'], logic: [`On its own, ${J('目')} is read ${J('め')} (me).`, `This is the kun'yomi reading.`], sentence: ['目が大きいです。', 'めが おおきいです。', 'Me ga ookii desu.', 'The eyes are big.'] },
+    W(`Word 2: 一番目（いちばんめ）— The first`, [['一番', 'Number one', 'いちばん'], ['目', 'th (ordinal)', 'め']], ['一番目', 'The first', 'いちばんめ'], { logic: [`Add ${J('目')} after a number or counter to make “the …th”.`, `${J('一番目')} = the first, ${J('二番目')} (にばんめ) = the second, ${J('三番目')} (さんばんめ) = the third.`], sentence: ['一番目の人です。', 'いちばんめの ひとです。', 'Ichibanme no hito desu.', 'It is the first person.'] }),
+    W(`Word 3: 二つ目（ふたつめ）— The second one`, [['二つ', 'Two items', 'ふたつ'], ['目', 'th', 'め']], ['二つ目', 'The second item', 'ふたつめ'], { logic: [`Remember ${J('二つ')} (ふたつ) from Lesson 1: add ${J('目')} and you get “the second one”.`] }),
+    W(`Word 4: 目的（もくてき）— Purpose`, [['目', 'Eye / aim', 'もく'], ['的', 'Target', 'てき']], ['目的', 'Purpose', 'もくてき'], { logic: [`Eye + target = what you aim at: a purpose.`, `Both on'yomi: ${J('モク')} + ${J('テキ')}.`] })
+  ]);
+const L5 = {
+  n: 5, icon: '👁️', titleEn: 'Person, Mouth, Eye', topic: 'Person, Mouth and Eye', minutes: '45–55',
+  intro: `This lesson uses three very common kanji. Along the way we revisit the counters from Lesson 1 and meet ${J('目')} as the ending for “first, second, third”.`,
+  goals: [`You will know the meaning, shape and stroke order of 人, 口 and 目.`, `You will read 日本人, 大人 and 人口.`, `You will understand rendaku in 出口 and 入口.`, `You will use 目 to say first, second, third.`, `You will read sentences with the new kanji.`],
+  kanji: [
+    { c: '人', icon: '🧍', short: 'Person', tile: 'Person · ひと · ジン' },
+    { c: '口', icon: '👄', short: 'Mouth', tile: 'Mouth · くち · コウ' },
+    { c: '目', icon: '👁️', short: 'Eye', tile: 'Eye · め · モク' }
+  ],
+  recap: [
+    ['How is ' + J('土曜日') + ' read?', [['どようび', 1], ['つちようび', 0], ['とようび', 0]]],
+    ['How is 山 read in ' + J('火山') + '?', [['やま', 0], ['さん', 0], ['ざん', 1]]],
+    ['How is ' + J('小川') + ' read?', [['おかわ', 0], ['おがわ', 1], ['こがわ', 0]]]
+  ],
+  compareTitle: 'Look-alikes: 口 日 目',
+  compare: `<p>Three kanji are built on a box. Compare them carefully:</p><div class="k-cards">${gcard('口', 'Mouth', 'empty box')}${gcard('日', 'Sun / day', 'box + 1 line')}${gcard('目', 'Eye', 'box + 2 lines')}</div><div class="example-box">${J('口')} (くち) = an empty box · ${J('日')} (ひ / にち) = a box with one line · ${J('目')} (め) = a taller box with two lines.</div><p class="k-note">Compare ${J('日本人')} (にほんじん) and ${J('目的')} (もくてき): the box shapes keep the words apart.</p>`,
+  special: { icon: '🔢', title: 'Counting people and ordering with 目', html: `<p>Two useful patterns from this lesson:</p><h4 class="k-h4">1. 人 as a person counter</h4><div class="k-table-wrap">${vocabTable([[J('一人'), 'ひとり', 'One person'], [J('二人'), 'ふたり', 'Two people'], [J('三人'), 'さんにん', 'Three people'], [J('四人'), 'よにん', 'Four people'], [J('五人'), 'ごにん', 'Five people']], ['Word', 'Reading', 'Meaning'])}</div><h4 class="k-h4">2. 目 for “first, second, third”</h4><div class="k-table-wrap">${vocabTable([[J('一番目'), 'いちばんめ', 'The first'], [J('二番目'), 'にばんめ', 'The second'], [J('三番目'), 'さんばんめ', 'The third'], [J('二つ目'), 'ふたつめ', 'The second one']], ['Word', 'Reading', 'Meaning'])}</div><div class="example-box">Number + ${J('番目')} (ばんめ) gives an order: “the Nth”. Number + ${J('つ')} + ${J('目')} does the same for counted objects.</div>` },
+  sentences: [
+    ['あの人は先生です。', 'あのひとは せんせいです。', 'Ano hito wa sensei desu.', 'That person is a teacher.', ''],
+    ['出口はどこですか。', 'でぐちは どこですか。', 'Deguchi wa doko desu ka?', 'Where is the exit?', ''],
+    ['目が大きいです。', 'めが おおきいです。', 'Me ga ookii desu.', 'The eyes are big.', ''],
+    ['口が小さいです。', 'くちが ちいさいです。', 'Kuchi ga chiisai desu.', 'The mouth is small.', ''],
+    ['一番目の人です。', 'いちばんめの ひとです。', 'Ichibanme no hito desu.', 'It is the first person.', ''],
+    ['人口は多いです。', 'じんこうは おおいです。', 'Jinkou wa ooi desu.', 'The population is large.', '']
+  ],
+  cards: [
+    { w: '人', kana: 'ひと · ジン', rom: 'hito · jin', en: 'Person', why: 'Kun hito, on jin / nin.' },
+    { w: '口', kana: 'くち · コウ', rom: 'kuchi · kou', en: 'Mouth', why: 'Kun kuchi, on kou / ku.' },
+    { w: '目', kana: 'め · モク', rom: 'me · moku', en: 'Eye', why: 'Kun me, on moku.' },
+    { w: '日本人', kana: 'にほんじん', rom: 'nihonjin', en: 'Japanese person', why: 'After a country name: jin.' },
+    { w: '大人', kana: 'おとな', rom: 'otona', en: 'Adult', why: 'Special whole-word reading.' },
+    { w: '人口', kana: 'じんこう', rom: 'jinkou', en: 'Population', why: 'On jin + kou.' },
+    { w: '出口', kana: 'でぐち', rom: 'deguchi', en: 'Exit', why: 'Rendaku: kuchi becomes guchi.' },
+    { w: '入口', kana: 'いりぐち', rom: 'iriguchi', en: 'Entrance', why: 'Rendaku: kuchi becomes guchi.' },
+    { w: '一番目', kana: 'いちばんめ', rom: 'ichibanme', en: 'The first', why: 'Ichiban + me (ordinal).' },
+    { w: '二つ目', kana: 'ふたつめ', rom: 'futatsume', en: 'The second one', why: 'Futatsu + me.' },
+    { w: '目的', kana: 'もくてき', rom: 'mokuteki', en: 'Purpose', why: 'Both on\'yomi: moku + teki.' },
+    { w: '二人', kana: 'ふたり', rom: 'futari', en: 'Two people', why: 'Special counting word (Lesson 1).' }
+  ],
+  quiz: [
+    { q: 'How is <span class="k-jp">大人</span> read, and why?', opts: [['だいにん — on\'yomi of both characters', ''], ['おとな — a special whole-word reading', ''], ['おおひと — kun\'yomi of both characters', '']], a: 1 },
+    { q: 'How is <span class="k-jp">人口</span> read?', opts: [['ひとくち', 'hitokuchi', 'k-jp'], ['じんこう', 'jinkou', 'k-jp'], ['にんぐち', 'ninguchi', 'k-jp']], a: 1 },
+    { q: 'Why is <span class="k-jp">出口</span> read でぐち?', opts: [['Rendaku turns くち into ぐち', ''], ['口 is always ぐち', ''], ['出 is read でぐ', '']], a: 0 },
+    { q: 'What does <span class="k-jp">一番目</span> mean?', opts: [['The first', ''], ['One eye', ''], ['One place', '']], a: 0 },
+    { q: 'Which kanji is a box with two lines inside?', opts: [['口', '', 'k-jp'], ['日', '', 'k-jp'], ['目', '', 'k-jp']], a: 2 },
+    { q: 'How is <span class="k-jp">日本人</span> read?', opts: [['にほんひと', 'nihonhito', 'k-jp'], ['にほんじん', 'nihonjin', 'k-jp'], ['にっぽんにん', 'nipponnin', 'k-jp']], a: 1 },
+    { q: 'What is the kun\'yomi of 人?', opts: [['ひと', 'hito', 'k-jp'], ['じん', 'jin', 'k-jp'], ['くち', 'kuchi', 'k-jp']], a: 0 },
+    { q: 'What does <span class="k-jp">入口</span> mean?', opts: [['Exit', ''], ['Entrance', ''], ['Population', '']], a: 1 },
+    { q: 'What is the on\'yomi of 目 used in <span class="k-jp">目的</span>?', opts: [['め', 'me', 'k-jp'], ['もく', 'moku', 'k-jp'], ['じん', 'jin', 'k-jp']], a: 1 },
+    { q: 'How is <span class="k-jp">三人</span> read?', opts: [['さんひと', 'sanhito', 'k-jp'], ['さんにん', 'sannin', 'k-jp'], ['みたり', 'mitari', 'k-jp']], a: 1 }
+  ],
+  copy: [['日本人', 'にほんじん', 'Japanese person'], ['大人', 'おとな', 'Adult'], ['人口', 'じんこう', 'Population'], ['出口', 'でぐち', 'Exit'], ['入口', 'いりぐち', 'Entrance'], ['一番目', 'いちばんめ', 'The first']],
+  checklist: ['I wrote 人, 口 and 目 five times each.', 'I learned the kun\'yomi and on\'yomi of the three characters.', 'I can read 日本人, 大人 and 人口.', 'I understood rendaku in 出口 and 入口.', 'I copied the six words with their readings.', 'I read the sentences and solved the final quiz.'],
+  remember: [`${J('人')} alone is ひと; after a country name it is じん; as a counter it gives ひとり、ふたり、さんにん.`, `${J('大人')} (おとな) is a special whole-word reading.`, `${J('出口')} and ${J('入口')} show rendaku: くち → ぐち. Add ${J('目')} after a number for “the Nth”.`],
+  next: `<strong>Lesson 6:</strong> ${J('耳 手 足')} — ear, hand and foot. We will meet special readings such as ${J('上手')} (じょうず) and the counter for shoes.`
+};
+
+/* ===== Lesson 6: 耳 手 足 ===== */
+ks('耳', '16', 'Ear', ['ジ', 'ji', ''], ['みみ', 'mimi', ''], `Imagine the shape of an ear: a curved outer rim with the inner folds drawn as horizontal lines.`, '',
+  [
+    { title: `Word 1: 耳（みみ）— Ear`, single: ['耳', 'Ear', 'みみ'], logic: [`On its own, ${J('耳')} is read ${J('みみ')} (mimi).`, `This is the kun'yomi reading.`], sentence: ['耳がいたいです。', 'みみが いたいです。', 'Mimi ga itai desu.', 'My ear hurts.'] },
+    W(`Word 2: 耳鼻科（じびか）— Ear-nose clinic`, [['耳', 'Ear', 'じ'], ['鼻', 'Nose', 'び'], ['科', 'Department', 'か']], ['耳鼻科', 'ENT clinic', 'じびか'], { logic: [`Ear + nose + department = the ENT clinic.`, `All on'yomi: ${J('ジ')} + ${J('ビ')} + ${J('カ')}.`], note: `This is the on'yomi example for ${J('耳')}: ジ.` }),
+    W(`Word 3: 耳栓（みみせん）— Ear plugs`, [['耳', 'Ear', 'みみ'], ['栓', 'Plug', 'せん']], ['耳栓', 'Ear plugs', 'みみせん'], { logic: [`Ear + plug = ear plugs.`, `Kun'yomi ${J('みみ')} + on'yomi ${J('セン')}: a mixed reading.`] }),
+    W(`Word 4: 耳かき（みみかき）— Ear pick`, [['耳', 'Ear', 'みみ'], ['かき', 'Scoop (hiragana)', 'かき']], ['耳かき', 'Ear pick', 'みみかき'], { logic: [`Ear + scoop = an ear pick.`, `Native Japanese word: kun'yomi plus hiragana.`] })
+  ]);
+ks('手', '17', 'Hand', ['シュ', 'shu', ''], ['て', 'te', ''], `Imagine a hand with the palm in the middle and the lines spreading out like fingers.`, '',
+  [
+    { title: `Word 1: 手（て）— Hand`, single: ['手', 'Hand', 'て'], logic: [`On its own, ${J('手')} is read ${J('て')} (te).`, `This is the kun'yomi reading.`], sentence: ['手が大きいです。', 'てが おおきいです。', 'Te ga ookii desu.', 'The hands are big.'] },
+    W(`Word 2: 上手（じょうず）— Skilful`, [['上', 'Up', ''], ['手', 'Hand', '']], ['上手', 'Good at', 'じょうず'], { logic: [`Up + hand = a skilful hand: good at something.`], why: `The reading ${J('じょうず')} is special: ${J('手')} is not read ${J('て')} or ${J('シュ')} here. Learn it as a whole word. Its opposite is ${J('下手')} (へた, not good at).`, sentence: ['日本語が上手です。', 'にほんごが じょうずです。', 'Nihongo ga jouzu desu.', 'You are good at Japanese.'] }),
+    W(`Word 3: 手紙（てがみ）— Letter`, [['手', 'Hand', 'て'], ['紙', 'Paper', 'がみ']], ['手紙', 'Letter', 'てがみ'], { logic: [`Hand + paper = a handwritten letter.`], whyQ: `Why がみ and not かみ?`, why: `Rendaku: ${J('かみ')} (paper) becomes ${J('がみ')} in the compound.`, sentence: ['手紙を書きます。', 'てがみを かきます。', 'Tegami o kakimasu.', 'I write a letter.'] }),
+    W(`Word 4: 歌手（かしゅ）— Singer`, [['歌', 'Song', 'か'], ['手', 'Person who does', 'しゅ']], ['歌手', 'Singer', 'かしゅ'], { logic: [`Song + hand = a person who sings.`, `${J('手')} here means “person who does it”, read with the on'yomi ${J('シュ')}.`], note: `This is the on'yomi example for ${J('手')}: シュ.` })
+  ]);
+ks('足', '18', 'Foot / Leg / Enough', ['ソク', 'soku', ''], ['あし', 'ashi', 'Also た(りる)'], `Imagine a foot in motion: the box on top is the knee, and the strokes below are the leg and the walking foot.`, '',
+  [
+    { title: `Word 1: 足（あし）— Foot / leg`, single: ['足', 'Foot / leg', 'あし'], logic: [`On its own, ${J('足')} is read ${J('あし')} (ashi).`, `This is the kun'yomi reading.`], sentence: ['足がいたいです。', 'あしが いたいです。', 'Ashi ga itai desu.', 'My leg / foot hurts.'] },
+    W(`Word 2: 手足（てあし）— Hands and feet`, [['手', 'Hand', 'て'], ['足', 'Foot', 'あし']], ['手足', 'Arms and legs', 'てあし'], { logic: [`Hand + foot = arms and legs, the limbs.`, `Both kun'yomi.`] }),
+    W(`Word 3: 足りる（たりる）— To be enough`, [['足', 'Enough', 'た'], ['りる', 'Verb ending', 'りる']], ['足りる', 'To be enough', 'たりる'], { logic: [`Here ${J('足')} is read ${J('た')} and the okurigana ${J('りる')} follows it.`, `Negative: ${J('足りません')} (たりません) = not enough.`], sentence: ['水が足りません。', 'みずが たりません。', 'Mizu ga tarimasen.', 'There is not enough water.'] }),
+    W(`Word 4: 一足（いっそく）— One pair (of shoes)`, [['一', 'One', 'いっ'], ['足', 'Pair of footwear', 'そく']], ['一足', 'One pair', 'いっそく'], { logic: [`${J('足')} is also the counter for pairs of shoes and socks, read ${J('ソク')}.`, `${J('一足')} いっそく, ${J('二足')} にそく, ${J('三足')} さんぞく (そく → ぞく after ん).`], note: `Another sound change: small っ in いっそく, and rendaku in さんぞく.` })
+  ]);
+const L6 = {
+  n: 6, icon: '🖐️', titleEn: 'Ear, Hand, Foot', topic: 'Ear, Hand and Foot', minutes: '45–55',
+  intro: `The body kanji continue with ${J('耳')}, ${J('手')} and ${J('足')}. This lesson is full of special readings: ${J('上手')} (じょうず), ${J('下手')} (へた) and the counter ${J('足')}.`,
+  goals: [`You will know the meaning, shape and stroke order of 耳, 手 and 足.`, `You will read 上手, 手紙 and 歌手.`, `You will understand special readings and the counter 足.`, `You will review the body kanji from lessons 5 and 6.`, `You will read sentences with the new kanji.`],
+  kanji: [
+    { c: '耳', icon: '👂', short: 'Ear', tile: 'Ear · みみ · ジ' },
+    { c: '手', icon: '🖐️', short: 'Hand', tile: 'Hand · て · シュ' },
+    { c: '足', icon: '🦶', short: 'Foot', tile: 'Foot · あし · ソク' }
+  ],
+  recap: [
+    ['How is ' + J('大人') + ' read?', [['おとな', 1], ['だいにん', 0], ['おおひと', 0]]],
+    ['How is ' + J('出口') + ' read?', [['でくち', 0], ['でぐち', 1], ['しゅっこう', 0]]],
+    ['Which kanji is the box with two lines inside?', [['口', 0], ['日', 0], ['目', 1]]]
+  ],
+  compareTitle: 'The body so far',
+  compare: `<p>With Lessons 5 and 6 you now have a small body vocabulary:</p><div class="k-cards">${gcard('口', 'Mouth', 'くち')}${gcard('目', 'Eye', 'め')}${gcard('耳', 'Ear', 'みみ')}${gcard('手', 'Hand', 'て')}${gcard('足', 'Foot', 'あし')}</div><div class="example-box">All five body kanji use a native kun'yomi when alone (くち, め, みみ, て, あし). The on'yomi appears in compounds: ${J('人口')} じんこう, ${J('目的')} もくてき, ${J('耳鼻科')} じびか, ${J('歌手')} かしゅ, ${J('一足')} いっそく.</div>`,
+  special: { icon: '✨', title: 'Special readings and counters', html: `<p>Several words in this lesson cannot be built from the usual readings:</p><div class="k-table-wrap">${vocabTable([[J('上手'), 'じょうず', 'Good at', 'Special reading'], [J('下手'), 'へた', 'Not good at', 'Special reading'], [J('手紙'), 'てがみ', 'Letter', 'Rendaku: かみ → がみ'], [J('足りる'), 'たりる', 'To be enough', 'Different kun reading: た'], [J('三足'), 'さんぞく', 'Three pairs', 'Counter + rendaku']], ['Word', 'Reading', 'Meaning', 'What to notice'])}</div><div class="example-box"><strong>The counter ${J('足')}:</strong> 一足 いっそく, 二足 にそく, 三足 さんぞく. It counts pairs of shoes and socks. As with ${J('人')} and ${J('つ')}, you learn each counter together with its sound changes.</div><p class="k-note">${J('上手')} and ${J('下手')} are whole-word readings (${J('熟字訓')}) like ${J('今日')} and ${J('大人')}: recognise them directly.</p>` },
+  sentences: [
+    ['耳がいたいです。', 'みみが いたいです。', 'Mimi ga itai desu.', 'My ear hurts.', ''],
+    ['手が大きいです。', 'てが おおきいです。', 'Te ga ookii desu.', 'The hands are big.', ''],
+    ['足がいたいです。', 'あしが いたいです。', 'Ashi ga itai desu.', 'My leg / foot hurts.', ''],
+    ['日本語が上手です。', 'にほんごが じょうずです。', 'Nihongo ga jouzu desu.', 'You are good at Japanese.', '上手 is a special whole-word reading.'],
+    ['手紙を書きます。', 'てがみを かきます。', 'Tegami o kakimasu.', 'I write a letter.', ''],
+    ['水が足りません。', 'みずが たりません。', 'Mizu ga tarimasen.', 'There is not enough water.', '']
+  ],
+  cards: [
+    { w: '耳', kana: 'みみ · ジ', rom: 'mimi · ji', en: 'Ear', why: 'Kun mimi, on ji.' },
+    { w: '手', kana: 'て · シュ', rom: 'te · shu', en: 'Hand', why: 'Kun te, on shu.' },
+    { w: '足', kana: 'あし · ソク', rom: 'ashi · soku', en: 'Foot / leg', why: 'Kun ashi, on soku.' },
+    { w: '耳鼻科', kana: 'じびか', rom: 'jibika', en: 'ENT clinic', why: 'All on\'yomi: ji + bi + ka.' },
+    { w: '上手', kana: 'じょうず', rom: 'jouzu', en: 'Good at', why: 'Special whole-word reading.' },
+    { w: '下手', kana: 'へた', rom: 'heta', en: 'Not good at', why: 'Special whole-word reading.' },
+    { w: '手紙', kana: 'てがみ', rom: 'tegami', en: 'Letter', why: 'Rendaku: kami becomes gami.' },
+    { w: '歌手', kana: 'かしゅ', rom: 'kashu', en: 'Singer', why: 'On ka + shu (person who does).' },
+    { w: '手足', kana: 'てあし', rom: 'teashi', en: 'Arms and legs', why: 'Kun te + kun ashi.' },
+    { w: '足りる', kana: 'たりる', rom: 'tariru', en: 'To be enough', why: 'Kun ta + okurigana riru.' },
+    { w: '一足', kana: 'いっそく', rom: 'issoku', en: 'One pair of shoes', why: 'Counter soku; small tsu.' },
+    { w: '耳栓', kana: 'みみせん', rom: 'mimisen', en: 'Ear plugs', why: 'Kun mimi + on sen (mixed).' }
+  ],
+  quiz: [
+    { q: 'How is <span class="k-jp">上手</span> read, and why?', opts: [['じょうしゅ — on\'yomi of both', ''], ['じょうず — a special whole-word reading', ''], ['うえて — kun\'yomi of both', '']], a: 1 },
+    { q: 'What is the kun\'yomi of 手?', opts: [['て', 'te', 'k-jp'], ['しゅ', 'shu', 'k-jp'], ['あし', 'ashi', 'k-jp']], a: 0 },
+    { q: 'How is <span class="k-jp">歌手</span> read?', opts: [['うたて', 'utate', 'k-jp'], ['かしゅ', 'kashu', 'k-jp'], ['かて', 'kate', 'k-jp']], a: 1 },
+    { q: 'What does <span class="k-jp">足りる</span> mean?', opts: [['To be enough', ''], ['To walk', ''], ['To count pairs', '']], a: 0 },
+    { q: 'Which kanji means “ear”?', opts: [['耳', '', 'k-jp'], ['目', '', 'k-jp'], ['口', '', 'k-jp']], a: 0 },
+    { q: 'What does <span class="k-jp">手紙</span> mean?', opts: [['A letter', ''], ['A glove', ''], ['A hand towel', '']], a: 0 },
+    { q: 'What is the kun\'yomi of 足 (foot)?', opts: [['あし', 'ashi', 'k-jp'], ['ぞく', 'zoku', 'k-jp'], ['て', 'te', 'k-jp']], a: 0 },
+    { q: 'How is <span class="k-jp">下手</span> read?', opts: [['したて', 'shitate', 'k-jp'], ['へた', 'heta', 'k-jp'], ['げしゅ', 'geshu', 'k-jp']], a: 1 },
+    { q: 'How is <span class="k-jp">三足</span> (three pairs of shoes) read?', opts: [['さんそく', 'sansoku', 'k-jp'], ['さんぞく', 'sanzoku', 'k-jp'], ['みあし', 'miashi', 'k-jp']], a: 1 },
+    { q: 'How is <span class="k-jp">手足</span> read?', opts: [['てあし', 'teashi', 'k-jp'], ['しゅそく', 'shusoku', 'k-jp'], ['てそく', 'tesoku', 'k-jp']], a: 0 }
+  ],
+  copy: [['上手', 'じょうず', 'Good at'], ['下手', 'へた', 'Not good at'], ['手紙', 'てがみ', 'Letter'], ['歌手', 'かしゅ', 'Singer'], ['手足', 'てあし', 'Arms and legs'], ['足りる', 'たりる', 'To be enough']],
+  checklist: ['I wrote 耳, 手 and 足 five times each.', 'I learned the kun\'yomi and on\'yomi of the three characters.', 'I can read 上手, 手紙 and 歌手.', 'I understood special readings and the counter 足.', 'I copied the six words with their readings.', 'I read the sentences and solved the final quiz.'],
+  remember: [`${J('耳、手、足')} alone use kun'yomi: みみ, て, あし.`, `${J('上手')} (じょうず) and ${J('下手')} (へた) are special whole-word readings.`, `${J('足')} is also a counter (そく / ぞく) and a verb stem (${J('足りる')} たりる).`],
+  next: ''
+};
+
+const GEN_LESSONS = [L3, L4, L5, L6].map(mkLesson);
+
 const KANJI_DAYS = [{
   id: 'd0', short: 'Lesson 0', icon: '🧭', title: 'Lesson 0 — The logic of kanji',
   quiz: L0_QUIZ,
@@ -4431,9 +4826,9 @@ const KANJI_DAYS = [{
     { icon: '✍️', title: 'Writing and daily task', html: l2Writing, after: initPads },
     { icon: '✅', title: 'Checklist', html: l2Checklist }
   ]
-}];
+}].concat(GEN_LESSONS);
 const KANJI_UPCOMING = [
-  { icon: '🔜', title: 'Lesson 3' }
+  { icon: '🔜', title: 'Lesson 7' }
 ];
 
 /* ---------- kanji navigation + rendering ---------- */
