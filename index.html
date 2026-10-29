@@ -517,6 +517,16 @@
   .lecture .dialog-box, .lecture .grammar-point, .lecture .exercise { font-size: 0.95rem; }
 
   /* ===== v2 additions ===== */
+  .mode-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 6px; padding: 5px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .mode-switch a { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 4px 10px; flex-wrap: wrap; text-decoration: none; background: transparent; color: var(--muted); padding: 10px 14px; border-radius: 10px; font-family: "Inter", sans-serif; font-size: 0.95rem; font-weight: 600; transition: background .15s ease, color .15s ease; }
+    .mode-switch a small { font-weight: 500; font-size: 0.75rem; opacity: 0.85; }
+    .mode-switch a .ms-icon { font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; font-size: 1.25rem; line-height: 1; }
+    .mode-switch a[aria-current="page"] { background: var(--unit-bg); color: #fff; cursor: default; }
+    .mode-switch a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+    .mode-switch a:not([aria-current="page"]):hover { background: var(--accent-soft); color: var(--accent); }
+    .mode-switch .ms-label { align-self: center; padding: 0 8px 0 10px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; white-space: nowrap; }
+    @media (max-width: 640px) { .mode-switch { flex-wrap: wrap; } .mode-switch .ms-label { flex: 1 1 100%; padding: 2px 8px; } .mode-switch a { flex: 1 1 100%; } }
+  
   .sidebar { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; padding-right: 2px; }
   .course-nav { display: flex; flex-direction: column; gap: 10px; }
   .nav-item {
@@ -601,7 +611,7 @@
 </style>
 </head>
 <body>
-<div class="wrap"><a href="kanji.html" style="position:fixed;top:10px;right:10px;z-index:50;background:#fff;color:#c0392b;border:1px solid #ecdfd0;border-radius:999px;padding:6px 14px;font:600 13px Inter,Arial,sans-serif;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.12)">漢字 Kanji lessons</a>
+<div class="wrap">
   <header class="page-head">
     <h1>🗻 日本語 A1 — Grammar &amp; Vocabulary 🎌</h1>
     <p>Romaji · Kana · Kanji · Vocabulary-focused · Pick a unit to start</p>
@@ -612,6 +622,8 @@
       <span>💾 Progress saved</span>
     </div>
   </header>
+
+  <nav class="mode-switch" aria-label="Choose a course"><span class="ms-label">Switch course</span><a href="index.html" aria-current="page"><span class="ms-icon">🔤</span> Romaji Course <small>Units 1–18 · vocabulary &amp; grammar</small></a><a href="kanji.html"><span class="ms-icon" lang="ja">漢</span> Kanji Lessons <small>Lessons 0–13 · reading &amp; writing</small></a></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
