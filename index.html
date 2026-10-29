@@ -638,6 +638,29 @@
       .script-switch .ss-label { display: none; }
       .profile-bar .script-switch button { flex: 1; padding: 7px 6px; font-size: 0.78rem; }
     }
+
+  /* ===== course switch (levels) ===== */
+  .course-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 10px; }
+  .cs-group { flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 8px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .cs-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; padding: 0 6px 6px; display: flex; align-items: center; gap: 6px; }
+  .cs-ico { font-size: 0.95rem; line-height: 1; font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; }
+  .cs-tabs { display: flex; gap: 6px; }
+  .cs-tabs > * { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 8px 6px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; font-family: "Inter", sans-serif; text-align: center; }
+  .cs-tabs b { font-size: 1.05rem; font-weight: 700; line-height: 1.1; }
+  .cs-tabs small { font-size: 0.72rem; font-weight: 500; opacity: .85; line-height: 1.2; white-space: nowrap; }
+  .cs-tabs a { color: var(--ink); background: var(--accent-soft); border-color: var(--line); transition: background .15s ease, color .15s ease; }
+  .cs-tabs a:hover { background: #f6dbd6; color: var(--accent); }
+  .cs-tabs a[aria-current="page"] { background: var(--unit-bg); color: #fff; border-color: transparent; cursor: default; }
+  .cs-tabs a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+  .cs-tabs .cs-soon { color: #a89f93; background: #faf6ef; border: 1px dashed var(--line); cursor: not-allowed; }
+  @media (max-width: 640px) {
+    .course-switch { gap: 8px; margin-top: 10px; }
+    .cs-group { padding: 6px; }
+    .cs-title { font-size: 0.62rem; padding: 0 4px 4px; letter-spacing: .3px; }
+    .cs-tabs { gap: 4px; }
+    .cs-tabs > * { padding: 6px 2px; }
+    .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
+  }
 </style>
 </head>
 <body>
@@ -653,7 +676,7 @@
     </div>
   </header>
 
-  <nav class="mode-switch" aria-label="Choose a course"><span class="ms-label">Switch course</span><a href="index.html" aria-current="page"><span class="ms-icon">🔤</span> Romaji Course <small>Units 1–18 · vocabulary &amp; grammar</small></a><a href="kanji.html"><span class="ms-icon" lang="ja">漢</span> Kanji Lessons <small>Lessons 0–13 · reading &amp; writing</small></a></nav>
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html" aria-current="page"><b>A1</b><small>18 units</small></a><span class="cs-soon" title="Coming soon"><b>A2</b><small>Coming soon</small></span></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons 0–13</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Coming soon</small></span></div></div></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
@@ -1411,8 +1434,8 @@ function renderProfileBar() {
   const answeredCorrect = Object.keys(progress.exercises).filter(function(k) { return progress.exercises[k].correct === true; }).length;
   const pct = totalEx ? Math.min(100, Math.round((answeredCorrect / totalEx) * 100)) : 0;
   const seg = ['romaji', 'kana', 'kanji'].map(function(m) {
-    const label = { romaji: 'Romaji', kana: 'かな Kana', kanji: '漢字 Kana + Kanji' }[m];
-    return '<button class="' + (progress.script === m ? 'on' : '') + '" onclick="setScript(\'' + m + '\')">' + label + '</button>';
+    const label = { romaji: 'Romaji', kana: 'かな Kana', kanji: '漢字 Kanji' }[m];
+    return '<button title="' + { romaji: 'Romaji only', kana: 'Kana (hiragana / katakana)', kanji: 'Kana + Kanji' }[m] + '" class="' + (progress.script === m ? 'on' : '') + '" onclick="setScript(\'' + m + '\')">' + label + '</button>';
   }).join('');
   bar.innerHTML =
     '<span>👋 <span class="pb-name">' + esc(progress.name || 'Student') + '</span></span>' +
