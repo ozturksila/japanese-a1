@@ -676,7 +676,7 @@
     </div>
   </header>
 
-  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira" ><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html" aria-current="page"><b>N5</b><small>26 units</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira" ><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html" aria-current="page"><b>N5</b><small>26 units</small></a><a href="n4.html"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
@@ -2560,7 +2560,13 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         [['Tabeta', 'Ate'], ['Mita', 'Saw / watched'], ['Kaita', 'Wrote'], ['Nonda', 'Drank'], ['Itta', 'Went'], ['Shita', 'Did'], ['Kita', 'Came'], ['Koto ga arimasu', 'Have the experience of'], ['Bakari', 'Just (done)']],
         G([['Sushi o tabeta koto ga arimasu.', 'I have eaten sushi (before).'], ['Nihon e itta koto ga arimasen.', 'I have never been to Japan.'], ['Hiru wa terebi o mitari, hon o yondari shimasu.', 'I do things like watch TV and read books.'], ['Ima tabeta bakari desu.', 'I have just eaten.']]),
         dialogBox('Dialogue — Experience', [['A', 'Fuji-san ni nobotta koto ga arimasu ka?'], ['B', 'Hai, ichido arimasu.'], ['A', 'Ii desu ne!']]),
-        EX([M('Tabeta', 'ate,eaten'), exInput('The ta-form of {{nomu}} is: {{___________}}', 'nonda'), exInput('Say "I have been to Kyoto": {{Kyouto e itta ___________ arimasu.}}', 'koto ga'), exSelect('"I just ate" is:', 'tabeta bakari desu', ['Tabeta bakari desu', 'Tabeta koto ga arimasu'])]))
+        EX([M('Tabeta', 'ate,eaten'), exInput('The ta-form of {{nomu}} is: {{___________}}', 'nonda'), exInput('Say "I have been to Kyoto": {{Kyouto e itta ___________ arimasu.}}', 'koto ga'), exSelect('"I just ate" is:', 'tabeta bakari desu', ['Tabeta bakari desu', 'Tabeta koto ga arimasu'])])),
+      T('⚖️', 'Two kinds of "without": nai de and nakute',
+        `<strong>V-nai de</strong> means "without doing V / V didn't happen and then…" (<strong>Asagohan o tabenai de, ikimashita</strong> — "I left without eating breakfast"). <strong>V-nakute</strong> gives a reason or cause (<strong>Tomodachi ga konakute, sabishii desu</strong> — "I'm lonely because my friend didn't come"). Use <strong>nai de</strong> for how an action was done, <strong>nakute</strong> for causes and linking.`,
+        [['Nai de', 'Without doing'], ['Nakute', 'Not doing, so… (reason)'], ['Asagohan', 'Breakfast'], ['Sabishii', 'Lonely'], ['Konakute', "Not coming, so…"]],
+        G([['Asagohan o tabenai de, ikimashita.', 'I left without eating breakfast.'], ['Tomodachi ga konakute, sabishii desu.', "I'm lonely because my friend didn't come."], ['Kasa o motanai de, dekakemashita.', 'I went out without an umbrella.']]),
+        '',
+        EX([M('Nai de', 'without doing,without'), exInput('"I went without sugar": {{Satou o ireru ___________ nomimashita.}}', 'nai de,naide'), exSelect('A cause ("so…") uses:', 'nakute', ['Nakute', 'Nai de'])]))
     ],
     culture: `Japanese has a polite style (<strong>-masu</strong>) and a plain style (<strong>-nai, -ta, dictionary form</strong>). Strangers, customers and teachers get the polite style; friends, family and thoughts use the plain style. Mixing them up the wrong way round can sound rude or stiff — so listen to which one people use with you.`
   });
@@ -2657,7 +2663,13 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         [['Dekimasu', 'Can do / is possible'], ['Koto', 'Thing / matter (nominaliser)'], ['Oyogu', 'Swim'], ['Hiku', 'Play (a stringed instrument)'], ['Hanasu', 'Speak']],
         G([['Oyogu koto ga dekimasu.', 'I can swim.'], ['Piano o hiku koto ga dekimasu ka?', 'Can you play the piano?'], ['Nihongo o hanasu koto ga dekimasu.', 'I can speak Japanese.']]),
         '',
-        EX([M('Dekimasu', 'can,can do,be able to'), exInput('"I can swim": {{Oyogu koto ga ___________.}}', 'dekimasu'), F('___ koto ga dekimasu.', 'something you can do')], '🏊 What can you do?'))
+        EX([M('Dekimasu', 'can,can do,be able to'), exInput('"I can swim": {{Oyogu koto ga ___________.}}', 'dekimasu'), F('___ koto ga dekimasu.', 'something you can do')], '🏊 What can you do?')),
+      T('🧒', 'Other people\'s wants and strong wishes: tagaru, hoshii, koto wa nai',
+        `<strong>~tai</strong> is for your own wishes; for someone else use <strong>~tagatte iru</strong>: <strong>Imouto wa ikitagatte imasu</strong> ("My sister wants to go"). <strong>Hoshigatte iru</strong> is the same for <strong>hoshii</strong>. <strong>V + koto wa nai</strong> means "there's no need to V" (<strong>Isogu koto wa arimasen</strong>), and <strong>V-ru you ni</strong> (Unit 24) expresses a hope.`,
+        [['Tagaru', 'Show wanting (3rd person)'], ['Hoshigaru', 'Show wanting an object'], ['Koto wa nai', "There's no need to"], ['Isogu', 'Hurry'], ['Imouto', 'Younger sister']],
+        G([['Imouto wa nihon e ikitagatte imasu.', 'My sister wants to go to Japan.'], ['Kare wa atarashii keetai o hoshigatte imasu.', 'He wants a new mobile phone.'], ['Isogu koto wa arimasen.', "There's no need to hurry."]], '<strong>~tai / hoshii</strong> = my feelings · <strong>~tagaru / hoshigaru</strong> = visible desire of others.'),
+        '',
+        EX([M('Tagaru', 'show wanting,want (third person)'), exInput('"My sister wants to go": {{Imouto wa ikita___________ imasu.}}', 'gatte'), exInput('"No need to hurry": {{Isogu koto wa ___________.}}', 'arimasen')]))
     ],
     culture: `Telling someone "<strong>Yasunda hou ga ii desu</strong>" ("you'd better rest") is a caring phrase in Japan — colleagues will even insist you go home if you look unwell. People also say <strong>Odaiji ni</strong> ("take care") to the sick, and wearing a surgical mask when you have a cold is common courtesy.`
   });
@@ -2690,7 +2702,13 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         [['Sugiru', 'Too much / overdo'], ['Yasui', 'Easy to (verb stem)'], ['Nikui', 'Hard to (verb stem)'], ['Kata', 'Way of doing'], ['Tsukaikata', 'How to use'], ['Takasugiru', 'Too expensive']],
         G([['Tabesugimashita.', 'I ate too much.'], ['Kono kanji wa kakinikui desu.', 'This kanji is hard to write.'], ['Kono pen wa tsukaiyasui desu.', 'This pen is easy to use.'], ['Hashi no tsukaikata o oshiete kudasai.', 'Please teach me how to use chopsticks.']]),
         '',
-        EX([M('Sugiru', 'too much,overdo,too'), M('Nikui', 'hard to,difficult to'), exInput('"I drank too much": {{Nomi___________.}}', 'sugimashita')], '🔮 Practise the patterns'))
+        EX([M('Sugiru', 'too much,overdo,too'), M('Nikui', 'hard to,difficult to'), exInput('"I drank too much": {{Nomi___________.}}', 'sugimashita')], '🔮 Practise the patterns')),
+      T('🧸', 'Appearance and similes: you da, mitai, ppoi, you ni',
+        `<strong>~you desu / ~mitai desu</strong> compare or guess ("it seems like"); <strong>[Noun / adjective stem] + ppoi</strong> means "-ish / has the quality of" (<strong>Kodomoppoi</strong> "childish", <strong>Wasureppoi</strong> "forgetful", <strong>Shiroppoi</strong> "whitish"). <strong>~you ni</strong> / <strong>~mitai ni</strong> = "like / as if": <strong>Tori no you ni tobimasu</strong> ("It flies like a bird").`,
+        [['Ppoi', 'Having the quality of / -ish'], ['Kodomoppoi', 'Childish'], ['Wasureppoi', 'Forgetful'], ['Shiroppoi', 'Whitish'], ['Mitai ni', 'Like / as if'], ['Tori', 'Bird']],
+        G([['Kare wa kodomoppoi desu.', 'He is childish.'], ['Kono shatsu wa shiroppoi desu.', 'This shirt is whitish.'], ['Tori no you ni tobimasu.', 'It flies like a bird.'], ['Yume no you desu.', "It's like a dream."]]),
+        '',
+        EX([M('Ppoi', 'ish,-ish,having the quality of'), exInput('"Childish": {{Kodomo___________.}}', 'ppoi'), exInput('"Like a dream": {{Yume no ___________ desu.}}', 'you,mitai')]))
     ],
     culture: `Weather forecasts (<strong>tenki yohou</strong>) are a daily ritual in Japan and use exactly these patterns — <strong>ame deshou</strong>, <strong>ame ga furu kamoshirenai</strong>, <strong>yuki ga furu sou desu</strong>. Many people carry a folding umbrella (<strong>oritatami-gasa</strong>) just in case.`
   });

@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese N4 — Grammar &amp; Vocabulary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6ef;
+    --card-bg: #ffffff;
+    --ink: #2b2420;
+    --muted: #726a60;
+    --accent: #c0392b;
+    --accent2: #1f6f5c;
+    --accent-soft: #fbe9e6;
+    --accent2-soft: #e4f2ee;
+    --line: #ecdfd0;
+    --unit-bg: linear-gradient(135deg, #2b2420 0%, #44352c 100%);
+    --unit-bg-hover: linear-gradient(135deg, #3a2f28 0%, #54433687 100%);
+    --gold: #c89b3c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(192,57,43,0.06) 0%, transparent 45%),
+      radial-gradient(circle at 85% 92%, rgba(31,111,92,0.06) 0%, transparent 45%);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 24px 12px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header.page-head {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 28px 20px 24px;
+    background: linear-gradient(135deg, #2b2420 0%, #4a3a30 100%);
+    border-radius: 16px;
+    color: #fdf6ee;
+    box-shadow: 0 6px 20px rgba(43,36,32,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  header.page-head::before {
+    content: "🎏 🌸 ⛩️ 🗻 🎎";
+    position: absolute;
+    top: -6px; left: 0; right: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    opacity: 0.18;
+    letter-spacing: 18px;
+  }
+  header.page-head h1 {
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    font-size: 2rem;
+    margin: 6px 0 8px;
+    letter-spacing: 0.3px;
+    position: relative;
+  }
+  header.page-head p {
+    color: #e8d9c8;
+    margin: 0;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  header.page-head .badges {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  header.page-head .badges span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* ===== Profile bar + progress ===== */
+  .profile-bar {
+    max-width: 1100px;
+    margin: 14px auto 0;
+    padding: 10px 18px;
+    background: #fff;
+    border: 1px solid rgba(192,57,43,0.18);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .profile-bar .pb-name {
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .profile-bar .pb-progress {
+    flex: 1 1 160px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .profile-bar .pb-bar-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: #eee5d8;
+    overflow: hidden;
+  }
+  .profile-bar .pb-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--accent2));
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+  .profile-bar .pb-pct {
+    font-size: 0.8rem;
+    color: #777;
+    white-space: nowrap;
+  }
+  .profile-bar button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #666;
+  }
+  .profile-bar button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .profile-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(40,30,20,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  .profile-modal {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  }
+  .profile-modal h3 {
+    margin: 0 0 6px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: var(--accent);
+  }
+  .profile-modal p {
+    color: #777;
+    font-size: 0.88rem;
+    margin: 0 0 16px;
+  }
+  .profile-modal input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+  .profile-modal button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .profile-modal button:hover { background: #a53224; }
+  .unit {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(43,36,32,0.07);
+    transition: box-shadow 0.2s ease;
+  }
+  .unit:hover { box-shadow: 0 4px 16px rgba(43,36,32,0.12); }
+  .unit-toggle {
+    width: 100%;
+    text-align: left;
+    background: var(--unit-bg);
+    color: #fff;
+    border: none;
+    padding: 18px 22px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: filter 0.15s ease;
+  }
+  .unit-toggle:hover { filter: brightness(1.12); }
+  .unit-toggle .arrow {
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+  .unit-toggle.open .arrow { transform: rotate(90deg); }
+  .unit-body {
+    display: none;
+    padding: 20px 22px 26px;
+  }
+  .unit-body.open { display: block; }
+
+  .section {
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .section-toggle {
+    width: 100%;
+    text-align: left;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s ease;
+  }
+  .section-toggle:hover { background: #f6dbd6; }
+  .section-toggle .arrow { transition: transform 0.2s ease; font-size: 0.8rem; }
+  .section-toggle.open .arrow { transform: rotate(90deg); }
+  .section-body { display: none; padding: 18px 18px 20px; }
+  .section-body.open { display: block; }
+
+  h3.sub { font-size: 1.03rem; margin: 20px 0 8px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
+  h3.sub:first-child { margin-top: 0; }
+
+  ul.goals { margin: 0; padding-left: 22px; }
+  ul.goals li { margin-bottom: 5px; }
+  ul.goals li::marker { color: var(--accent); }
+
+  table.vocab {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  table.vocab th, table.vocab td {
+    border: 1px solid var(--line);
+    padding: 9px 12px;
+    text-align: left;
+  }
+  table.vocab th {
+    background: var(--accent2);
+    color: #fff;
+    font-weight: 600;
+  }
+  table.vocab tr:nth-child(even) td { background: #fbf7f1; }
+  table.vocab tr:hover td { background: var(--accent2-soft); }
+
+  .grammar-point {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    background: #fdfbf8;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .grammar-point .jp { font-weight: 700; color: var(--accent); }
+  .grammar-point .en { color: var(--ink); }
+  .grammar-point .note { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+  .example-box {
+    background: var(--accent2-soft);
+    border-left: 3px solid var(--accent2);
+    padding: 8px 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-size: 0.93rem;
+  }
+  .example-box::before { content: "💡 "; }
+
+  .dialog-box {
+    background: #fdfbf8;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .dialog-box h4 { margin: 0 0 10px; font-size: 0.95rem; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+  .dialog-box h4::before { content: "💬"; }
+  .dialog-line { margin: 6px 0; padding: 4px 0; }
+  .dialog-line .speaker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 8px;
+    background: var(--accent2);
+    color: #fff;
+    border-radius: 999px;
+    width: 22px; height: 22px;
+    font-size: 0.78rem;
+  }
+
+  .exercise {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .exercise:last-child { border-bottom: none; margin-bottom: 0; }
+  .exercise .ex-title { font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .exercise ol { margin: 0; padding-left: 20px; }
+  .exercise li { margin-bottom: 10px; }
+  .exercise input[type="text"] {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.93rem;
+    width: 220px;
+    margin-left: 6px;
+  }
+  .exercise input[type="text"]:focus { outline: 2px solid var(--accent2); }
+  .exercise select {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+  .check-btn, .reveal-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+  }
+  .check-btn:hover, .reveal-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .feedback { margin-left: 10px; font-weight: 700; font-size: 0.88rem; }
+  .feedback.correct { color: #1f6f3f; }
+  .feedback.correct::before { content: "✅ "; }
+  .feedback.wrong { color: var(--accent); }
+  .answer-key {
+    display: none;
+    margin-top: 8px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .answer-key.open { display: block; }
+
+  .match-row { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+  .match-row select {
+    padding: 4px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  .culture-box {
+    background: linear-gradient(135deg, #fdf2e3 0%, #fbe8d6 100%);
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  .culture-box::before { content: "⛩️ "; font-size: 1.1rem; }
+
+  .progress-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 30px;
+  }
+
+  /* ===== Two-pane layout ===== */
+  .wrap { max-width: 1400px; }
+  .layout {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .sidebar {
+    flex: 0 0 30%;
+    max-width: 30%;
+    min-width: 280px;
+  }
+  .lecture {
+    flex: 1 1 70%;
+    min-width: 0;
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(43,36,32,0.10);
+    padding: 26px 30px 30px;
+  }
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .sidebar, .lecture { flex: 1 1 100%; max-width: 100%; }
+    .lecture { position: static; max-height: none; order: -1; margin-bottom: 24px; }
+  }
+
+  .lecture-placeholder {
+    text-align: center;
+    color: var(--muted);
+    padding: 60px 20px;
+  }
+  .lecture-placeholder .big { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+
+  .lecture-crumb {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+  }
+  .lecture-title {
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lecture-block { margin-bottom: 22px; }
+  .lecture-block h4 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent2);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lecture-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    position: sticky;
+    bottom: 0;
+    background: var(--card-bg);
+  }
+  .lecture-nav button {
+    background: var(--unit-bg);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lecture-nav button:disabled { opacity: 0.35; cursor: default; }
+  .lecture-nav button:not(:disabled):hover { filter: brightness(1.15); }
+  .lecture-dots {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .lecture-dots span {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--line);
+    display: inline-block;
+    cursor: pointer;
+  }
+  .lecture-dots span.active { background: var(--accent); }
+  .lecture-dots span.culture-dot { background: var(--gold); }
+
+  .lecture .culture-box { margin-top: 4px; }
+  .lecture .dialog-box, .lecture .grammar-point, .lecture .exercise { font-size: 0.95rem; }
+
+  /* ===== v2 additions ===== */
+  
+  .mode-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 6px; padding: 5px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .mode-switch a { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 4px 10px; flex-wrap: wrap; text-decoration: none; background: transparent; color: var(--muted); padding: 10px 14px; border-radius: 10px; font-family: "Inter", sans-serif; font-size: 0.95rem; font-weight: 600; transition: background .15s ease, color .15s ease; }
+    .mode-switch a small { font-weight: 500; font-size: 0.75rem; opacity: 0.85; }
+    .mode-switch a .ms-icon { font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; font-size: 1.25rem; line-height: 1; }
+    .mode-switch a[aria-current="page"] { background: var(--unit-bg); color: #fff; cursor: default; }
+    .mode-switch a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+    .mode-switch a:not([aria-current="page"]):hover { background: var(--accent-soft); color: var(--accent); }
+    .mode-switch .ms-label { align-self: center; padding: 0 8px 0 10px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; white-space: nowrap; }
+    @media (max-width: 640px) { .mode-switch { flex-wrap: wrap; } .mode-switch .ms-label { flex: 1 1 100%; padding: 2px 8px; } .mode-switch a { flex: 1 1 100%; } }
+  
+  .sidebar { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; padding-right: 2px; }
+  .course-nav { display: flex; flex-direction: column; gap: 10px; }
+  .nav-item {
+    text-align: left; width: 100%; cursor: pointer;
+    background: var(--card-bg); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;
+    box-shadow: 0 2px 8px rgba(43,36,32,0.06);
+    font-family: inherit; transition: box-shadow .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .nav-item:hover { box-shadow: 0 4px 14px rgba(43,36,32,0.12); transform: translateY(-1px); }
+  .nav-item.active { background: var(--unit-bg); color: #fff; border-color: transparent; }
+  .nav-item .ni-title { font-family: "Zen Maru Gothic", "Inter", sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.35; }
+  .nav-item .ni-meta { font-size: 0.78rem; opacity: 0.7; }
+  .nav-item .ni-bar { height: 4px; border-radius: 999px; background: rgba(120,100,80,0.18); overflow: hidden; margin-top: 2px; }
+  .nav-item .ni-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent2)); }
+  .nav-item.cp { background: var(--accent2-soft); border-style: dashed; border-color: var(--accent2); }
+  .nav-item.cp.active { background: var(--accent2); color: #fff; border-style: solid; }
+  .progress-note { margin-top: 18px; }
+
+  .script-switch { display: inline-flex; align-items: center; gap: 0; border: 1px solid #ddd; border-radius: 999px; overflow: hidden; background: #faf6ef; }
+  .script-switch .ss-label { font-size: 0.72rem; color: #8a7f72; padding: 0 8px 0 12px; text-transform: uppercase; letter-spacing: .4px; }
+  .profile-bar .script-switch button { border: none; border-radius: 0; padding: 6px 12px; background: none; color: #666; }
+  .profile-bar .script-switch button.on { background: var(--accent); color: #fff; }
+  .profile-bar .pb-save { font-size: 0.76rem; color: #6c8a7b; white-space: nowrap; }
+
+  .script-tag { text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 0.75rem; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 8px; }
+  td.jp-cell, .q-jp, .jp-cell { font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; }
+  td.jp-cell { font-size: 1.08rem; font-weight: 700; color: var(--accent); }
+  .exercise li, .q-opts .opt { font-family: inherit; }
+  .exercise input[lang="ja"], .exercise input[data-lang="jp"] { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Inter", sans-serif; }
+
+  .lecture-nav button.alt { background: var(--accent2); }
+  .lecture-dots span.recap-dot { background: var(--accent2); opacity: .55; }
+  .lecture-dots span.recap-dot.active { opacity: 1; }
+
+  .recap-intro { color: var(--muted); font-size: 0.93rem; margin: 0 0 12px; }
+  .recap-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; cursor: pointer; }
+  table.recap td.spk-cell { width: 44px; text-align: center; padding: 4px; }
+  button.spk { background: var(--accent2-soft); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 0.85rem; padding: 3px 9px; }
+  button.spk:hover { background: #d3eae3; }
+  button.spk.big { font-size: 0.95rem; padding: 6px 14px; font-weight: 600; margin-right: 6px; }
+  #recapTbl.hide-en td.en-cell { filter: blur(6px); transition: filter .15s ease; }
+  #recapTbl.hide-en tr:hover td.en-cell { filter: none; }
+  .recap-done {
+    margin-top: 20px; padding: 14px 16px; border-radius: 10px;
+    background: linear-gradient(135deg, #e4f2ee 0%, #f3f9f6 100%);
+    border: 1px solid #b9dccf; font-size: 0.95rem;
+  }
+  .recap-done .check-btn { margin: 6px 0 0 8px; }
+
+  .cp-score { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fdfbf8; font-size: 0.9rem; position: sticky; top: 0; z-index: 3; }
+  .cp-score .pb-bar-track { flex: 1 1 140px; height: 8px; border-radius: 999px; background: #eee5d8; overflow: hidden; }
+  .cp-score .pb-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent2)); transition: width .3s ease; }
+  .q { padding: 12px 14px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fdfbf8; }
+  .q-prompt { margin-bottom: 8px; font-size: 0.97rem; }
+  .q-jp { font-weight: 700; font-size: 1.15rem; color: var(--accent); }
+  .q-en { font-weight: 600; }
+  .q-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+    font-size: 0.95rem; cursor: pointer; color: var(--ink);
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent2); background: var(--accent2-soft); }
+  .opt:disabled { cursor: default; opacity: .85; }
+  .opt.right { background: #d9f0e3; border-color: #1f6f3f; color: #14502c; font-weight: 700; }
+  .opt.wrong { background: #fbe0dc; border-color: var(--accent); color: #8a1f14; }
+  .q-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .q input[type="text"] { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; font-size: 0.95rem; width: 240px; max-width: 100%; }
+  .q input[type="text"]:focus { outline: 2px solid var(--accent2); }
+  .q select { padding: 5px 8px; border-radius: 6px; border: 1px solid var(--line); font-size: 0.9rem; }
+  .q .match-row { margin-bottom: 8px; }
+  .q .match-row .q-jp { min-width: 120px; }
+  .tile-answer { min-height: 46px; padding: 6px; border: 2px dashed var(--line); border-radius: 8px; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: #fff; }
+  .tile-hint { color: var(--muted); font-size: 0.85rem; padding-left: 4px; }
+  .tile-bank { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tile { background: #fff; border: 1px solid var(--line); border-bottom-width: 3px; border-radius: 8px; padding: 6px 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; font-family: "Zen Maru Gothic", "Hiragino Sans", "Inter", sans-serif; color: var(--ink); }
+  .tile:disabled { opacity: .3; cursor: default; }
+  .tile.placed { background: var(--accent2-soft); border-color: var(--accent2); cursor: default; }
+  .reset-btn { background: none; border: 1px solid #ddd; border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; cursor: pointer; color: #666; }
+  .reset-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== phone layout ===== */
+    @media (max-width: 900px) {
+      body { padding: 12px 10px 60px; }
+      header.page-head { padding: 14px 14px 12px; margin-bottom: 0; }
+      header.page-head::before { display: none; }
+      header.page-head h1 { font-size: 1.3rem; margin: 0 0 4px; }
+      header.page-head p { font-size: 0.82rem; }
+      header.page-head .badges { display: none; }
+      .mode-switch { flex-wrap: nowrap !important; margin-top: 10px; }
+      .mode-switch .ms-label, .mode-switch a small { display: none; }
+      .mode-switch a { flex: 1 1 0 !important; padding: 9px 8px !important; font-size: 0.88rem !important; text-align: center; }
+      .profile-bar { margin-top: 10px; padding: 8px 12px; gap: 8px 10px; }
+      .layout { gap: 12px; }
+      .sidebar { order: -2; position: static !important; max-height: none !important; min-width: 0; }
+      .lecture { padding: 18px 16px 22px; }
+      .lecture-nav { gap: 6px; }
+      .lecture-nav button { padding: 8px 12px; font-size: 0.85rem; }
+      .lecture-dots { max-width: 40%; }
+    }
+  
+    @media (max-width: 900px) {
+      .course-nav { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; scroll-snap-type: x proximity; }
+      .nav-item { flex: 0 0 210px; scroll-snap-align: start; }
+      .sidebar .progress-note { display: none; }
+      .profile-bar .script-switch { flex: 1 1 100%; justify-content: center; }
+      .script-switch .ss-label { display: none; }
+      .profile-bar .script-switch button { flex: 1; padding: 7px 6px; font-size: 0.78rem; }
+    }
+
+  /* ===== course switch (levels) ===== */
+  .course-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 10px; }
+  .cs-group { flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 8px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .cs-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; padding: 0 6px 6px; display: flex; align-items: center; gap: 6px; }
+  .cs-ico { font-size: 0.95rem; line-height: 1; font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; }
+  .cs-tabs { display: flex; gap: 6px; }
+  .cs-tabs > * { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 8px 6px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; font-family: "Inter", sans-serif; text-align: center; }
+  .cs-tabs b { font-size: 1.05rem; font-weight: 700; line-height: 1.1; }
+  .cs-tabs small { font-size: 0.72rem; font-weight: 500; opacity: .85; line-height: 1.2; white-space: nowrap; }
+  .cs-tabs a { color: var(--ink); background: var(--accent-soft); border-color: var(--line); transition: background .15s ease, color .15s ease; }
+  .cs-tabs a:hover { background: #f6dbd6; color: var(--accent); }
+  .cs-tabs a[aria-current="page"] { background: var(--unit-bg); color: #fff; border-color: transparent; cursor: default; }
+  .cs-tabs a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+  .cs-tabs .cs-soon { color: #a89f93; background: #faf6ef; border: 1px dashed var(--line); cursor: not-allowed; }
+  @media (max-width: 640px) {
+    .course-switch { gap: 8px; margin-top: 10px; }
+    .cs-group { padding: 6px; }
+    .cs-title { font-size: 0.62rem; padding: 0 4px 4px; letter-spacing: .3px; }
+    .cs-tabs { gap: 4px; }
+    .cs-tabs > * { padding: 6px 2px; }
+    .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-head">
+    <h1>🗻 日本語 N4 — Grammar &amp; Vocabulary 🎌</h1>
+    <p>Romaji · Kana · Kanji · Vocabulary-focused · Pick a unit to start</p>
+    <div class="badges">
+      <span>🔤 Romaji / Kana / Kanji</span>
+      <span>📚 Vocab-focused</span>
+      <span>✏️ Exercises &amp; checkpoints</span>
+      <span>💾 Progress saved</span>
+    </div>
+  </header>
+
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira"><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>N5</b><small>26 units</small></a><a href="n4.html" aria-current="page"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+
+  <div class="profile-bar" id="profileBar"></div>
+
+  <div class="layout">
+  <aside class="sidebar">
+    <nav class="course-nav" id="courseNav"></nav>
+    <p class="progress-note">Based on the JLPT N4 grammar list. Each unit ends with a vocabulary recap; a checkpoint follows every 3 units.</p>
+  </aside>
+
+  <main class="lecture" id="lecturePane">
+    <div class="lecture-placeholder">
+      <span class="big">🎓</span>
+      Loading your progress…
+    </div>
+  </main>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   DATABASE — progress is stored in the browser's IndexedDB
+   (a real client-side database). If IndexedDB is unavailable
+   (e.g. some private-browsing modes) it falls back to
+   localStorage so nothing breaks.
+   ========================================================= */
+const DB_NAME = 'japanese_a1_db';
+const DB_STORE = 'kv';
+const PROGRESS_KEY = 'progress_n4';
+const LEGACY_LS_KEY = 'ja_n4_profile_v1';
+let dbPromise = null;
+let dbMode = 'indexeddb';
+
+function openDb() {
+  if (dbPromise) return dbPromise;
+  dbPromise = new Promise(function(resolve) {
+    if (!window.indexedDB) { resolve(null); return; }
+    let req;
+    try { req = indexedDB.open(DB_NAME, 1); } catch (e) { resolve(null); return; }
+    req.onupgradeneeded = function() { req.result.createObjectStore(DB_STORE); };
+    req.onsuccess = function() { resolve(req.result); };
+    req.onerror = req.onblocked = function() { resolve(null); };
+  });
+  return dbPromise;
+}
+function dbGet(key) {
+  return openDb().then(function(db) {
+    if (!db) return undefined;
+    return new Promise(function(resolve) {
+      try {
+        const r = db.transaction(DB_STORE).objectStore(DB_STORE).get(key);
+        r.onsuccess = function() { resolve(r.result); };
+        r.onerror = function() { resolve(undefined); };
+      } catch (e) { resolve(undefined); }
+    });
+  });
+}
+function dbSet(key, value) {
+  return openDb().then(function(db) {
+    if (!db) return false;
+    return new Promise(function(resolve) {
+      try {
+        const tx = db.transaction(DB_STORE, 'readwrite');
+        tx.objectStore(DB_STORE).put(value, key);
+        tx.oncomplete = function() { resolve(true); };
+        tx.onerror = tx.onabort = function() { resolve(false); };
+      } catch (e) { resolve(false); }
+    });
+  });
+}
+
+function defaultProgress() {
+  return { name: '', script: 'romaji', lastUnit: 0, lastTopic: 0, lastCp: null, unitPage: {}, pages: {}, exercises: {}, checkpoints: {} };
+}
+async function loadProgress() {
+  let p = await dbGet(PROGRESS_KEY);
+  if (!p) {
+    dbMode = (await openDb()) ? 'indexeddb' : 'localstorage';
+    try { // migrate an older localStorage save, or use the fallback mirror
+      const raw = localStorage.getItem(LEGACY_LS_KEY);
+      if (raw) p = JSON.parse(raw);
+    } catch (e) { /* ignore */ }
+  }
+  const base = Object.assign(defaultProgress(), p || {});
+  if (!base.name) { const n5 = await dbGet('progress'); if (n5 && n5.name) { base.name = n5.name; base.script = n5.script || base.script; } }
+  return base;
+}
+let saveTimer = null;
+function saveProgress(data) {
+  try { localStorage.setItem(LEGACY_LS_KEY, JSON.stringify(data)); } catch (e) { /* storage unavailable */ }
+  setSaveBadge('saving');
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(function() {
+    dbSet(PROGRESS_KEY, data).then(function(ok) { dbMode = ok ? 'indexeddb' : 'localstorage'; setSaveBadge('saved'); });
+  }, 150);
+}
+function setSaveBadge(state) {
+  const el = document.getElementById('pbSave');
+  if (!el) return;
+  if (state === 'saving') { el.textContent = '💾 Saving…'; return; }
+  el.textContent = dbMode === 'indexeddb' ? '💾 Saved to database' : '💾 Saved (local fallback)';
+}
+
+let progress = defaultProgress();
+function esc(s) { return String(s).replace(/[&<>"]/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function shuffle(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; }
+  return a;
+}
+
+/* =========================================================
+   JAPANESE SCRIPT ENGINE
+   All course content is written in romaji. These helpers turn
+   romaji into kana (hiragana / katakana) or kana + kanji, and
+   turn typed kana / kanji back into romaji so answers can be
+   checked no matter which script the learner types in.
+   ========================================================= */
+const KANA_PAIRS = ('a:あ i:い u:う e:え o:お ka:か ki:き ku:く ke:け ko:こ sa:さ shi:し su:す se:せ so:そ ta:た chi:ち tsu:つ te:て to:と ' +
+  'na:な ni:に nu:ぬ ne:ね no:の ha:は hi:ひ fu:ふ he:へ ho:ほ ma:ま mi:み mu:む me:め mo:も ya:や yu:ゆ yo:よ ra:ら ri:り ru:る re:れ ro:ろ wa:わ n:ん ' +
+  'ga:が gi:ぎ gu:ぐ ge:げ go:ご za:ざ ji:じ zu:ず ze:ぜ zo:ぞ da:だ de:で do:ど ba:ば bi:び bu:ぶ be:べ bo:ぼ pa:ぱ pi:ぴ pu:ぷ pe:ぺ po:ぽ ' +
+  'kya:きゃ kyu:きゅ kyo:きょ sha:しゃ shu:しゅ sho:しょ cha:ちゃ chu:ちゅ cho:ちょ nya:にゃ nyu:にゅ nyo:にょ hya:ひゃ hyu:ひゅ hyo:ひょ ' +
+  'mya:みゃ myu:みゅ myo:みょ rya:りゃ ryu:りゅ ryo:りょ gya:ぎゃ gyu:ぎゅ gyo:ぎょ ja:じゃ ju:じゅ jo:じょ bya:びゃ byu:びゅ byo:びょ pya:ぴゃ pyu:ぴゅ pyo:ぴょ ' +
+  'fa:ふぁ fi:ふぃ fe:ふぇ fo:ふぉ ti:てぃ di:でぃ she:しぇ che:ちぇ je:じぇ wi:うぃ we:うぇ').split(' ').map(function(p) { return p.split(':'); });
+const R2K = {}, K2R = {};
+KANA_PAIRS.forEach(function(p) { R2K[p[0]] = p[1]; K2R[p[1]] = p[0]; });
+// extra accepted romaji spellings and kana readings
+Object.assign(R2K, { si: 'し', ti: 'ち', tu: 'つ', hu: 'ふ', zi: 'じ', sya: 'しゃ', syu: 'しゅ', syo: 'しょ', tya: 'ちゃ', tyu: 'ちゅ', tyo: 'ちょ', jya: 'じゃ', jyu: 'じゅ', jyo: 'じょ' });
+Object.assign(K2R, { 'を': 'o', 'ぢ': 'ji', 'づ': 'zu', 'ゐ': 'i', 'ゑ': 'e', 'ゔ': 'vu' });
+const SMALL = 'ゃゅょぁぃぅぇぉ';
+
+function kataToHira(s) {
+  return s.replace(/[ァ-ヶ]/g, function(c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+}
+function kanaToRomaji(s) {
+  s = kataToHira(s);
+  let out = '', dbl = false;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c === 'っ') { dbl = true; continue; }
+    if (c === 'ー') { const m = out.match(/[aiueo]$/); if (m) out += m[0]; continue; }
+    let r = null, len = 1;
+    if (i + 1 < s.length && SMALL.indexOf(s[i + 1]) >= 0 && K2R[c + s[i + 1]]) { r = K2R[c + s[i + 1]]; len = 2; }
+    else if (K2R[c] !== undefined) r = K2R[c];
+    if (r === null) { out += c; dbl = false; continue; }
+    if (dbl && /^[bcdfghjklmnpqrstvwxyz]/.test(r)) out += r[0];
+    dbl = false;
+    out += r;
+    i += len - 1;
+  }
+  return out;
+}
+// strict romaji -> hiragana (returns null when the word can't be parsed)
+function romajiToHira(w) {
+  let out = '', i = 0;
+  while (i < w.length) {
+    const c = w[i];
+    if (c === "'" || c === '-') { i++; continue; }
+    if (c === w[i + 1] && /[bcdfghjklmpqrstwyz]/.test(c)) { out += 'っ'; i++; continue; }
+    if (c === 'n' && (i + 1 === w.length || !/[aiueoy]/.test(w[i + 1]) || w[i + 1] === "'")) { out += 'ん'; i++; continue; }
+    let hit = null;
+    for (let l = 3; l >= 1; l--) { const seg = w.substr(i, l); if (R2K[seg]) { hit = seg; break; } }
+    if (!hit) return null;
+    out += R2K[hit];
+    i += hit.length;
+  }
+  return out;
+}
+
+const D = {};       // romaji word -> [kana, kana+kanji]
+const PHRASE = {};  // two-word romaji phrase -> [kana, kana+kanji]
+function addWords(block) {
+  block.trim().split('\n').forEach(function(line) {
+    const p = line.trim().split('|');
+    if (p.length < 2) return;
+    (p[0].indexOf(' ') > 0 ? PHRASE : D)[p[0]] = [p[1], p[2] || p[1]];
+  });
+}
+addWords(`
+ohayou|おはよう
+gozaimasu|ございます
+konnichiwa|こんにちは|今日は
+konbanwa|こんばんは|今晩は
+oyasumi|おやすみ|お休み
+nasai|なさい
+sayounara|さようなら
+ja mata|じゃあまた
+mata|また
+ashita|あした|明日
+arigatou|ありがとう
+sumimasen|すみません
+gomen|ごめん
+onegaishimasu|おねがいします|お願いします
+douzo|どうぞ
+hai|はい
+iie|いいえ
+daijoubu|だいじょうぶ|大丈夫
+desu|です
+masu|ます
+ka|か
+wakarimasu|わかります|分かります
+wakarimasen|わかりません|分かりません
+yoku|よく
+mou|もう
+ichido|いちど|一度
+yukkuri|ゆっくり
+itte|いって|言って
+kudasai|ください
+hanashite|はなして|話して
+iimasu|いいます|言います
+dekimasu|できます
+nihongo|にほんご|日本語
+eigo|えいご|英語
+doitsugo|ドイツご|ドイツ語
+furansugo|フランスご|フランス語
+supeingo|スペインご|スペイン語
+chuugokugo|ちゅうごくご|中国語
+kankokugo|かんこくご|韓国語
+itariago|イタリアご|イタリア語
+roshiago|ロシアご|ロシア語
+porutogarugo|ポルトガルご|ポルトガル語
+torukogo|トルコご|トルコ語
+arabiago|アラビアご|アラビア語
+nan|なん|何
+nani|なに|何
+kotoba|ことば|言葉
+ii|いい
+chotto|ちょっと
+kore|これ
+sore|それ
+are|あれ
+kono|この
+sono|その
+ano|あの
+koko|ここ
+soko|そこ
+asoko|あそこ
+dare|だれ|誰
+doko|どこ
+itsu|いつ
+dou|どう
+dore|どれ
+dochira|どちら
+docchi|どっち
+ikura|いくら
+naze|なぜ
+doushite|どうして
+yomu|よむ|読む
+n|ん
+de|で
+to|と
+wa|は
+ga|が
+o|を
+no|の
+ni|に
+mo|も
+e|へ
+ya|や
+kara|から
+ja|じゃ
+nai|ない
+arimasen|ありません
+imasu|います
+arimasu|あります
+shimasu|します
+kimashita|きました|来ました
+tabemasu|たべます|食べます
+nomimasu|のみます|飲みます
+sunde|すんで|住んで
+mizu|みず|水
+watashi|わたし|私
+namae|なまえ|名前
+onamae|おなまえ|お名前
+kuni|くに|国
+shusshin|しゅっしん|出身
+hajimemashite|はじめまして
+yoroshiku|よろしく
+nihon|にほん|日本
+toruko|トルコ
+amerika|アメリカ
+igirisu|イギリス
+doitsu|ドイツ
+furansu|フランス
+supein|スペイン
+chuugoku|ちゅうごく|中国
+kankoku|かんこく|韓国
+itaria|イタリア
+nihonjin|にほんじん|日本人
+torukojin|トルコじん|トルコ人
+amerikajin|アメリカじん|アメリカ人
+igirisujin|イギリスじん|イギリス人
+doitsujin|ドイツじん|ドイツ人
+furansujin|フランスじん|フランス人
+supeinjin|スペインじん|スペイン人
+chuugokujin|ちゅうごくじん|中国人
+kankokujin|かんこくじん|韓国人
+itariajin|イタリアじん|イタリア人
+jin|じん|人
+nin|にん|人
+yonin|よにん|四人
+juu|じゅう|十
+gakusei|がくせい|学生
+kaishain|かいしゃいん|会社員
+sensei|せんせい|先生
+isha|いしゃ|医者
+kangoshi|かんごし|看護師
+enjinia|エンジニア
+bengoshi|べんごし|弁護士
+shufu|しゅふ|主婦
+ryourinin|りょうりにん|料理人
+keisatsukan|けいさつかん|警察官
+kazoku|かぞく|家族
+chichi|ちち|父
+haha|はは|母
+otousan|おとうさん|お父さん
+okaasan|おかあさん|お母さん
+ani|あに|兄
+ane|あね|姉
+otouto|おとうと|弟
+imouto|いもうと|妹
+kodomo|こども|子供
+musuko|むすこ|息子
+musume|むすめ|娘
+otto|おっと|夫
+tsuma|つま|妻
+tomodachi|ともだち|友達
+petto|ペット
+toshi|とし|年
+sai|さい|歳
+ie|いえ|家
+machi|まち|町
+inu|いぬ|犬
+neko|ねこ|猫
+tokyo|とうきょう|東京
+istanbul|イスタンブール
+berlin|ベルリン
+elif|エリフ
+ayse|アイシェ
+tabemono|たべもの|食べ物
+nomimono|のみもの|飲み物
+asa|あさ|朝
+gohan|ごはん|ご飯
+hirugohan|ひるごはん|昼ご飯
+bangohan|ばんごはん|晩ご飯
+pan|パン
+tamago|たまご|卵
+niku|にく|肉
+sakana|さかな|魚
+yasai|やさい|野菜
+kudamono|くだもの|果物
+ocha|おちゃ|お茶
+koohii|コーヒー
+udon|うどん
+sushi|すし|寿司
+ramen|ラーメン
+suki|すき|好き
+daisuki|だいすき|大好き
+kirai|きらい|嫌い
+tokidoki|ときどき|時々
+amari|あまり
+resutoran|レストラン
+menyuu|メニュー
+mise|みせ|店
+ten'in|てんいん|店員
+juusu|ジュース
+karee|カレー
+hanbaagaa|ハンバーガー
+sarada|サラダ
+edamame|えだまめ|枝豆
+biiru|ビール
+osara|おさら|お皿
+koppu|コップ
+hitotsu|ひとつ|一つ
+futatsu|ふたつ|二つ
+mittsu|みっつ|三つ
+heya|へや|部屋
+daidokoro|だいどころ|台所
+genkan|げんかん|玄関
+ima|いま|居間
+shinshitsu|しんしつ|寝室
+toire|トイレ
+furo|ふろ|風呂
+mado|まど|窓
+doa|ドア
+tsukue|つくえ|机
+isu|いす|椅子
+beddo|ベッド
+terebi|テレビ
+reizooko|れいぞうこ|冷蔵庫
+sentakuki|せんたくき|洗濯機
+eakon|エアコン
+shizuka|しずか|静か
+hiroi|ひろい|広い
+hiroku|ひろく|広く
+semai|せまい|狭い
+atarashii|あたらしい|新しい
+furui|ふるい|古い
+noun|noun
+`);
+
+addWords(`
+ue|うえ|上
+shita|した|下
+naka|なか|中
+mae|まえ|前
+ushiro|うしろ|後ろ
+hako|はこ|箱
+hasami|はさみ
+kagi|かぎ|鍵
+saifu|さいふ|財布
+kaban|かばん|鞄
+yamada-san|やまださん|山田さん
+shokudou|しょくどう|食堂
+gakkou|がっこう|学校
+kaisha|かいしゃ|会社
+niwa|にわ|庭
+yoru|よる|夜
+hiru|ひる|昼
+shigoto|しごと|仕事
+mainichi|まいにち|毎日
+okimasu|おきます|起きます
+nemasu|ねます|寝ます
+hatarakimasu|はたらきます|働きます
+goro|ごろ|頃
+made|まで
+ji|じ|時
+ichiji|いちじ|一時
+niji|にじ|二時
+sanji|さんじ|三時
+yoji|よじ|四時
+goji|ごじ|五時
+rokuji|ろくじ|六時
+shichiji|しちじ|七時
+hachiji|はちじ|八時
+kuji|くじ|九時
+juuji|じゅうじ|十時
+juuichiji|じゅういちじ|十一時
+juuniji|じゅうにじ|十二時
+nanji|なんじ|何時
+gozen|ごぜん|午前
+gogo|ごご|午後
+han|はん|半
+youbi|ようび|曜日
+getsuyoubi|げつようび|月曜日
+kayoubi|かようび|火曜日
+suiyoubi|すいようび|水曜日
+mokuyoubi|もくようび|木曜日
+kinyoubi|きんようび|金曜日
+doyoubi|どようび|土曜日
+nichiyoubi|にちようび|日曜日
+tetsudaimasu|てつだいます|手伝います
+kashimasu|かします|貸します
+karimasu|かります|借ります
+tsukaimasu|つかいます|使います
+juudenki|じゅうでんき|充電器
+denwa|でんわ|電話
+tetsudatte|てつだって|手伝って
+kashite|かして|貸して
+karite|かりて|借りて
+tsukatte|つかって|使って
+matte|まって|待って
+mite|みて|見て
+kiite|きいて|聞いて
+yonde|よんで|読んで
+shumi|しゅみ|趣味
+ongaku|おんがく|音楽
+eiga|えいが|映画
+hon|ほん|本
+donna|どんな
+yomimasu|よみます|読みます
+mimasu|みます|見ます
+kikimasu|ききます|聞きます
+yomimasen|よみません|読みません
+mimasen|みません|見ません
+itsumo|いつも
+zenzen|ぜんぜん|全然
+yasumi|やすみ|休み
+hi|ひ|日
+ryouri|りょうり|料理
+sanpo|さんぽ|散歩
+jazu|ジャズ
+ne|ね
+konshuu|こんしゅう|今週
+raishuu|らいしゅう|来週
+senshuu|せんしゅう|先週
+matsuri|まつり|祭り
+ibento|イベント
+ikimasu|いきます|行きます
+kimasu|きます|来ます
+ikimashou|いきましょう|行きましょう
+ikimasen|いきません|行きません
+issho|いっしょ|一緒
+densha|でんしゃ|電車
+basu|バス
+kuukou|くうこう|空港
+takushii|タクシー
+chikatetsu|ちかてつ|地下鉄
+jitensha|じてんしゃ|自転車
+eki|えき|駅
+norimasu|のります|乗ります
+orimasu|おります|降ります
+jikan|じかん|時間
+ichijikan|いちじかん|一時間
+nijikan|にじかん|二時間
+gofun|ごふん|五分
+juppun|じゅっぷん|十分
+kakarimasu|かかります
+dono|どの
+gurai|ぐらい
+uchi|うち|家
+konbini|コンビニ
+ginkou|ぎんこう|銀行
+yuubinkyoku|ゆうびんきょく|郵便局
+yoko|よこ|横
+chikaku|ちかく|近く
+tonari|となり|隣
+ookii|おおきい|大きい
+chiisai|ちいさい|小さい
+massugu|まっすぐ
+migi|みぎ|右
+hidari|ひだり|左
+magarimasu|まがります|曲がります
+depaato|デパート
+denchi|でんち|電池
+kamera|カメラ
+iriguchi|いりぐち|入口
+deguchi|でぐち|出口
+yasui|やすい|安い
+takai|たかい|高い
+hoshii|ほしい|欲しい
+hoshiku|ほしく|欲しく
+kaimasu|かいます|買います
+kaemasu|かえます|買えます
+kai|かい|階
+ikkai|いっかい|一階
+nikai|にかい|二階
+sangai|さんがい|三階
+yonkai|よんかい|四階
+gokai|ごかい|五階
+rokkai|ろっかい|六階
+nangai|なんがい|何階
+hyaku|ひゃく|百
+sen|せん|千
+man|まん|万
+en|えん|円
+nihyaku|にひゃく|二百
+sanzen|さんぜん|三千
+t-shatsu|ティーシャツ|Tシャツ
+kutsu|くつ|靴
+ikutsu|いくつ
+yottsu|よっつ|四つ
+itsutsu|いつつ|五つ
+guramu|グラム
+zutsu|ずつ
+shuumatsu|しゅうまつ|週末
+kinou|きのう|昨日
+tanoshii|たのしい|楽しい
+oishii|おいしい|美味しい
+tanoshikatta|たのしかった|楽しかった
+oishikatta|おいしかった|美味しかった
+tanoshiku|たのしく|楽しく
+oishiku|おいしく|美味しく
+nakatta|なかった
+deshita|でした
+mimashita|みました|見ました
+ikimashita|いきました|行きました
+kaimashita|かいました|買いました
+tabemashita|たべました|食べました
+nomimashita|のみました|飲みました
+shimashita|しました
+tabemasen|たべません|食べません
+ryokou|りょこう|旅行
+onsen|おんせん|温泉
+hairimasu|はいります|入ります
+aimasu|あいます|会います
+kyouto|きょうと|京都
+oosaka|おおさか|大阪
+hokkaidou|ほっかいどう|北海道
+ikitai|いきたい|行きたい
+tabetai|たべたい|食べたい
+mitai|みたい|見たい
+aitai|あいたい|会いたい
+shitai|したい
+dokoka|どこか
+sorekara|それから
+demo|でも
+
+tabete|たべて|食べて
+mite|みて|見て
+okite|おきて|起きて
+kaite|かいて|書いて
+nonde|のんで|飲んで
+hanashite|はなして|話して
+matte|まって|待って
+katte|かって|買って
+itte|いって|行って
+shite|して
+kite|きて|来て
+taberu|たべる|食べる
+miru|みる|見る
+kaku|かく|書く
+nomu|のむ|飲む
+hanasu|はなす|話す
+matsu|まつ|待つ
+kau|かう|買う
+suru|する
+kuru|くる|来る
+tabeta|たべた|食べた
+mita|みた|見た
+kaita|かいた|書いた
+nonda|のんだ|飲んだ
+itta|いった|行った
+shita|した
+kita|きた|来た
+tabenai|たべない|食べない
+kakanai|かかない|書かない
+nomanai|のまない|飲まない
+ima|いま|今
+kekkon|けっこん|結婚
+benkyou|べんきょう|勉強
+shukudai|しゅくだい|宿題
+yakusoku|やくそく|約束
+tabako|たばこ|煙草
+shashin|しゃしん|写真
+ikemasen|いけません
+dame|だめ
+atama|あたま|頭
+onaka|おなか
+netsu|ねつ|熱
+kaze|かぜ|風邪
+byouin|びょういん|病院
+kusuri|くすり|薬
+itai|いたい|痛い
+naze|なぜ|何故
+doushite|どうして
+riyuu|りゆう|理由
+tsumori|つもり
+yotei|よてい|予定
+raigetsu|らいげつ|来月
+rainen|らいねん|来年
+kaigi|かいぎ|会議
+ryokou|りょこう|旅行
+dekimasu|できます|出来ます
+tabun|たぶん|多分
+kitto|きっと
+ame|あめ|雨
+furu|ふる|降る
+yuki|ゆき|雪
+haru|はる|春
+sakura|さくら|桜
+massugu|まっすぐ
+isha|いしゃ|医者
+yori|より
+motto|もっと
+ichiban|いちばん|一番
+dochira|どちら
+hou|ほう|方
+jouzu|じょうず|上手
+heta|へた|下手
+tokui|とくい|得意
+nigate|にがて|苦手
+kurai|くらい
+dake|だけ
+kaimono|かいもの|買い物
+tetsudau|てつだう|手伝う
+ageru|あげる
+kureru|くれる
+morau|もらう
+yukkuri|ゆっくり
+hayaku|はやく|早く
+toki|とき|時
+ongaku|おんがく|音楽
+
+`);
+
+addWords(`
+tabesaseru|たべさせる|食べさせる
+kakaseru|かかせる|書かせる
+nomaseru|のませる|飲ませる
+ikaseru|いかせる|行かせる
+souji|そうじ|掃除
+ryouri|りょうり|料理
+kodomo|こども|子供
+sensei|せんせい|先生
+gakusei|がくせい|学生
+buchou|ぶちょう|部長
+shukudai|しゅくだい|宿題
+homerareru|ほめられる|褒められる
+shikarareru|しかられる|叱られる
+yobareru|よばれる|呼ばれる
+komaru|こまる|困る
+meiwaku|めいわく|迷惑
+dorobou|どろぼう|泥棒
+saifu|さいふ|財布
+ashi|あし|足
+zangyou|ざんぎょう|残業
+ageru|あげる
+morau|もらう
+kureru|くれる
+sashiageru|さしあげる|差し上げる
+itadaku|いただく
+kudasaru|くださる
+nimotsu|にもつ|荷物
+purezento|プレゼント
+undou|うんどう|運動
+memo|メモ
+koe|こえ|声
+tanomu|たのむ|頼む
+tsutaeru|つたえる|伝える
+kimeru|きめる|決める
+kisoku|きそく|規則
+tenkin|てんきん|転勤
+hazu|はず
+yoyaku|よやく|予約
+junbi|じゅんび|準備
+sotsugyou|そつぎょう|卒業
+irai|いらい|以来
+tokoro|ところ
+bakari|ばかり
+zenbu|ぜんぶ|全部
+
+`);
+
+// reverse map: kanji spelling -> romaji word (longest spellings matched first)
+const KANJI_REV = {};
+Object.keys(D).forEach(function(k) {
+  const kj = D[k][1];
+  if (/[一-鿿]/.test(kj) && !KANJI_REV[kj]) KANJI_REV[kj] = k;
+});
+const KANJI_KEYS = Object.keys(KANJI_REV).sort(function(a, b) { return b.length - a.length; });
+
+const JP_PUNCT = { '?': '？', '.': '。', ',': '、', '!': '！' };
+function convToken(tok, idx) {
+  const m = tok.match(/^([“"(]*)(.*?)([.,!?:;”")]*)$/);
+  const lead = m[1], core = m[2], trail = m[3].split('').map(function(c) { return JP_PUNCT[c] || c; }).join('');
+  let body;
+  if (core === '/' || core === '+') body = ' ' + core + ' ';
+  else if (!core || /_/.test(core)) body = core;
+  else {
+    const low = core.toLowerCase();
+    if (D[low]) body = D[low][idx];
+    else { const h = romajiToHira(low); body = h !== null ? h : core; }
+  }
+  return lead + body + trail;
+}
+// romaji text -> chosen script ('romaji' returns the text untouched)
+function toJP(text, mode) {
+  mode = mode || progress.script;
+  if (mode === 'romaji') return text;
+  const idx = mode === 'kanji' ? 1 : 0;
+  const toks = text.split(/\s+/).filter(Boolean);
+  let out = '';
+  for (let i = 0; i < toks.length; i++) {
+    if (i + 1 < toks.length) {
+      const m1 = toks[i].match(/^[“"(]*(.*?)$/)[1], m2 = toks[i + 1].match(/^(.*?)([.,!?:;”")]*)$/);
+      const key = (m1 + ' ' + m2[1]).toLowerCase();
+      if (PHRASE[key]) {
+        out += PHRASE[key][idx] + m2[2].split('').map(function(c) { return JP_PUNCT[c] || c; }).join('');
+        i++;
+        continue;
+      }
+    }
+    out += convToken(toks[i], idx);
+  }
+  return out.replace(/^(.+) \/ \1$/, '$1');
+}
+function applyScript(html) {
+  return html.replace(/\{\{([\s\S]*?)\}\}/g, function(m, x) { return toJP(x, progress.script); });
+}
+
+// canonical romaji used to compare typed answers (kana, kanji or romaji all collapse to the same form)
+function canon(s) {
+  s = String(s).normalize('NFKC').toLowerCase();
+  KANJI_KEYS.forEach(function(k) { if (s.indexOf(k) >= 0) s = s.split(k).join(' ' + KANJI_REV[k] + ' '); });
+  s = kanaToRomaji(s);
+  return s.replace(/[ōô]/g, 'o').replace(/[ūû]/g, 'u').replace(/[^a-z0-9]/g, '')
+    .replace(/ou|oo/g, 'o').replace(/uu/g, 'u').replace(/nani/g, 'nan');
+}
+// equality that tolerates particle spellings: は/ha~wa, へ/he~e
+function eqRomaji(g, e, i, j) {
+  i = i || 0; j = j || 0;
+  if (i === g.length && j === e.length) return true;
+  if (i < g.length && j < e.length && g[i] === e[j] && eqRomaji(g, e, i + 1, j + 1)) return true;
+  if (g.startsWith('ha', i) && e.startsWith('wa', j) && eqRomaji(g, e, i + 2, j + 2)) return true;
+  if (g.startsWith('he', i) && e.startsWith('e', j) && eqRomaji(g, e, i + 2, j + 1)) return true;
+  return false;
+}
+function jpEq(given, expected) { return eqRomaji(canon(given), canon(expected)); }
+
+function speak(rom) {
+  if (!window.speechSynthesis) return;
+  try {
+    const u = new SpeechSynthesisUtterance(toJP(rom, 'kana'));
+    u.lang = 'ja-JP';
+    u.rate = 0.85;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  } catch (e) { /* ignore */ }
+}
+
+/* ===== exercise answer checking ===== */
+function normalize(str) {
+  return str.trim().toLowerCase().replace(/[.,!?]/g, '');
+}
+function checkAnswer(btn) {
+  const li = btn.closest('li');
+  const input = li.querySelector('input[type="text"]');
+  const feedback = li.querySelector('.feedback');
+  const accepted = input.getAttribute('data-answer').split(',');
+  const isJp = input.getAttribute('data-lang') === 'jp';
+  const correct = isJp ? accepted.some(function(a) { return jpEq(input.value, a); })
+                       : accepted.map(normalize).indexOf(normalize(input.value)) >= 0;
+  if (correct) {
+    feedback.textContent = '✓ Correct';
+    feedback.className = 'feedback correct';
+  } else {
+    feedback.textContent = '✗ Try again (' + (isJp ? toJP(accepted[0]) : accepted[0]) + ')';
+    feedback.className = 'feedback wrong';
+  }
+  const key = li.getAttribute('data-ex-key');
+  if (key) persistExercise(key, input.value, correct);
+}
+function checkSelect(btn) {
+  const li = btn.closest('li');
+  const select = li.querySelector('select');
+  const feedback = li.querySelector('.feedback');
+  const correct = normalize(select.value) === normalize(select.getAttribute('data-answer'));
+  if (correct) {
+    feedback.textContent = '✓ Correct';
+    feedback.className = 'feedback correct';
+  } else {
+    feedback.textContent = '✗ Try again';
+    feedback.className = 'feedback wrong';
+  }
+  const key = li.getAttribute('data-ex-key');
+  if (key) persistExercise(key, select.value, correct);
+}
+
+/* ===== profile bar ===== */
+function showNamePrompt() {
+  if (document.querySelector('.profile-modal-overlay')) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'profile-modal-overlay';
+  overlay.innerHTML =
+    '<div class="profile-modal">' +
+      '<h3>🌸 Welcome!</h3>' +
+      '<p>What should we call you? Your progress and exercise answers are saved in this browser\'s database, so you can close the page and pick up right where you left off.</p>' +
+      '<input type="text" id="nameInput" placeholder="Your name" maxlength="30">' +
+      '<br><button onclick="submitName()">Start studying</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  const inp = document.getElementById('nameInput');
+  inp.value = progress.name || '';
+  inp.focus();
+  inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') submitName(); });
+}
+function submitName() {
+  const input = document.getElementById('nameInput');
+  progress.name = (input && input.value ? input.value.trim() : '') || 'Student';
+  saveProgress(progress);
+  const overlay = document.querySelector('.profile-modal-overlay');
+  if (overlay) overlay.remove();
+  renderProfileBar();
+}
+function changeName() { showNamePrompt(); }
+function resetProgress() {
+  if (!confirm('Reset all saved progress, exercise answers and checkpoint scores in the database? This cannot be undone.')) return;
+  const keep = { name: progress.name, script: progress.script };
+  progress = Object.assign(defaultProgress(), keep);
+  saveProgress(progress);
+  currentView = { kind: 'unit', unit: 0, page: 0 };
+  renderAll();
+}
+function setScript(mode) {
+  progress.script = mode;
+  saveProgress(progress);
+  renderProfileBar();
+  renderLecture();
+}
+function countTotalExercises() {
+  let total = 0;
+  lectureData.forEach(function(u) {
+    u.topics.forEach(function(t) { total += (t.exercises.match(/class="check-btn"/g) || []).length; });
+  });
+  return total;
+}
+function renderProfileBar() {
+  const bar = document.getElementById('profileBar');
+  if (!bar) return;
+  const totalEx = countTotalExercises();
+  const answeredCorrect = Object.keys(progress.exercises).filter(function(k) { return progress.exercises[k].correct === true; }).length;
+  const pct = totalEx ? Math.min(100, Math.round((answeredCorrect / totalEx) * 100)) : 0;
+  const seg = ['romaji', 'kana', 'kanji'].map(function(m) {
+    const label = { romaji: 'Romaji', kana: 'かな Kana', kanji: '漢字 Kanji' }[m];
+    return '<button title="' + { romaji: 'Romaji only', kana: 'Kana (hiragana / katakana)', kanji: 'Kana + Kanji' }[m] + '" class="' + (progress.script === m ? 'on' : '') + '" onclick="setScript(\'' + m + '\')">' + label + '</button>';
+  }).join('');
+  bar.innerHTML =
+    '<span>👋 <span class="pb-name">' + esc(progress.name || 'Student') + '</span></span>' +
+    '<div class="pb-progress"><div class="pb-bar-track"><div class="pb-bar-fill" style="width:' + pct + '%"></div></div>' +
+    '<span class="pb-pct">' + answeredCorrect + ' / ' + totalEx + ' exercises correct</span></div>' +
+    '<div class="script-switch" title="Script used in exercises, checkpoints and vocabulary"><span class="ss-label">Script</span>' + seg + '</div>' +
+    '<span class="pb-save" id="pbSave"></span>' +
+    '<button onclick="changeName()">✏️ Name</button>' +
+    '<button onclick="resetProgress()">🔄 Reset</button>';
+  setSaveBadge('saved');
+}
+function persistExercise(key, value, correct) {
+  progress.exercises[key] = { value: value, correct: correct };
+  saveProgress(progress);
+  renderProfileBar();
+}
+function tagAndRestoreExercises() {
+  const pane = document.getElementById('lecturePane');
+  const mode = progress.script;
+  pane.querySelectorAll('.exercise li').forEach(function(li, idx) {
+    const key = 'u' + currentView.unit + '_t' + currentView.page + '_e' + idx;
+    li.setAttribute('data-ex-key', key);
+    const saved = progress.exercises[key];
+    const input = li.querySelector('input[type="text"]');
+    const select = li.querySelector('select');
+    const feedback = li.querySelector('.feedback');
+    if (input && input.getAttribute('data-lang') === 'jp') {
+      input.placeholder = mode === 'romaji' ? 'your answer' : (mode === 'kana' ? 'type in kana (romaji works too)' : 'type in kana / kanji');
+      if (mode !== 'romaji') input.lang = 'ja';
+    }
+    if (saved) {
+      if (input) input.value = saved.value || '';
+      if (select && saved.value) select.value = saved.value;
+      if (feedback && saved.correct === true) { feedback.textContent = '✓ Correct'; feedback.className = 'feedback correct'; }
+      else if (feedback && saved.correct === false) { feedback.textContent = '✗ Try again'; feedback.className = 'feedback wrong'; }
+    }
+    if (input && !li.querySelector('.check-btn')) {
+      input.addEventListener('blur', function() { persistExercise(key, input.value, undefined); });
+    }
+  });
+}
+
+/* ===== lecture-data builders ===== */
+function vocabTable(rows, headers) {
+  headers = headers || ['🇯🇵 Japanese (romaji)', '🇬🇧 English meaning'];
+  let h = '<table class="vocab"><tr>' + headers.map(x => '<th>' + x + '</th>').join('') + '</tr>';
+  rows.forEach(r => { h += '<tr>' + r.map(x => '<td>' + x + '</td>').join('') + '</tr>'; });
+  h += '</table>';
+  return h;
+}
+function dialogBox(title, lines) {
+  let h = '<div class="dialog-box"><h4>' + title + '</h4>';
+  lines.forEach(l => { h += '<p class="dialog-line"><span class="speaker">' + l[0] + '</span>' + l[1] + '</p>'; });
+  h += '</div>';
+  return h;
+}
+// {{...}} marks Japanese text; it is rendered in the learner's chosen script
+function exInput(prompt, answer, placeholder, lang) {
+  return '<li>' + prompt + ' <input type="text" data-lang="' + (lang || 'jp') + '" data-answer="' + answer + '" placeholder="' + (placeholder || 'your answer') + '"> <button class="check-btn" onclick="checkAnswer(this)">Check</button> <span class="feedback"></span></li>';
+}
+function exSelect(prompt, answer, options) {
+  let h = '<li>' + prompt + ' <select data-answer="' + answer + '"><option value="">-- choose --</option>';
+  options.forEach(o => { h += '<option value="' + o.toLowerCase() + '">{{' + o + '}}</option>'; });
+  h += '</select> <button class="check-btn" onclick="checkSelect(this)">Check</button> <span class="feedback"></span></li>';
+  return h;
+}
+
+/* =========================================================
+   COURSE CONTENT
+   ========================================================= */
+const lectureData = [];
+const RECAP = [];
+/* =========================================================
+   JLPT N4 — Units 1–6 (lessons 18–24 of the reference list)
+   ========================================================= */
+(function() {
+  const G = (lines, note) => '<div class="grammar-point">' +
+    lines.map(l => '<p><span class="jp">' + l[0] + '</span> — <span class="en">' + l[1] + '</span></p>').join('') +
+    (note ? '<p class="note">' + note + '</p>' : '') + '</div>';
+  const PT = (rows) => '<table class="vocab"><tr><th>🧩 Pattern</th><th>🇬🇧 Meaning</th></tr>' + rows.map(r => '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>').join('') + '</table>';
+  const EX = (items, title) => '<div class="exercise">' + (title ? '<div class="ex-title">' + title + '</div>' : '') + '<ol>' + items.join('') + '</ol></div>';
+  const M = (word, answer) => exInput('{{' + word + '}} means:', answer, null, 'en');
+  const F = (text, ph) => '<li>{{' + text + '}} <input type="text" placeholder="' + ph + '"></li>';
+  const T = (icon, title, expl, rows, grammar, dialogs, exercises, group) => ({
+    icon: icon, title: title, explanation: '<p>' + expl + '</p>', vocab: vocabTable(rows), grammar: grammar,
+    dialogs: dialogs, exercises: exercises, _rows: rows, _group: group || ''
+  });
+  const units = [];
+
+  /* ---------------- UNIT 1 — causative ---------------- */
+  units.push({
+    title: '🔄 Unit 1 — The Causative: Making and Letting',
+    topics: [
+      T('🛠️', 'Forming the causative',
+        `The <strong>causative</strong> (<em>shieki</em>) means "make / let someone do". <strong>Ichidan</strong>: drop <strong>ru</strong> + <strong>saseru</strong> (tabesaseru). <strong>Godan</strong>: change the final <strong>-u</strong> to <strong>-aseru</strong> (kakaseru, nomaseru; <em>kau → kawaseru</em>). <strong>Suru → saseru</strong>, <strong>kuru → kosaseru</strong>. Every causative verb conjugates like an ichidan verb.`,
+        [['Tabesaseru', 'Make / let eat'], ['Kakaseru', 'Make / let write'], ['Nomaseru', 'Make / let drink'], ['Ikaseru', 'Make / let go'], ['Yomaseru', 'Make / let read'], ['Hanasaseru', 'Make / let speak'], ['Saseru', 'Make / let do'], ['Kosaseru', 'Make / let come']],
+        G([['Taberu → tabesaseru', 'eat → make / let eat'], ['Kaku → kakaseru', 'write → make / let write'], ['Iku → ikaseru', 'go → make / let go'], ['Suru → saseru', 'do → make / let do'], ['Kuru → kosaseru', 'come → make / let come']]) +
+          PT([['Ichidan: -ru → -saseru', 'taberu → tabesaseru'], ['Godan: -u → -aseru', 'nomu → nomaseru'], ['Irregular', 'suru → saseru · kuru → kosaseru']]),
+        '',
+        EX([M('Kakaseru', 'make write,let write'), exInput('The causative of {{taberu}} is: {{___________}}', 'tabesaseru'), exInput('The causative of {{nomu}} is: {{___________}}', 'nomaseru'), exInput('The causative of {{suru}} is: {{___________}}', 'saseru')])),
+      T('😤', 'Making someone do something (coercion)',
+        `<strong>[Person A] wa [Person B] ni/o [verb]-saseru</strong> — A makes B do something. With an <em>intransitive</em> verb B takes <strong>o</strong> (<strong>Kodomo o ikaseru</strong>); with a <em>transitive</em> verb (one that already has an object) B takes <strong>ni</strong> (<strong>Kodomo ni yasai o tabesaseru</strong>).`,
+        [['Kodomo', 'Child'], ['Souji', 'Cleaning'], ['Ryouri', 'Cooking'], ['Shukudai', 'Homework'], ['Sensei', 'Teacher'], ['Gakusei', 'Student'], ['Buchou', 'Department head']],
+        G([['Haha wa kodomo ni yasai o tabesasemashita.', 'My mother made the child eat vegetables.'], ['Sensei wa gakusei ni kanji o kakasemashita.', 'The teacher made the students write kanji.'], ['Buchou wa watashi o hayaku kaerasemashita.', 'My boss sent me home early.']], 'Intransitive → <strong>o</strong> · Transitive → <strong>ni</strong>.'),
+        dialogBox('Dialogue — At home', [['A', 'Okaasan wa kodomo ni nani o saseru no?'], ['B', 'Mainichi heya no souji o sasemasu.']]),
+        EX([M('Souji', 'cleaning'), exSelect('With a transitive verb the person takes:', 'ni', ['Ni', 'O']), exInput('"The teacher made me read": {{Sensei wa watashi ni hon o ___________.}}', 'yomasemashita')])),
+      T('🙏', 'Letting someone, and asking permission: sasete kudasai',
+        `The causative also means "let / allow": <strong>Kodomo ni asobaseru</strong> ("I let the child play"). <strong>V-sasete kudasai</strong> asks permission to do something yourself: <strong>Kyou wa hayaku kaerasete kudasai</strong> ("Please let me go home early today"). <strong>V-sasete moraemasen ka?</strong> is even more polite.`,
+        [['Asobaseru', 'Let play'], ['Sasete kudasai', 'Please let me'], ['Kaerasete', 'Let me go home (te-form)'], ['Yasumasete', 'Let me rest (te-form)'], ['Misete', 'Show (te-form)'], ['Kyoka', 'Permission']],
+        G([['Kodomo ni jiyuu ni asobasemasu.', 'I let my child play freely.'], ['Sumimasen. Kyou wa hayaku kaerasete kudasai.', "Excuse me. Please let me go home early today."], ['Chotto yasumasete moraemasen ka?', 'Could you let me rest a little?']]),
+        dialogBox('Dialogue — Asking the boss', [['A', 'Buchou, ashita yasumasete kudasai.'], ['B', 'Ii desu yo. Dou shimashita ka?'], ['A', 'Byouin ni ikanakereba narimasen.']]),
+        EX([M('Kyoka', 'permission'), exInput('"Please let me go": {{Ikasete ___________.}}', 'kudasai'), exInput('"Please let me rest": {{___________ kudasai.}}', 'yasumasete')])),
+      T('🎁', 'Causative with giving: sasete ageru / itadaku',
+        `Combine the causative with giving and receiving verbs: <strong>V-sasete ageru</strong> ("I let someone do it as a favour") and, very common in business Japanese, <strong>V-sasete itadakimasu</strong> ("I will humbly do it / I would like to do it"): <strong>Jiko shoukai o sasete itadakimasu</strong>.`,
+        [['Sasete ageru', 'Let (someone) do'], ['Sasete itadakimasu', 'I humbly do / allow me to'], ['Jiko shoukai', 'Self-introduction'], ['Setsumei', 'Explanation'], ['Haiken', 'Looking (humble)']],
+        G([['Kodomo ni geemu o sasete agemashita.', 'I let my child play a game (as a treat).'], ['Jiko shoukai o sasete itadakimasu.', 'Allow me to introduce myself.'], ['Setsumei o sasete itadakimasu.', 'Let me explain.']]),
+        '',
+        EX([M('Jiko shoukai', 'self-introduction,self introduction'), exInput('"Let me introduce myself": {{Jiko shoukai o sasete ___________.}}', 'itadakimasu'), exSelect('A polite, humble way to say "I will do it" is:', 'sasete itadakimasu', ['Sasete itadakimasu', 'Sasete agemasu'])]))
+    ],
+    culture: `In Japanese companies the humble form <strong>~sasete itadakimasu</strong> is everywhere: <strong>Shitsurei sasete itadakimasu</strong> ("Excuse me, I'll be leaving / I'll take my leave") and <strong>Kyuuka o torasete itadakimasu</strong> ("Allow me to take a holiday"). It frames your action as something you do with the other person's permission.`
+  });
+
+  /* ---------------- UNIT 2 — passive ---------------- */
+  units.push({
+    title: '↩️ Unit 2 — The Passive and Causative-Passive',
+    topics: [
+      T('👉', 'The direct passive',
+        `The <strong>direct passive</strong> (<em>chokusetsu ukemi</em>): <strong>[B] wa [A] ni [verb]-rareru</strong> — "B is [verb]ed by A". <strong>Ichidan</strong> → <strong>-rareru</strong> (homerareru); <strong>godan</strong> → <strong>-areru</strong> (yobu → yobareru, kaku → kakareru); <strong>suru → sareru</strong>, <strong>kuru → korareru</strong>. For an agent that creates or discovers something, formal writing uses <strong>ni yotte</strong>.`,
+        [['Homerareru', 'Be praised'], ['Shikarareru', 'Be scolded'], ['Yobareru', 'Be called'], ['Tasukerareru', 'Be helped / rescued'], ['Warawareru', 'Be laughed at'], ['Sasowareru', 'Be invited'], ['Ni yotte', 'By (formal agent)']],
+        G([['Watashi wa sensei ni homeraremashita.', 'I was praised by the teacher.'], ['Tomodachi ni paati ni sasowaremashita.', 'I was invited to a party by a friend.'], ['Kono e wa Hokusai ni yotte kakaremashita.', 'This picture was painted by Hokusai.']]),
+        '',
+        EX([M('Homerareru', 'be praised,praised'), exInput('The passive of {{yobu}} (call) is: {{___________}}', 'yobareru'), exInput('"I was invited by my friend": {{Tomodachi ni ___________.}}', 'sasowaremashita')])),
+      T('😩', 'The indirect (adversative) passive',
+        `The <strong>indirect passive</strong> shows that something happened that <em>affected the speaker badly</em>, even when the speaker was not the direct object: <strong>Ame ni furaremashita</strong> ("I got rained on"), <strong>Kodomo ni nakaremashita</strong> ("My child cried on me — I was upset"). It often implies <strong>meiwaku</strong> (a nuisance).`,
+        [['Furareru', 'Be rained on'], ['Nakareru', 'Be cried on / be upset by crying'], ['Komaru', 'Be troubled'], ['Nureru', 'Get wet'], ['Meiwaku', 'Nuisance / trouble'], ['Yameru', 'Quit']],
+        G([['Ame ni furarete, nuremashita.', 'I got rained on and got wet.'], ['Yoru osoku made tomodachi ni nomarete, komarimashita.', 'My friend stayed drinking until late and I was troubled.'], ['Kodomo ni nakarete, nemasen deshita.', "The child cried and I couldn't sleep."]]),
+        '',
+        EX([M('Meiwaku', 'nuisance,trouble,bother'), M('Komaru', 'be troubled,be in trouble'), exInput('"I got rained on": {{Ame ni ___________.}}', 'furaremashita')])),
+      T('🦶', 'The possessor passive and ni yotte',
+        `When something belonging to the speaker is affected, use the <strong>possessor passive</strong>: <strong>[Person] ni [body part / possession] o [verb]-areru</strong>. <strong>Densha de ashi o fumaremashita</strong> ("My foot was stepped on on the train"), <strong>Dorobou ni saifu o nusumaremashita</strong> ("My wallet was stolen by a thief").`,
+        [['Fumareru', 'Be stepped on'], ['Nusumareru', 'Be stolen from'], ['Ashi', 'Foot / leg'], ['Dorobou', 'Thief'], ['Saifu', 'Wallet'], ['Kami', 'Hair']],
+        G([['Densha de ashi o fumaremashita.', 'My foot was stepped on in the train.'], ['Dorobou ni saifu o nusumaremashita.', 'My wallet was stolen by a thief.'], ['Mise de kaban o tsukamareta.', 'My bag was grabbed in the shop.']]),
+        dialogBox('Dialogue — Reporting a theft', [['A', 'Dou shimashita ka?'], ['B', 'Dorobou ni kaban o nusumaremashita.'], ['A', 'Kouban ni ikimashou.']]),
+        EX([M('Dorobou', 'thief'), exInput('"My wallet was stolen": {{Saifu o ___________.}}', 'nusumaremashita'), M('Fumareru', 'be stepped on')])),
+      T('😓', 'The causative-passive: being made to do',
+        `<strong>V-saserareru</strong> means "be made to V" (the person is forced). <strong>Ichidan</strong>: <strong>-saserareru</strong> (tabesaserareru); <strong>godan</strong>: <strong>-aserareru</strong>, with the shorter form <strong>-asareru</strong> for most godan verbs (nomu → nomasareru, kaku → kakasareru). <strong>Suru → saserareru</strong>, <strong>kuru → kosaserareru</strong>.`,
+        [['Tabesaserareru', 'Be made to eat'], ['Nomasareru', 'Be made to drink'], ['Kakasareru', 'Be made to write'], ['Saserareru', 'Be made to do'], ['Zangyou', 'Overtime'], ['Kirai', 'Dislike / disliked']],
+        G([['Haha ni heya o souji saseraremashita.', 'I was made to clean my room by my mother.'], ['Buchou ni zangyou saseraremashita.', 'I was made to work overtime by my boss.'], ['Kirai na yasai o tabesaseraremashita.', 'I was made to eat vegetables I dislike.'], ['Sensei ni kanji o kakasaremashita.', 'I was made to write kanji by the teacher.']]),
+        '',
+        EX([M('Zangyou', 'overtime'), exInput('"I was made to drink": {{Nomu → ___________.}}', 'nomasareru,nomaserareru'), exSelect('A causative-passive means:', 'be made to do', ['Be made to do', 'Be praised', 'Let someone do'])], '😓 Obligations'))
+    ],
+    culture: `The passive is used a lot to express feelings in Japanese — the "suffering passive" is a typical way to complain politely without blaming anyone directly: <strong>Ame ni furaremashita</strong> instead of "It rained". Japan also has a strong etiquette of not causing <strong>meiwaku</strong> to others on trains and in public.`
+  });
+
+  /* ---------------- UNIT 3 — giving & receiving ---------------- */
+  units.push({
+    title: '🎁 Unit 3 — Giving and Receiving in Detail',
+    topics: [
+      T('🤝', 'Ageru, morau, kureru with nouns',
+        `<strong>Ageru</strong> = give (from me / others to others), <strong>kureru</strong> = give to me (or my group), <strong>morau</strong> = receive. Direction matters: <strong>Watashi wa tomodachi ni hon o agemashita</strong> (I gave), <strong>Tomodachi ga watashi ni hon o kuremashita</strong> (a friend gave me), <strong>Watashi wa tomodachi ni hon o moraimashita</strong> (I received).`,
+        [['Ageru', 'Give'], ['Morau', 'Receive'], ['Kureru', 'Give (to me)'], ['Purezento', 'Present'], ['Hana', 'Flower'], ['Okurimono', 'Gift']],
+        G([['Watashi wa tomodachi ni hana o agemashita.', 'I gave my friend flowers.'], ['Tomodachi ga watashi ni hon o kuremashita.', 'My friend gave me a book.'], ['Watashi wa tomodachi ni hon o moraimashita.', 'I received a book from my friend.']]),
+        '',
+        EX([M('Kureru', 'give to me,give,to give me'), M('Morau', 'receive,get'), exSelect('"A friend gave me a gift":', 'kuremashita', ['Agemashita', 'Kuremashita'])])),
+      T('💞', 'Giving favours: te ageru, te morau, te kureru',
+        `Add <strong>te</strong> to a verb for an <em>action as a favour</em>: <strong>Tomodachi ni nimotsu o motte agemashita</strong> ("I carried my friend's luggage"), <strong>Sensei ni nihongo o oshiete moraimashita</strong> ("The teacher taught me Japanese"), <strong>Haha ga kasa o motte kite kuremashita</strong> ("Mom brought me an umbrella"). Use <strong>te ageru</strong> only for equals or inferiors — to a superior it can sound patronising.`,
+        [['Te ageru', 'Do (as a favour for someone)'], ['Te morau', 'Have / get someone do'], ['Te kureru', 'Someone does (for me)'], ['Nimotsu', 'Luggage'], ['Motte kuru', 'Bring'], ['Oshieru', 'Teach / tell']],
+        G([['Tomodachi ni nimotsu o motte agemashita.', "I carried my friend's bags."], ['Sensei ni nihongo o oshiete moraimashita.', 'The teacher taught me Japanese.'], ['Haha ga kasa o motte kite kuremashita.', 'My mother brought me an umbrella.']]) +
+          PT([['V-te ageru', 'I do V for someone'], ['V-te morau', 'Someone does V for me (I receive the action)'], ['V-te kureru', 'Someone does V for me (their kindness)']]),
+        '',
+        EX([M('Nimotsu', 'luggage,baggage,bags'), exInput('"My friend taught me": {{Tomodachi ga oshiete ___________.}}', 'kuremashita'), exInput('"I had my teacher teach me": {{Sensei ni oshiete ___________.}}', 'moraimashita')])),
+      T('🙇', 'Honorific and humble giving: sashiageru, itadaku, kudasaru',
+        `For respect, replace the everyday verbs: <strong>ageru → sashiageru</strong> (humble: I give to a superior), <strong>morau → itadaku</strong> (humble: I receive from a superior), <strong>kureru → kudasaru</strong> (honorific: a superior gives me). With the te-form: <strong>V-te sashiageru, V-te itadaku, V-te kudasaru</strong>.`,
+        [['Sashiageru', 'Give (humble)'], ['Itadaku', 'Receive (humble)'], ['Kudasaru', 'Give (honorific)'], ['Buchou', 'Department head'], ['Sensei', 'Teacher'], ['Oshiete kudasaru', 'Teaches me (honorific)']],
+        G([['Sensei ni hon o sashiagemashita.', 'I gave the teacher a book.'], ['Buchou ni itadakimashita.', 'I received it from the boss.'], ['Sensei ga oshiete kudasaimashita.', 'The teacher taught me (kindly).']], 'ageru → <strong>sashiageru</strong> · morau → <strong>itadaku</strong> · kureru → <strong>kudasaru</strong>'),
+        '',
+        EX([M('Itadaku', 'receive,receive (humble)'), exInput('Humble "receive" is: {{___________}}', 'itadaku'), exSelect('"The teacher gave me" (respectful) is:', 'kudasaimashita', ['Kudasaimashita', 'Agemashita', 'Moraimashita'])])),
+      T('🗣️', 'Polite requests: te moraemasen ka',
+        `<strong>V-te moraemasen ka?</strong> ("Could you please V?") and the humble <strong>V-te itadakemasen ka?</strong> are very polite requests, more indirect than <strong>V-te kudasai</strong>. Add <strong>chotto</strong> ("a little") and <strong>sumimasen ga</strong> to soften them.`,
+        [['Moraemasen ka', 'Could you (do) …?'], ['Itadakemasen ka', 'Could you kindly (do) …?'], ['Onegai', 'Request / favour'], ['Chotto', 'A bit / a moment'], ['Shitsurei', 'Rudeness / excuse me']],
+        G([['Chotto tetsudatte moraemasen ka?', 'Could you help me a little?'], ['Shashin o totte itadakemasen ka?', 'Could you please take a photo for me?'], ['Sumimasen ga, mou ichido itte moraemasen ka?', 'Sorry, could you say it once more?']]),
+        dialogBox('Dialogue — A polite request', [['A', 'Sumimasen ga, nimotsu o motte moraemasen ka?'], ['B', 'Hai, ii desu yo.'], ['A', 'Arigatou gozaimasu.']]),
+        EX([M('Onegai', 'request,favour,favor'), exInput('"Could you take a photo?": {{Shashin o totte ___________ ka?}}', 'moraemasen,itadakemasen'), F('Sumimasen ga, ___ te moraemasen ka?', 'a request')], '🗣️ Ask politely'))
+    ],
+    culture: `Giving and receiving (<strong>juju hyougen</strong>) mirrors Japanese social structure: who is higher, who is inside your group (<strong>uchi</strong>) and who is outside (<strong>soto</strong>). Gift-giving is important — <strong>omiyage</strong> (souvenirs from trips) and <strong>ochuugen / oseibo</strong> (seasonal gifts) are expected, and the humble verbs show gratitude.`
+  });
+
+  /* ---------------- UNIT 4 — you ni ---------------- */
+  units.push({
+    title: '🎯 Unit 4 — The Youni Family: Effort, Change and Purpose',
+    topics: [
+      T('💪', 'Making an effort: you ni suru',
+        `<strong>V (dictionary form) + you ni shite imasu</strong> means "I make an effort to V / I make sure I V": <strong>Mainichi undou suru you ni shite imasu</strong>. The negative <strong>V-nai you ni suru</strong> = "make sure not to V": <strong>Yoru osoku tabenai you ni shite imasu</strong>.`,
+        [['You ni suru', 'Try / make sure to'], ['Nai you ni suru', 'Make sure not to'], ['Undou', 'Exercise'], ['Ki o tsukeru', 'Be careful'], ['Wasurenai', 'Not forget']],
+        G([['Mainichi undou suru you ni shite imasu.', 'I try to exercise every day.'], ['Yoru osoku tabenai you ni shite imasu.', 'I make sure not to eat late at night.'], ['Hayaku neru you ni shimasu.', "I'll try to go to bed early."]]),
+        '',
+        EX([M('Undou', 'exercise'), exInput('"I try to exercise": {{Undou suru ___________ shite imasu.}}', 'you ni'), exInput('"I make sure not to forget": {{Wasurenai ___________ shite imasu.}}', 'you ni')])),
+      T('📈', 'Coming to be able to: you ni naru',
+        `<strong>V-ru / V-nai + you ni narimashita</strong> means a change has occurred — "I've come to be able to V" or "it has come to pass that…": <strong>Nihongo ga hanaseru you ni narimashita</strong>, <strong>Hayaku okiru you ni narimashita</strong>. The negative: <strong>~nai you ni naru</strong> ("no longer V").`,
+        [['You ni naru', 'Come to / start to'], ['Hanaseru', 'Can speak'], ['Dekiru', 'Can do'], ['Okiru', 'Get up'], ['Taberareru', 'Can eat']],
+        G([['Nihongo ga hanaseru you ni narimashita.', 'I have become able to speak Japanese.'], ['Natto ga taberareru you ni narimashita.', 'I have come to be able to eat natto.'], ['Mou tabako o suwanai you ni narimashita.', 'I no longer smoke.']]),
+        '',
+        EX([M('You ni naru', 'come to,start to,become able to'), exInput('"I have become able to eat natto": {{Natto ga taberareru ___________ narimashita.}}', 'you ni'), exSelect('Change of ability uses:', 'you ni naru', ['You ni naru', 'You ni suru'])])),
+      T('🎯', 'Purpose with non-volitional verbs: you ni',
+        `<strong>V (dictionary / potential / nai) + you ni</strong> = "so that…", used when the second clause is not controllable: <strong>Wasurenai you ni, memo o torimasu</strong> ("I take notes so that I won't forget"), <strong>Kikoeru you ni, ookii koe de hanashimasu</strong>. For intentional actions use <strong>tame ni</strong>.`,
+        [['Memo', 'Note'], ['Koe', 'Voice'], ['Kikoeru', 'Be audible'], ['Maniau', 'Make it in time'], ['Okureru', 'Be late'], ['Wasureru', 'Forget']],
+        G([['Wasurenai you ni, memo o torimasu.', "I take notes so I won't forget."], ['Maniau you ni, hayaku dekakemasu.', "I leave early so I'll make it in time."], ['Kikoeru you ni, ookii koe de hanashite kudasai.', 'Please speak loudly so we can hear.']]),
+        dialogBox('Dialogue — A tip', [['A', 'Dou shite memo o toru no?'], ['B', 'Wasurenai you ni.']]),
+        EX([M('Maniau', 'make it in time,be in time'), exInput('"So that I\'m not late": {{Okurenai ___________.}}', 'you ni'), exInput('"I take notes so I won\'t forget": {{Wasurenai you ni, ___________ o torimasu.}}', 'memo')])),
+      T('📣', 'Telling and asking: you ni iu, you ni tanomu',
+        `<strong>[Person] ni V-ru / V-nai you ni iu / tanomu</strong> reports an instruction or request: <strong>Sensei wa gakusei ni shukudai o dasu you ni iimashita</strong>. The same pattern works with <strong>chuui suru</strong> (warn) and <strong>tsutaeru</strong> (convey).`,
+        [['Iu', 'Say / tell'], ['Tanomu', 'Ask / request'], ['Chuui suru', 'Warn / advise'], ['Tsutaeru', 'Convey / pass on'], ['Dasu', 'Hand in / send']],
+        G([['Sensei wa gakusei ni shukudai o dasu you ni iimashita.', 'The teacher told the students to hand in their homework.'], ['Tomodachi ni kuru you ni tanomimashita.', 'I asked my friend to come.'], ['Kare ni isogu you ni tsutaete kudasai.', 'Please tell him to hurry.']]),
+        '',
+        EX([M('Tanomu', 'ask,request,ask for'), M('Tsutaeru', 'convey,pass on,tell'), exInput('"I told him to come": {{Kare ni kuru ___________ iimashita.}}', 'you ni')], '📣 Reported requests'))
+    ],
+    culture: `The <strong>you ni</strong> constructions are central to everyday Japanese because they express gentle, indirect intentions — <strong>Ki o tsukeru you ni shite imasu</strong> ("I try to be careful"). Japanese also prefers describing <em>change</em> (<strong>~you ni naru</strong>) rather than praising an ability directly, which sounds modest.`
+  });
+
+  /* ---------------- UNIT 5 — koto ni / hazu ---------------- */
+  units.push({
+    title: '📅 Unit 5 — Decisions, Arrangements and Expectations',
+    topics: [
+      T('✍️', 'Deciding: koto ni suru, koto ni shite iru',
+        `<strong>V (dictionary form) + koto ni shimashita</strong> = "I decided to V": <strong>Raigetsu Nihon e iku koto ni shimashita</strong>. <strong>V + koto ni shite imasu</strong> = "I make it a rule to V" (a personal habit): <strong>Mainichi aruku koto ni shite imasu</strong>. Negative: <strong>~nai koto ni suru</strong>.`,
+        [['Koto ni suru', 'Decide to'], ['Koto ni shite iru', 'Make it a rule to'], ['Kimeru', 'Decide'], ['Shuukan', 'Habit'], ['Mainichi', 'Every day']],
+        G([['Raigetsu Nihon e iku koto ni shimashita.', 'I decided to go to Japan next month.'], ['Mainichi aruku koto ni shite imasu.', 'I make a point of walking every day.'], ['Osake wa nomanai koto ni shimashita.', "I decided not to drink alcohol."]]),
+        '',
+        EX([M('Kimeru', 'decide'), exInput('"I decided to go": {{Iku koto ni ___________.}}', 'shimashita'), exInput('"I make it a rule to walk": {{Aruku koto ni ___________ imasu.}}', 'shite')])),
+      T('📋', 'Things decided for you: koto ni naru, koto ni natte iru',
+        `<strong>V + koto ni narimashita</strong> = "it has been decided that…" (the decision is by others or circumstances): <strong>Raigetsu Oosaka ni tenkin suru koto ni narimashita</strong>. <strong>V + koto ni natte imasu</strong> = "the rule / arrangement is that…": <strong>Kono heya de wa tabako o suwanai koto ni natte imasu</strong>.`,
+        [['Koto ni naru', 'It has been decided that'], ['Koto ni natte iru', "It's the rule that"], ['Tenkin', 'Job transfer'], ['Kimaru', 'Be decided'], ['Kisoku', 'Rule'], ['Kekkon suru', 'Get married']],
+        G([['Raigetsu Oosaka ni tenkin suru koto ni narimashita.', "It has been decided that I'll transfer to Osaka next month."], ['Kono heya de wa tabako o suwanai koto ni natte imasu.', 'Smoking is not allowed in this room (the rule).'], ['Kekkon suru koto ni narimashita.', "We're going to get married (it's been arranged)."]], '<strong>koto ni suru</strong> = <em>I</em> decide · <strong>koto ni naru</strong> = it gets decided.'),
+        dialogBox('Dialogue — Big news', [['A', 'Kondo, kekkon suru koto ni narimashita.'], ['B', 'Omedetou gozaimasu!']]),
+        EX([M('Kisoku', 'rule'), M('Tenkin', 'job transfer,transfer'), exSelect('"It has been decided that…" is:', 'koto ni naru', ['Koto ni naru', 'Koto ni suru'])])),
+      T('✅', 'Well-founded expectation: hazu da',
+        `<strong>[Plain form] + hazu desu</strong> = "should be / is expected to be": <strong>Tanaka-san wa mou tsuite iru hazu desu</strong>. <strong>Hazu ga arimasen</strong> = "there's no way": <strong>Kare ga kuru hazu ga arimasen</strong>. <strong>Hazu datta noni</strong> = "was supposed to…, but…".`,
+        [['Hazu', 'Expectation / should be'], ['Hazu ga arimasen', "There's no way"], ['Tsuku', 'Arrive'], ['Yotei doori', 'As planned'], ['Noni', 'Even though']],
+        G([['Tanaka-san wa mou tsuite iru hazu desu.', 'Tanaka should have arrived already.'], ['Konna ni yasui hazu ga arimasen.', "There's no way it's this cheap."], ['Kuru hazu datta noni, konakatta.', "He was supposed to come, but he didn't."]]),
+        '',
+        EX([M('Hazu', 'should be,expectation,supposed to'), exInput('"He should come": {{Kare wa kuru ___________ desu.}}', 'hazu'), exInput('"There\'s no way": {{Hazu ga ___________.}}', 'arimasen')], '✅ Expectations'))
+    ],
+    culture: `The difference between <strong>koto ni suru</strong> and <strong>koto ni naru</strong> reflects Japanese politeness: even personal decisions are often phrased as "it came to be decided" (<strong>koto ni narimashita</strong>) to sound humble and avoid pushing your own will. Company transfers (<strong>tenkin</strong>) are announced this way.`
+  });
+
+  /* ---------------- UNIT 6 — bakari / tokoro / te shimau etc ---------------- */
+  units.push({
+    title: '⏱️ Unit 6 — Timing and Auxiliary Verbs: bakari, tokoro, shimau, oku, aru',
+    topics: [
+      T('🆕', 'Just did: bakari (and only)',
+        `<strong>V-ta + bakari desu</strong> = "just did V": <strong>Kita bakari desu</strong>. <strong>Noun / V-te + bakari</strong> = "only / nothing but": <strong>Terebi bakari mite imasu</strong> ("All I do is watch TV"). Compare <strong>V-ta bakari</strong> (feeling it was a short time ago) with <strong>V-ta tokoro</strong> (objectively just finished).`,
+        [['Bakari', 'Just (did) / only'], ['Kita bakari', 'Just came'], ['Kekkon shita bakari', 'Just got married'], ['Nete bakari', 'Only sleeping']],
+        G([['Nihon ni kita bakari desu.', 'I have just arrived in Japan.'], ['Kekkon shita bakari desu.', 'We have just got married.'], ['Terebi bakari mite imasu.', 'I only watch TV.']]),
+        '',
+        EX([M('Bakari', 'just,only'), exInput('"I just ate": {{Tabeta ___________ desu.}}', 'bakari'), exInput('"I only sleep": {{Nete ___________ imasu.}}', 'bakari')])),
+      T('🔄', 'Three moments: tokoro da',
+        `<strong>Tokoro desu</strong> pinpoints a stage: <strong>V-ru + tokoro</strong> = "about to V" (<strong>Kore kara iku tokoro desu</strong>), <strong>V-te iru + tokoro</strong> = "in the middle of V-ing" (<strong>Ima tabete iru tokoro desu</strong>), <strong>V-ta + tokoro</strong> = "just finished V" (<strong>Tabeta tokoro desu</strong>).`,
+        [['Tokoro', 'Moment / the point of'], ['Korekara', 'From now'], ['Ima', 'Now'], ['Choudo', 'Exactly / just'], ['Denwa suru', 'Phone']],
+        G([['Kore kara dekakeru tokoro desu.', "I'm about to go out."], ['Ima tabete iru tokoro desu.', "I'm in the middle of eating."], ['Tabeta tokoro desu.', 'I have just finished eating.']]) +
+          PT([['V-ru + tokoro', 'about to'], ['V-te iru + tokoro', 'in the middle of'], ['V-ta + tokoro', 'just finished']]),
+        '',
+        EX([M('Tokoro', 'moment,point,place'), exInput('"I\'m in the middle of eating": {{Tabete iru ___________ desu.}}', 'tokoro'), exSelect('"About to leave" is:', 'dekakeru tokoro desu', ['Dekakeru tokoro desu', 'Dekaketa tokoro desu'])])),
+      T('😅', 'Finishing, regretting: te shimau (chau)',
+        `<strong>V-te shimau</strong> means either to do something <em>completely</em> (<strong>Zenbu tabete shimaimashita</strong>) or to do something <em>unfortunate / by accident</em> (<strong>Saifu o otoshite shimaimashita</strong>). In casual speech <strong>-te shimau → -chau</strong> and <strong>-de shimau → -jau</strong>: <strong>Wasurechatta</strong>.`,
+        [['Te shimau', 'Do completely / by mistake'], ['Wasurechatta', 'Forgot (casual)'], ['Otosu', 'Drop'], ['Nakusu', 'Lose'], ['Zenbu', 'All / everything'], ['Okureru', 'Be late']],
+        G([['Zenbu tabete shimaimashita.', 'I ate everything.'], ['Saifu o otoshite shimaimashita.', 'I dropped (and lost) my wallet.'], ['Kagi o wasurechatta.', 'Oops, I forgot the key.']]),
+        dialogBox('Dialogue — Oops', [['A', 'Dou shita no?'], ['B', 'Kasa o nakushite shimatta.']]),
+        EX([M('Nakusu', 'lose'), exInput('"I forgot (casual)": {{Wasure___________.}}', 'chatta'), exInput('"I ate it all": {{Zenbu tabete ___________.}}', 'shimaimashita')])),
+      T('📝', 'Preparing: te oku, and results: te aru',
+        `<strong>V-te oku</strong> (casual <strong>-toku</strong>) = "do something in advance / leave it as is": <strong>Mae ni yoyaku shite okimasu</strong>. <strong>V-te aru</strong> (with a transitive verb) describes a <em>state resulting from someone's action</em>: <strong>Mado ga akete arimasu</strong> ("The window has been opened (and is still open)").`,
+        [['Te oku', 'Do in advance'], ['Te aru', 'Has been done (state)'], ['Yoyaku', 'Reservation'], ['Junbi', 'Preparation'], ['Akeru', 'Open (transitive)'], ['Haru', 'Stick / post']],
+        G([['Mae ni yoyaku shite okimasu.', "I'll reserve in advance."], ['Mado ga akete arimasu.', 'The window has been opened (it is open).'], ['Poster ga hatte arimasu.', 'A poster has been put up.']], 'Intransitive: <strong>te iru</strong> (mado ga aite iru) · Transitive result: <strong>te aru</strong>.'),
+        '',
+        EX([M('Yoyaku', 'reservation,reserve'), M('Junbi', 'preparation'), exInput('"I\'ll prepare in advance": {{Junbi shite ___________.}}', 'okimasu')])),
+      T('📆', 'Ever since: te irai',
+        `<strong>V-te + irai</strong> means "ever since V": <strong>Nihon ni kite irai, nihongo o benkyou shite imasu</strong> ("Ever since I came to Japan, I've been studying Japanese"). It looks at a period that continues from a starting point until now.`,
+        [['Irai', 'Ever since'], ['Kite irai', 'Ever since coming'], ['Sotsugyou', 'Graduation'], ['Totemo', 'Very'], ['Zutto', 'All along']],
+        G([['Nihon ni kite irai, nihongo o benkyou shite imasu.', "Ever since I came to Japan, I've been studying Japanese."], ['Sotsugyou shite irai, ichido mo aimasen deshita.', "We haven't met even once since graduating."]]),
+        '',
+        EX([M('Irai', 'ever since,since'), exInput('"Ever since coming": {{Kite ___________.}}', 'irai'), M('Sotsugyou', 'graduation')], '⏱️ Time and results'))
+    ],
+    culture: `<strong>~te oku</strong> and <strong>~te aru</strong> appear all the time in daily life: restaurants say <strong>Yoyaku shite arimasu</strong> ("it's reserved") and hotels <strong>Junbi shite arimasu</strong> ("it's prepared"). In busy seasons such as Golden Week it pays to <strong>yoyaku shite okimasu</strong> early.`
+  });
+
+  units.forEach(u => lectureData.push(u));
+  units.forEach(u => {
+    const plain = { group: '', rows: [] }, groups = {}, seen = {};
+    u.topics.forEach(t => {
+      t._rows.forEach(r => {
+        const low = r[0].toLowerCase();
+        if (seen[low]) return;
+        seen[low] = true;
+        if (t._group) (groups[t._group] = groups[t._group] || { group: t._group, rows: [] }).rows.push(r);
+        else plain.rows.push(r);
+      });
+    });
+    RECAP.push([plain].concat(Object.keys(groups).map(k => groups[k])).filter(g => g.rows.length));
+  });
+})();
+
+/* =========================================================
+   COURSE STRUCTURE
+   Units in order, with a mixed-exercise checkpoint after
+   every 3 units (after Unit 3 and after Unit 6).
+   Every unit ends with: Cultural Notes → Vocabulary Recap.
+   ========================================================= */
+const CHECKPOINTS = [
+  { id: 'cpA', letter: 'A', units: [0, 1, 2], after: 2 },
+  { id: 'cpB', letter: 'B', units: [3, 4, 5], after: 5 },
+  { id: 'cpFinal', letter: 'Final', units: [0, 1, 2, 3, 4, 5], after: 5 }
+];
+const COURSE = [];
+lectureData.forEach(function(u, i) {
+  COURSE.push({ kind: 'unit', unit: i });
+  CHECKPOINTS.forEach(function(cp) { if (cp.after === i) COURSE.push({ kind: 'cp', cp: cp }); });
+});
+let currentView = { kind: 'unit', unit: 0, page: 0 };
+
+function unitPageCount(u) { return lectureData[u].topics.length + 2; } // topics + culture + recap
+function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — Units ' + (cp.units[0] + 1) + '–' + (cp.units[cp.units.length - 1] + 1); }
+function courseIndexOf(view) {
+  for (let i = 0; i < COURSE.length; i++) {
+    const c = COURSE[i];
+    if (view.kind === 'unit' && c.kind === 'unit' && c.unit === view.unit) return i;
+    if (view.kind === 'cp' && c.kind === 'cp' && c.cp.id === view.cp.id) return i;
+  }
+  return 0;
+}
+function viewForCourse(ci, atEnd) {
+  const c = COURSE[ci];
+  if (c.kind === 'cp') return { kind: 'cp', cp: c.cp };
+  const last = unitPageCount(c.unit) - 1;
+  const saved = progress.unitPage[c.unit] || 0;
+  return { kind: 'unit', unit: c.unit, page: atEnd ? last : Math.min(saved, last) };
+}
+function setView(view) {
+  currentView = view;
+  if (view.kind === 'unit') {
+    progress.lastUnit = view.unit;
+    progress.lastTopic = view.page;
+    progress.lastCp = null;
+    progress.unitPage[view.unit] = view.page;
+    progress.pages['u' + view.unit + '_p' + view.page] = true;
+  } else {
+    progress.lastCp = view.cp.id;
+  }
+  saveProgress(progress);
+  renderAll();
+}
+function goCourse(ci) { setView(viewForCourse(ci, false)); }
+function openLecture(unitIdx, pageIdx) { setView({ kind: 'unit', unit: unitIdx, page: pageIdx }); }
+function lecturePrev() {
+  if (currentView.kind === 'unit' && currentView.page > 0) { openLecture(currentView.unit, currentView.page - 1); return; }
+  const ci = courseIndexOf(currentView);
+  if (ci > 0) setView(viewForCourse(ci - 1, true));
+}
+function lectureNext() {
+  if (currentView.kind === 'unit' && currentView.page < unitPageCount(currentView.unit) - 1) { openLecture(currentView.unit, currentView.page + 1); return; }
+  const ci = courseIndexOf(currentView);
+  if (ci < COURSE.length - 1) setView(viewForCourse(ci + 1, false));
+}
+
+function renderAll() {
+  renderProfileBar();
+  renderSidebar();
+  renderLecture();
+}
+
+/* ===== sidebar: just the course outline, no lesson content ===== */
+function renderSidebar() {
+  const nav = document.getElementById('courseNav');
+  const active = courseIndexOf(currentView);
+  let h = '';
+  COURSE.forEach(function(c, ci) {
+    const on = ci === active ? ' active' : '';
+    if (c.kind === 'unit') {
+      const total = unitPageCount(c.unit);
+      let seen = 0;
+      for (let p = 0; p < total; p++) if (progress.pages['u' + c.unit + '_p' + p]) seen++;
+      h += '<button class="nav-item' + on + '" onclick="goCourse(' + ci + ')">' +
+        '<span class="ni-title">' + lectureData[c.unit].title + '</span>' +
+        '<span class="ni-meta">' + seen + ' / ' + total + ' pages</span>' +
+        '<span class="ni-bar"><span style="width:' + Math.round(seen / total * 100) + '%"></span></span></button>';
+    } else {
+      const res = progress.checkpoints[c.cp.id];
+      h += '<button class="nav-item cp' + on + '" onclick="goCourse(' + ci + ')">' +
+        '<span class="ni-title">🏁 ' + cpTitle(c.cp) + '</span>' +
+        '<span class="ni-meta">' + (res ? 'Best score: ' + res.best + '%' : 'Mixed exercises · not tried yet') + '</span></button>';
+    }
+  });
+  nav.innerHTML = h;
+}
+
+/* ===== lecture pane ===== */
+function renderLecture() {
+  if (currentView.kind === 'cp') renderCheckpoint(currentView.cp);
+  else renderUnitPage();
+}
+function navHtml(dotsHtml, prevDisabled, nextLabel, nextDisabled) {
+  return '<div class="lecture-nav">' +
+    '<button onclick="lecturePrev()" ' + (prevDisabled ? 'disabled' : '') + '>◀ Prev</button>' +
+    '<div class="lecture-dots">' + dotsHtml + '</div>' +
+    '<button onclick="lectureNext()" ' + (nextDisabled ? 'disabled' : '') + '>' + nextLabel + ' ▶</button></div>';
+}
+function nextLabelFor(isLastPage) {
+  const ci = courseIndexOf(currentView);
+  if (!isLastPage) return 'Next';
+  const nxt = COURSE[ci + 1];
+  if (!nxt) return 'Next';
+  return nxt.kind === 'cp' ? 'Checkpoint' : 'Next unit';
+}
+
+function renderUnitPage() {
+  const pane = document.getElementById('lecturePane');
+  const u = currentView.unit, page = currentView.page;
+  const unit = lectureData[u];
+  const nTopics = unit.topics.length;
+  const totalPages = nTopics + 2;
+  progress.pages['u' + u + '_p' + page] = true;
+
+  let html = '<div class="lecture-crumb">' + unit.title + ' · Page ' + (page + 1) + ' of ' + totalPages + '</div>';
+  if (page < nTopics) {
+    const t = unit.topics[page];
+    html += '<h3 class="lecture-title">' + t.icon + ' ' + t.title + '</h3>';
+    html += '<div class="lecture-block"><h4>📖 Explanation</h4>' + t.explanation + '</div>';
+    html += '<div class="lecture-block"><h4>📚 Vocabulary</h4>' + t.vocab + '</div>';
+    html += '<div class="lecture-block"><h4>✏️ Grammar</h4>' + t.grammar + '</div>';
+    if (t.dialogs) html += '<div class="lecture-block"><h4>💬 Dialog</h4>' + t.dialogs + '</div>';
+    html += '<div class="lecture-block"><h4>📝 Exercises' + (progress.script !== 'romaji' ? ' <span class="script-tag">in ' + (progress.script === 'kana' ? 'kana' : 'kana + kanji') + '</span>' : '') + '</h4>' + applyScript(t.exercises) + '</div>';
+  } else if (page === nTopics) {
+    html += '<h3 class="lecture-title">⛩️ Cultural Notes</h3>';
+    html += '<div class="culture-box">' + unit.culture + '</div>';
+  } else {
+    html += recapHtml(u);
+  }
+
+  let dots = '';
+  for (let i = 0; i < totalPages; i++) {
+    const cls = (i === page ? 'active ' : '') + (i === nTopics ? 'culture-dot ' : '') + (i === nTopics + 1 ? 'recap-dot' : '');
+    const title = i < nTopics ? unit.topics[i].title : (i === nTopics ? 'Cultural Notes' : 'Vocabulary Recap');
+    dots += '<span class="' + cls + '" onclick="openLecture(' + u + ',' + i + ')" title="' + esc(title) + '"></span>';
+  }
+  const isLast = page === totalPages - 1;
+  const ci = courseIndexOf(currentView);
+  html += navHtml(dots, page === 0 && ci === 0, nextLabelFor(isLast), isLast && ci === COURSE.length - 1);
+
+  pane.innerHTML = html;
+  pane.scrollTop = 0;
+  if (page < nTopics) { addScriptColumn(pane); tagAndRestoreExercises(); }
+  saveProgress(progress);
+  renderSidebar();
+}
+
+// in kana / kana+kanji mode every vocabulary table gets a Japanese-script column
+function addScriptColumn(pane) {
+  if (progress.script === 'romaji') return;
+  pane.querySelectorAll('.lecture-block table.vocab').forEach(function(tbl) {
+    for (let r = 0; r < tbl.rows.length; r++) {
+      const row = tbl.rows[r];
+      if (r === 0) {
+        const th = document.createElement('th');
+        th.textContent = '日本語';
+        row.insertBefore(th, row.firstChild);
+      } else {
+        const rom = row.cells[0].textContent;
+        const td = document.createElement('td');
+        td.className = 'jp-cell';
+        td.lang = 'ja';
+        td.textContent = toJP(rom, progress.script);
+        row.insertBefore(td, row.firstChild);
+      }
+    }
+  });
+}
+
+/* ===== vocabulary recap (last page of every unit) ===== */
+function recapHtml(u) {
+  const groups = RECAP[u];
+  const mode = progress.script;
+  let count = 0;
+  groups.forEach(function(g) { count += g.rows.length; });
+  let h = '<h3 class="lecture-title">🧾 Vocabulary Recap</h3>';
+  h += '<p class="recap-intro">Everything you met in <strong>' + esc(lectureData[u].title) + '</strong> — ' + count + ' words and phrases in one place. ' +
+       'Tap 🔊 to hear a word' + (mode === 'romaji' ? ', or switch the script above to see kana and kanji.' : '.') + '</p>';
+  h += '<label class="recap-toggle"><input type="checkbox" onchange="document.getElementById(\'recapTbl\').classList.toggle(\'hide-en\', this.checked)"> Hide English (hover to peek) — test yourself</label>';
+  h += '<div id="recapTbl">';
+  groups.forEach(function(g) {
+    if (g.group) h += '<h3 class="sub">' + g.group + '</h3>';
+    h += '<table class="vocab recap"><tr><th></th>' + (mode !== 'romaji' ? '<th>日本語</th>' : '') + '<th>Romaji</th><th>English</th></tr>';
+    g.rows.forEach(function(r) {
+      const speakable = !/[+_]/.test(r[0]);
+      h += '<tr><td class="spk-cell">' + (speakable ? '<button class="spk" data-say="' + esc(r[0].split(' / ')[0]) + '" title="Listen">🔊</button>' : '') + '</td>' +
+        (mode !== 'romaji' ? '<td class="jp-cell" lang="ja">' + esc(toJP(r[0], mode)) + '</td>' : '') +
+        '<td>' + r[0] + '</td><td class="en-cell">' + r[1] + '</td></tr>';
+    });
+    h += '</table>';
+  });
+  h += '</div>';
+  const ci = courseIndexOf(currentView), nxt = COURSE[ci + 1];
+  if (nxt) {
+    h += '<div class="recap-done">🎉 Unit complete! ' + (nxt.kind === 'cp' ? 'Next up: <strong>' + cpTitle(nxt.cp) + '</strong> — mixed exercises on Units ' + (nxt.cp.units[0] + 1) + '–' + (nxt.cp.units[nxt.cp.units.length - 1] + 1) + '.' : 'Next up: <strong>' + esc(lectureData[nxt.unit].title) + '</strong>.') + '</div>';
+  } else {
+    h += '<div class="recap-done">🎉 You have finished the whole course. おつかれさま！</div>';
+  }
+  return h;
+}
+document.addEventListener('click', function(e) {
+  const b = e.target.closest && e.target.closest('.spk');
+  if (b) speak(b.getAttribute('data-say'));
+});
+
+/* =========================================================
+   CHECKPOINTS — mixed exercise types over the last 3 units
+   ========================================================= */
+const RECAP_POOL_CACHE = {};
+function poolFor(units) {
+  const seen = {}, pool = [];
+  units.forEach(function(u) {
+    RECAP[u].forEach(function(g) {
+      g.rows.forEach(function(r) {
+        const rom = r[0], low = rom.toLowerCase();
+        if (/[+_/]/.test(rom) || seen[low]) return;
+        seen[low] = true;
+        pool.push({ rom: rom, en: r[1] });
+      });
+    });
+  });
+  return pool;
+}
+let CP = null;
+
+function splitMorae(kana) {
+  const out = [];
+  let pendingSokuon = '';
+  for (let i = 0; i < kana.length; i++) {
+    const c = kana[i];
+    if (c === 'っ' || c === 'ッ') { pendingSokuon += c; continue; }
+    if (c === 'ー' && out.length) { out[out.length - 1] += c; continue; }
+    let m = pendingSokuon + c;
+    pendingSokuon = '';
+    while (i + 1 < kana.length && 'ゃゅょぁぃぅぇぉャュョァィゥェォ'.indexOf(kana[i + 1]) >= 0) { m += kana[i + 1]; i++; }
+    out.push(m);
+  }
+  if (pendingSokuon) out.push(pendingSokuon);
+  return out;
+}
+function scrambleOk(e) {
+  if (/\s/.test(e.rom)) return false;
+  const n = splitMorae(toJP(e.rom, 'kana')).length;
+  return n >= 3 && n <= 7;
+}
+function jpText(e) { return toJP(e.rom, progress.script); }
+
+function buildCheckpoint(def) {
+  const pool = shuffle(poolFor(def.units));
+  const used = {};
+  function take(n, filter) {
+    const out = [];
+    for (let i = 0; i < pool.length && out.length < n; i++) {
+      const e = pool[i];
+      if (used[e.rom] || (filter && !filter(e, out))) continue;
+      used[e.rom] = true;
+      out.push(e);
+    }
+    return out;
+  }
+  const qs = [];
+  take(2).forEach(function(e) { qs.push({ type: 'mc_jp2en', e: e }); });
+  take(2).forEach(function(e) { qs.push({ type: 'mc_en2jp', e: e }); });
+  if (window.speechSynthesis) take(2).forEach(function(e) { qs.push({ type: 'listen', e: e }); });
+  take(2).forEach(function(e) { qs.push({ type: 'tf', e: e }); });
+  take(2, function(e) { return e.rom.length <= 22; }).forEach(function(e) { qs.push({ type: 'type', e: e }); });
+  take(2, scrambleOk).forEach(function(e) { qs.push({ type: 'scramble', e: e }); });
+  const m = take(4, function(e, out) { return !out.some(function(o) { return o.en.toLowerCase() === e.en.toLowerCase(); }); });
+  if (m.length) qs.push({ type: 'match', es: m });
+
+  qs.forEach(function(q) {
+    q.points = q.type === 'match' ? q.es.length : 1;
+    q.done = false;
+    if (q.type === 'mc_jp2en' || q.type === 'mc_en2jp' || q.type === 'listen') {
+      const others = shuffle(pool.filter(function(o) {
+        return o.rom !== q.e.rom && o.en.toLowerCase() !== q.e.en.toLowerCase();
+      })).filter(function(o, i, arr) { return arr.findIndex(function(x) { return x.en.toLowerCase() === o.en.toLowerCase(); }) === i; }).slice(0, 3);
+      q.opts = shuffle(others.concat([q.e]));
+      q.correct = q.opts.indexOf(q.e);
+    } else if (q.type === 'tf') {
+      q.isTrue = Math.random() < 0.5;
+      const wrong = shuffle(pool.filter(function(o) { return o.en.toLowerCase() !== q.e.en.toLowerCase(); }))[0];
+      q.shownEn = q.isTrue || !wrong ? q.e.en : wrong.en;
+      if (!wrong) q.isTrue = true;
+      q.correct = q.isTrue ? 0 : 1;
+    } else if (q.type === 'scramble') {
+      q.tiles = splitMorae(toJP(q.e.rom, 'kana'));
+      let order;
+      let guard = 0;
+      do { order = shuffle(q.tiles.map(function(_, i) { return i; })); guard++; }
+      while (guard < 20 && order.every(function(v, i) { return v === i; }));
+      q.order = order; // shuffled tile indices
+      q.picked = [];
+    }
+  });
+  CP = { def: def, qs: qs, right: 0, done: 0, total: qs.reduce(function(s, q) { return s + q.points; }, 0), finished: false };
+}
+
+const CP_GROUPS = [
+  ['mc_jp2en', '🔤 Multiple choice — Japanese → English'],
+  ['mc_en2jp', '🔁 Multiple choice — English → Japanese'],
+  ['listen', '🔊 Listening — hear it, pick it'],
+  ['tf', '✅ True or false'],
+  ['type', '⌨️ Typing — write it in Japanese'],
+  ['scramble', '🧩 Word builder — put the sounds in order'],
+  ['match', '🔗 Matching']
+];
+
+function renderCheckpoint(def) {
+  const pane = document.getElementById('lecturePane');
+  if (!CP || CP.def.id !== def.id) buildCheckpoint(def);
+  const mode = progress.script;
+  const unitsLabel = def.units.map(function(u) { return 'Unit ' + (u + 1); }).join(', ');
+  let h = '<div class="lecture-crumb">Checkpoint · mixed exercises</div>';
+  h += '<h3 class="lecture-title">🏁 ' + cpTitle(def) + '</h3>';
+  h += '<p class="recap-intro">Practice with a different exercise type each time, drawn from the vocabulary of ' + unitsLabel + '. ' +
+       (mode === 'romaji' ? 'Switch the script above to Kana or Kana + Kanji to practise in Japanese characters.' : 'Questions and answers are in Japanese characters — you can type in kana' + (mode === 'kanji' ? ', kanji' : '') + ' or romaji.') +
+       ' Press <strong>New set</strong> for fresh questions.</p>';
+  h += '<div class="cp-score" id="cpScore"></div>';
+  CP_GROUPS.forEach(function(g) {
+    const items = [];
+    CP.qs.forEach(function(q, qi) { if (q.type === g[0]) items.push(qi); });
+    if (!items.length) return;
+    h += '<div class="lecture-block"><h4>' + g[1] + '</h4>';
+    items.forEach(function(qi) { h += '<div class="q" id="cpq' + qi + '">' + questionHtml(qi) + '</div>'; });
+    h += '</div>';
+  });
+  h += '<div id="cpResult"></div>';
+
+  const ci = courseIndexOf(currentView);
+  h += '<div class="lecture-nav">' +
+    '<button onclick="lecturePrev()">◀ Prev</button>' +
+    '<button class="alt" onclick="newCheckpointSet()">🔄 New set</button>' +
+    '<button onclick="lectureNext()" ' + (ci === COURSE.length - 1 ? 'disabled' : '') + '>Next ▶</button></div>';
+  pane.innerHTML = h;
+  pane.scrollTop = 0;
+  CP.qs.forEach(function(q, qi) { if (q.type === 'scramble') drawScramble(qi); });
+  updateCpScore();
+  renderSidebar();
+}
+function newCheckpointSet() { CP = null; renderCheckpoint(currentView.cp); }
+
+function optsHtml(qi, labels) {
+  return '<div class="q-opts">' + labels.map(function(l, j) {
+    return '<button class="opt" lang="' + (progress.script === 'romaji' ? 'en' : 'ja') + '" onclick="cpPick(' + qi + ',' + j + ')">' + l + '</button>';
+  }).join('') + '</div>';
+}
+function questionHtml(qi) {
+  const q = CP.qs[qi], mode = progress.script;
+  const jpLang = mode === 'romaji' ? 'en' : 'ja';
+  if (q.type === 'mc_jp2en') {
+    return '<div class="q-prompt">What does <span class="q-jp" lang="' + jpLang + '">' + esc(jpText(q.e)) + '</span> mean?</div>' +
+      '<div class="q-opts">' + q.opts.map(function(o, j) { return '<button class="opt" onclick="cpPick(' + qi + ',' + j + ')">' + esc(o.en) + '</button>'; }).join('') + '</div>';
+  }
+  if (q.type === 'mc_en2jp') {
+    return '<div class="q-prompt">How do you say <span class="q-en">“' + esc(q.e.en) + '”</span> in Japanese?</div>' +
+      optsHtml(qi, q.opts.map(function(o) { return esc(jpText(o)); }));
+  }
+  if (q.type === 'listen') {
+    return '<div class="q-prompt"><button class="spk big" onclick="speak(\'' + q.e.rom.replace(/'/g, "\\'") + '\')">🔊 Play</button> What did you hear?</div>' +
+      optsHtml(qi, q.opts.map(function(o) { return esc(jpText(o)); }));
+  }
+  if (q.type === 'tf') {
+    return '<div class="q-prompt"><span class="q-jp" lang="' + jpLang + '">' + esc(jpText(q.e)) + '</span> means <span class="q-en">“' + esc(q.shownEn) + '”</span>.</div>' +
+      '<div class="q-opts"><button class="opt" onclick="cpPick(' + qi + ',0)">True</button><button class="opt" onclick="cpPick(' + qi + ',1)">False</button></div>';
+  }
+  if (q.type === 'type') {
+    return '<div class="q-prompt">Write in Japanese: <span class="q-en">“' + esc(q.e.en) + '”</span></div>' +
+      '<div class="q-row"><input type="text" id="cpin' + qi + '" lang="' + jpLang + '" placeholder="' + (mode === 'romaji' ? 'romaji' : 'kana' + (mode === 'kanji' ? ' / kanji' : '') + ' (romaji works too)') + '" onkeydown="if(event.key===\'Enter\')cpType(' + qi + ')">' +
+      ' <button class="check-btn" onclick="cpType(' + qi + ')">Check</button> <span class="feedback" id="cpfb' + qi + '"></span></div>';
+  }
+  if (q.type === 'scramble') {
+    return '<div class="q-prompt">Build the word for <span class="q-en">“' + esc(q.e.en) + '”</span></div><div class="q-body" id="cpsb' + qi + '"></div>';
+  }
+  if (q.type === 'match') {
+    const ens = shuffle(q.es.map(function(e) { return e.en; }));
+    let h = '<div class="q-prompt">Match each word to its meaning</div>';
+    q.es.forEach(function(e, k) {
+      h += '<div class="match-row"><span class="q-jp" lang="' + jpLang + '">' + esc(jpText(e)) + '</span><select id="cpm' + qi + '_' + k + '"><option value="">-- choose --</option>' +
+        ens.map(function(x) { return '<option value="' + esc(x) + '">' + esc(x) + '</option>'; }).join('') + '</select> <span class="feedback" id="cpmf' + qi + '_' + k + '"></span></div>';
+    });
+    h += '<button class="check-btn" onclick="cpMatch(' + qi + ')">Check matches</button>';
+    return h;
+  }
+  return '';
+}
+
+function cpMark(qi, pts, right) {
+  const q = CP.qs[qi];
+  q.done = true;
+  CP.done += pts;
+  CP.right += right;
+  updateCpScore();
+  if (CP.done >= CP.total && !CP.finished) finishCheckpoint();
+}
+function cpPick(qi, j) {
+  const q = CP.qs[qi];
+  if (q.done) return;
+  const btns = document.querySelectorAll('#cpq' + qi + ' .opt');
+  btns.forEach(function(b, k) {
+    b.disabled = true;
+    if (k === q.correct) b.classList.add('right');
+    else if (k === j) b.classList.add('wrong');
+  });
+  cpMark(qi, 1, j === q.correct ? 1 : 0);
+}
+function cpType(qi) {
+  const q = CP.qs[qi];
+  if (q.done) return;
+  const input = document.getElementById('cpin' + qi), fb = document.getElementById('cpfb' + qi);
+  if (!input.value.trim()) return;
+  const ok = jpEq(input.value, q.e.rom);
+  input.disabled = true;
+  fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+  fb.textContent = ok ? '✓ Correct' : '✗ ' + jpText(q.e) + (progress.script === 'romaji' ? '' : ' (' + q.e.rom + ')');
+  cpMark(qi, 1, ok ? 1 : 0);
+}
+function cpMatch(qi) {
+  const q = CP.qs[qi];
+  if (q.done) return;
+  let right = 0;
+  q.es.forEach(function(e, k) {
+    const sel = document.getElementById('cpm' + qi + '_' + k), fb = document.getElementById('cpmf' + qi + '_' + k);
+    const ok = sel.value === e.en;
+    if (ok) right++;
+    sel.disabled = true;
+    fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+    fb.textContent = ok ? '✓' : '✗ ' + e.en;
+  });
+  document.querySelector('#cpq' + qi + ' .check-btn').disabled = true;
+  cpMark(qi, q.es.length, right);
+}
+function tileLabel(t) { return progress.script === 'romaji' ? kanaToRomaji(t) : t; }
+function drawScramble(qi) {
+  const q = CP.qs[qi];
+  const box = document.getElementById('cpsb' + qi);
+  if (!box) return;
+  const lang = progress.script === 'romaji' ? 'en' : 'ja';
+  let h = '<div class="tile-answer" lang="' + lang + '">' + (q.picked.length ? q.picked.map(function(i) { return '<span class="tile placed">' + esc(tileLabel(q.tiles[i])) + '</span>'; }).join('') : '<span class="tile-hint">tap the sounds in order…</span>') + '</div>';
+  h += '<div class="tile-bank" lang="' + lang + '">' + q.order.map(function(i) {
+    const used = q.picked.indexOf(i) >= 0;
+    return '<button class="tile" ' + (used || q.done ? 'disabled' : '') + ' onclick="cpTile(' + qi + ',' + i + ')">' + esc(tileLabel(q.tiles[i])) + '</button>';
+  }).join('') + '</div>';
+  h += '<div class="q-row"><button class="check-btn" ' + (q.done ? 'disabled' : '') + ' onclick="cpScramble(' + qi + ')">Check</button> ' +
+       '<button class="reset-btn" ' + (q.done ? 'disabled' : '') + ' onclick="cpTileReset(' + qi + ')">Reset</button> <span class="feedback" id="cpfb' + qi + '"></span></div>';
+  box.innerHTML = h;
+}
+function cpTile(qi, i) { const q = CP.qs[qi]; if (q.done) return; q.picked.push(i); drawScramble(qi); }
+function cpTileReset(qi) { const q = CP.qs[qi]; if (q.done) return; q.picked = []; drawScramble(qi); }
+function cpScramble(qi) {
+  const q = CP.qs[qi];
+  if (q.done || q.picked.length !== q.tiles.length) return;
+  const ok = q.picked.map(function(i) { return q.tiles[i]; }).join('') === q.tiles.join('');
+  q.done = true;
+  drawScramble(qi);
+  const fb = document.getElementById('cpfb' + qi);
+  fb.className = 'feedback ' + (ok ? 'correct' : 'wrong');
+  fb.textContent = ok ? '✓ Correct' : '✗ ' + jpText(q.e) + (progress.script === 'romaji' ? '' : ' (' + q.e.rom + ')');
+  q.done = false; // cpMark sets it
+  cpMark(qi, 1, ok ? 1 : 0);
+}
+function updateCpScore() {
+  const el = document.getElementById('cpScore');
+  if (!el || !CP) return;
+  const pct = CP.total ? Math.round(CP.right / CP.total * 100) : 0;
+  el.innerHTML = '<div class="pb-bar-track"><div class="pb-bar-fill" style="width:' + (CP.total ? CP.done / CP.total * 100 : 0) + '%"></div></div>' +
+    '<span>Answered <strong>' + CP.done + ' / ' + CP.total + '</strong> · Correct <strong>' + CP.right + '</strong>' + (CP.done ? ' (' + pct + '%)' : '') + '</span>';
+}
+function finishCheckpoint() {
+  CP.finished = true;
+  const pct = Math.round(CP.right / CP.total * 100);
+  const prev = progress.checkpoints[CP.def.id] || {};
+  progress.checkpoints[CP.def.id] = {
+    best: Math.max(prev.best || 0, pct), last: pct, right: CP.right, total: CP.total,
+    attempts: (prev.attempts || 0) + 1, date: new Date().toISOString()
+  };
+  saveProgress(progress);
+  renderSidebar();
+  const msg = pct === 100 ? 'Perfect! すごい！' : pct >= 70 ? 'Nice work! よくできました！' : 'Keep practising — review the unit recaps and try a new set.';
+  document.getElementById('cpResult').innerHTML =
+    '<div class="recap-done">🏁 You scored <strong>' + CP.right + ' / ' + CP.total + ' (' + pct + '%)</strong> — best so far ' + progress.checkpoints[CP.def.id].best + '%. ' + msg +
+    ' <button class="check-btn" onclick="newCheckpointSet()">Try a new set</button></div>';
+  document.getElementById('cpResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ===== start-up ===== */
+async function init() {
+  progress = await loadProgress();
+  if (!progress.name) showNamePrompt();
+  let view = { kind: 'unit', unit: 0, page: 0 };
+  const cp = CHECKPOINTS.filter(function(c) { return c.id === progress.lastCp; })[0];
+  if (cp) view = { kind: 'cp', cp: cp };
+  else if (progress.lastUnit >= 0 && progress.lastUnit < lectureData.length) {
+    view = { kind: 'unit', unit: progress.lastUnit, page: Math.min(progress.lastTopic || 0, unitPageCount(progress.lastUnit) - 1) };
+  }
+  currentView = view;
+  renderAll();
+}
+document.addEventListener('DOMContentLoaded', init);
+
+</script>
+</body>
+</html>
