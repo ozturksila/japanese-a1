@@ -573,6 +573,20 @@
   button.spk.big { font-size: 0.95rem; padding: 6px 14px; font-weight: 600; margin-right: 6px; }
   #recapTbl.hide-en td.en-cell { filter: blur(6px); transition: filter .15s ease; }
   #recapTbl.hide-en tr:hover td.en-cell { filter: none; }
+  html { scroll-behavior: smooth; }
+  .skill-block { background: #fdfbf8; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px 6px; }
+  .skill-block .exercise { border-bottom: none; padding-bottom: 0; }
+  .skill-write input[type="text"] { width: 240px; max-width: 100%; }
+  .skill-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 10px; }
+  button.skill-btn { background: var(--accent2); color: #fff; border: 0; border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+  button.skill-btn.alt { background: var(--accent2-soft); color: var(--ink); border: 1px solid var(--line); }
+  button.skill-btn:hover { filter: brightness(.95); }
+  .skill-bar label { font-size: 0.85rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .skill-hidden { display: none; }
+  .read-text { background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; line-height: 1.9; font-size: 1.02rem; margin: 0 0 8px; }
+  .skill-en { color: var(--muted); font-style: italic; font-size: 0.92rem; margin: 0 0 8px; }
+  .skill-q-title { margin: 14px 0 4px; font-size: 0.85rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; }
+  .skill-note { color: var(--muted); font-size: 0.88rem; margin: 0 0 8px; }
   .recap-done {
     margin-top: 20px; padding: 14px 16px; border-radius: 10px;
     background: linear-gradient(135deg, #e4f2ee 0%, #f3f9f6 100%);
@@ -661,6 +675,15 @@
     .cs-tabs { gap: 4px; }
     .cs-tabs > * { padding: 6px 2px; }
     .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
+  }
+
+  /* ===== layout: one page scroll (no inner scrolling pane), aligned boxes, even spacing ===== */
+  header.page-head { margin-bottom: 0; }
+  .course-switch, .profile-bar { max-width: none; margin: 16px 0 0; }
+  .layout { margin-top: 16px; }
+  .lecture { position: static; top: auto; max-height: none; overflow: visible; }
+  @media (max-width: 900px) {
+    .course-switch, .profile-bar, .layout { margin-top: 10px; }
   }
 
 

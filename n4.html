@@ -573,7 +573,9 @@
   #recapTbl.hide-en td.en-cell { filter: blur(6px); transition: filter .15s ease; }
   #recapTbl.hide-en tr:hover td.en-cell { filter: none; }
   html { scroll-behavior: smooth; }
-  .skill-block { border-left: 4px solid var(--accent2); }
+  .skill-block { background: #fdfbf8; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px 6px; }
+  .skill-block .exercise { border-bottom: none; padding-bottom: 0; }
+  .skill-write input[type="text"] { width: 240px; max-width: 100%; }
   .skill-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 10px; }
   button.skill-btn { background: var(--accent2); color: #fff; border: 0; border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
   button.skill-btn.alt { background: var(--accent2-soft); color: var(--ink); border: 1px solid var(--line); }
@@ -672,6 +674,15 @@
     .cs-tabs { gap: 4px; }
     .cs-tabs > * { padding: 6px 2px; }
     .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
+  }
+
+  /* ===== layout: one page scroll (no inner scrolling pane), aligned boxes, even spacing ===== */
+  header.page-head { margin-bottom: 0; }
+  .course-switch, .profile-bar { max-width: none; margin: 16px 0 0; }
+  .layout { margin-top: 16px; }
+  .lecture { position: static; top: auto; max-height: none; overflow: visible; }
+  @media (max-width: 900px) {
+    .course-switch, .profile-bar, .layout { margin-top: 10px; }
   }
 </style>
 </head>
