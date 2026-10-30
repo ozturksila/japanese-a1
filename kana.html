@@ -677,11 +677,11 @@
     .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
   }
 
-  /* ===== layout: one page scroll (no inner scrolling pane), aligned boxes, even spacing ===== */
+  /* ===== layout: one page scroll (no inner scrolling in the unit menu or the lesson), aligned boxes, even spacing ===== */
   header.page-head { margin-bottom: 0; }
   .course-switch, .profile-bar { max-width: none; margin: 16px 0 0; }
   .layout { margin-top: 16px; }
-  .lecture { position: static; top: auto; max-height: none; overflow: visible; }
+  .sidebar, .lecture { position: static !important; top: auto; max-height: none !important; overflow: visible !important; }
   @media (max-width: 900px) {
     .course-switch, .profile-bar, .layout { margin-top: 10px; }
   }

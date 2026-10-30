@@ -10,6 +10,9 @@
   .mode-switch .ms-label { align-self: center; padding: 0 8px 0 10px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; white-space: nowrap; }
   @media (max-width: 640px) { .mode-switch { flex-wrap: wrap; } .mode-switch .ms-label { flex: 1 1 100%; padding: 2px 8px; } .mode-switch a { flex: 1 1 100%; } }
 
+
+  /* one page scroll: no inner scrolling in the lesson menu or the lesson */
+  .sidebar, .lecture { position: static !important; top: auto; max-height: none !important; overflow: visible !important; }
 </style>
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Japanese N5 — Kanji Lessons</title>
