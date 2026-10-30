@@ -3312,6 +3312,14 @@ function setView(view) {
   }
   saveProgress(progress);
   renderAll();
+  scrollToPane();
+}
+// the page itself scrolls (not the pane), so jump back to the top of the lesson when the page changes
+function scrollToPane() {
+  const p = document.getElementById('lecturePane');
+  if (!p) return;
+  const top = p.getBoundingClientRect().top + window.pageYOffset - 12;
+  window.scrollTo(0, Math.max(0, top));
 }
 function goCourse(ci) { setView(viewForCourse(ci, false)); }
 function openLecture(unitIdx, pageIdx) { setView({ kind: 'unit', unit: unitIdx, page: pageIdx }); }
