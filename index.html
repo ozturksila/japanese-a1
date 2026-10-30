@@ -676,7 +676,7 @@
     </div>
   </header>
 
-  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira" ><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html" aria-current="page"><b>N5</b><small>26 units</small></a><a href="n4.html"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira" ><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html" aria-current="page"><b>N5</b><small>18 lessons</small></a><a href="n4.html"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
@@ -704,8 +704,8 @@
    ========================================================= */
 const DB_NAME = 'japanese_a1_db';
 const DB_STORE = 'kv';
-const PROGRESS_KEY = 'progress';
-const LEGACY_LS_KEY = 'ja_a1_profile_v1';
+const PROGRESS_KEY = 'progress_n5';
+const LEGACY_LS_KEY = 'ja_n5_profile_v1';
 let dbPromise = null;
 let dbMode = 'indexeddb';
 
@@ -759,7 +759,9 @@ async function loadProgress() {
       if (raw) p = JSON.parse(raw);
     } catch (e) { /* ignore */ }
   }
-  return Object.assign(defaultProgress(), p || {});
+  const base = Object.assign(defaultProgress(), p || {});
+  if (!base.name) { const old = await dbGet('progress'); if (old && old.name) { base.name = old.name; base.script = old.script || base.script; } }
+  return base;
 }
 let saveTimer = null;
 function saveProgress(data) {
@@ -2236,7 +2238,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
     title: '🎌 Unit 12 — Invitations and Making Plans',
     topics: [
       T('🗓️', 'Time words for planning',
-        `<strong>Konshuu</strong> is "this week", <strong>raishuu</strong> "next week" and <strong>senshuu</strong> "last week". Combine them with weekdays from Unit 9: <strong>Raishuu no nichiyoubi</strong> ("next Sunday"). <strong>Ibento</strong> is an event and <strong>matsuri</strong> a festival.`,
+        `<strong>Konshuu</strong> is "this week", <strong>raishuu</strong> "next week" and <strong>senshuu</strong> "last week". Combine them with weekdays from Lesson 2: <strong>Raishuu no nichiyoubi</strong> ("next Sunday"). <strong>Ibento</strong> is an event and <strong>matsuri</strong> a festival.`,
         [['Konshuu', 'This week'], ['Raishuu', 'Next week'], ['Senshuu', 'Last week'], ['Nichiyoubi', 'Sunday'], ['Ibento', 'Event'], ['Matsuri', 'Festival']],
         G([['Konshuu wa isogashii desu.', 'This week is busy.'], ['Raishuu no nichiyoubi.', 'Next Sunday.']]),
         '',
@@ -2308,7 +2310,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         dialogBox('Dialogue — Asking for the toilet', [['A', 'Sumimasen. Toire wa doko desu ka?'], ['B', 'Asoko desu.'], ['A', 'Arigatou gozaimasu.']]),
         EX([exInput('Ask "Where is the toilet?":', 'toire wa doko desu ka'), M('Konbini', 'convenience store,konbini'), exSelect('"Bank" is:', 'ginkou', ['Ginkou', 'Yuubinkyoku', 'Mise'])])),
       T('📏', 'Near, next to, in front of',
-        `<strong>Chikaku</strong> means "nearby", <strong>yoko</strong> "beside / side" and <strong>tonari</strong> "next door". Like Unit 8, they attach with <strong>no</strong>: <strong>Eki no mae</strong> (in front of the station), <strong>eki no yoko</strong> (beside the station).`,
+        `<strong>Chikaku</strong> means "nearby", <strong>yoko</strong> "beside / side" and <strong>tonari</strong> "next door". Like the position words in Lesson 17, they attach with <strong>no</strong>: <strong>Eki no mae</strong> (in front of the station), <strong>eki no yoko</strong> (beside the station).`,
         [['Chikaku', 'Near / nearby'], ['Yoko', 'Side / beside'], ['Tonari', 'Next to / next door']],
         G([['Eki no mae ni imasu.', "I'm in front of the station."], ['Konbini wa eki no yoko ni arimasu.', 'The convenience store is beside the station.'], ['Ginkou no tonari ni mise ga arimasu.', 'There is a shop next to the bank.']]),
         '',
@@ -2341,7 +2343,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         '',
         EX([M('Denchi', 'battery'), M('Deguchi', 'exit'), exSelect('"Entrance" is:', 'iriguchi', ['Iriguchi', 'Deguchi', 'Mise'])])),
       T('💭', 'Saying what you want: ga hoshii desu',
-        `<strong>[Thing] ga hoshii desu</strong> means "I want [thing]". <strong>Hoshii</strong> is an i-adjective, so its negative follows the Unit 7 rule: <strong>hoshiku nai desu</strong> ("I don't want it").`,
+        `<strong>[Thing] ga hoshii desu</strong> means "I want [thing]". <strong>Hoshii</strong> is an i-adjective, so its negative follows the negative-adjective rule: <strong>hoshiku nai desu</strong> ("I don't want it").`,
         [['Hoshii', 'Want (wanted thing)']],
         G([['Denchi ga hoshii desu.', 'I want batteries.'], ['Kamera ga hoshii desu.', 'I want a camera.'], ['Kamera wa hoshiku nai desu.', "I don't want a camera."]]),
         '',
@@ -2380,7 +2382,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         dialogBox('Dialogue — Asking a price', [['A', 'Kore wa ikura desu ka?'], ['B', 'Sanzen en desu.'], ['A', 'Chotto takai desu ne.']]),
         EX([M('Hyaku', '100,one hundred,hundred'), exSelect('"1,000" is:', 'sen', ['Hyaku', 'Sen', 'Man']), exInput('Say "It is 200 yen": {{Nihyaku ___________ desu.}}', 'en')])),
       T('👕', 'This, that and items: kono, sono, ano',
-        `Combine <strong>kono / sono / ano</strong> (Unit 2) with a noun: <strong>kono T-shatsu</strong> (this T-shirt). Use <strong>kore / sore / are</strong> alone as pronouns: <strong>Kore wa ikura desu ka?</strong>.`,
+        `Combine <strong>kono / sono / ano</strong> (Lesson 0) with a noun: <strong>kono T-shatsu</strong> (this T-shirt). Use <strong>kore / sore / are</strong> alone as pronouns: <strong>Kore wa ikura desu ka?</strong>.`,
         [['T-shatsu', 'T-shirt'], ['Kutsu', 'Shoes']],
         G([['Kono T-shatsu wa ikura desu ka?', 'How much is this T-shirt?'], ['Sono kutsu wa takai desu.', 'Those shoes are expensive.'], ['Ano kaban wa yasui desu.', 'That bag over there is cheap.']]),
         '',
@@ -2522,7 +2524,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         '',
         EX([M('Migakimasu', 'brush,brush teeth,polish'), exInput('Say "After eating, I go home": {{Tabete ___________ kaerimasu.}}', 'kara'), F('___ te kara, nemasu.', 'a verb in te-form')], '➡️ Order your day')),
       T('🚫', 'Saying "you must not": te wa ikemasen',
-        `<strong>V-te wa ikemasen</strong> (or <strong>V-te wa dame desu</strong>) means "you must not V" — a prohibition. The polite request <strong>V-te mo ii desu</strong> (Unit 10) gives permission; <strong>te wa ikemasen</strong> is its opposite.`,
+        `<strong>V-te wa ikemasen</strong> (or <strong>V-te wa dame desu</strong>) means "you must not V" — a prohibition. The polite request <strong>V-te mo ii desu</strong> (Lesson 5) gives permission; <strong>te wa ikemasen</strong> is its opposite.`,
         [['Ikemasen', 'Must not / is no good'], ['Dame', 'Not allowed / no good'], ['Tabako', 'Cigarette / tobacco'], ['Suimasu', 'Smoke / inhale'], ['Shashin', 'Photo'], ['Torimasu', 'Take (a photo)'], ['Haitte', 'Entering (te-form of hairu)']],
         G([['Koko de tabako o sutte wa ikemasen.', 'You must not smoke here.'], ['Shashin o totte wa ikemasen.', 'You must not take photos.'], ['Haitte wa dame desu.', 'You may not enter.']], 'Permission → <strong>te mo ii desu</strong>. Prohibition → <strong>te wa ikemasen</strong>.'),
         dialogBox('Dialogue — At a museum', [['A', 'Sumimasen. Shashin o totte mo ii desu ka?'], ['B', 'Iie, totte wa ikemasen.'], ['A', 'Wakarimashita. Arigatou gozaimasu.']]),
@@ -2665,7 +2667,7 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
         '',
         EX([M('Dekimasu', 'can,can do,be able to'), exInput('"I can swim": {{Oyogu koto ga ___________.}}', 'dekimasu'), F('___ koto ga dekimasu.', 'something you can do')], '🏊 What can you do?')),
       T('🧒', 'Other people\'s wants and strong wishes: tagaru, hoshii, koto wa nai',
-        `<strong>~tai</strong> is for your own wishes; for someone else use <strong>~tagatte iru</strong>: <strong>Imouto wa ikitagatte imasu</strong> ("My sister wants to go"). <strong>Hoshigatte iru</strong> is the same for <strong>hoshii</strong>. <strong>V + koto wa nai</strong> means "there's no need to V" (<strong>Isogu koto wa arimasen</strong>), and <strong>V-ru you ni</strong> (Unit 24) expresses a hope.`,
+        `<strong>~tai</strong> is for your own wishes; for someone else use <strong>~tagatte iru</strong>: <strong>Imouto wa ikitagatte imasu</strong> ("My sister wants to go"). <strong>Hoshigatte iru</strong> is the same for <strong>hoshii</strong>. <strong>V + koto wa nai</strong> means "there's no need to V" (<strong>Isogu koto wa arimasen</strong>).`,
         [['Tagaru', 'Show wanting (3rd person)'], ['Hoshigaru', 'Show wanting an object'], ['Koto wa nai', "There's no need to"], ['Isogu', 'Hurry'], ['Imouto', 'Younger sister']],
         G([['Imouto wa nihon e ikitagatte imasu.', 'My sister wants to go to Japan.'], ['Kare wa atarashii keetai o hoshigatte imasu.', 'He wants a new mobile phone.'], ['Isogu koto wa arimasen.', "There's no need to hurry."]], '<strong>~tai / hoshii</strong> = my feelings · <strong>~tagaru / hoshigaru</strong> = visible desire of others.'),
         '',
@@ -2794,6 +2796,82 @@ const RECAP = [[{"group":"","rows":[["Ohayou gozaimasu","Good morning"],["Konnic
     RECAP.push([plain].concat(Object.keys(groups).map(k => groups[k])).filter(g => g.rows.length));
   });
 })();
+/* =========================================================
+   N5 STRUCTURE — 18 lessons (0–17) following the JLPT N5
+   grammar order. Existing topics are regrouped; vocabulary
+   from the situational units is kept in each lesson's recap.
+   ========================================================= */
+const UNIT_WORD = 'Lesson', UNIT_BASE = 0;
+(function() {
+  const oldU = lectureData.slice(), oldR = RECAP.slice();
+  const G = (lines, note) => '<div class="grammar-point">' +
+    lines.map(l => '<p><span class="jp">' + l[0] + '</span> — <span class="en">' + l[1] + '</span></p>').join('') +
+    (note ? '<p class="note">' + note + '</p>' : '') + '</div>';
+  const M = (word, answer) => exInput('{{' + word + '}} means:', answer, null, 'en');
+  const EX = (items) => '<div class="exercise"><ol>' + items.join('') + '</ol></div>';
+  const writing = {
+    icon: '🔤', title: 'The writing system: hiragana, katakana and kanji',
+    explanation: '<p>Japanese uses three scripts together. <strong>Hiragana</strong> writes native words and grammar, <strong>katakana</strong> writes foreign loanwords and names (<strong>kōhī</strong> = coffee), and <strong>kanji</strong> are Chinese-origin characters for meaning (<strong>nihon</strong> = Japan). This course lets you switch the script at any time (Romaji / かな Kana / 漢字 Kanji) with the switch at the top. To learn the kana itself, open the <a href="kana.html">Hiragana &amp; Katakana</a> page, and for kanji the <a href="kanji.html">Kanji lessons</a>.</p>',
+    vocab: vocabTable([['Hiragana', 'Basic script (46 sounds + variants)'], ['Katakana', 'Script for foreign words'], ['Kanji', 'Chinese characters'], ['Romaji', 'Latin-alphabet spelling'], ['Gojuuon', 'The "fifty-sound" kana chart'], ['Nihongo', 'Japanese (language)']]),
+    grammar: G([['Nihongo wa hiragana, katakana, kanji o tsukaimasu.', 'Japanese uses hiragana, katakana and kanji.'], ['Koohii wa katakana de kakimasu.', 'Coffee is written in katakana.']]),
+    dialogs: '',
+    exercises: EX([M('Katakana', 'script for foreign words,foreign words,katakana'), M('Gojuuon', 'fifty sounds,kana chart,fifty-sound chart'), exInput('Which script writes loanwords? {{___________}}', 'katakana')]),
+    _rows: []
+  };
+  // [unitIndex, 'all' | [topic indexes]]
+  const L = [
+    ['🔤 Lesson 0 — Sounds, Greetings and Classroom Phrases', [[0, 'all'], [1, 'all'], ['new']]],
+    ['🎓 Lesson 1 — Copula Sentences, は・が and Introductions', [[2, 'all'], [3, 'all']]],
+    ['🧭 Lesson 2 — Core Particles に・で・へ・と・から・まで: Time, Travel, Directions and Prices', [[8, 'all'], [12, 'all'], [13, 'all'], [15, 'all']]],
+    ['🍣 Lesson 3 — Verb Groups and the ます-Form: Food, Routine and Hobbies', [[4, 'all'], [5, 'all'], [10, 'all'], [19, [0]]]],
+    ['🔁 Lesson 4 — The て-Form', [[18, [0]]]],
+    ['🧩 Lesson 5 — Using the て-Form: ている・てください・てもいい・てはいけない', [[9, 'all'], [18, [1, 2, 3]], [25, [2]]]],
+    ['🚫 Lesson 6 — The ない-Form and Obligation', [[19, [1, 2, 4]]]],
+    ['⏮️ Lesson 7 — The た-Form, Past Tense, Experience and Lists', [[16, 'all'], [19, [3]]]],
+    ['⚖️ Lesson 8 — Adjectives, Becoming and Comparison', [[20, 'all'], [6, [4]]]],
+    ['➡️ Lesson 9 — Conditionals: と・ば', [[24, [0, 2]]]],
+    ['☔ Lesson 10 — Conditionals: たら・なら', [[24, [1]]]],
+    ['💪 Lesson 11 — Potential and Passive', [[25, [0, 1]]]],
+    ['🗓️ Lesson 12 — Wishes, Plans and Invitations: ましょう・つもり・たい・ほしい', [[11, 'all'], [14, 'all'], [17, 'all'], [22, [0, 1, 5]]]],
+    ['🤔 Lesson 13 — Conjecture: でしょう・かもしれない・そうだ', [[23, [0, 1]]]],
+    ['🔮 Lesson 14 — Appearance and Hearsay: ようだ・らしい・みたい・っぽい', [[23, [2, 4]]]],
+    ['💡 Lesson 15 — Supplementary: ことができる・のだ・のに・から/ので・とき', [[21, 'all'], [22, [4]], [24, [3]]]],
+    ['🌟 Lesson 16 — Supplementary and Review: すぎる・やすい・ほうがいい・もう/まだ', [[23, [3]], [22, [2, 3]]]],
+    ['🏠 Lesson 17 — がある/がいる・に行く・のが好き・くらい・や・だけ', [[6, [0, 1, 2, 3]], [7, 'all'], [25, [3]]]]
+  ];
+  const fallback = {
+    6: 'Tip: the plain negative (<strong>-nai</strong>) is the base for many patterns — <strong>-nakereba narimasen</strong> (must), <strong>-nai de kudasai</strong> (please don\'t), <strong>-nai hou ga ii</strong> (better not). Learn it well and the rest follows.',
+    10: 'Choosing between the conditionals: <strong>to</strong> = natural result, <strong>ba</strong> = general condition, <strong>tara</strong> = one-time events and requests, <strong>nara</strong> = suggestions based on what the other person said.',
+    14: 'Japanese often hedges: <strong>rashii</strong>, <strong>mitai</strong>, <strong>you da</strong> and <strong>kamoshirenai</strong> soften statements so you do not sound too direct — a sign of politeness, not uncertainty.',
+    16: 'Congratulations on finishing the N5 grammar! Revise with the checkpoints and the vocabulary recap pages — and take a look at the N4 course next.',
+    4: 'The te-form is the key to Japanese verbs: once you can form it quickly, requests, ongoing actions, permission and many more patterns become easy.'
+  };
+  const label = i => oldU[i].title.replace(/^.*?Unit \d+\s*—\s*/, '');
+  const used = {}, cultureHome = { 6: 17, 25: 17 };
+  const lessons = [], recaps = [];
+  L.forEach(function(def, li) {
+    const topics = [], culture = [], groups = [], gram = { group: 'Grammar words', rows: [] };
+    def[1].forEach(function(e) {
+      if (e[0] === 'new') { topics.push(writing); return; }
+      const u = e[0], src = oldU[u];
+      const idxs = e[1] === 'all' ? src.topics.map((t, i) => i) : e[1];
+      idxs.forEach(i => { topics.push(src.topics[i]); });
+      if (src.culture && !used[u] && (cultureHome[u] === undefined || cultureHome[u] === li)) { used[u] = true; culture.push(src.culture); }
+      if (u < 18 && (e[1] === 'all' || u === 6)) {
+        if (u === 6 && li !== 17) return;
+        oldR[u].forEach(g => groups.push({ group: g.group ? label(u) + ' · ' + g.group : label(u), rows: g.rows }));
+      } else {
+        idxs.forEach(i => { (src.topics[i]._rows || []).forEach(r => gram.rows.push(r)); });
+      }
+    });
+    if (gram.rows.length) groups.push(gram);
+    lessons.push({ title: def[0], topics: topics, culture: culture.join('<br><br>') || fallback[li] || fallback[16] });
+    recaps.push(groups);
+  });
+  lectureData.length = 0; RECAP.length = 0;
+  lessons.forEach(u => lectureData.push(u));
+  recaps.forEach(r => RECAP.push(r));
+})();
 
 /* =========================================================
    COURSE STRUCTURE
@@ -2808,10 +2886,7 @@ const CHECKPOINTS = [
   { id: 'cpD', letter: 'D', units: [9, 10, 11], after: 11 },
   { id: 'cpE', letter: 'E', units: [12, 13, 14], after: 14 },
   { id: 'cpF', letter: 'F', units: [15, 16, 17], after: 17 },
-  { id: 'cpG', letter: 'G', units: [18, 19, 20], after: 20 },
-  { id: 'cpH', letter: 'H', units: [21, 22, 23], after: 23 },
-  { id: 'cpI', letter: 'I', units: [24, 25], after: 25 },
-  { id: 'cpFinal', letter: 'Final', units: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25], after: 25 }
+  { id: 'cpFinal', letter: 'Final', units: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17], after: 17 }
 ];
 const COURSE = [];
 lectureData.forEach(function(u, i) {
@@ -2821,7 +2896,7 @@ lectureData.forEach(function(u, i) {
 let currentView = { kind: 'unit', unit: 0, page: 0 };
 
 function unitPageCount(u) { return lectureData[u].topics.length + 2; } // topics + culture + recap
-function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — Units ' + (cp.units[0] + 1) + '–' + (cp.units[cp.units.length - 1] + 1); }
+function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — ' + UNIT_WORD + 's ' + (cp.units[0] + UNIT_BASE) + '–' + (cp.units[cp.units.length - 1] + UNIT_BASE); }
 function courseIndexOf(view) {
   for (let i = 0; i < COURSE.length; i++) {
     const c = COURSE[i];
@@ -3002,7 +3077,7 @@ function recapHtml(u) {
   h += '</div>';
   const ci = courseIndexOf(currentView), nxt = COURSE[ci + 1];
   if (nxt) {
-    h += '<div class="recap-done">🎉 Unit complete! ' + (nxt.kind === 'cp' ? 'Next up: <strong>' + cpTitle(nxt.cp) + '</strong> — mixed exercises on Units ' + (nxt.cp.units[0] + 1) + '–' + (nxt.cp.units[nxt.cp.units.length - 1] + 1) + '.' : 'Next up: <strong>' + esc(lectureData[nxt.unit].title) + '</strong>.') + '</div>';
+    h += '<div class="recap-done">🎉 ' + UNIT_WORD + ' complete! ' + (nxt.kind === 'cp' ? 'Next up: <strong>' + cpTitle(nxt.cp) + '</strong> — mixed exercises on ' + UNIT_WORD + 's ' + (nxt.cp.units[0] + UNIT_BASE) + '–' + (nxt.cp.units[nxt.cp.units.length - 1] + UNIT_BASE) + '.' : 'Next up: <strong>' + esc(lectureData[nxt.unit].title) + '</strong>.') + '</div>';
   } else {
     h += '<div class="recap-done">🎉 You have finished the whole course. おつかれさま！</div>';
   }
@@ -3120,7 +3195,7 @@ function renderCheckpoint(def) {
   const pane = document.getElementById('lecturePane');
   if (!CP || CP.def.id !== def.id) buildCheckpoint(def);
   const mode = progress.script;
-  const unitsLabel = def.units.map(function(u) { return 'Unit ' + (u + 1); }).join(', ');
+  const unitsLabel = def.units.map(function(u) { return UNIT_WORD + ' ' + (u + UNIT_BASE); }).join(', ');
   let h = '<div class="lecture-crumb">Checkpoint · mixed exercises</div>';
   h += '<h3 class="lecture-title">🏁 ' + cpTitle(def) + '</h3>';
   h += '<p class="recap-intro">Practice with a different exercise type each time, drawn from the vocabulary of ' + unitsLabel + '. ' +

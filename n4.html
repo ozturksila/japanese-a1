@@ -676,7 +676,7 @@
     </div>
   </header>
 
-  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira"><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>N5</b><small>26 units</small></a><a href="n4.html" aria-current="page"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira"><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>N5</b><small>18 lessons</small></a><a href="n4.html" aria-current="page"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
@@ -760,7 +760,7 @@ async function loadProgress() {
     } catch (e) { /* ignore */ }
   }
   const base = Object.assign(defaultProgress(), p || {});
-  if (!base.name) { const n5 = await dbGet('progress'); if (n5 && n5.name) { base.name = n5.name; base.script = n5.script || base.script; } }
+  if (!base.name) { const old = await dbGet('progress'); if (old && old.name) { base.name = old.name; base.script = old.script || base.script; } }
   return base;
 }
 let saveTimer = null;
@@ -1644,6 +1644,7 @@ function exSelect(prompt, answer, options) {
    ========================================================= */
 const lectureData = [];
 const RECAP = [];
+const UNIT_WORD = "Unit", UNIT_BASE = 1;
 /* =========================================================
    JLPT N4 — Units 1–6 (lessons 18–24 of the reference list)
    ========================================================= */
@@ -1891,7 +1892,7 @@ lectureData.forEach(function(u, i) {
 let currentView = { kind: 'unit', unit: 0, page: 0 };
 
 function unitPageCount(u) { return lectureData[u].topics.length + 2; } // topics + culture + recap
-function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — Units ' + (cp.units[0] + 1) + '–' + (cp.units[cp.units.length - 1] + 1); }
+function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — ' + UNIT_WORD + 's ' + (cp.units[0] + UNIT_BASE) + '–' + (cp.units[cp.units.length - 1] + UNIT_BASE); }
 function courseIndexOf(view) {
   for (let i = 0; i < COURSE.length; i++) {
     const c = COURSE[i];
@@ -2072,7 +2073,7 @@ function recapHtml(u) {
   h += '</div>';
   const ci = courseIndexOf(currentView), nxt = COURSE[ci + 1];
   if (nxt) {
-    h += '<div class="recap-done">🎉 Unit complete! ' + (nxt.kind === 'cp' ? 'Next up: <strong>' + cpTitle(nxt.cp) + '</strong> — mixed exercises on Units ' + (nxt.cp.units[0] + 1) + '–' + (nxt.cp.units[nxt.cp.units.length - 1] + 1) + '.' : 'Next up: <strong>' + esc(lectureData[nxt.unit].title) + '</strong>.') + '</div>';
+    h += '<div class="recap-done">🎉 ' + UNIT_WORD + ' complete! ' + (nxt.kind === 'cp' ? 'Next up: <strong>' + cpTitle(nxt.cp) + '</strong> — mixed exercises on ' + UNIT_WORD + 's ' + (nxt.cp.units[0] + UNIT_BASE) + '–' + (nxt.cp.units[nxt.cp.units.length - 1] + UNIT_BASE) + '.' : 'Next up: <strong>' + esc(lectureData[nxt.unit].title) + '</strong>.') + '</div>';
   } else {
     h += '<div class="recap-done">🎉 You have finished the whole course. おつかれさま！</div>';
   }
@@ -2190,7 +2191,7 @@ function renderCheckpoint(def) {
   const pane = document.getElementById('lecturePane');
   if (!CP || CP.def.id !== def.id) buildCheckpoint(def);
   const mode = progress.script;
-  const unitsLabel = def.units.map(function(u) { return 'Unit ' + (u + 1); }).join(', ');
+  const unitsLabel = def.units.map(function(u) { return UNIT_WORD + ' ' + (u + UNIT_BASE); }).join(', ');
   let h = '<div class="lecture-crumb">Checkpoint · mixed exercises</div>';
   h += '<h3 class="lecture-title">🏁 ' + cpTitle(def) + '</h3>';
   h += '<p class="recap-intro">Practice with a different exercise type each time, drawn from the vocabulary of ' + unitsLabel + '. ' +
