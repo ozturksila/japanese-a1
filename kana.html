@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese — Hiragana &amp; Katakana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #faf6ef;
+    --card-bg: #ffffff;
+    --ink: #2b2420;
+    --muted: #726a60;
+    --accent: #c0392b;
+    --accent2: #1f6f5c;
+    --accent-soft: #fbe9e6;
+    --accent2-soft: #e4f2ee;
+    --line: #ecdfd0;
+    --unit-bg: linear-gradient(135deg, #2b2420 0%, #44352c 100%);
+    --unit-bg-hover: linear-gradient(135deg, #3a2f28 0%, #54433687 100%);
+    --gold: #c89b3c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(192,57,43,0.06) 0%, transparent 45%),
+      radial-gradient(circle at 85% 92%, rgba(31,111,92,0.06) 0%, transparent 45%);
+    color: var(--ink);
+    line-height: 1.6;
+    padding: 24px 12px 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  header.page-head {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 28px 20px 24px;
+    background: linear-gradient(135deg, #2b2420 0%, #4a3a30 100%);
+    border-radius: 16px;
+    color: #fdf6ee;
+    box-shadow: 0 6px 20px rgba(43,36,32,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  header.page-head::before {
+    content: "🎏 🌸 ⛩️ 🗻 🎎";
+    position: absolute;
+    top: -6px; left: 0; right: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    opacity: 0.18;
+    letter-spacing: 18px;
+  }
+  header.page-head h1 {
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    font-size: 2rem;
+    margin: 6px 0 8px;
+    letter-spacing: 0.3px;
+    position: relative;
+  }
+  header.page-head p {
+    color: #e8d9c8;
+    margin: 0;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  header.page-head .badges {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  header.page-head .badges span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* ===== Profile bar + progress ===== */
+  .profile-bar {
+    max-width: 1100px;
+    margin: 14px auto 0;
+    padding: 10px 18px;
+    background: #fff;
+    border: 1px solid rgba(192,57,43,0.18);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .profile-bar .pb-name {
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .profile-bar .pb-progress {
+    flex: 1 1 160px;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .profile-bar .pb-bar-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: #eee5d8;
+    overflow: hidden;
+  }
+  .profile-bar .pb-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--accent2));
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+  .profile-bar .pb-pct {
+    font-size: 0.8rem;
+    color: #777;
+    white-space: nowrap;
+  }
+  .profile-bar button {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: #666;
+  }
+  .profile-bar button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .profile-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(40,30,20,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  .profile-modal {
+    background: #fff;
+    border-radius: 14px;
+    padding: 28px 30px;
+    max-width: 360px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  }
+  .profile-modal h3 {
+    margin: 0 0 6px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: var(--accent);
+  }
+  .profile-modal p {
+    color: #777;
+    font-size: 0.88rem;
+    margin: 0 0 16px;
+  }
+  .profile-modal input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+  .profile-modal button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .profile-modal button:hover { background: #a53224; }
+  .unit {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(43,36,32,0.07);
+    transition: box-shadow 0.2s ease;
+  }
+  .unit:hover { box-shadow: 0 4px 16px rgba(43,36,32,0.12); }
+  .unit-toggle {
+    width: 100%;
+    text-align: left;
+    background: var(--unit-bg);
+    color: #fff;
+    border: none;
+    padding: 18px 22px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: filter 0.15s ease;
+  }
+  .unit-toggle:hover { filter: brightness(1.12); }
+  .unit-toggle .arrow {
+    transition: transform 0.2s ease;
+    font-size: 0.85rem;
+    color: var(--gold);
+  }
+  .unit-toggle.open .arrow { transform: rotate(90deg); }
+  .unit-body {
+    display: none;
+    padding: 20px 22px 26px;
+  }
+  .unit-body.open { display: block; }
+
+  .section {
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .section-toggle {
+    width: 100%;
+    text-align: left;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: none;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s ease;
+  }
+  .section-toggle:hover { background: #f6dbd6; }
+  .section-toggle .arrow { transition: transform 0.2s ease; font-size: 0.8rem; }
+  .section-toggle.open .arrow { transform: rotate(90deg); }
+  .section-body { display: none; padding: 18px 18px 20px; }
+  .section-body.open { display: block; }
+
+  h3.sub { font-size: 1.03rem; margin: 20px 0 8px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
+  h3.sub:first-child { margin-top: 0; }
+
+  ul.goals { margin: 0; padding-left: 22px; }
+  ul.goals li { margin-bottom: 5px; }
+  ul.goals li::marker { color: var(--accent); }
+
+  table.vocab {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin-top: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  table.vocab th, table.vocab td {
+    border: 1px solid var(--line);
+    padding: 9px 12px;
+    text-align: left;
+  }
+  table.vocab th {
+    background: var(--accent2);
+    color: #fff;
+    font-weight: 600;
+  }
+  table.vocab tr:nth-child(even) td { background: #fbf7f1; }
+  table.vocab tr:hover td { background: var(--accent2-soft); }
+
+  .grammar-point {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    background: #fdfbf8;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .grammar-point .jp { font-weight: 700; color: var(--accent); }
+  .grammar-point .en { color: var(--ink); }
+  .grammar-point .note { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+  .example-box {
+    background: var(--accent2-soft);
+    border-left: 3px solid var(--accent2);
+    padding: 8px 12px;
+    margin: 8px 0;
+    border-radius: 4px;
+    font-size: 0.93rem;
+  }
+  .example-box::before { content: "💡 "; }
+
+  .dialog-box {
+    background: #fdfbf8;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .dialog-box h4 { margin: 0 0 10px; font-size: 0.95rem; color: var(--accent); display: flex; align-items: center; gap: 6px; }
+  .dialog-box h4::before { content: "💬"; }
+  .dialog-line { margin: 6px 0; padding: 4px 0; }
+  .dialog-line .speaker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 8px;
+    background: var(--accent2);
+    color: #fff;
+    border-radius: 999px;
+    width: 22px; height: 22px;
+    font-size: 0.78rem;
+  }
+
+  .exercise {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .exercise:last-child { border-bottom: none; margin-bottom: 0; }
+  .exercise .ex-title { font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .exercise ol { margin: 0; padding-left: 20px; }
+  .exercise li { margin-bottom: 10px; }
+  .exercise input[type="text"] {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.93rem;
+    width: 220px;
+    margin-left: 6px;
+  }
+  .exercise input[type="text"]:focus { outline: 2px solid var(--accent2); }
+  .exercise select {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+  .check-btn, .reveal-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+  }
+  .check-btn:hover, .reveal-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .feedback { margin-left: 10px; font-weight: 700; font-size: 0.88rem; }
+  .feedback.correct { color: #1f6f3f; }
+  .feedback.correct::before { content: "✅ "; }
+  .feedback.wrong { color: var(--accent); }
+  .answer-key {
+    display: none;
+    margin-top: 8px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .answer-key.open { display: block; }
+
+  .match-row { display: flex; gap: 10px; align-items: center; margin-bottom: 6px; }
+  .match-row select {
+    padding: 4px 6px;
+    border-radius: 5px;
+    border: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  .culture-box {
+    background: linear-gradient(135deg, #fdf2e3 0%, #fbe8d6 100%);
+    border: 1px solid #f0d9b5;
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    position: relative;
+  }
+  .culture-box::before { content: "⛩️ "; font-size: 1.1rem; }
+
+  .progress-note {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 30px;
+  }
+
+  /* ===== Two-pane layout ===== */
+  .wrap { max-width: 1400px; }
+  .layout {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .sidebar {
+    flex: 0 0 30%;
+    max-width: 30%;
+    min-width: 280px;
+  }
+  .lecture {
+    flex: 1 1 70%;
+    min-width: 0;
+    position: sticky;
+    top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(43,36,32,0.10);
+    padding: 26px 30px 30px;
+  }
+  @media (max-width: 900px) {
+    .layout { flex-direction: column; }
+    .sidebar, .lecture { flex: 1 1 100%; max-width: 100%; }
+    .lecture { position: static; max-height: none; order: -1; margin-bottom: 24px; }
+  }
+
+  .lecture-placeholder {
+    text-align: center;
+    color: var(--muted);
+    padding: 60px 20px;
+  }
+  .lecture-placeholder .big { font-size: 2.4rem; display: block; margin-bottom: 10px; }
+
+  .lecture-crumb {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+  }
+  .lecture-title {
+    font-family: "Zen Maru Gothic", "Inter", sans-serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lecture-block { margin-bottom: 22px; }
+  .lecture-block h4 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent2);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lecture-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    position: sticky;
+    bottom: 0;
+    background: var(--card-bg);
+  }
+  .lecture-nav button {
+    background: var(--unit-bg);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 9px 18px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lecture-nav button:disabled { opacity: 0.35; cursor: default; }
+  .lecture-nav button:not(:disabled):hover { filter: brightness(1.15); }
+  .lecture-dots {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .lecture-dots span {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--line);
+    display: inline-block;
+    cursor: pointer;
+  }
+  .lecture-dots span.active { background: var(--accent); }
+  .lecture-dots span.culture-dot { background: var(--gold); }
+
+  .lecture .culture-box { margin-top: 4px; }
+  .lecture .dialog-box, .lecture .grammar-point, .lecture .exercise { font-size: 0.95rem; }
+
+  /* ===== v2 additions ===== */
+  
+  .mode-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 6px; padding: 5px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .mode-switch a { flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: center; gap: 4px 10px; flex-wrap: wrap; text-decoration: none; background: transparent; color: var(--muted); padding: 10px 14px; border-radius: 10px; font-family: "Inter", sans-serif; font-size: 0.95rem; font-weight: 600; transition: background .15s ease, color .15s ease; }
+    .mode-switch a small { font-weight: 500; font-size: 0.75rem; opacity: 0.85; }
+    .mode-switch a .ms-icon { font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; font-size: 1.25rem; line-height: 1; }
+    .mode-switch a[aria-current="page"] { background: var(--unit-bg); color: #fff; cursor: default; }
+    .mode-switch a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+    .mode-switch a:not([aria-current="page"]):hover { background: var(--accent-soft); color: var(--accent); }
+    .mode-switch .ms-label { align-self: center; padding: 0 8px 0 10px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; white-space: nowrap; }
+    @media (max-width: 640px) { .mode-switch { flex-wrap: wrap; } .mode-switch .ms-label { flex: 1 1 100%; padding: 2px 8px; } .mode-switch a { flex: 1 1 100%; } }
+  
+  .sidebar { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; padding-right: 2px; }
+  .course-nav { display: flex; flex-direction: column; gap: 10px; }
+  .nav-item {
+    text-align: left; width: 100%; cursor: pointer;
+    background: var(--card-bg); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 12px 14px; display: flex; flex-direction: column; gap: 4px;
+    box-shadow: 0 2px 8px rgba(43,36,32,0.06);
+    font-family: inherit; transition: box-shadow .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .nav-item:hover { box-shadow: 0 4px 14px rgba(43,36,32,0.12); transform: translateY(-1px); }
+  .nav-item.active { background: var(--unit-bg); color: #fff; border-color: transparent; }
+  .nav-item .ni-title { font-family: "Zen Maru Gothic", "Inter", sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.35; }
+  .nav-item .ni-meta { font-size: 0.78rem; opacity: 0.7; }
+  .nav-item .ni-bar { height: 4px; border-radius: 999px; background: rgba(120,100,80,0.18); overflow: hidden; margin-top: 2px; }
+  .nav-item .ni-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent2)); }
+  .nav-item.cp { background: var(--accent2-soft); border-style: dashed; border-color: var(--accent2); }
+  .nav-item.cp.active { background: var(--accent2); color: #fff; border-style: solid; }
+  .progress-note { margin-top: 18px; }
+
+  .script-switch { display: inline-flex; align-items: center; gap: 0; border: 1px solid #ddd; border-radius: 999px; overflow: hidden; background: #faf6ef; }
+  .script-switch .ss-label { font-size: 0.72rem; color: #8a7f72; padding: 0 8px 0 12px; text-transform: uppercase; letter-spacing: .4px; }
+  .profile-bar .script-switch button { border: none; border-radius: 0; padding: 6px 12px; background: none; color: #666; }
+  .profile-bar .script-switch button.on { background: var(--accent); color: #fff; }
+  .profile-bar .pb-save { font-size: 0.76rem; color: #6c8a7b; white-space: nowrap; }
+
+  .script-tag { text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 0.75rem; background: var(--accent-soft); color: var(--accent); border-radius: 999px; padding: 1px 8px; }
+  td.jp-cell, .q-jp, .jp-cell { font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; }
+  td.jp-cell { font-size: 1.08rem; font-weight: 700; color: var(--accent); }
+  .exercise li, .q-opts .opt { font-family: inherit; }
+  .exercise input[lang="ja"], .exercise input[data-lang="jp"] { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", "Inter", sans-serif; }
+
+  .lecture-nav button.alt { background: var(--accent2); }
+  .lecture-dots span.recap-dot { background: var(--accent2); opacity: .55; }
+  .lecture-dots span.recap-dot.active { opacity: 1; }
+
+  .recap-intro { color: var(--muted); font-size: 0.93rem; margin: 0 0 12px; }
+  .recap-toggle { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; cursor: pointer; }
+  table.recap td.spk-cell { width: 44px; text-align: center; padding: 4px; }
+  button.spk { background: var(--accent2-soft); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; font-size: 0.85rem; padding: 3px 9px; }
+  button.spk:hover { background: #d3eae3; }
+  button.spk.big { font-size: 0.95rem; padding: 6px 14px; font-weight: 600; margin-right: 6px; }
+  #recapTbl.hide-en td.en-cell { filter: blur(6px); transition: filter .15s ease; }
+  #recapTbl.hide-en tr:hover td.en-cell { filter: none; }
+  .recap-done {
+    margin-top: 20px; padding: 14px 16px; border-radius: 10px;
+    background: linear-gradient(135deg, #e4f2ee 0%, #f3f9f6 100%);
+    border: 1px solid #b9dccf; font-size: 0.95rem;
+  }
+  .recap-done .check-btn { margin: 6px 0 0 8px; }
+
+  .cp-score { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fdfbf8; font-size: 0.9rem; position: sticky; top: 0; z-index: 3; }
+  .cp-score .pb-bar-track { flex: 1 1 140px; height: 8px; border-radius: 999px; background: #eee5d8; overflow: hidden; }
+  .cp-score .pb-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent2)); transition: width .3s ease; }
+  .q { padding: 12px 14px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 10px; background: #fdfbf8; }
+  .q-prompt { margin-bottom: 8px; font-size: 0.97rem; }
+  .q-jp { font-weight: 700; font-size: 1.15rem; color: var(--accent); }
+  .q-en { font-weight: 600; }
+  .q-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .opt {
+    background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px;
+    font-size: 0.95rem; cursor: pointer; color: var(--ink);
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent2); background: var(--accent2-soft); }
+  .opt:disabled { cursor: default; opacity: .85; }
+  .opt.right { background: #d9f0e3; border-color: #1f6f3f; color: #14502c; font-weight: 700; }
+  .opt.wrong { background: #fbe0dc; border-color: var(--accent); color: #8a1f14; }
+  .q-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .q input[type="text"] { border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px; font-size: 0.95rem; width: 240px; max-width: 100%; }
+  .q input[type="text"]:focus { outline: 2px solid var(--accent2); }
+  .q select { padding: 5px 8px; border-radius: 6px; border: 1px solid var(--line); font-size: 0.9rem; }
+  .q .match-row { margin-bottom: 8px; }
+  .q .match-row .q-jp { min-width: 120px; }
+  .tile-answer { min-height: 46px; padding: 6px; border: 2px dashed var(--line); border-radius: 8px; margin-bottom: 8px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; background: #fff; }
+  .tile-hint { color: var(--muted); font-size: 0.85rem; padding-left: 4px; }
+  .tile-bank { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+  .tile { background: #fff; border: 1px solid var(--line); border-bottom-width: 3px; border-radius: 8px; padding: 6px 12px; font-size: 1.1rem; font-weight: 600; cursor: pointer; font-family: "Zen Maru Gothic", "Hiragino Sans", "Inter", sans-serif; color: var(--ink); }
+  .tile:disabled { opacity: .3; cursor: default; }
+  .tile.placed { background: var(--accent2-soft); border-color: var(--accent2); cursor: default; }
+  .reset-btn { background: none; border: 1px solid #ddd; border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; cursor: pointer; color: #666; }
+  .reset-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+    /* ===== phone layout ===== */
+    @media (max-width: 900px) {
+      body { padding: 12px 10px 60px; }
+      header.page-head { padding: 14px 14px 12px; margin-bottom: 0; }
+      header.page-head::before { display: none; }
+      header.page-head h1 { font-size: 1.3rem; margin: 0 0 4px; }
+      header.page-head p { font-size: 0.82rem; }
+      header.page-head .badges { display: none; }
+      .mode-switch { flex-wrap: nowrap !important; margin-top: 10px; }
+      .mode-switch .ms-label, .mode-switch a small { display: none; }
+      .mode-switch a { flex: 1 1 0 !important; padding: 9px 8px !important; font-size: 0.88rem !important; text-align: center; }
+      .profile-bar { margin-top: 10px; padding: 8px 12px; gap: 8px 10px; }
+      .layout { gap: 12px; }
+      .sidebar { order: -2; position: static !important; max-height: none !important; min-width: 0; }
+      .lecture { padding: 18px 16px 22px; }
+      .lecture-nav { gap: 6px; }
+      .lecture-nav button { padding: 8px 12px; font-size: 0.85rem; }
+      .lecture-dots { max-width: 40%; }
+    }
+  
+    @media (max-width: 900px) {
+      .course-nav { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; scroll-snap-type: x proximity; }
+      .nav-item { flex: 0 0 210px; scroll-snap-align: start; }
+      .sidebar .progress-note { display: none; }
+      .profile-bar .script-switch { flex: 1 1 100%; justify-content: center; }
+      .script-switch .ss-label { display: none; }
+      .profile-bar .script-switch button { flex: 1; padding: 7px 6px; font-size: 0.78rem; }
+    }
+
+  /* ===== course switch (levels) ===== */
+  .course-switch { max-width: 1100px; margin: 14px auto 0; display: flex; gap: 10px; }
+  .cs-group { flex: 1 1 0; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 8px 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .cs-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; padding: 0 6px 6px; display: flex; align-items: center; gap: 6px; }
+  .cs-ico { font-size: 0.95rem; line-height: 1; font-family: "Zen Maru Gothic", "Noto Serif JP", sans-serif; }
+  .cs-tabs { display: flex; gap: 6px; }
+  .cs-tabs > * { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; padding: 8px 6px; border-radius: 10px; text-decoration: none; border: 1px solid transparent; font-family: "Inter", sans-serif; text-align: center; }
+  .cs-tabs b { font-size: 1.05rem; font-weight: 700; line-height: 1.1; }
+  .cs-tabs small { font-size: 0.72rem; font-weight: 500; opacity: .85; line-height: 1.2; white-space: nowrap; }
+  .cs-tabs a { color: var(--ink); background: var(--accent-soft); border-color: var(--line); transition: background .15s ease, color .15s ease; }
+  .cs-tabs a:hover { background: #f6dbd6; color: var(--accent); }
+  .cs-tabs a[aria-current="page"] { background: var(--unit-bg); color: #fff; border-color: transparent; cursor: default; }
+  .cs-tabs a[aria-current="page"] small { color: var(--gold); opacity: 1; }
+  .cs-tabs .cs-soon { color: #a89f93; background: #faf6ef; border: 1px dashed var(--line); cursor: not-allowed; }
+  @media (max-width: 640px) {
+    .course-switch { gap: 8px; margin-top: 10px; }
+    .cs-group { padding: 6px; }
+    .cs-title { font-size: 0.62rem; padding: 0 4px 4px; letter-spacing: .3px; }
+    .cs-tabs { gap: 4px; }
+    .cs-tabs > * { padding: 6px 2px; }
+    .cs-tabs small { font-size: 0.62rem; letter-spacing: -0.1px; }
+  }
+
+
+  /* ===== kana page ===== */
+  .jp, .kq-big, .kq-k, .kc-ch, .cc-ch, .kw-k { font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; }
+  .nav-group { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: #8a7f72; margin: 8px 4px -2px; }
+  .nav-item .ni-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .nav-item .ni-kana { font-family: "Zen Maru Gothic", "Hiragino Sans", sans-serif; font-size: .95rem; letter-spacing: 2px; opacity: .8; }
+  .nav-item .ni-done { color: var(--accent2); font-weight: 700; }
+  .nav-item.active .ni-done { color: var(--gold); }
+  .nav-item.tool { background: var(--accent2-soft); border-color: #bfe0d6; }
+  .nav-item.tool.active { background: var(--accent2); }
+
+  .k-note { background: #fff8e8; border: 1px solid #f0dfb5; border-radius: 10px; padding: 10px 14px; font-size: .92rem; margin-bottom: 18px; }
+  .k-note b { color: var(--accent); }
+  .kana-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
+  .kcard { border: 1px solid var(--line); border-radius: 12px; padding: 10px 6px 8px; text-align: center; background: #fff; cursor: pointer; font-family: inherit; transition: box-shadow .15s ease, transform .1s ease; }
+  .kcard:hover { box-shadow: 0 4px 14px rgba(43,36,32,.12); transform: translateY(-1px); }
+  .kcard .kc-ch { font-size: 2.5rem; line-height: 1.15; color: var(--accent); font-weight: 700; }
+  .kcard .kc-r { font-weight: 700; font-size: 1rem; }
+  .kcard .kc-m { font-size: .72rem; color: var(--muted); line-height: 1.25; min-height: 1.8em; padding: 0 2px; }
+  .kcard .kc-s { font-size: .8rem; color: var(--gold); letter-spacing: 1px; }
+
+  .pad-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .pad-chips button { font-family: "Zen Maru Gothic", "Hiragino Sans", sans-serif; font-size: 1.2rem; font-weight: 700; padding: 4px 12px; border-radius: 8px; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; }
+  .pad-chips button.on { background: var(--unit-bg); color: #fff; border-color: transparent; }
+  .pad { display: inline-block; max-width: 100%; }
+  .pad-cv { display: block; width: 240px; height: 240px; max-width: 100%; border: 2px solid var(--line); border-radius: 12px; background: #fffdf9; touch-action: none; cursor: crosshair; }
+  .pad-btns { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .pad-btns button, .k-btn { background: #fff; border: 1px solid #ddd; border-radius: 999px; padding: 6px 14px; font-size: .85rem; cursor: pointer; color: #555; font-family: inherit; }
+  .pad-btns button:hover, .k-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .pad-btns button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .pad-info { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+  .pad-side { font-size: .95rem; }
+  .pad-side .ps-r { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+
+  .k-words { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  .k-words td { padding: 6px 8px; border-bottom: 1px solid var(--line); }
+  .k-words .kw-k { font-size: 1.25rem; font-weight: 700; color: var(--accent); white-space: nowrap; cursor: pointer; }
+  .k-words .kw-r { color: var(--muted); }
+  details.k-more { margin-top: 10px; }
+  details.k-more summary { cursor: pointer; color: var(--accent2); font-weight: 600; font-size: .9rem; }
+
+  .k-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
+  .k-act { text-align: left; border: 1px solid var(--line); border-radius: 12px; background: #fdfbf8; padding: 12px 14px; cursor: pointer; font-family: inherit; color: var(--ink); display: flex; flex-direction: column; gap: 2px; }
+  .k-act:hover { border-color: var(--accent2); background: var(--accent2-soft); }
+  .k-act b { font-size: 1rem; }
+  .k-act small { color: var(--muted); font-size: .8rem; }
+  .k-act.test { background: var(--unit-bg); color: #fff; border-color: transparent; }
+  .k-act.test small { color: #e8d9c8; }
+  .k-act.test:hover { filter: brightness(1.15); }
+
+  .kq-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fdfbf8; font-size: .9rem; }
+  .kq-top .pb-bar-track { flex: 1 1 120px; height: 8px; border-radius: 999px; background: #eee5d8; overflow: hidden; }
+  .kq-top .pb-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--accent2)); transition: width .3s ease; }
+  .kq-card { border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 16px; background: #fff; box-shadow: 0 2px 10px rgba(43,36,32,.06); }
+  .kq-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--accent2); margin-bottom: 8px; }
+  .kq-big { font-size: 4.2rem; line-height: 1.15; text-align: center; color: var(--accent); font-weight: 700; margin: 4px 0 8px; word-break: keep-all; }
+  .kq-big.sm { font-size: 2.6rem; }
+  .kq-big.rom { font-family: "Inter", sans-serif; font-size: 2.6rem; color: var(--ink); }
+  .kq-ask { text-align: center; color: var(--muted); margin-bottom: 12px; }
+  .kq-opts { justify-content: center; }
+  .kq-opts .opt { min-width: 76px; font-size: 1.05rem; padding: 10px 16px; }
+  .kq-opts .opt .kq-k { font-size: 1.7rem; font-weight: 700; line-height: 1.1; }
+  .kq-say { display: block; margin: 0 auto 10px; background: var(--accent2-soft); border: 1px solid #bfe0d6; border-radius: 999px; padding: 8px 18px; cursor: pointer; font-size: .95rem; color: var(--accent2); font-weight: 600; }
+  .kq-fb { margin-top: 14px; padding: 10px 14px; border-radius: 10px; font-size: .95rem; }
+  .kq-fb.ok { background: #e4f2ea; border: 1px solid #b9dccf; color: #14502c; }
+  .kq-fb.no { background: #fbe9e6; border: 1px solid #f0c4bd; color: #8a1f14; }
+  .kq-fb .kq-k { font-size: 1.2rem; font-weight: 700; }
+  .kq-tip { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 8px; }
+  .kq-card .q-row { justify-content: center; }
+  .kq-card input[type="text"] { width: 240px; font-size: 1.15rem; padding: 8px 12px; text-align: center; font-family: "Zen Maru Gothic", "Inter", sans-serif; border: 1px solid var(--line); border-radius: 8px; }
+  .kq-card input[type="text"]:focus { outline: 2px solid var(--accent2); }
+  .kq-card .check-btn, .kq-next { background: var(--accent2); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: .95rem; cursor: pointer; font-weight: 600; font-family: inherit; }
+  .kq-next { background: var(--unit-bg); border-radius: 999px; padding: 10px 24px; }
+  .kq-actions { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
+  .kq-match { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; max-width: 360px; margin: 0 auto; }
+  .kq-match .col { display: flex; flex-direction: column; gap: 8px; }
+  .kq-match .opt { text-align: center; font-size: 1.15rem; }
+  .kq-match .opt.sel { border-color: var(--accent2); background: var(--accent2-soft); }
+  .kq-match .opt.right { opacity: .55; }
+  .kq-match .opt.flash { background: #fbe0dc; border-color: var(--accent); }
+  .kq-tiles .tile { font-size: 1.4rem; }
+  .kq-tiles .tile-answer { justify-content: center; min-height: 54px; }
+  .kq-draw { text-align: center; }
+  .kq-draw .pad { text-align: left; }
+  .kq-grade { margin-top: 10px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .kq-grade button { border-radius: 999px; padding: 8px 16px; cursor: pointer; border: 1px solid var(--line); background: #fff; font-size: .9rem; font-family: inherit; }
+  .kq-grade .good { border-color: #1f6f3f; color: #14502c; background: #e4f2ea; }
+  .kq-grade .bad { border-color: var(--accent); color: #8a1f14; background: #fbe9e6; }
+
+  .k-sum { text-align: center; }
+  .k-sum .ks-score { font-size: 3rem; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .k-sum .ks-msg { color: var(--muted); margin-bottom: 14px; }
+  .k-miss { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0 16px; }
+  .k-miss span { border: 1px solid var(--line); border-radius: 10px; padding: 4px 12px; background: #fff; text-align: center; font-weight: 700; }
+  .k-miss span b { display: block; font-family: "Zen Maru Gothic", "Hiragino Sans", sans-serif; font-size: 1.6rem; color: var(--accent); line-height: 1.2; }
+
+  .chart-sec { margin-bottom: 22px; }
+  .chart-grid { display: grid; gap: 6px; max-width: 560px; }
+  .cc { border: 1px solid var(--line); border-radius: 10px; text-align: center; padding: 6px 2px 4px; background: #fff; cursor: pointer; font-family: inherit; color: var(--ink); }
+  .cc.e { visibility: hidden; }
+  .cc .cc-ch { display: block; font-size: 1.7rem; line-height: 1.15; font-weight: 700; color: var(--accent); }
+  .cc .cc-r { display: block; font-size: .75rem; color: var(--muted); }
+  .cc.l1 { background: #fff7dd; } .cc.l2 { background: #e4f2ea; } .cc.l3 { background: #c9e8d6; border-color: #7fbf9d; }
+  .legend { display: flex; gap: 10px; flex-wrap: wrap; font-size: .78rem; color: var(--muted); margin-bottom: 14px; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--line); vertical-align: -1px; margin-right: 4px; }
+
+  .pr-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 12px; }
+  .pr-chips button { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 5px 12px; cursor: pointer; font-size: .85rem; color: var(--ink); font-family: inherit; }
+  .pr-chips button.on { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+  .pr-row { margin-bottom: 14px; }
+  .pr-row label { font-weight: 600; font-size: .9rem; display: block; margin-bottom: 4px; }
+  .pr-row .hint { color: var(--muted); font-size: .8rem; }
+
+  @media (max-width: 640px) {
+    .kq-big { font-size: 3.4rem; }
+    .kq-card { padding: 14px 12px; }
+    .kana-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .kcard .kc-ch { font-size: 2.1rem; }
+    .kq-opts .opt { min-width: 64px; padding: 9px 12px; }
+    .chart-grid { gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-head">
+    <h1>あ ア Hiragana &amp; Katakana</h1>
+    <p>Read it · Write it · Memorize it</p>
+    <div class="badges">
+      <span>👀 Reading drills</span>
+      <span>✍️ Writing pad</span>
+      <span>🔊 Listening</span>
+      <span>💾 Progress saved</span>
+    </div>
+  </header>
+
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira" ><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>A1</b><small>18 units</small></a><span class="cs-soon" title="Coming soon"><b>A2</b><small>Soon</small></span></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+
+  <div class="profile-bar" id="profileBar"></div>
+
+  <div class="layout">
+  <aside class="sidebar">
+    <nav class="course-nav" id="courseNav"></nav>
+    <p class="progress-note" id="sideNote"></p>
+  </aside>
+  <main class="lecture" id="lecturePane">
+    <div class="lecture-placeholder"><span class="big">あ</span>Loading your progress…</div>
+  </main>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* =========================================================
+   DATABASE — same browser database as the other pages
+   (IndexedDB, with a localStorage mirror as fallback)
+   ========================================================= */
+const DB_NAME = 'japanese_a1_db', DB_STORE = 'kv', KEY = 'kana_progress', LS_KEY = 'ja_kana_v1';
+let dbP = null;
+function openDb() {
+  if (dbP) return dbP;
+  dbP = new Promise(function(res) {
+    if (!window.indexedDB) { res(null); return; }
+    let rq;
+    try { rq = indexedDB.open(DB_NAME, 1); } catch (e) { res(null); return; }
+    rq.onupgradeneeded = function() { if (!rq.result.objectStoreNames.contains(DB_STORE)) rq.result.createObjectStore(DB_STORE); };
+    rq.onsuccess = function() { res(rq.result); };
+    rq.onerror = rq.onblocked = function() { res(null); };
+  });
+  return dbP;
+}
+function dbGet(k) {
+  return openDb().then(function(db) { return new Promise(function(res) {
+    if (!db) { res(undefined); return; }
+    try { const r = db.transaction(DB_STORE, 'readonly').objectStore(DB_STORE).get(k); r.onsuccess = function() { res(r.result); }; r.onerror = function() { res(undefined); }; } catch (e) { res(undefined); }
+  }); });
+}
+function dbSet(k, v) {
+  return openDb().then(function(db) { return new Promise(function(res) {
+    if (!db) { res(false); return; }
+    try { const tx = db.transaction(DB_STORE, 'readwrite'); tx.objectStore(DB_STORE).put(v, k); tx.oncomplete = function() { res(true); }; tx.onerror = tx.onabort = function() { res(false); }; } catch (e) { res(false); }
+  }); });
+}
+
+/* =========================================================
+   KANA DATA — one table drives hiragana and katakana
+   ========================================================= */
+const LDEF = [
+  { t: 'Vowels', c: 'あ a|い i|う u|え e|お o', g: 'Basic' },
+  { t: 'K-row', c: 'か ka|き ki|く ku|け ke|こ ko' },
+  { t: 'S-row', c: 'さ sa|し shi|す su|せ se|そ so' },
+  { t: 'T-row', c: 'た ta|ち chi|つ tsu|て te|と to' },
+  { t: 'N-row', c: 'な na|に ni|ぬ nu|ね ne|の no' },
+  { t: 'H-row', c: 'は ha|ひ hi|ふ fu|へ he|ほ ho' },
+  { t: 'M-row', c: 'ま ma|み mi|む mu|め me|も mo' },
+  { t: 'Y-row', c: 'や ya|ゆ yu|よ yo', lay: [[0, -1, 1, -1, 2]] },
+  { t: 'R-row', c: 'ら ra|り ri|る ru|れ re|ろ ro' },
+  { t: 'W-row & ん', c: 'わ wa|を wo/o|ん n', lay: [[0, -1, -1, -1, 1], [2]] },
+  { t: 'Dakuten: G & Z', c: 'が ga|ぎ gi|ぐ gu|げ ge|ご go|ざ za|じ ji|ず zu|ぜ ze|ぞ zo', g: 'Dakuten & handakuten' },
+  { t: 'Dakuten: D & B', c: 'だ da|ぢ ji/di|づ zu/du|で de|ど do|ば ba|び bi|ぶ bu|べ be|ぼ bo' },
+  { t: 'Handakuten: P', c: 'ぱ pa|ぴ pi|ぷ pu|ぺ pe|ぽ po' },
+  { t: 'Combos 1: K · SH · CH', c: 'きゃ kya|きゅ kyu|きょ kyo|しゃ sha|しゅ shu|しょ sho|ちゃ cha|ちゅ chu|ちょ cho', cols: 3, g: 'Combinations (yōon)' },
+  { t: 'Combos 2: N · H · M · R', c: 'にゃ nya|にゅ nyu|にょ nyo|ひゃ hya|ひゅ hyu|ひょ hyo|みゃ mya|みゅ myu|みょ myo|りゃ rya|りゅ ryu|りょ ryo', cols: 3 },
+  { t: 'Combos 3: G · J · B · P', c: 'ぎゃ gya|ぎゅ gyu|ぎょ gyo|じゃ ja|じゅ ju|じょ jo|びゃ bya|びゅ byu|びょ byo|ぴゃ pya|ぴゅ pyu|ぴょ pyo', cols: 3 },
+  { t: 'Small っ & long sounds', c: '', g: 'Special sounds' },
+  { t: 'Foreign sounds', c: 'ふぁ fa|ふぃ fi|ふぇ fe|ふぉ fo|てぃ ti/thi|でぃ di/dhi|うぃ wi|うぇ we|うぉ wo/who|しぇ she|ちぇ che|じぇ je|ゔ vu', cols: 3, kata: true }
+];
+const NOTES = {
+  hira: [
+    'Japanese has just five pure vowels, and they never change: <b>a</b> as in "father", <b>i</b> as in "machine", <b>u</b> as in "flu", <b>e</b> as in "pet", <b>o</b> as in "or". Hiragana is the main script for native Japanese words and grammar.',
+    'Every K sound is a consonant + vowel. Look out: <b>か</b> and <b>き</b> can feel alike at first — <b>き</b> has the extra bar at the bottom.',
+    '<b>し</b> is read <b>shi</b> (not "si"). Watch out for <b>さ</b> vs <b>ち</b> — they are mirror-like in places.',
+    'Two irregular readings: <b>ち = chi</b> and <b>つ = tsu</b> (not "ti" / "tu"). <b>し</b> and <b>つ</b> look alike — <b>し</b> is a hook, <b>つ</b> is a wave.',
+    '<b>ぬ</b> and <b>め</b> are easy to mix up: ぬ has a loop at the end, め does not. <b>ね</b> / <b>れ</b> / <b>わ</b> are also look-alikes.',
+    '<b>ふ = fu</b> (between "hu" and "fu"). The particle <b>は</b> is read <b>wa</b> and <b>へ</b> is read <b>e</b> when they mark topic / direction. <b>は</b> vs <b>ほ</b> vs <b>ま</b>: look at the extra stroke.',
+    '<b>み</b> looks like a "21". <b>む</b> has a little loop at the end. <b>め</b> is like <b>ぬ</b> without the loop.',
+    'Only three: ya, yu, yo (ye and yi no longer exist). They return as the small ゃ ゅ ょ in combinations.',
+    'The Japanese R is a light tap, somewhere between English R, L and D. <b>る</b> vs <b>ろ</b>: る has the loop.',
+    '<b>を</b> (wo) is only used as the object particle and is pronounced <b>o</b>. <b>ん</b> is the only kana that is a lone consonant (n/m/ng). Before a vowel it is written <b>n\'</b> in romaji.',
+    '<b>Dakuten</b> (゛, two little dashes) makes the sound voiced: k→g, s→z, t→d, h→b. し→<b>じ ji</b>. Also remember: <b>さ→ざ</b>, but keep the original shape.',
+    '<b>ぢ</b> and <b>づ</b> sound exactly like じ and ず and are rare (e.g. はなぢ "nosebleed"). Handakuten comes next.',
+    '<b>Handakuten</b> (゜, a small circle) turns the H-row into the P-row: ha → <b>pa</b>. Only the H-row can take it.',
+    '<b>Combos (yōon)</b>: an <b>i</b>-ending kana + small <b>ゃ ゅ ょ</b> = one syllable: き + ゃ = <b>kya</b>. The small kana are written smaller, at the lower right. Don\'t confuse <b>きや</b> (ki-ya, two beats) and <b>きゃ</b> (kya, one beat).',
+    'Same rule for the rest: に+ゃ = nya, ひ+ゅ = hyu, み+ょ = myo, り+ゃ = rya.',
+    'Voiced combos: ぎゃ gya, <b>じゃ ja</b>, びゃ bya, ぴゃ pya. Note <b>じゃ じゅ じょ</b> are ja / ju / jo (not "jya").',
+    'The <b>small っ</b> doubles the next consonant: きって = <b>kitte</b>, がっこう = <b>gakkou</b>. Long vowels last two beats: おかあさん <b>okaasan</b>, おにいさん <b>oniisan</b>, とうきょう <b>toukyou</b> (the o-sound is lengthened with う, ええ, えい).'
+  ],
+  kata: [
+    'Katakana has exactly the same sounds as hiragana, with sharper, straighter strokes. It is used for <b>foreign loanwords</b>, foreign names, sound effects and emphasis (e.g. コーヒー "coffee").',
+    'The <b>long-vowel mark ー</b> is used all the time in katakana: ケーキ <b>kēki</b> = "cake". It stretches the previous vowel for one extra beat. Watch <b>カ</b> vs <b>力</b> (kanji) — カ is smaller.',
+    '<b>シ shi</b> vs <b>ツ tsu</b> and <b>ソ so</b> vs <b>ン n</b> are the classic confusions: シ / ン have <i>horizontal</i> strokes (the two dots lie sideways), ツ / ソ have <i>vertical</i> ones (dots stand upright).',
+    '<b>チ = chi</b>, <b>ツ = tsu</b>. <b>テ</b> and <b>チ</b> look a bit alike: テ has two flat lines on top.',
+    '<b>ナ</b> vs <b>メ</b> and <b>ヌ</b> vs <b>ス</b> are look-alikes. <b>ニ</b> is just two lines (like a 2).',
+    '<b>フ = fu</b>. <b>ヘ</b> looks exactly like hiragana へ. <b>ヒ</b> vs <b>セ</b> vs <b>ヒ</b>: ヒ is plain, セ has a hook.',
+    '<b>ミ</b> is three lines (like a 3). <b>ム</b> is a simple triangle hook.',
+    'Only three: ヤ ya, ユ yu, ヨ yo. ユ and コ are easy to swap.',
+    '<b>ラ</b> vs <b>フ</b>: ラ has the extra stroke on top. <b>ル</b> and <b>レ</b> are simple strokes.',
+    '<b>ヲ</b> is rarely used in modern Japanese. <b>ン</b> n — compare with ソ: ン strokes lie horizontally and rise to the right.',
+    'Katakana also takes <b>dakuten</b> (゛): カ→<b>ガ</b>, サ→<b>ザ</b>, タ→<b>ダ</b>, ハ→<b>バ</b>. Note ジ and ズ are the usual spellings for ji / zu.',
+    'ヂ and ヅ are very rare in katakana. Common loanwords here: ビール "beer", ドア "door", デパート "department store".',
+    'The P-row uses <b>handakuten</b> (゜): パン <b>pan</b> "bread", ピアノ <b>piano</b>, ペン <b>pen</b>.',
+    'Combos: キ + small ャ = <b>キャ kya</b>. シャツ <b>shatsu</b> "shirt", チョコ <b>choko</b> "chocolate".',
+    'ニュース <b>nyūsu</b> "news", ヒューマン, ミュージック "music", リュック "rucksack" — typical combo words.',
+    'ジュース <b>jūsu</b> "juice", ビョン… common in loanwords: ギャグ "gag", ジャケット "jacket".',
+    'The <b>small ッ</b> doubles the consonant: ベッド <b>beddo</b> "bed", コップ <b>koppu</b> "cup". The long mark <b>ー</b> lengthens vowels: ビール <b>bīru</b>.',
+    '<b>Foreign sounds</b> are made with a small vowel after an ordinary kana: <b>ファ fa</b>, <b>ティ ti</b>, <b>ウィ wi</b>, <b>シェ she</b>, <b>ヴ vu</b>. They let Japanese write sounds it never had: パーティー "party", ファイル "file". Typing tip: ティ = <b>thi</b>, ディ = <b>dhi</b>, ウォ = <b>who</b>.'
+  ]
+};
+/* memory hooks, keyed by the hiragana form */
+const MN_H = { 'あ': 'Looks like an apple with a stem — "ah!"', 'い': 'Two eels (ii) side by side', 'う': 'A tongue sticking out: "uuu"', 'え': 'An exotic bird with wings spread', 'お': 'A surprised "oh!" face with arms up',
+  'か': 'A KArate chop (the left hook) with a drop', 'き': 'A KEY with two teeth', 'く': 'A bird\'s beak: "ku-ku" (cuckoo)', 'け': 'A KEG with a tap', 'こ': 'Two lines like a CO-rd, "ko-ko"',
+  'さ': 'A SAmurai bowing', 'し': 'A fishing hook — SHE fishes', 'す': 'SUshi on a skewer, a swinging loop', 'せ': 'A SEa-saw', 'そ': 'A zigzag thread being SEWn',
+  'た': 'Looks like "ta" in "ta-ble" with a cross', 'ち': 'A CHeerleader with arms out', 'つ': 'A TSUnami wave', 'て': 'A TEa-bag on its string (te = hand)', 'と': 'A TOe with a thorn stuck in it',
+  'な': 'A NAil and a praying nun', 'に': 'A Knee and shin — "ni"', 'ぬ': 'NUdle with a loop and chopsticks', 'ね': 'A NEko (cat) with a curled tail', 'の': 'A NO sign — a swirl',
+  'は': 'A person laughing: HA ha', 'ひ': 'A smiling mouth, "hee hee"', 'ふ': 'Mount FUji with clouds', 'へ': 'A HEllo hill — also the particle "e"', 'ほ': 'Like は + an extra line: HO ho ho',
+  'ま': 'MAma — a long dress with a bow', 'み': 'Looks like a "21": mi', 'む': 'A cow\'s MOO, with a tail loop', 'め': 'An eye (ME)', 'も': 'MOre worms on the hook',
+  'や': 'A YAk with horns', 'ゆ': 'A YUmmy fish in a circle', 'よ': 'A YOga pose',
+  'ら': 'A RAbbit with ears', 'り': 'Two reeds by the RIver', 'る': 'A path ending in a loop: RUn', 'れ': 'A dog REtriever sitting', 'ろ': 'A ROad that winds',
+  'わ': 'A WAltz dancer spinning', 'を': 'Someone shouting "WO!" — particle only', 'ん': 'Just a lowercase "n"' };
+const MN_K = { 'あ': 'An AXe', 'い': 'An Eel on a hook (two strokes)', 'う': 'A hat on top: Udon bowl with a lid', 'え': 'An Elevator shaft / crane', 'お': 'An Oar in the water',
+  'か': 'A KArate chop', 'き': 'A KEY with three teeth', 'く': 'A cuckoo\'s beak — like <', 'け': 'A KEg of beer with a tap', 'こ': 'A COrner — two lines',
+  'さ': 'A SAW with three teeth', 'し': 'Two dots + a sweep: SHEEP\'s eyes (lies sideways)', 'す': 'SUperman cape', 'せ': 'A SEat with a back', 'そ': 'A zigzag: SO long (dots stand upright)',
+  'た': 'A TAxi sign', 'ち': 'A slice of CHEESE', 'つ': 'Three raindrops falling: TSUnami (upright dots)', 'て': 'A TEnt with two flaps', 'と': 'A TOtem pole',
+  'な': 'A NAil with a cross', 'に': 'Two lines, a 2: NI', 'ぬ': 'NOodles in a bowl', 'ね': 'A NET with a pole', 'の': 'A slash: NO entry',
+  'は': 'A roof: HAt', 'ひ': 'A smile in profile: HEE', 'ふ': 'A FOOt kicking', 'へ': 'Same as hiragana へ', 'ほ': 'A HOrse: a cross with a base',
+  'ま': 'A MAsk — a triangle face', 'み': 'Three lines: a 3 = MI', 'む': 'A MOO cow with a tail', 'め': 'A cross-eyed X: ME', 'も': 'A MOp with a handle',
+  'や': 'A YAcht sail', 'ゆ': 'A U-shaped bracket: YU', 'よ': 'A YO-yo with three stripes',
+  'ら': 'A RAmen bowl with a lid', 'り': 'Two reeds again', 'る': 'RUnning legs', 'れ': 'A REst — a check mark', 'ろ': 'A square ROom',
+  'わ': 'A WAter jug', 'を': 'Rare — like ヲ "WO"', 'ん': 'Strokes rise to the right; compare with ソ' };
+
+/* look-alike groups (hiragana form), used to build tricky multiple-choice options */
+const SIMG = ['あおぬめ', 'いり', 'うつ', 'さちき', 'しつも', 'ぬめねれわ', 'はほま', 'るろ', 'こに', 'ふぷ', 'らち', 'けはに', 'すむ', 'ゆや', 'ろる', 'よま', 'そぞん', 'ひし', 'たにな', 'ぬの'];
+const SIMK = ['シツソン', 'クケタ', 'ワウフ', 'コユ', 'チテ', 'ナメ', 'スヌ', 'ノメ', 'マムセ', 'ヒセ', 'ラフ', 'リソ', 'ヤマ', 'ヘヒ', 'ホオ', 'ニミ', 'アマ', 'エユ', 'トナ'];
+
+const MAC = { a: 'ā', i: 'ī', u: 'ū', e: 'ē', o: 'ō' };
+function toKata(s) { return s.replace(/[ぁ-ゖ]/g, function(c) { return String.fromCharCode(c.charCodeAt(0) + 0x60); }); }
+function toHira(s) { return s.replace(/[ァ-ヶ]/g, function(c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); }); }
+
+/* ---- build lessons for both scripts ---- */
+const LESSONS = { hira: [], kata: [] };
+const UM = {};              // kana string -> {r, l, ch}
+LDEF.forEach(function(d, i) {
+  ['hira', 'kata'].forEach(function(script) {
+    if (d.kata && script === 'hira') return;
+    const chars = d.c ? d.c.split('|').map(function(x) {
+      const p = x.split(' '), rr = p[1].split('/');
+      return { k: script === 'kata' ? toKata(p[0]) : p[0], h: p[0], r: rr[0], alts: rr.slice(1), lesson: i, script: script,
+               rare: /[ぢづ]/.test(p[0]), notype: !!d.kata };
+    }) : [];
+    LESSONS[script].push({ i: i, title: d.t, chars: chars, lay: d.lay || null, cols: d.cols || 5, group: d.g || null,
+      note: NOTES[script][i] || '', words: [] });
+  });
+});
+LESSONS.kata.forEach(function(L) { L.chars.forEach(function(c) { UM[c.k] = { r: c.r, l: c.lesson, ch: c }; }); });
+LESSONS.hira.forEach(function(L) { L.chars.forEach(function(c) { UM[c.k] = { r: c.r, l: c.lesson, ch: c }; }); });
+LESSONS.kata[17].chars.forEach(function(c) { UM[c.h] = { r: c.r, l: 17, ch: c }; });
+UM['っ'] = UM['ッ'] = { r: '', l: 16, sp: 'sok' };
+UM['ー'] = { r: '', l: 1, sp: 'long' };
+const CHAR_BY_KEY = {};
+['hira', 'kata'].forEach(function(s) { LESSONS[s].forEach(function(L) { L.chars.forEach(function(c) { CHAR_BY_KEY[s + ':' + c.k] = c; }); }); });
+
+/* ---- look-alike lookup ---- */
+const SIM = {};
+function addSim(g) { for (let a = 0; a < g.length; a++) { SIM[g[a]] = SIM[g[a]] || {}; for (let b = 0; b < g.length; b++) if (a !== b) SIM[g[a]][g[b]] = 1; } }
+SIMG.forEach(function(g) { addSim(g); addSim(toKata(g)); });
+SIMK.forEach(addSim);
+function baseOf(c) { return c.normalize('NFD')[0]; }
+function simOf(ch, pool) {
+  return pool.filter(function(c) {
+    if (c === ch) return false;
+    if (SIM[ch.k] && SIM[ch.k][c.k]) return true;
+    if (ch.k.length === 1 && c.k.length === 1 && baseOf(ch.k) === baseOf(c.k)) return true;
+    return false;
+  });
+}
+
+/* ---- parsing & converting ---- */
+function parseUnits(s) {
+  const out = []; let i = 0;
+  while (i < s.length) {
+    const two = s.substr(i, 2), one = s[i];
+    if (two.length === 2 && UM[two]) { out.push({ k: two, r: UM[two].r, l: UM[two].l, sp: UM[two].sp }); i += 2; }
+    else if (UM[one]) { out.push({ k: one, r: UM[one].r, l: UM[one].l, sp: UM[one].sp }); i++; }
+    else { out.push({ k: one, r: one, l: null }); i++; }
+  }
+  return out;
+}
+function kanaToRom(s, macron) {
+  const u = parseUnits(s), out = []; let gem = false;
+  for (let j = 0; j < u.length; j++) {
+    const x = u[j];
+    if (x.sp === 'sok') { gem = true; continue; }
+    if (x.sp === 'long') {
+      if (!out.length) continue;
+      const prev = out[out.length - 1];
+      out[out.length - 1] = macron ? prev.replace(/([aiueo])$/, function(m) { return MAC[m]; }) : prev + prev.slice(-1);
+      continue;
+    }
+    let r = x.r;
+    if (x.k === 'ん' || x.k === 'ン') { const nx = u[j + 1]; r = (nx && nx.r && /^[aiueoy]/.test(nx.r)) ? "n'" : 'n'; }
+    if (gem && r) { r = (r.indexOf('ch') === 0 ? 't' : r[0]) + r; gem = false; }
+    out.push(r);
+  }
+  return out.join('');
+}
+/* typing table: romaji -> hiragana */
+const RT = {};
+LESSONS.hira.concat([LESSONS.kata[17]]).forEach(function(L) {
+  L.chars.forEach(function(c) {
+    if (c.rare) { RT[c.alts[0]] = c.h; return; }
+    if (RT[c.r] === undefined) RT[c.r] = c.h;
+    if (c.notype) c.alts.forEach(function(a) { if (RT[a] === undefined) RT[a] = c.h; });
+  });
+});
+['si:し', 'ti:ち', 'tu:つ', 'hu:ふ', 'zi:じ', 'sya:しゃ', 'syu:しゅ', 'syo:しょ', 'tya:ちゃ', 'tyu:ちゅ', 'tyo:ちょ', 'cya:ちゃ', 'cyu:ちゅ', 'cyo:ちょ',
+ 'zya:じゃ', 'zyu:じゅ', 'zyo:じょ', 'jya:じゃ', 'jyu:じゅ', 'jyo:じょ', 'xtu:っ', 'ltu:っ', 'xya:ゃ', 'xyu:ゅ', 'xyo:ょ', 'xa:ぁ', 'xi:ぃ', 'xu:ぅ', 'xe:ぇ', 'xo:ぉ',
+ 'va:ゔぁ', 'vi:ゔぃ', 've:ゔぇ', 'vo:ゔぉ', 'nya:にゃ', 'whi:うぃ', 'wha:うぁ', 'tsa:つぁ'].forEach(function(x) { const p = x.split(':'); if (RT[p[0]] === undefined) RT[p[0]] = p[1]; });
+RT['-'] = 'ー';
+function romajiToKana(str, script, final) {
+  const s = str.toLowerCase().replace(/ā/g, 'aa').replace(/ī/g, 'ii').replace(/ū/g, 'uu').replace(/ē/g, 'ee').replace(/ō/g, 'oo');
+  let out = '', i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (!/[a-z'\-]/.test(c)) { out += c; i++; continue; }
+    if (c === '-') { out += 'ー'; i++; continue; }
+    if (c === "'") { i++; continue; }
+    if (i + 1 < s.length && c === s[i + 1] && 'bcdfghjklmpqrstvwxyz'.indexOf(c) >= 0) { out += 'っ'; i++; continue; }
+    if (c === 'n') {
+      const nx = s[i + 1];
+      if (nx === undefined) { if (final) { out += 'ん'; } else { out += c; } i++; continue; }
+      if (nx === 'n') { if ('aiueoy'.indexOf(s[i + 2] || '') >= 0 && s[i + 2]) { out += 'ん'; i++; } else { out += 'ん'; i += 2; } continue; }
+      if (nx === "'") { out += 'ん'; i += 2; continue; }
+      if ('aiueoy'.indexOf(nx) < 0) { out += 'ん'; i++; continue; }
+    }
+    let m = null;
+    for (let L = 3; L >= 1; L--) { const t = s.substr(i, L); if (t.length === L && RT[t] !== undefined) { m = t; break; } }
+    if (m) { out += RT[m]; i += m.length; continue; }
+    out += c; i++;
+  }
+  return script === 'kata' ? toKata(out) : out;
+}
+function canonRom(s) {
+  const k = toHira(romajiToKana(s.replace(/[\s'’]/g, ''), 'hira', true));
+  return kanaToRom(k, false).replace(/ti/g, 'chi').replace(/di/g, 'ji').replace(/([aeiou])\1+/g, '$1').replace(/ou/g, 'o');
+}
+
+const VOW = { a: 'あ', i: 'い', u: 'う', e: 'え', o: 'お' };
+function normW(s) { return toHira(s.replace(/\s/g, '')).replace(/ぢ|でぃ/g, 'じ').replace(/づ/g, 'ず').replace(/てぃ/g, 'ち'); }
+function expandLong(s) {
+  let out = '';
+  parseUnits(toHira(s)).forEach(function(u) {
+    if (u.sp === 'long') { const m = /([aiueo])$/.exec(kanaToRom(out.slice(-2), false) || kanaToRom(out.slice(-1), false)); out += m ? VOW[m[1]] : 'ー'; }
+    else out += u.k;
+  });
+  return out;
+}
+function sameWord(v, k) { return normW(v) === normW(k) || normW(expandLong(v)) === normW(expandLong(k)); }
+
+/* ---- vocabulary (romaji is generated from the kana) ---- */
+const WORDS_H = [
+'あい|love','いえ|house','うえ|above, up','あお|blue','いいえ|no','あう|to meet','ええ|yes','いう|to say','おおい|many',
+'かお|face','あき|autumn','いけ|pond','こえ|voice','かき|persimmon','きく|to listen','あかい|red','えき|station','かく|to write','ここ|here','いく|to go','くうき|air','おおきい|big','けいかく|plan','こい|carp',
+'さけ|sake','すし|sushi','せかい|world','あし|foot, leg','しお|salt','いす|chair','そこ|there','すき|to like','さかな|fish','かさ|umbrella','あさ|morning','うし|cow','すいか|watermelon','いし|stone','せき|seat','しかく|square','すこし|a little',
+'たこ|octopus','て|hand','とけい|clock','くち|mouth','つき|moon','たかい|tall, expensive','ちかい|near','つくえ|desk','あした|tomorrow','うた|song','きた|north','いと|thread','おとこ|man','そと|outside','たいこ|drum','ちち|(my) father','すてき|wonderful','いつ|when',
+'なつ|summer','ねこ|cat','にく|meat','いぬ|dog','なに|what','なし|pear','かたな|sword','ぬの|cloth','きのこ|mushroom','おなか|stomach','あなた|you','ねつ|fever','にし|west','なか|inside','ことし|this year','にこにこ|smiling','おとな|adult',
+'はな|flower','ひと|person','ふね|ship','へや|room','ほし|star','はし|chopsticks','はこ|box','ひこうき|airplane','へそ|navel','はは|(my) mother','ほとけ|Buddha','ふく|clothes','ひくい|low','はくさい|Chinese cabbage','へた|poor at','ほか|other','はいく|haiku',
+'みず|water','まど|window','むし|insect','め|eye','もも|peach','みみ|ear','あめ|rain','くも|cloud','まめ|bean','みせ|shop','かめ|turtle','いも|potato','うま|horse','うみ|sea','うめ|plum','むね|chest','みち|road','まち|town','まつ|pine tree','むすめ|daughter','はみがき|tooth brushing',
+'やま|mountain','ゆき|snow','よる|night','やさい|vegetable','ゆめ|dream','よこ|side','ゆか|floor','やおや|greengrocer','やすみ|holiday','やすい|cheap','よむ|to read','やくそく|promise','ゆうめい|famous','やきとり|grilled chicken',
+'さくら|cherry blossom','いろ|colour','るす|absence','れきし|history','ろく|six','とり|bird','くるま|car','そら|sky','かれ|he','さる|monkey','りす|squirrel','ありがとう|thank you','おもしろい|interesting','うれしい|happy','たのしい|fun','ほしい|to want','あらう|to wash','くろい|black','しろい|white','ひる|noon','はる|spring','ふゆ|winter','ほめる|to praise','ひかり|light',
+'わたし|I, me','にほん|Japan','みかん|mandarin orange','わに|crocodile','おんな|woman','せんせい|teacher','ほんや|bookstore','わかる|to understand','おはよう|good morning','すみません|excuse me','こんにちは|hello','さようなら|goodbye','ほん|book','りんご|apple','ほんとう|really','おかあさん|mother|16',
+'ぎんこう|bank','ごはん|rice, meal','かぎ|key','ぞう|elephant','かぜ|wind, a cold','すずめ|sparrow','かがみ|mirror','じかん|time','ひざ|knee','ちず|map','ひげ|beard','かご|basket','たまご|egg','かんじ|kanji','ごご|afternoon','かぞく|family','おにぎり|rice ball','ざる|colander','まじめ|serious',
+'でんわ|telephone','ともだち|friend','どこ|where','だれ|who','おとうと|younger brother','からだ|body','かばん|bag','くだもの|fruit','たべる|to eat','ぶた|pig','ほんだな|bookshelf','ばら|rose','たばこ|tobacco','おでん|oden','はなぢ|nosebleed','こづつみ|parcel','だいどころ|kitchen','どうぶつ|animal','ぼうし|hat','ぼく|I (male)','だいがく|university','うどん|udon','こんばんは|good evening','ぜんぶ|all',
+'てんぷら|tempura','ぷりん|pudding','えんぴつ|pencil','ぺらぺら|fluent','ぴかぴか|shiny','さんぽ|a walk','ぽかぽか|nice and warm','しんぱい|worry','ぱちぱち|clapping','ぴんぽん|ding-dong',
+'きょう|today','しゃしん|photo','おちゃ|tea','きゃく|guest','しゅくだい|homework','きょねん|last year','しょくじ|meal','しゃかい|society','ちゅうごく|China','しゅみ|hobby','おしゃれ|stylish','ちゃわん|rice bowl','こうちゃ|black tea','しょうがつ|New Year','いしゃ|doctor','かいしゃ|company','きょく|piece of music','ちょうど|exactly',
+'ひゃく|hundred','りょこう|trip','りょうり|cooking','みょうじ|family name','りゅう|dragon','ひょう|chart','ひゃくえん|100 yen','りょかん|Japanese inn','りゅうがく|study abroad',
+'ぎゅうにゅう|milk','びょういん|hospital','びょうき|illness','じゅう|ten','じょうず|skilled','きんぎょ|goldfish','しょうゆ|soy sauce','じゃがいも|potato','ごじゅう|fifty','さんびゃく|three hundred','じゅうしょ|address','じゅぎょう|class','ぎょうざ|gyoza',
+'がっこう|school','きっぷ|ticket','ざっし|magazine','ちょっと|a little','ずっと|all along','おっと|husband','にっき|diary','きって|stamp','いっぱい|full','とっても|very','さっき|a moment ago','せっけん|soap','ほっかいどう|Hokkaido','ひっこし|moving house','いっしょ|together','けっこん|marriage','ぶっか|prices',
+'おとうさん|father','おにいさん|older brother','おねえさん|older sister','おじいさん|grandfather','おばあさん|grandmother','とうきょう|Tokyo','きょうと|Kyoto','おおさか|Osaka','ありがとうございます|thank you very much','ちいさい|small','ゆうびんきょく|post office','ゆうえんち|amusement park'
+].join('\n').replace(/\|16$/gm, '|16');
+const WORDS_K = [
+'ココア|cocoa','アイス|ice','スイス|Switzerland','タイ|Thailand','ケーキ|cake','ケース|case','コース|course','スキー|skiing','カメラ|camera','ホテル|hotel','タクシー|taxi','アメリカ|America','ペン|pen','ノート|notebook','テスト|test','バス|bus','ドア|door','ラジオ|radio','テレビ|television','スーパー|supermarket',
+'コーヒー|coffee','ビール|beer','パン|bread','メニュー|menu','レストラン|restaurant','ギター|guitar','ピアノ|piano','サッカー|soccer','テニス|tennis','スポーツ|sports','コンピューター|computer','ジュース|juice','ミルク|milk','アイスクリーム|ice cream','ハンバーガー|hamburger','ピザ|pizza','サラダ|salad','チーズ|cheese','トマト|tomato','バナナ|banana','レモン|lemon','オレンジ|orange','カレー|curry','ラーメン|ramen','スープ|soup',
+'タオル|towel','ナイフ|knife','スプーン|spoon','ポスト|mailbox','トイレ|toilet','エレベーター|elevator','カナダ|Canada','イギリス|England','フランス|France','ドイツ|Germany','ロシア|Russia','インド|India','メキシコ|Mexico','オーストラリア|Australia','ニュース|news','メール|email','インターネット|internet','ゲーム|game',
+'シャツ|shirt','ジャケット|jacket','チョコレート|chocolate','シャワー|shower','キャベツ|cabbage','ビデオ|video','ガソリン|gasoline','ステーキ|steak','ハム|ham','エアコン|air conditioner','コンビニ|convenience store','アパート|apartment','マンション|condominium','デパート|department store','ドライブ|drive','テーブル|table','ソファー|sofa','セーター|sweater','スカート|skirt','ズボン|trousers','ネクタイ|necktie','ジーンズ|jeans','ボタン|button','ボールペン|ballpoint pen','カード|card','プレゼント|present','パソコン|PC','スマホ|smartphone',
+'ベッド|bed','コップ|cup','カップ|cup (of)','ストップ|stop','バッグ|bag','ケチャップ|ketchup','ホットドッグ|hot dog','チケット|ticket','ラケット|racket','ヨーロッパ|Europe','アジア|Asia','アフリカ|Africa','ブラジル|Brazil','スペイン|Spain','イタリア|Italy','トルコ|Turkey','ギリシャ|Greece','エジプト|Egypt','ニューヨーク|New York','ロンドン|London','パリ|Paris','ベルリン|Berlin',
+'パーティー|party','ファイル|file','フォーク|fork','ウェブ|web','ティッシュ|tissue','ディスク|disk','チェック|check','シェア|share','フィルム|film','ウイスキー|whisky','ジェット|jet'
+].join('\n');
+const WORDS = { hira: [], kata: [] };
+function buildWords(txt, script) {
+  return txt.split('\n').map(function(line) {
+    const p = line.split('|'), units = parseUnits(p[0]);
+    if (units.some(function(u) { return u.l == null; })) { console.warn('unknown char in word', p[0]); return null; }
+    const req = Math.max.apply(null, units.map(function(u) { return u.l; }).concat([p[2] ? +p[2] : 0]));
+    if (script === 'hira' && req > 16) return null;
+    return { k: p[0], en: p[1], units: units, req: req, rom: kanaToRom(p[0], true), script: script };
+  }).filter(Boolean);
+}
+WORDS.hira = buildWords(WORDS_H, 'hira');
+WORDS.kata = buildWords(WORDS_K, 'kata');
+['hira', 'kata'].forEach(function(s) { WORDS[s].forEach(function(w) { const L = LESSONS[s][w.req]; if (L) L.words.push(w); }); });
+
+/* =========================================================
+   STATE, PROGRESS
+   ========================================================= */
+let progress = { mastery: { hira: {}, kata: {} }, lessons: {}, view: { script: 'hira', t: 'lesson', i: 0 }, stats: { speed: {} } };
+let userName = '';
+let ST = { script: 'hira', t: 'lesson', i: 0 };   // current view
+let SES = null;                                    // running session
+let timerId = null;
+let saveT = null;
+const PR = { sel: {}, type: 'mixed', n: 20, weak: false };
+
+function normalizeProgress(p) {
+  const d = { mastery: { hira: {}, kata: {} }, lessons: {}, view: { script: 'hira', t: 'lesson', i: 0 }, stats: { speed: {} } };
+  if (!p || typeof p !== 'object') return d;
+  if (p.mastery) { d.mastery.hira = p.mastery.hira || {}; d.mastery.kata = p.mastery.kata || {}; }
+  d.lessons = p.lessons || {};
+  d.view = p.view || d.view;
+  d.stats = p.stats || d.stats; d.stats.speed = d.stats.speed || {};
+  return d;
+}
+function scheduleSave() {
+  setBadge('saving');
+  clearTimeout(saveT);
+  saveT = setTimeout(saveNow, 350);
+}
+function saveNow() {
+  clearTimeout(saveT);
+  progress.view = { script: ST.script, t: ST.t === 'session' ? 'lesson' : ST.t, i: ST.i };
+  try { localStorage.setItem(LS_KEY, JSON.stringify(progress)); } catch (e) {}
+  return dbSet(KEY, progress).then(function(ok) { setBadge(ok ? 'saved' : 'local'); });
+}
+window.addEventListener('pagehide', saveNow);
+document.addEventListener('visibilitychange', function() { if (document.hidden) saveNow(); });
+function setBadge(m) {
+  const b = document.getElementById('pbSave'); if (!b) return;
+  b.textContent = m === 'saving' ? '… saving' : m === 'local' ? '💾 saved in this browser' : '💾 saved';
+}
+function mget(script, k) { return progress.mastery[script][k] || { ok: 0, bad: 0 }; }
+function lvl(m) { if (!m.ok) return 0; const s = m.ok - m.bad; return s >= 6 ? 3 : s >= 3 ? 2 : 1; }
+function isWeak(script, k) { const m = mget(script, k); return m.bad > 0 && lvl(m) < 2; }
+function record(script, k, ok) {
+  const m = progress.mastery[script][k] || (progress.mastery[script][k] = { ok: 0, bad: 0 });
+  if (ok) m.ok++; else m.bad++;
+  m.t = Date.now();
+  scheduleSave();
+}
+function lessonLevel(script, L) {
+  if (!L.chars.length) { const r = progress.lessons[script + L.i]; return r && r.done ? 1 : 0; }
+  let s = 0; L.chars.forEach(function(c) { s += lvl(mget(script, c.k)); });
+  return s / (L.chars.length * 3);
+}
+function overall(script) {
+  let learned = 0, total = 0;
+  LESSONS[script].forEach(function(L) { L.chars.forEach(function(c) { if (c.rare) return; total++; if (lvl(mget(script, c.k)) >= 2) learned++; }); });
+  return { learned: learned, total: total };
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+const $ = function(s, r) { return (r || document).querySelector(s); };
+function esc(s) { return String(s).replace(/[&<>"]/g, function(c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function rnd(n) { return Math.floor(Math.random() * n); }
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+const canSpeak = 'speechSynthesis' in window;
+function speak(t) {
+  if (!canSpeak) return;
+  try {
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(t); u.lang = 'ja-JP'; u.rate = 0.8;
+    const v = speechSynthesis.getVoices().filter(function(v) { return /^ja/i.test(v.lang); })[0];
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function stars(m) { const l = lvl(m); return '★★★'.slice(0, l) + '☆☆☆'.slice(0, 3 - l); }
+function sName(s) { return s === 'hira' ? 'Hiragana' : 'Katakana'; }
+function pctText(a, b) { return b ? Math.round(a / b * 100) : 0; }
+
+/* =========================================================
+   WRITING PAD
+   ========================================================= */
+function makePad(host, text, guideOn) {
+  const size = 240, dpr = window.devicePixelRatio || 1;
+  host.innerHTML = '<div class="pad"><canvas class="pad-cv"></canvas><div class="pad-btns">' +
+    '<button type="button" data-a="clear">🧹 Clear</button><button type="button" data-a="guide" class="' + (guideOn ? 'on' : '') + '">👁 Guide</button>' +
+    '<button type="button" data-a="model">✅ Show answer</button></div></div>';
+  const cv = $('canvas', host), g = cv.getContext('2d');
+  cv.width = size * dpr; cv.height = size * dpr;
+  g.scale(dpr, dpr);
+  let guide = !!guideOn, model = false, strokes = [], cur = null;
+  const fs = text.length > 1 ? 112 : 180;
+  const font = '700 ' + fs + 'px "Zen Maru Gothic","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif';
+  function glyph(color) {
+    g.font = font; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillStyle = color;
+    g.fillText(text, size / 2, size / 2 + fs * 0.06);
+  }
+  function redraw() {
+    g.clearRect(0, 0, size, size);
+    g.save(); g.strokeStyle = '#ecdfd0'; g.setLineDash([5, 5]); g.lineWidth = 1;
+    g.beginPath(); g.moveTo(size / 2, 6); g.lineTo(size / 2, size - 6); g.moveTo(6, size / 2); g.lineTo(size - 6, size / 2); g.stroke(); g.restore();
+    if (guide) glyph('rgba(150,140,130,.22)');
+    g.strokeStyle = '#2b2420'; g.lineWidth = 9; g.lineCap = 'round'; g.lineJoin = 'round';
+    strokes.forEach(function(s) {
+      g.beginPath(); g.moveTo(s[0].x, s[0].y);
+      if (s.length === 1) g.lineTo(s[0].x + 0.1, s[0].y);
+      for (let i = 1; i < s.length; i++) g.lineTo(s[i].x, s[i].y);
+      g.stroke();
+    });
+    if (model) glyph('rgba(192,57,43,.38)');
+  }
+  function pos(e) { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * size / r.width, y: (e.clientY - r.top) * size / r.height }; }
+  cv.addEventListener('pointerdown', function(e) { e.preventDefault(); try { cv.setPointerCapture(e.pointerId); } catch (x) {} cur = [pos(e)]; strokes.push(cur); redraw(); });
+  cv.addEventListener('pointermove', function(e) { if (!cur) return; cur.push(pos(e)); redraw(); });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(function(n) { cv.addEventListener(n, function() { cur = null; }); });
+  host.addEventListener('click', function(e) {
+    const b = e.target.closest('button[data-a]'); if (!b || !host.contains(b)) return;
+    if (b.dataset.a === 'clear') { strokes = []; model = false; $('[data-a=model]', host).classList.remove('on'); }
+    if (b.dataset.a === 'guide') { guide = !guide; b.classList.toggle('on', guide); }
+    if (b.dataset.a === 'model') { model = !model; b.classList.toggle('on', model); b.textContent = model ? '🙈 Hide answer' : '✅ Show answer'; }
+    redraw();
+  });
+  redraw();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+  return { reveal: function() { model = true; const b = $('[data-a=model]', host); b.classList.add('on'); b.textContent = '🙈 Hide answer'; redraw(); } };
+}
+
+/* =========================================================
+   QUESTION BUILDERS
+   ========================================================= */
+function distract(ch, pool, mode, n) {
+  n = n || 3;
+  const seen = {}; seen[mode === 'r' ? ch.r : ch.k] = 1;
+  const out = [];
+  const usable = pool.filter(function(c) { return !c.rare && !c.notype || mode === 'k' && !c.rare; });
+  function add(c) {
+    const key = mode === 'r' ? c.r : c.k;
+    if (seen[key] || out.length >= n) return;
+    if (mode === 'k' && c.r === ch.r) return;
+    seen[key] = 1; out.push(c);
+  }
+  if (mode === 'k') shuffle(simOf(ch, usable)).forEach(add);
+  shuffle(usable).forEach(add);
+  return shuffle([ch].concat(out));
+}
+function kl(k) { return '<span class="kq-k">' + esc(k) + '</span>'; }
+
+function mcBlock(host, api, o) {
+  host.innerHTML = (o.big ? '<div class="kq-big ' + (o.cls || '') + '">' + o.big + '</div>' : '') +
+    (o.audio ? '<button class="kq-say" type="button">🔊 Play sound</button>' : '') +
+    '<div class="kq-ask">' + o.ask + '</div>' +
+    '<div class="q-opts kq-opts">' + o.opts.map(function(x, i) { return '<button class="opt" type="button" data-i="' + i + '">' + x.label + '</button>'; }).join('') + '</div>';
+  const btns = Array.prototype.slice.call(host.querySelectorAll('.opt'));
+  if (o.audio) { $('.kq-say', host).onclick = function() { speak(o.audio); }; setTimeout(function() { speak(o.audio); }, 200); }
+  btns.forEach(function(b, i) {
+    b.onclick = function() {
+      const ok = o.opts[i].ok;
+      btns.forEach(function(bb, j) { bb.disabled = true; if (o.opts[j].ok) bb.classList.add('right'); });
+      if (!ok) b.classList.add('wrong');
+      api.done(ok, o.fb);
+    };
+  });
+}
+function typeBlock(host, api, o) {
+  host.innerHTML = (o.big ? '<div class="kq-big ' + (o.cls || '') + '">' + o.big + '</div>' : '') +
+    (o.audio ? '<button class="kq-say" type="button">🔊 Play sound</button>' : '') +
+    '<div class="kq-ask">' + o.ask + '</div>' +
+    '<div class="q-row"><input type="text" class="kq-in" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="' + esc(o.ph || '') + '"><button class="check-btn" type="button">Check</button></div>' +
+    (o.tip ? '<div class="kq-tip">' + o.tip + '</div>' : '');
+  const inp = $('.kq-in', host); let comp = false, fin = false;
+  if (o.audio) { $('.kq-say', host).onclick = function() { speak(o.audio); }; setTimeout(function() { speak(o.audio); }, 200); }
+  function fix() { if (o.lang !== 'jp' || comp) return; const v = romajiToKana(inp.value, o.script, false); if (v !== inp.value) inp.value = v; }
+  inp.addEventListener('compositionstart', function() { comp = true; });
+  inp.addEventListener('compositionend', function() { comp = false; fix(); });
+  inp.addEventListener('input', fix);
+  function submit() {
+    if (fin) return;
+    let v = inp.value.trim();
+    if (o.lang === 'jp') v = romajiToKana(v, o.script, true);
+    if (!v) return;
+    fin = true; inp.disabled = true; inp.value = v;
+    $('.check-btn', host).disabled = true;
+    api.done(!!o.check(v), o.fb(v));
+  }
+  $('.check-btn', host).onclick = submit;
+  inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
+  setTimeout(function() { try { inp.focus(); } catch (e) {} }, 60);
+}
+
+function qC2R(ctx, ch) {
+  const opts = distract(ch, ctx.pool, 'r');
+  return { keys: [ch.k], label: 'Reading · what sound is it?', render: function(host, api) {
+    mcBlock(host, api, { big: esc(ch.k), ask: 'Choose the correct reading', opts: opts.map(function(c) { return { label: esc(c.r), ok: c === ch }; }),
+      fb: esc(ch.k) + ' = <b>' + esc(ch.r) + '</b>' });
+  } };
+}
+function qR2C(ctx, ch) {
+  if (ch.rare) return null;
+  const opts = distract(ch, ctx.pool, 'k');
+  return { keys: [ch.k], label: 'Reading · find the character', render: function(host, api) {
+    mcBlock(host, api, { big: esc(ch.r), cls: 'rom', ask: 'Which character is this sound?', opts: opts.map(function(c) { return { label: kl(c.k), ok: c === ch }; }),
+      fb: '<b>' + esc(ch.r) + '</b> = ' + kl(ch.k) });
+  } };
+}
+function qListen(ctx, ch) {
+  if (!canSpeak || ch.rare) return null;
+  const opts = distract(ch, ctx.pool, 'k');
+  return { keys: [ch.k], label: 'Listening · which character did you hear?', render: function(host, api) {
+    mcBlock(host, api, { audio: ch.k, ask: 'Listen and choose the character', opts: opts.map(function(c) { return { label: kl(c.k), ok: c === ch }; }),
+      fb: kl(ch.k) + ' = <b>' + esc(ch.r) + '</b>' });
+  } };
+}
+function qXS(ctx, ch) {
+  if (ch.lesson >= 17 || ch.rare) return null;
+  const toOther = ctx.script === 'hira' ? toKata : toHira;
+  const opts = distract(ch, ctx.pool, 'k');
+  return { keys: [ch.k], label: 'Compare · ' + (ctx.script === 'hira' ? 'hiragana → katakana' : 'katakana → hiragana'), render: function(host, api) {
+    mcBlock(host, api, { big: esc(ch.k), ask: 'Which one is the same sound in ' + (ctx.script === 'hira' ? 'katakana' : 'hiragana') + '?',
+      opts: opts.map(function(c) { return { label: kl(toOther(c.k)), ok: c === ch }; }),
+      fb: esc(ch.k) + ' = ' + kl(toOther(ch.k)) + ' (<b>' + esc(ch.r) + '</b>)' });
+  } };
+}
+function qC2RT(ctx, ch) {
+  return { keys: [ch.k], label: 'Reading · type the sound', render: function(host, api) {
+    typeBlock(host, api, { big: esc(ch.k), ask: 'Type the reading in romaji', ph: 'romaji', lang: 'en', script: ctx.script,
+      check: function(v) { return [ch.r].concat(ch.alts).some(function(r) { return canonRom(r) === canonRom(v); }); },
+      fb: function() { return esc(ch.k) + ' = <b>' + esc(ch.r) + '</b>'; } });
+  } };
+}
+function qR2CT(ctx, ch) {
+  if (ch.rare || ch.notype) return null;
+  return { keys: [ch.k], label: 'Writing · type the character', render: function(host, api) {
+    typeBlock(host, api, { big: esc(ch.r), cls: 'rom', audio: ch.k, ask: 'Type this sound in ' + sName(ctx.script), ph: 'type romaji…', lang: 'jp', script: ctx.script,
+      tip: 'Type romaji — it turns into ' + (ctx.script === 'hira' ? 'hiragana' : 'katakana') + ' as you type (ka → ' + (ctx.script === 'hira' ? 'か' : 'カ') + ')',
+      check: function(v) { return toHira(v.replace(/\s/g, '')) === toHira(ch.k); },
+      fb: function() { return '<b>' + esc(ch.r) + '</b> = ' + kl(ch.k); } });
+  } };
+}
+function qDraw(ctx, ch) {
+  if (ch.rare) return null;
+  const m = mget(ctx.script, ch.k);
+  return { keys: [], label: 'Writing · draw it', render: function(host, api) {
+    host.innerHTML = '<div class="kq-big rom">' + esc(ch.r) + '</div><div class="kq-ask">Draw the ' + sName(ctx.script) + ' character with your mouse or finger. Turn the guide off to test yourself.</div>' +
+      '<div class="kq-draw"><div id="kqPad"></div><div class="kq-grade"><button class="k-btn" type="button" id="kqSay">🔊 Hear it</button><button class="k-btn" type="button" id="kqShow">✅ Check my drawing</button></div><div id="kqGrade"></div></div>';
+    const pad = makePad($('#kqPad', host), ch.k, lvl(m) < 2);
+    $('#kqSay', host).onclick = function() { speak(ch.k); };
+    $('#kqShow', host).onclick = function() {
+      pad.reveal(); $('#kqShow', host).disabled = true;
+      $('#kqGrade', host).innerHTML = '<div class="kq-ask" style="margin-top:10px">Red = the model. Does your drawing match? Be honest!</div><div class="kq-grade"><button class="good" type="button">👍 Looks right</button><button class="bad" type="button">🔁 Needs practice</button></div>';
+      const bs = $('#kqGrade', host).querySelectorAll('button');
+      bs[0].onclick = function() { record(ctx.script, ch.k, true); api.done(true, kl(ch.k) + ' = <b>' + esc(ch.r) + '</b> — nice!'); $('#kqGrade', host).innerHTML = ''; };
+      bs[1].onclick = function() { record(ctx.script, ch.k, false); api.done(false, 'Keep practising ' + kl(ch.k) + ' = <b>' + esc(ch.r) + '</b>. Trace it again with the guide on.'); $('#kqGrade', host).innerHTML = ''; };
+    };
+  } };
+}
+function qMatch(ctx, nx) {
+  const chosen = [], seen = {};
+  for (let t = 0; t < 40 && chosen.length < 5; t++) { const c = nx(); if (!c || seen[c.k] || c.rare) continue; seen[c.k] = 1; chosen.push(c); }
+  if (chosen.length < 3) return null;
+  const rs = {}; const uniq = chosen.filter(function(c) { if (rs[c.r]) return false; rs[c.r] = 1; return true; });
+  return { keys: [], label: 'Reading · match the pairs', render: function(host, api) {
+    const left = uniq, right = shuffle(uniq);
+    host.innerHTML = '<div class="kq-ask">Tap a character, then its sound</div><div class="kq-match"><div class="col" id="mL">' +
+      left.map(function(c, i) { return '<button class="opt" type="button" data-i="' + i + '">' + kl(c.k) + '</button>'; }).join('') +
+      '</div><div class="col" id="mR">' + right.map(function(c, i) { return '<button class="opt" type="button" data-k="' + esc(c.k) + '">' + esc(c.r) + '</button>'; }).join('') + '</div></div>';
+    let sel = null, left_ = uniq.length, miss = 0; const wrongSet = {};
+    $('#mL', host).onclick = function(e) { const b = e.target.closest('.opt'); if (!b || b.classList.contains('right')) return; Array.prototype.forEach.call($('#mL', host).children, function(x) { x.classList.remove('sel'); }); b.classList.add('sel'); sel = b; speak(left[+b.dataset.i].k); };
+    $('#mR', host).onclick = function(e) {
+      const b = e.target.closest('.opt'); if (!b || b.classList.contains('right') || !sel) return;
+      const c = left[+sel.dataset.i];
+      if (b.dataset.k === c.k) {
+        sel.classList.remove('sel'); sel.classList.add('right'); b.classList.add('right'); sel = null; left_--;
+        record(ctx.script, c.k, !wrongSet[c.k]);
+        if (!left_) api.done(miss <= 1, miss ? 'Matched all, with ' + miss + ' slip' + (miss > 1 ? 's' : '') + '.' : 'Perfect match!');
+      } else {
+        miss++; wrongSet[c.k] = 1; b.classList.add('flash'); setTimeout(function() { b.classList.remove('flash'); }, 350);
+      }
+    };
+  } };
+}
+function qWordMC(ctx, w) {
+  const others = shuffle(WORDS[ctx.script].filter(function(x) { return x.en !== w.en; })).slice(0, 3);
+  const opts = shuffle([w].concat(others));
+  return { keys: w.units.filter(function(u) { return u.l != null && !u.sp; }).map(function(u) { return u.k; }), label: 'Reading · read the word', render: function(host, api) {
+    mcBlock(host, api, { big: esc(w.k), cls: 'sm', ask: 'What does this word mean?', opts: opts.map(function(x) { return { label: esc(x.en), ok: x === w }; }),
+      fb: esc(w.k) + ' (<b>' + esc(w.rom) + '</b>) = ' + esc(w.en) });
+    speak(w.k);
+  } };
+}
+function qWordT(ctx, w) {
+  return { keys: w.units.filter(function(u) { return u.l != null && !u.sp; }).map(function(u) { return u.k; }), label: 'Reading · type the word in romaji', render: function(host, api) {
+    typeBlock(host, api, { big: esc(w.k), cls: 'sm', audio: w.k, ask: 'Type it in romaji (' + esc(w.en) + ')', ph: 'romaji', lang: 'en', script: ctx.script,
+      tip: 'Long vowels: oo, ou, aa… or ō ā — all accepted',
+      check: function(v) { return canonRom(v) === canonRom(w.rom); },
+      fb: function() { return esc(w.k) + ' = <b>' + esc(w.rom) + '</b> (' + esc(w.en) + ')'; } });
+  } };
+}
+function qWordW(ctx, w) {
+  const hint = /ティ|ディ|ウィ|ウェ|ウォ|チェ|シェ|ジェ|ファ|フィ|フェ|フォ|ヴ/.test(w.k) ? ' Tip: ティ = thi · ディ = dhi · ウォ = who · - = ー' : (/ー/.test(w.k) ? ' Tip: type - for the long mark ー' : '');
+  return { keys: w.units.filter(function(u) { return u.l != null && !u.sp; }).map(function(u) { return u.k; }), label: 'Writing · write the word', render: function(host, api) {
+    typeBlock(host, api, { big: esc(w.rom), cls: 'rom', audio: w.k, ask: 'Write <b>' + esc(w.en) + '</b> in ' + sName(ctx.script), ph: 'type romaji…', lang: 'jp', script: ctx.script,
+      tip: 'Type romaji — it turns into kana as you type.' + hint,
+      check: function(v) { return sameWord(v, w.k); },
+      fb: function() { return '<b>' + esc(w.rom) + '</b> = ' + kl(w.k) + ' (' + esc(w.en) + ')'; } });
+  } };
+}
+function qTiles(ctx, w) {
+  if (w.units.length < 2 || w.units.length > 9) return null;
+  const extra = shuffle(ctx.pool.filter(function(c) { return !c.rare && w.units.every(function(u) { return u.k !== c.k; }); })).slice(0, 2).map(function(c) { return c.k; });
+  const tiles = shuffle(w.units.map(function(u) { return u.k; }).concat(extra));
+  return { keys: w.units.filter(function(u) { return u.l != null && !u.sp; }).map(function(u) { return u.k; }), label: 'Writing · build the word', render: function(host, api) {
+    host.innerHTML = '<div class="kq-big rom sm" style="font-size:1.9rem">' + esc(w.rom) + '</div><div class="kq-ask">Build <b>' + esc(w.en) + '</b> from the tiles</div><div class="kq-tiles"><div class="tile-answer" id="tAns"></div><div class="tile-bank" id="tBank" style="justify-content:center"></div><div class="q-row"><button class="check-btn" type="button" id="tChk">Check</button><button class="reset-btn" type="button" id="tRst">Reset</button></div></div>';
+    let placed = [], done = false;
+    function paint() {
+      $('#tAns', host).innerHTML = placed.length ? placed.map(function(i) { return '<button class="tile placed" type="button" data-p="' + i + '">' + esc(tiles[i]) + '</button>'; }).join('') : '<span class="tile-hint">tap tiles in order</span>';
+      $('#tBank', host).innerHTML = tiles.map(function(t, i) { return '<button class="tile" type="button" data-i="' + i + '"' + (placed.indexOf(i) >= 0 ? ' disabled' : '') + '>' + esc(t) + '</button>'; }).join('');
+    }
+    host.onclick = function(e) {
+      if (done) return;
+      const b = e.target.closest('.tile'); if (!b) return;
+      if (b.dataset.i !== undefined) placed.push(+b.dataset.i); else if (b.dataset.p !== undefined) placed.splice(placed.indexOf(+b.dataset.p), 1);
+      paint();
+    };
+    $('#tRst', host).onclick = function() { if (done) return; placed = []; paint(); };
+    $('#tChk', host).onclick = function() {
+      if (done || !placed.length) return; done = true;
+      const got = placed.map(function(i) { return tiles[i]; }).join('');
+      $('#tChk', host).disabled = true; $('#tRst', host).disabled = true;
+      api.done(got === w.k, '<b>' + esc(w.rom) + '</b> = ' + kl(w.k) + ' (' + esc(w.en) + ')');
+    };
+    paint();
+  } };
+}
+function qFill(ctx, w) {
+  const idx = [];
+  w.units.forEach(function(u, i) { if (!u.sp && u.l != null && CHAR_BY_KEY[ctx.script + ':' + u.k] && !CHAR_BY_KEY[ctx.script + ':' + u.k].rare) idx.push(i); });
+  if (!idx.length) return null;
+  const bi = idx[rnd(idx.length)], target = CHAR_BY_KEY[ctx.script + ':' + w.units[bi].k];
+  const opts = distract(target, ctx.pool, 'k');
+  const shown = w.units.map(function(u, i) { return i === bi ? '＿' : u.k; }).join('');
+  return { keys: [target.k], label: 'Writing · fill the gap', render: function(host, api) {
+    mcBlock(host, api, { big: esc(shown), cls: 'sm', ask: 'Which character completes <b>' + esc(w.en) + '</b> (' + esc(w.rom) + ')?',
+      opts: opts.map(function(c) { return { label: kl(c.k), ok: c === target }; }),
+      fb: kl(w.k) + ' (<b>' + esc(w.rom) + '</b>) = ' + esc(w.en) });
+  } };
+}
+
+/* ---- set assembly ---- */
+const READ_KINDS = ['c2r', 'listen', 'r2c', 'c2rT', 'match', 'wordMC', 'xs', 'c2r', 'listen', 'wordT', 'r2c', 'match', 'c2rT', 'wordMC', 'listen', 'c2r', 'wordT', 'r2c', 'xs', 'match'];
+const WRITE_KINDS = ['r2cT', 'draw', 'wordW', 'r2cT', 'tiles', 'draw', 'fill', 'r2cT', 'wordW', 'draw', 'r2cT', 'tiles', 'fill', 'draw', 'r2cT', 'wordW', 'r2cT', 'tiles', 'draw', 'fill'];
+const TEST_KINDS = ['c2r', 'r2cT', 'listen', 'wordMC', 'r2c', 'wordW', 'c2rT', 'tiles', 'match', 'fill', 'wordT', 'xs'];
+const MIX_KINDS = ['c2r', 'r2cT', 'listen', 'draw', 'wordMC', 'r2c', 'wordW', 'match', 'c2rT', 'tiles', 'xs', 'fill', 'wordT'];
+const WORD_KINDS = { wordMC: 1, wordT: 1, wordW: 1, tiles: 1, fill: 1 };
+
+function makeCtx(script, idxs) {
+  const Ls = LESSONS[script], upto = Math.max.apply(null, idxs);
+  const pool = []; Ls.slice(0, upto + 1).forEach(function(L) { L.chars.forEach(function(c) { pool.push(c); }); });
+  const targets = []; idxs.forEach(function(i) { Ls[i].chars.forEach(function(c) { targets.push(c); }); });
+  const words = WORDS[script].filter(function(w) { return w.req <= upto; });
+  const fresh = words.filter(function(w) { return idxs.indexOf(w.req) >= 0; });
+  return { script: script, pool: pool, targets: targets, words: words, fresh: fresh, idxs: idxs };
+}
+function charBag(ctx, weak) {
+  let bag = [], last = null;
+  return function() {
+    if (!ctx.targets.length) return null;
+    if (!bag.length) bag = shuffle([].concat.apply([], ctx.targets.map(function(c) {
+      const m = mget(ctx.script, c.k), w = weak ? (isWeak(ctx.script, c.k) ? 3 : lvl(m) >= 3 ? 1 : 2) : 1;
+      return new Array(w).fill(c);
+    })));
+    let c = bag.pop();
+    if (c === last && bag.length) { const d = bag.pop(); bag.unshift(c); c = d; }
+    last = c; return c;
+  };
+}
+function wordBag(ctx) {
+  let bag = [];
+  return function() {
+    if (!ctx.words.length) return null;
+    if (!bag.length) bag = shuffle(ctx.words.concat(ctx.fresh, ctx.fresh));
+    return bag.pop();
+  };
+}
+function buildSet(ctx, kinds, n, weak) {
+  const nx = charBag(ctx, weak), nw = wordBag(ctx);
+  if (!ctx.targets.length) kinds = kinds.filter(function(k) { return WORD_KINDS[k]; });
+  if (!ctx.words.length) kinds = kinds.filter(function(k) { return !WORD_KINDS[k]; });
+  if (!kinds.length) return [];
+  const qs = []; let ki = 0, guard = 0;
+  while (qs.length < n && guard++ < n * 8) {
+    const kind = kinds[ki++ % kinds.length]; let q = null;
+    if (kind === 'match') q = qMatch(ctx, nx);
+    else if (WORD_KINDS[kind]) { const w = nw(); if (w) q = { wordMC: qWordMC, wordT: qWordT, wordW: qWordW, tiles: qTiles, fill: qFill }[kind](ctx, w); }
+    else { const c = nx(); if (c) q = { c2r: qC2R, r2c: qR2C, listen: qListen, xs: qXS, c2rT: qC2RT, r2cT: qR2CT, draw: qDraw }[kind](ctx, c); }
+    if (q) qs.push(q);
+  }
+  return qs;
+}
+
+/* =========================================================
+   SESSION RUNNER
+   ========================================================= */
+function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+function startSession(cfg) {
+  stopTimer();
+  if (!cfg.qs.length) { alert('Not enough material for this practice yet.'); return; }
+  SES = { cfg: cfg, i: 0, right: 0, wrong: 0, missed: {}, answered: false, left: cfg.seconds || 0 };
+  ST.t = 'session';
+  renderNav();
+  if (cfg.seconds) {
+    timerId = setInterval(function() {
+      SES.left--;
+      const t = $('#kqTime'); if (t) t.textContent = SES.left + 's';
+      if (SES.left <= 0) { stopTimer(); finishSession(); }
+    }, 1000);
+  }
+  renderQ();
+  scrollTopMobile();
+}
+function renderQ() {
+  const cfg = SES.cfg, q = cfg.qs[SES.i], total = cfg.qs.length;
+  const pct = cfg.seconds ? Math.round(SES.left / cfg.seconds * 100) : Math.round(SES.i / total * 100);
+  $('#lecturePane').innerHTML =
+    '<div class="lecture-crumb">' + esc(cfg.crumb || '') + '</div>' +
+    '<div class="kq-top"><b>' + esc(cfg.title) + '</b>' +
+    (cfg.seconds ? '<span>⏱ <b id="kqTime">' + SES.left + 's</b></span>' : '<span>' + (SES.i + 1) + ' / ' + total + '</span>') +
+    '<div class="pb-bar-track"><div class="pb-bar-fill" id="kqBar" style="width:' + pct + '%"></div></div>' +
+    '<span>✅ ' + SES.right + ' &nbsp; ❌ ' + SES.wrong + '</span><button class="k-btn" type="button" id="kqQuit">✕ Quit</button></div>' +
+    '<div class="kq-card"><div class="kq-label">' + esc(q.label) + '</div><div id="kqHost"></div><div id="kqFb"></div></div>' +
+    '<div class="kq-actions"><button class="kq-next" type="button" id="kqNext" hidden>Next →</button></div>';
+  SES.answered = false;
+  $('#kqQuit').onclick = function() { stopTimer(); if (confirm('Quit this practice? Your answers so far are kept.')) { SES = null; cfg.back(); } else if (cfg.seconds) { timerId = setInterval(function() { SES.left--; const t = $('#kqTime'); if (t) t.textContent = SES.left + 's'; if (SES.left <= 0) { stopTimer(); finishSession(); } }, 1000); } };
+  q.render($('#kqHost'), { done: answered });
+}
+function answered(ok, fb) {
+  if (!SES || SES.answered) return;
+  SES.answered = true;
+  const q = SES.cfg.qs[SES.i];
+  if (ok) SES.right++; else SES.wrong++;
+  q.keys.forEach(function(k) { record(SES.cfg.script, k, ok); if (!ok) SES.missed[k] = 1; });
+  const f = $('#kqFb');
+  f.className = 'kq-fb ' + (ok ? 'ok' : 'no');
+  f.innerHTML = (ok ? '✅ Correct! ' : '❌ Not quite. ') + (fb || '');
+  const nxt = $('#kqNext');
+  const last = SES.i >= SES.cfg.qs.length - 1;
+  nxt.textContent = last ? 'Finish ✓' : 'Next →';
+  nxt.hidden = false;
+  nxt.onclick = nextQ;
+  if (SES.cfg.seconds) setTimeout(nextQ, ok ? 350 : 900);
+  else setTimeout(function() { try { nxt.focus(); } catch (e) {} }, 30);
+  const bar = $('#kqBar'); if (bar && !SES.cfg.seconds) bar.style.width = Math.round((SES.i + 1) / SES.cfg.qs.length * 100) + '%';
+}
+function nextQ() {
+  if (!SES || !SES.answered) return;
+  SES.answered = false;
+  if (SES.i >= SES.cfg.qs.length - 1) { finishSession(); return; }
+  SES.i++; renderQ();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && SES && SES.answered && !(e.target && /^(BUTTON|INPUT)$/.test(e.target.tagName))) { e.preventDefault(); nextQ(); }
+});
+function finishSession() {
+  stopTimer();
+  const cfg = SES.cfg, tot = SES.right + SES.wrong;
+  const pct = tot ? Math.round(SES.right / tot * 100) : 0;
+  let extra = '', msg = pct >= 90 ? 'Excellent! 🎉' : pct >= 75 ? 'Good work! 👍' : pct >= 50 ? 'Getting there — keep practising.' : 'Take another look at the characters, then try again.';
+  if (cfg.seconds) {
+    const best = progress.stats.speed[cfg.script] || 0;
+    if (SES.right > best) { progress.stats.speed[cfg.script] = SES.right; msg = '🏆 New best!'; } else msg = 'Best so far: ' + best;
+  }
+  if (cfg.test) {
+    const key = cfg.script + cfg.lesson, r = progress.lessons[key] || { best: 0, tries: 0, done: false };
+    r.tries++; r.best = Math.max(r.best, pct);
+    if (pct >= 80) { r.done = true; msg = '✅ Lesson passed! ' + msg; } else msg = 'You need 80% to pass this lesson. ' + msg;
+    progress.lessons[key] = r;
+  }
+  scheduleSave();
+  const missed = Object.keys(SES.missed);
+  const miss = missed.length ? '<h4 style="color:var(--accent2);text-transform:uppercase;font-size:.85rem;letter-spacing:.5px">Review these</h4><div class="k-miss">' +
+    missed.map(function(k) { const c = CHAR_BY_KEY[cfg.script + ':' + k]; return '<span><b>' + esc(k) + '</b>' + (c ? esc(c.r) : '') + '</span>'; }).join('') + '</div>' : '';
+  const hasNext = cfg.nextLabel;
+  $('#lecturePane').innerHTML =
+    '<div class="lecture-crumb">' + esc(cfg.crumb || '') + '</div><h2 class="lecture-title">' + esc(cfg.title) + ' — finished</h2>' +
+    '<div class="k-sum"><div class="ks-score">' + (cfg.seconds ? SES.right : pct + '%') + '</div><div class="ks-msg">' +
+    (cfg.seconds ? 'correct in ' + cfg.seconds + ' seconds · ' : SES.right + ' of ' + tot + ' correct · ') + msg + '</div>' + miss +
+    '<div class="kq-actions"><button class="kq-next" type="button" id="sAgain">🔁 Try again</button>' +
+    (missed.length ? '<button class="k-btn" type="button" id="sMiss">🎯 Practise missed</button>' : '') +
+    '<button class="k-btn" type="button" id="sBack">← Back</button></div></div>';
+  $('#sAgain').onclick = function() { cfg.again(); };
+  const sm = $('#sMiss'); if (sm) sm.onclick = function() {
+    const ctx = makeCtx(cfg.script, cfg.idxs || [0]); const ms = {}; missed.forEach(function(k) { ms[k] = 1; });
+    ctx.targets = ctx.pool.filter(function(c) { return ms[c.k]; });
+    startSession({ title: 'Missed characters', crumb: cfg.crumb, script: cfg.script, idxs: cfg.idxs, qs: buildSet(ctx, ['c2r', 'r2cT', 'listen', 'r2c', 'c2rT', 'match', 'draw'], 12, true), back: cfg.back, again: cfg.again });
+  };
+  $('#sBack').onclick = function() { SES = null; cfg.back(); };
+  SES.finished = true;
+  scrollTopMobile();
+}
+
+/* ---- starting the different practice modes ---- */
+function lessonSession(kind, script, i) {
+  const L = LESSONS[script][i], upto = [];
+  for (let j = 0; j <= i; j++) upto.push(j);
+  const crumb = sName(script) + ' · Lesson ' + (i + 1);
+  ST.i = i;
+  const cfg0 = { script: script, idxs: [i], crumb: crumb, back: function() { go('lesson', i); } };
+  function go1() {
+    let qs, title;
+    if (kind === 'read') { qs = buildSet(makeCtx(script, [i]), READ_KINDS, 20, true); title = '📖 Reading practice'; }
+    else if (kind === 'write') { qs = buildSet(makeCtx(script, [i]), WRITE_KINDS, 20, true); title = '✍️ Writing practice'; }
+    else if (kind === 'mix') { const c = makeCtx(script, upto); qs = buildSet(c, MIX_KINDS, 24, true); title = '🎲 Mixed review · Lessons 1–' + (i + 1); cfg0.idxs = upto; }
+    else { qs = buildSet(makeCtx(script, [i]), TEST_KINDS, 24, true); title = '🏁 Lesson test'; cfg0.test = true; cfg0.lesson = i; }
+    const cfg = Object.assign({}, cfg0, { title: title, qs: qs, again: go1 });
+    startSession(cfg);
+  }
+  go1();
+}
+function customSession() {
+  const script = ST.script, idxs = Object.keys(PR.sel).filter(function(k) { return PR.sel[k]; }).map(Number).sort(function(a, b) { return a - b; });
+  if (!idxs.length) { alert('Pick at least one lesson.'); return; }
+  const ctx = makeCtx(script, idxs);
+  if (PR.weak) { const w = ctx.targets.filter(function(c) { return isWeak(script, c.k); }); if (w.length) ctx.targets = w; }
+  const kinds = PR.type === 'read' ? READ_KINDS : PR.type === 'write' ? WRITE_KINDS : MIX_KINDS;
+  function again() {
+    startSession({ title: '🎯 Custom practice', crumb: sName(script) + ' · Practice', script: script, idxs: idxs, qs: buildSet(ctx, kinds, PR.n, true), back: function() { go('practice', 0); }, again: again });
+  }
+  again();
+}
+function speedSession() {
+  const script = ST.script, all = []; LESSONS[script].forEach(function(L) { all.push(L.i); });
+  const learnedIdx = all.filter(function(i) { return LESSONS[script][i].chars.some(function(c) { return mget(script, c.k).ok > 0; }) });
+  const idxs = learnedIdx.length ? learnedIdx : [0];
+  const ctx = makeCtx(script, idxs);
+  ctx.pool = ctx.pool.filter(function(c) { return idxs.indexOf(c.lesson) >= 0 || true; });
+  ctx.targets = ctx.targets.filter(function(c) { return !c.rare; });
+  function again() {
+    startSession({ title: '⚡ Speed round', crumb: sName(script) + ' · Speed round', script: script, idxs: idxs, seconds: 60, qs: buildSet(ctx, ['c2r', 'r2c'], 200, true), back: function() { go('practice', 0); }, again: again });
+  }
+  again();
+}
+
+/* =========================================================
+   VIEWS
+   ========================================================= */
+function scrollTopMobile() { if (window.innerWidth <= 900) { const p = $('#lecturePane'); if (p) window.scrollTo({ top: Math.max(0, p.getBoundingClientRect().top + window.scrollY - 70), behavior: 'smooth' }); } }
+function go(t, i) {
+  stopTimer(); SES = null;
+  ST.t = t; ST.i = i || 0;
+  scheduleSave(); render(); scrollTopMobile();
+}
+function setScript(s) {
+  if (s === ST.script && ST.t !== 'session') return;
+  stopTimer(); SES = null;
+  ST.script = s; ST.t = ST.t === 'session' ? 'lesson' : ST.t;
+  const max = LESSONS[s].length - 1; if (ST.i > max) ST.i = max;
+  try { history.replaceState(null, '', '?s=' + (s === 'kata' ? 'kata' : 'hira')); } catch (e) {}
+  scheduleSave(); render();
+}
+function syncNav() {
+  document.querySelectorAll('.course-switch a[href^="kana.html"]').forEach(function(a) {
+    const want = /s=kata/.test(a.getAttribute('href')) ? 'kata' : 'hira';
+    if (want === ST.script) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    a.onclick = function(e) { e.preventDefault(); setScript(want); };
+  });
+  document.title = sName(ST.script) + ' — Japanese Kana';
+}
+function render() {
+  syncNav(); renderProfile(); renderNav();
+  if (ST.t === 'session' && SES) return;
+  if (ST.t === 'chart') renderChart(); else if (ST.t === 'practice') renderPractice(); else renderLesson(ST.i);
+}
+function renderProfile() {
+  const bar = $('#profileBar'), o = overall(ST.script), p = pctText(o.learned, o.total);
+  const seg = ['hira', 'kata'].map(function(s) { return '<button class="' + (ST.script === s ? 'on' : '') + '" onclick="setScript(\'' + s + '\')">' + (s === 'hira' ? 'あ Hiragana' : 'ア Katakana') + '</button>'; }).join('');
+  bar.innerHTML = '<span>👋 <span class="pb-name">' + esc(userName || 'Student') + '</span></span>' +
+    '<div class="pb-progress"><div class="pb-bar-track"><div class="pb-bar-fill" style="width:' + p + '%"></div></div><span class="pb-pct">' + o.learned + ' / ' + o.total + ' characters learned</span></div>' +
+    '<div class="script-switch" title="Choose the script to study">' + seg + '</div><span class="pb-save" id="pbSave"></span><button onclick="resetKana()">🔄 Reset</button>';
+  setBadge('saved');
+}
+function resetKana() {
+  if (!confirm('Reset ALL hiragana & katakana progress? This cannot be undone.')) return;
+  progress = normalizeProgress(null); ST = { script: ST.script, t: 'lesson', i: 0 };
+  saveNow().then(render);
+}
+function renderNav() {
+  const s = ST.script, Ls = LESSONS[s];
+  let h = '<button class="nav-item tool ' + (ST.t === 'chart' ? 'active' : '') + '" onclick="go(\'chart\')"><div class="ni-title">📋 ' + sName(s) + ' chart</div><div class="ni-meta">All characters · tap to hear</div></button>' +
+    '<button class="nav-item tool ' + (ST.t === 'practice' ? 'active' : '') + '" onclick="go(\'practice\')"><div class="ni-title">🎯 Practice &amp; speed round</div><div class="ni-meta">Mix lessons · weak characters · timed</div></button>';
+  let grp = null;
+  Ls.forEach(function(L) {
+    if (L.group && L.group !== grp) { grp = L.group; h += '<div class="nav-group">' + esc(grp) + '</div>'; }
+    const r = progress.lessons[s + L.i], act = (ST.t === 'lesson' || ST.t === 'session') && ST.i === L.i;
+    const kanaPrev = L.chars.slice(0, 5).map(function(c) { return c.k; }).join(' ');
+    h += '<button class="nav-item ' + (act ? 'active' : '') + '" onclick="go(\'lesson\',' + L.i + ')"><div class="ni-row"><div class="ni-title">' + (L.i + 1) + '. ' + esc(L.title) + '</div>' +
+      (r && r.done ? '<span class="ni-done">✓</span>' : '') + '</div>' + (kanaPrev ? '<div class="ni-kana">' + esc(kanaPrev) + (L.chars.length > 5 ? ' …' : '') + '</div>' : '') +
+      '<div class="ni-bar"><span style="width:' + Math.round(lessonLevel(s, L) * 100) + '%"></span></div></button>';
+  });
+  $('#courseNav').innerHTML = h;
+  $('#sideNote').textContent = s === 'hira' ? 'Hiragana: the base script — grammar words and native Japanese. Pass each lesson test (80%) to earn a ✓.' : 'Katakana: the same sounds, used for foreign words and names. Pass each lesson test (80%) to earn a ✓.';
+}
+
+function renderLesson(i) {
+  const s = ST.script, Ls = LESSONS[s]; if (i >= Ls.length) i = ST.i = 0;
+  const L = Ls[i], r = progress.lessons[s + i];
+  const fresh = L.words, earlier = WORDS[s].filter(function(w) { return w.req < i; });
+  function wrow(w) { return '<tr><td class="kw-k" onclick="speak(\'' + w.k + '\')">' + esc(w.k) + '</td><td class="kw-r">' + esc(w.rom) + '</td><td>' + esc(w.en) + '</td></tr>'; }
+  const hook = s === 'hira' ? MN_H : MN_K;
+  let h = '<div class="lecture-crumb">' + sName(s) + ' · Lesson ' + (i + 1) + ' of ' + Ls.length + '</div>' +
+    '<h2 class="lecture-title">' + (L.chars.length ? '<span class="jp" style="color:var(--accent)">' + esc(L.chars.slice(0, 5).map(function(c) { return c.k; }).join('')) + '</span>' : '') + esc(L.title) + (r && r.done ? ' <span class="script-tag">✓ passed ' + r.best + '%</span>' : '') + '</h2>';
+  if (L.note) h += '<div class="k-note">💡 ' + L.note + '</div>';
+  if (i === 16 && s === 'kata') h += '<div class="lecture-block"><h4>Two special marks</h4><div class="kana-grid"><div class="kcard" onclick="speak(\'ベッド\')"><div class="kc-ch">ッ</div><div class="kc-r">small tsu</div><div class="kc-m">doubles the next consonant<br>ベッド bed<br>beddo</div></div><div class="kcard" onclick="speak(\'ビール\')"><div class="kc-ch">ー</div><div class="kc-r">long mark</div><div class="kc-m">lengthens the vowel<br>ビール beer<br>bīru</div></div></div></div>';
+  if (i === 16 && s === 'hira') h += '<div class="lecture-block"><h4>Special sounds</h4><div class="kana-grid"><div class="kcard" onclick="speak(\'きって\')"><div class="kc-ch">っ</div><div class="kc-r">small tsu</div><div class="kc-m">doubles the next consonant<br>きって kitte "stamp"</div></div><div class="kcard" onclick="speak(\'おかあさん\')"><div class="kc-ch">ああ</div><div class="kc-r">long vowel</div><div class="kc-m">repeat the vowel<br>おかあさん okaasan</div></div><div class="kcard" onclick="speak(\'とうきょう\')"><div class="kc-ch">おう</div><div class="kc-r">long o</div><div class="kc-m">o + う also = ō<br>とうきょう Tōkyō</div></div></div></div>';
+  if (L.chars.length) {
+    h += '<div class="lecture-block"><h4>🔤 Characters <span style="text-transform:none;font-weight:400;color:var(--muted)">· tap a card to hear it</span></h4><div class="kana-grid" style="' + (L.cols === 3 ? 'grid-template-columns:repeat(auto-fill,minmax(104px,1fr))' : '') + '">' +
+      L.chars.map(function(c) {
+        const m = mget(s, c.k);
+        return '<button class="kcard" type="button" onclick="speak(\'' + c.k + '\')"><div class="kc-ch">' + esc(c.k) + '</div><div class="kc-r">' + esc(c.r) + '</div><div class="kc-m">' + (hook[c.h] || (c.lesson >= 10 && c.lesson <= 12 ? 'sound of ' + esc(baseOf(c.h) ? (s === 'hira' ? baseOf(c.h) : toKata(baseOf(c.h))) : '') + ' + ' + (/[ぱぴぷぺぽ]/.test(c.h) ? '゜' : '゛') : '')) + '</div><div class="kc-s">' + stars(m) + '</div></button>';
+      }).join('') + '</div></div>';
+    h += '<div class="lecture-block"><h4>✍️ Write it</h4><div class="pad-chips" id="padChips">' +
+      L.chars.filter(function(c) { return !c.rare; }).map(function(c, j) { return '<button type="button" data-k="' + esc(c.k) + '" class="' + (j === 0 ? 'on' : '') + '">' + esc(c.k) + '</button>'; }).join('') + '</div><div class="pad-info"><div id="padHost"></div><div class="pad-side" id="padSide"></div></div></div>';
+  }
+  h += '<div class="lecture-block"><h4>📖 Words you can read ' + (fresh.length ? '' : '<span style="text-transform:none;font-weight:400;color:var(--muted)">· none new here</span>') + '</h4>';
+  if (fresh.length) h += '<table class="k-words">' + fresh.map(wrow).join('') + '</table>';
+  if (earlier.length) h += '<details class="k-more"><summary>More words with earlier characters (' + earlier.length + ')</summary><table class="k-words">' + earlier.map(wrow).join('') + '</table></details>';
+  if (!fresh.length && !earlier.length) h += '<p style="color:var(--muted);font-size:.9rem">Words appear here as soon as you know enough characters. Practise these characters first!</p>';
+  h += '</div>';
+  h += '<div class="lecture-block"><h4>🏋️ Practice</h4><div class="k-actions">' +
+    '<button class="k-act" onclick="lessonSession(\'read\',\'' + s + '\',' + i + ')"><b>📖 Reading practice</b><small>Choose, listen, match, read words · 20 questions</small></button>' +
+    '<button class="k-act" onclick="lessonSession(\'write\',\'' + s + '\',' + i + ')"><b>✍️ Writing practice</b><small>Type, draw, build and complete words · 20 questions</small></button>' +
+    (i > 0 ? '<button class="k-act" onclick="lessonSession(\'mix\',\'' + s + '\',' + i + ')"><b>🎲 Mixed review</b><small>Lessons 1–' + (i + 1) + ' together · 24 questions</small></button>' : '') +
+    '<button class="k-act test" onclick="lessonSession(\'test\',\'' + s + '\',' + i + ')"><b>🏁 Lesson test</b><small>' + (r ? 'Best ' + r.best + '% · ' + r.tries + ' tr' + (r.tries > 1 ? 'ies' : 'y') + ' · ' : '') + 'Score 80% to pass</small></button></div></div>';
+  h += '<div class="lecture-nav"><button ' + (i === 0 ? 'disabled' : 'onclick="go(\'lesson\',' + (i - 1) + ')"') + '>← Previous</button>' +
+    '<span style="color:var(--muted);font-size:.85rem">' + (i + 1) + ' / ' + Ls.length + '</span><button ' + (i >= Ls.length - 1 ? 'disabled' : 'onclick="go(\'lesson\',' + (i + 1) + ')"') + '>Next →</button></div>';
+  const pane = $('#lecturePane'); pane.innerHTML = h; pane.scrollTop = 0;
+  if (L.chars.length) {
+    const first = L.chars.filter(function(c) { return !c.rare; })[0];
+    const showPad = function(k) {
+      const c = CHAR_BY_KEY[s + ':' + k], m = mget(s, k);
+      makePad($('#padHost'), k, lvl(m) < 2);
+      $('#padSide').innerHTML = '<div class="ps-r">' + esc(c.r) + '</div><div style="color:var(--muted);margin-bottom:8px">' + (hook[c.h] ? esc(hook[c.h]) : '') + '</div><button class="k-btn" type="button" onclick="speak(\'' + k + '\')">🔊 Hear it</button>' +
+        '<p style="font-size:.82rem;color:var(--muted);max-width:260px">Say the sound out loud while you draw. Turn the guide off once you can write it from memory.</p>';
+    };
+    showPad(first.k);
+    $('#padChips').onclick = function(e) { const b = e.target.closest('button'); if (!b) return; Array.prototype.forEach.call($('#padChips').children, function(x) { x.classList.toggle('on', x === b); }); showPad(b.dataset.k); };
+  }
+}
+
+function renderChart() {
+  const s = ST.script, Ls = LESSONS[s];
+  let h = '<div class="lecture-crumb">' + sName(s) + '</div><h2 class="lecture-title">📋 ' + sName(s) + ' chart</h2>' +
+    '<div class="legend"><span><i style="background:#fff"></i>new</span><span><i style="background:#fff7dd"></i>seen</span><span><i style="background:#e4f2ea"></i>learned</span><span><i style="background:#c9e8d6"></i>mastered</span><span>· tap any cell to hear it</span></div>';
+  function cell(c) { return c ? '<button class="cc l' + lvl(mget(s, c.k)) + '" type="button" onclick="speak(\'' + c.k + '\')"><span class="cc-ch jp">' + esc(c.k) + '</span><span class="cc-r">' + esc(c.r) + '</span></button>' : '<span class="cc e"></span>'; }
+  let grp = null;
+  Ls.forEach(function(L) {
+    if (!L.chars.length) return;
+    if (L.group && L.group !== grp) { if (grp) h += '</div>'; grp = L.group; h += '<div class="chart-sec"><h4 style="color:var(--accent2);text-transform:uppercase;font-size:.85rem;letter-spacing:.5px;margin:0 0 8px">' + esc(grp) + '</h4>'; }
+    const cols = L.cols === 3 ? 3 : 5;
+    h += '<div class="chart-grid" style="grid-template-columns:repeat(' + cols + ',1fr);margin-bottom:6px">';
+    if (L.lay) L.lay.forEach(function(row) { for (let j = 0; j < 5; j++) h += cell(row[j] >= 0 && row[j] !== undefined ? L.chars[row[j]] : null); });
+    else L.chars.forEach(function(c) { h += cell(c); });
+    h += '</div>';
+  });
+  if (grp) h += '</div>';
+  $('#lecturePane').innerHTML = h;
+}
+
+function renderPractice() {
+  const s = ST.script, Ls = LESSONS[s], o = overall(s), sp = progress.stats.speed[s] || 0;
+  if (!Object.keys(PR.sel).length) Ls.forEach(function(L) { PR.sel[L.i] = lessonLevel(s, L) > 0 || L.i === 0; });
+  const weakN = [].concat.apply([], Ls.map(function(L) { return L.chars; })).filter(function(c) { return isWeak(s, c.k); }).length;
+  let h = '<div class="lecture-crumb">' + sName(s) + '</div><h2 class="lecture-title">🎯 Practice &amp; speed round</h2>' +
+    '<div class="lecture-block"><h4>⚡ Speed round</h4><p style="margin:0 0 10px;font-size:.92rem">60 seconds. Read or find as many characters as you can. Best score: <b>' + sp + '</b></p><button class="kq-next" onclick="speedSession()">Start speed round</button></div>' +
+    '<div class="lecture-block"><h4>🎯 Custom practice</h4>' +
+    '<div class="pr-row"><label>Lessons to include</label><div class="pr-chips" id="prSel">' + Ls.map(function(L) { return '<button type="button" data-i="' + L.i + '" class="' + (PR.sel[L.i] ? 'on' : '') + '">' + (L.i + 1) + '. ' + esc(L.title) + '</button>'; }).join('') + '</div>' +
+    '<button class="k-btn" type="button" id="prAll">Select all</button> <button class="k-btn" type="button" id="prNone">Clear</button></div>' +
+    '<div class="pr-row"><label>Type</label><div class="pr-chips" id="prType">' + [['mixed', '🎲 Mixed'], ['read', '📖 Reading'], ['write', '✍️ Writing']].map(function(x) { return '<button type="button" data-v="' + x[0] + '" class="' + (PR.type === x[0] ? 'on' : '') + '">' + x[1] + '</button>'; }).join('') + '</div></div>' +
+    '<div class="pr-row"><label>Questions</label><div class="pr-chips" id="prN">' + [10, 20, 30, 50].map(function(n) { return '<button type="button" data-v="' + n + '" class="' + (PR.n === n ? 'on' : '') + '">' + n + '</button>'; }).join('') + '</div></div>' +
+    '<div class="pr-row"><label><input type="checkbox" id="prWeak" ' + (PR.weak ? 'checked' : '') + '> Focus on my weak characters <span class="hint">(' + weakN + ' right now)</span></label></div>' +
+    '<button class="kq-next" onclick="customSession()">Start practice</button></div>';
+  $('#lecturePane').innerHTML = h;
+  $('#prSel').onclick = function(e) { const b = e.target.closest('button'); if (!b) return; PR.sel[b.dataset.i] = !PR.sel[b.dataset.i]; b.classList.toggle('on', PR.sel[b.dataset.i]); };
+  $('#prAll').onclick = function() { Ls.forEach(function(L) { PR.sel[L.i] = true; }); renderPractice(); };
+  $('#prNone').onclick = function() { Ls.forEach(function(L) { PR.sel[L.i] = false; }); renderPractice(); };
+  $('#prType').onclick = function(e) { const b = e.target.closest('button'); if (!b) return; PR.type = b.dataset.v; Array.prototype.forEach.call($('#prType').children, function(x) { x.classList.toggle('on', x === b); }); };
+  $('#prN').onclick = function(e) { const b = e.target.closest('button'); if (!b) return; PR.n = +b.dataset.v; Array.prototype.forEach.call($('#prN').children, function(x) { x.classList.toggle('on', x === b); }); };
+  $('#prWeak').onchange = function() { PR.weak = this.checked; };
+}
+
+/* =========================================================
+   INIT
+   ========================================================= */
+(function init() {
+  if (canSpeak) { try { speechSynthesis.getVoices(); } catch (e) {} }
+  const qp = /[?&]s=(hira|kata)/.exec(location.search);
+  Promise.all([dbGet(KEY), dbGet('progress')]).then(function(r) {
+    let p = r[0];
+    if (!p) { try { p = JSON.parse(localStorage.getItem(LS_KEY) || 'null'); } catch (e) { p = null; } }
+    progress = normalizeProgress(p);
+    userName = (r[1] && r[1].name) || '';
+    const v = progress.view || {};
+    ST = { script: qp ? qp[1] : (v.script === 'kata' ? 'kata' : 'hira'), t: v.t === 'chart' || v.t === 'practice' ? v.t : 'lesson', i: v.i || 0 };
+    if (qp && v.script !== qp[1]) { ST.t = 'lesson'; ST.i = 0; }
+    if (ST.i >= LESSONS[ST.script].length) ST.i = 0;
+    render();
+  });
+})();
+</script>
+</body>
+</html>
