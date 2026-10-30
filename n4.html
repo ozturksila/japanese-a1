@@ -676,7 +676,7 @@
     </div>
   </header>
 
-  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira"><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>N5</b><small>18 lessons</small></a><a href="n4.html" aria-current="page"><b>N4</b><small>6 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
+  <nav class="course-switch" aria-label="Choose a course"><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">あ</span> Kana</div><div class="cs-tabs"><a href="kana.html?s=hira"><b>あ</b><small>Hiragana</small></a><a href="kana.html?s=kata"><b>ア</b><small>Katakana</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico">📘</span> Grammar</div><div class="cs-tabs"><a href="index.html"><b>N5</b><small>18 lessons</small></a><a href="n4.html" aria-current="page"><b>N4</b><small>16 units</small></a></div></div><div class="cs-group"><div class="cs-title"><span class="cs-ico" lang="ja">漢</span> Kanji</div><div class="cs-tabs"><a href="kanji.html"><b>N5</b><small>Lessons</small></a><span class="cs-soon" title="Coming soon"><b>N4</b><small>Soon</small></span></div></div></nav>
 
   <div class="profile-bar" id="profileBar"></div>
 
@@ -1872,6 +1872,337 @@ const UNIT_WORD = "Unit", UNIT_BASE = 1;
     RECAP.push([plain].concat(Object.keys(groups).map(k => groups[k])).filter(g => g.rows.length));
   });
 })();
+/* =========================================================
+   JLPT N4 — Units 7–16 (lessons 25–34 of the reference list)
+   ========================================================= */
+(function() {
+  const G = (lines, note) => '<div class="grammar-point">' +
+    lines.map(l => '<p><span class="jp">' + l[0] + '</span> — <span class="en">' + l[1] + '</span></p>').join('') +
+    (note ? '<p class="note">' + note + '</p>' : '') + '</div>';
+  const PT = (rows) => '<table class="vocab"><tr><th>🧩 Pattern</th><th>🇬🇧 Meaning</th></tr>' + rows.map(r => '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>').join('') + '</table>';
+  const EX = (items, title) => '<div class="exercise">' + (title ? '<div class="ex-title">' + title + '</div>' : '') + '<ol>' + items.join('') + '</ol></div>';
+  const M = (word, answer) => exInput('{{' + word + '}} means:', answer, null, 'en');
+  const F = (text, ph) => '<li>{{' + text + '}} <input type="text" placeholder="' + ph + '"></li>';
+  const T = (icon, title, expl, rows, grammar, dialogs, exercises, group) => ({
+    icon: icon, title: title, explanation: '<p>' + expl + '</p>', vocab: vocabTable(rows), grammar: grammar,
+    dialogs: dialogs, exercises: exercises, _rows: rows, _group: group || ''
+  });
+  const units = [];
+
+  /* ---------------- UNIT 7 — to iu ---------------- */
+  units.push({
+    title: '💬 Unit 7 — The Toiu Family: Called, Meaning and Quoting',
+    topics: [
+      T('🏷️', 'Naming things: to iu',
+        `<strong>[Name] to iu [noun]</strong> means "a [noun] called [name]" — used to introduce something the listener may not know: <strong>Yamada to iu hito</strong> ("a person called Yamada"), <strong>Sakura to iu mise</strong> ("a shop named Sakura"). Ask <strong>~ to iu no wa nan desu ka?</strong> to find out what a word means.`,
+        [['To iu', 'Called / named'], ['Hito', 'Person'], ['Mise', 'Shop'], ['Namae', 'Name'], ['Shiranai', "Don't know"], ['Iu', 'Say / be called']],
+        G([['Yamada to iu hito ga kimashita.', 'A person called Yamada came.'], ['Sakura to iu mise ni ikimashita.', 'I went to a shop called Sakura.'], ['"Natto" to iu no wa nan desu ka?', 'What is "natto"?']]),
+        '',
+        EX([M('To iu', 'called,named'), exInput('"A shop called Sakura": {{Sakura ___________ mise.}}', 'to iu'), exInput('"What is natto?": {{Natto to iu no wa ___________ desu ka?}}', 'nan')])),
+      T('📰', 'Hearsay and meaning: to iu koto da',
+        `<strong>[Plain sentence] + to iu koto desu</strong> has two uses: reporting what you heard (<strong>Tanaka-san wa kyou yasumu to iu koto desu</strong> — "I hear Tanaka is off today") and explaining the meaning or conclusion (<strong>Tsumari, ikanai to iu koto desu</strong> — "In other words, you're not going").`,
+        [['To iu koto', 'That / the fact that'], ['Tsumari', 'In other words'], ['Imi', 'Meaning'], ['Kekka', 'Result'], ['Yasumu', 'Take a day off']],
+        G([['Tanaka-san wa kyou yasumu to iu koto desu.', 'I hear Tanaka is off today.'], ['Tsumari, ikanai to iu koto desu ne.', "In other words, you're not going."], ['Kore wa dou iu imi desu ka?', 'What does this mean?']]),
+        '',
+        EX([M('Tsumari', 'in other words,that is,in short'), M('Imi', 'meaning'), exInput('"I hear it will rain": {{Ame ga furu to ___________ koto desu.}}', 'iu')])),
+      T('📖', 'Definitions and topics: to iu no wa, to ieba',
+        `<strong>[A] to iu no wa [B] no koto desu</strong> defines a word: <strong>Shinkansen to iu no wa, hayai densha no koto desu</strong>. <strong>[Noun] to ieba</strong> says "speaking of [noun]…": <strong>Nihon to ieba, Fujisan desu ne</strong>. <strong>~ koto da</strong> at the end of a sentence gives advice: <strong>Mainichi benkyou suru koto da</strong>.`,
+        [['To iu no wa', 'What is called … is'], ['To ieba', 'Speaking of …'], ['Fujisan', 'Mount Fuji'], ['Shinkansen', 'Bullet train'], ['Koto da', 'Is a matter of / one should']],
+        G([['Shinkansen to iu no wa, hayai densha no koto desu.', 'The shinkansen is a fast train.'], ['Nihon to ieba, Fujisan desu ne.', 'Speaking of Japan, it is Mount Fuji.'], ['Jouzu ni naritai nara, mainichi renshuu suru koto da.', 'If you want to get good, practise every day.']]),
+        dialogBox('Dialogue — Speaking of…', [['A', 'Natsu to ieba, nani desu ka?'], ['B', 'Hanabi desu ne!']]),
+        EX([M('To ieba', 'speaking of,talking of'), exInput('"Speaking of summer": {{Natsu to ___________.}}', 'ieba'), M('Shinkansen', 'bullet train')])),
+      T('🗨️', 'Casual quoting: tte',
+        `In casual speech <strong>tte</strong> replaces <strong>to iu</strong> and the quotation <strong>to</strong>: <strong>Tanaka tte hito</strong> ("a person called Tanaka"), <strong>Ashita kuru tte</strong> ("He says he'll come tomorrow"), <strong>Nan tte iu no?</strong> ("What do you mean?"). Use it with friends, not in formal writing.`,
+        [['Tte', 'Casual quote / called'], ['Nan tte', 'What did (he) say?'], ['Datte', 'But / because (casual)'], ['Honto', 'Really'], ['Maji', 'Seriously (slang)']],
+        G([['Tanaka tte hito wo shitte iru?', 'Do you know a person called Tanaka?'], ['Kare, ashita kuru tte.', 'He says he will come tomorrow.'], ['Honto? Maji?', 'Really? Seriously?']]),
+        '',
+        EX([M('Datte', 'because,but,but (casual)'), M('Honto', 'really'), exInput('Casual "called": {{Tanaka ___________ hito}}', 'tte')], '🗨️ Casual speech'))
+    ],
+    culture: `Japanese people often introduce an unfamiliar name with <strong>~ to iu</strong> — <strong>Sumimasen, Tanaka to iu mono desu ga…</strong> is how you introduce yourself on the phone. And <strong>tte</strong> is so common among friends that you will hear it constantly in anime, dramas and everyday chat.`
+  });
+
+  /* ---------------- UNIT 8 — wake / mono ---------------- */
+  units.push({
+    title: '🧠 Unit 8 — The Wake and Mono Families',
+    topics: [
+      T('💡', 'Natural conclusions: wake da',
+        `<strong>[Plain sentence] + wake desu</strong> means "so that's why / no wonder / it follows that": <strong>Mainichi benkyou shite iru kara, jouzu na wake desu</strong> ("He studies every day — no wonder he's good"). It states a logical consequence of something known.`,
+        [['Wake', 'Reason / logic'], ['Naruhodo', 'I see / indeed'], ['Dakara', "That's why"], ['Tooi', 'Far'], ['Nihon ni sunde ita', 'Lived in Japan']],
+        G([['Nihon ni sunde ita kara, nihongo ga jouzu na wake desu.', "He lived in Japan, so no wonder his Japanese is good."], ['Neteinai kara, nemui wake desu.', "You haven't slept, so of course you're sleepy."], ['Naruhodo, sou iu wake desu ka.', "I see — that's the reason."]]),
+        '',
+        EX([M('Naruhodo', 'i see,indeed,now i see'), exInput('"No wonder": {{Jouzu na ___________ desu.}}', 'wake'), M('Wake', 'reason,logic')])),
+      T('🙅', 'Denying and limiting: wake ga nai, wake dewa nai, wake ni wa ikanai',
+        `<strong>~ wake ga nai</strong> = "there's no way": <strong>Konna ni yasui wake ga nai</strong>. <strong>~ wake dewa nai</strong> = "it doesn't mean that…": <strong>Takai kara kawanai wake dewa nai</strong>. <strong>~ wake ni wa ikanai</strong> = "I can't (afford to)…": <strong>Kyou wa yasumu wake ni wa ikanai</strong>.`,
+        [['Wake ga nai', "There's no way"], ['Wake dewa nai', "It doesn't mean that"], ['Wake ni wa ikanai', "Can't (afford to)"], ['Zettai', 'Absolutely'], ['Yasumu', 'Take a break']],
+        G([['Konna ni yasui wake ga arimasen.', "There's no way it's this cheap."], ['Kirai na wake dewa arimasen.', "It's not that I dislike it."], ['Kyou wa yasumu wake ni wa ikimasen.', "I can't take a day off today."]]) +
+          PT([['wake ga nai', 'no way'], ['wake dewa nai', "not necessarily"], ['wake ni wa ikanai', 'cannot (because of obligation)']]),
+        '',
+        EX([M('Wake ga nai', "no way,there's no way"), exInput('"It\'s not that I dislike it": {{Kirai na wake ___________ arimasen.}}', 'dewa'), exInput('"I can\'t take a day off": {{Yasumu wake ni wa ___________.}}', 'ikimasen')])),
+      T('🎭', 'Feelings and habits: mono da, mono dakara',
+        `<strong>~ mono da</strong> has three uses: <em>exclamation</em> (<strong>Jikan ga tatsu no wa hayai mono desu ne</strong> — "How fast time flies"), <em>recollection</em> (<strong>Kodomo no koro wa yoku asonda mono desu</strong> — "I used to play a lot as a child") and <em>what's natural</em> (<strong>Hito ni wa shinsetsu ni suru mono desu</strong> — "People should be kind"). <strong>~ mono dakara</strong> gives an excuse.`,
+        [['Mono', 'Thing / natural tendency'], ['Mono dakara', "Because (excuse)"], ['Shinsetsu', 'Kindness'], ['Natsukashii', 'Nostalgic'], ['Tatsu', 'Pass (time)'], ['Koro', 'Time / period']],
+        G([['Jikan ga tatsu no wa hayai mono desu ne.', 'How quickly time passes.'], ['Kodomo no koro wa yoku asonda mono desu.', 'I used to play a lot as a child.'], ['Isogashikatta mono dakara, wasurete shimaimashita.', 'I was so busy that I forgot.']]),
+        '',
+        EX([M('Natsukashii', 'nostalgic,missed,fond'), exInput('"I used to play": {{Yoku asonda ___________ desu.}}', 'mono'), M('Shinsetsu', 'kindness,kind')], '🎭 Emotion and habit'))
+    ],
+    culture: `<strong>~mono desu ne</strong> is a classic way for older Japanese speakers to reminisce — <strong>Natsukashii mono desu ne</strong> ("how nostalgic"). People talk fondly about the seasons, school days and festivals this way.`
+  });
+
+  /* ---------------- UNIT 9 — sonkeigo ---------------- */
+  units.push({
+    title: '🙇 Unit 9 — Honorific Language (Sonkeigo)',
+    topics: [
+      T('🎩', 'Special honorific verbs',
+        `Japanese has three politeness levels: <strong>casual</strong>, <strong>polite (-masu)</strong> and <strong>keigo</strong> (honorific / humble). <strong>Sonkeigo</strong> raises the other person's actions. Key verbs: <strong>iku / kuru / iru → irassharu</strong>, <strong>taberu / nomu → meshiagaru</strong>, <strong>iu → ossharu</strong>, <strong>miru → goran ni naru</strong>, <strong>suru → nasaru</strong>, <strong>kureru → kudasaru</strong>.`,
+        [['Irassharu', 'Be / go / come (honorific)'], ['Meshiagaru', 'Eat / drink (honorific)'], ['Ossharu', 'Say (honorific)'], ['Goran ni naru', 'See (honorific)'], ['Nasaru', 'Do (honorific)'], ['Kudasaru', 'Give (honorific)'], ['Gozonji desu', 'Know (honorific)']],
+        G([['Sensei wa ashita irasshaimasu.', 'The teacher will come tomorrow.'], ['Nani o meshiagarimasu ka?', 'What will you have?'], ['Buchou ga osshaimashita.', 'The department head said so.']]),
+        '',
+        EX([M('Irassharu', 'be,go,come,be (honorific)'), M('Meshiagaru', 'eat,drink,eat (honorific)'), exInput('Honorific for "say": {{___________}}', 'ossharu')])),
+      T('🪶', 'O/Go + verb stem + ni naru',
+        `The general honorific pattern is <strong>o + verb stem + ni naru</strong> (and <strong>go + suru-noun + ni naru</strong>): <strong>Sensei ga o-kaki ni narimashita</strong> ("The teacher wrote"), <strong>Buchou wa mou o-kaeri ni narimashita</strong> ("The department head has already gone home"), <strong>go-riyou ni naru</strong> ("to use").`,
+        [['Okaki ni naru', 'Write (honorific)'], ['Okaeri ni naru', 'Go home (honorific)'], ['Omachi ni naru', 'Wait (honorific)'], ['Oyomi ni naru', 'Read (honorific)'], ['Goriyou ni naru', 'Use (honorific)']],
+        G([['Sensei ga o-kaki ni narimashita.', 'The teacher wrote it.'], ['Buchou wa mou o-kaeri ni narimashita.', 'The department head has already left.'], ['Doko de go-riyou ni narimasu ka?', 'Where will you be using it?']], 'Pattern: <strong>o + stem + ni naru</strong> · <strong>go + noun + ni naru</strong>.'),
+        '',
+        EX([M('Okaeri ni naru', 'go home,go home (honorific),return'), exInput('"The teacher waited": {{Sensei wa o-machi ___________ narimashita.}}', 'ni'), exInput('Honorific "read": {{Oyomi ni ___________.}}', 'naru')])),
+      T('📜', 'Honorific requests and passive-honorific',
+        `<strong>O + stem + kudasai</strong> is an honorific request: <strong>Omachi kudasai</strong> ("Please wait"), <strong>Oyomi kudasai</strong>. A simpler honorific uses the <strong>passive form</strong>: <strong>Sensei ga kakaremashita</strong>, <strong>Buchou ga ikaremashita</strong>. <strong>O-V kudasai</strong> is common on signs and announcements.`,
+        [['Omachi kudasai', 'Please wait'], ['Oyomi kudasai', 'Please read'], ['Goran kudasai', 'Please look'], ['Oagari kudasai', 'Please come in / eat'], ['Kakaremasu', 'Writes (honorific passive)']],
+        G([['Shoushou omachi kudasai.', 'Please wait a moment.'], ['Dozo oagari kudasai.', 'Please come in / please help yourself.'], ['Sensei ga kakaremashita.', 'The teacher wrote it.']]),
+        dialogBox('Dialogue — At reception', [['A', 'Sumimasen. Tanaka-san wa irasshaimasu ka?'], ['B', 'Hai. Shoushou omachi kudasai.']]),
+        EX([M('Omachi kudasai', 'please wait'), exInput('"Please look": {{Go___________ kudasai.}}', 'ran'), exSelect('A polite request on a sign uses:', 'o + stem + kudasai', ['O + stem + kudasai', 'Stem + tai'])])),
+      T('🌸', 'Honorific nouns: o-, go- and -sama',
+        `Add <strong>o-</strong> (native words) or <strong>go-</strong> (Sino-Japanese words) to show respect or politeness: <strong>onamae</strong> ("your name"), <strong>otaku</strong> ("your home"), <strong>gokazoku</strong> ("your family"), <strong>go-shusshin</strong> ("your hometown"). <strong>-sama</strong> is a very polite version of <strong>-san</strong>: <strong>Tanaka-sama</strong>, <strong>okyaku-sama</strong>.`,
+        [['Onamae', 'Your name'], ['Otaku', 'Your home'], ['Gokazoku', 'Your family'], ['Goshusshin', 'Your hometown'], ['Okyaku-sama', 'Customer / guest'], ['Sama', 'Very polite -san']],
+        G([['Onamae wa nan desu ka?', "What is your name?"], ['Gokazoku wa genki desu ka?', 'Is your family well?'], ['Okyaku-sama, kochira e dozo.', 'This way, please, sir / madam.']]),
+        '',
+        EX([M('Gokazoku', 'your family,family'), M('Sama', 'very polite san,honorific,mr,ms'), exInput('Polite "your name": {{___________}}', 'onamae')], '🌸 Respectful words'))
+    ],
+    culture: `Keigo is not just grammar — it shows your relationship to the listener. In shops and restaurants staff use <strong>sonkeigo</strong> for customers (<strong>Irasshaimase</strong>, <strong>Omachi kudasai</strong>) and <strong>kenjougo</strong> for themselves. Even native speakers study it when they start work.`
+  });
+
+  /* ---------------- UNIT 10 — kenjougo ---------------- */
+  units.push({
+    title: '🙏 Unit 10 — Humble Language (Kenjougo)',
+    topics: [
+      T('🙇', 'Special humble verbs',
+        `<strong>Kenjougo</strong> lowers your own actions. Key verbs: <strong>iku / kuru → mairu</strong> (or <strong>ukagau</strong> when visiting someone), <strong>iu → moushiageru / mousu</strong>, <strong>suru → itasu</strong>, <strong>iru → oru</strong>, <strong>miru → haiken suru</strong>, <strong>morau → itadaku</strong>, <strong>shiru → zonjiru</strong>.`,
+        [['Mairu', 'Go / come (humble)'], ['Ukagau', 'Visit / ask (humble)'], ['Mousu', 'Say / be called (humble)'], ['Itasu', 'Do (humble)'], ['Oru', 'Be (humble)'], ['Haiken suru', 'See (humble)'], ['Zonjiru', 'Know (humble)']],
+        G([['Tanaka to moushimasu.', 'My name is Tanaka.'], ['Ashita ukagaimasu.', "I'll visit tomorrow."], ['Watashi ga itashimasu.', "I'll do it."], ['Ima kaisha ni orimasu.', "I'm at the office now."]]),
+        '',
+        EX([M('Mousu', 'say,say (humble),be called'), exInput('Humble "do": {{___________}}', 'itasu'), exInput('"I\'ll visit tomorrow": {{Ashita ___________.}}', 'ukagaimasu')])),
+      T('📦', 'O/Go + stem + suru',
+        `The general humble pattern is <strong>o + verb stem + suru / itasu</strong> (and <strong>go + noun + suru</strong>): <strong>Nimotsu o omochi shimasu</strong> ("I'll carry your bags"), <strong>Go-setsumei itashimasu</strong> ("I'll explain"). The listener benefits from the action.`,
+        [['Omochi suru', 'Carry (humble)'], ['Oshirase suru', 'Inform (humble)'], ['Gosetsumei suru', 'Explain (humble)'], ['Ookuri suru', 'Send (humble)'], ['Oshirase', 'Notice / news']],
+        G([['Nimotsu o omochi shimasu.', "I'll carry your luggage."], ['Gosetsumei itashimasu.', "I'll explain it."], ['Ato de oshirase shimasu.', "I'll let you know later."]], '<strong>o + stem + suru</strong> = humble · <strong>o + stem + ni naru</strong> = honorific.'),
+        '',
+        EX([M('Gosetsumei', 'explanation'), exInput('"I will explain": {{Go-setsumei ___________.}}', 'itashimasu,shimasu'), exSelect('Humble pattern:', 'o + stem + suru', ['O + stem + suru', 'O + stem + ni naru'])])),
+      T('💼', 'Humble phrases for daily use',
+        `Everyday humble phrases: <strong>Yoroshiku onegai itashimasu</strong> ("I look forward to working with you"), <strong>Shitsurei shimasu</strong> ("Excuse me / I'm leaving"), <strong>Kashikomarimashita</strong> ("Certainly"), <strong>Moushiwake arimasen</strong> ("I'm very sorry"). Humble requests: <strong>Oshiete itadakemasen ka?</strong> ("Would you kindly tell me?").`,
+        [['Yoroshiku onegai itashimasu', 'Please treat me kindly'], ['Shitsurei shimasu', 'Excuse me / goodbye'], ['Kashikomarimashita', 'Certainly'], ['Moushiwake arimasen', "I'm very sorry"], ['Oshiete itadakemasen ka', 'Could you kindly tell me?']],
+        G([['Kashikomarimashita.', 'Certainly (I understand).'], ['Moushiwake arimasen deshita.', 'I am terribly sorry.'], ['Oshiete itadakemasen ka?', 'Would you be so kind as to tell me?']]),
+        dialogBox('Dialogue — At a meeting', [['A', 'Kono shiryou o okuru koto ga dekimasu ka?'], ['B', 'Kashikomarimashita. Ato de oshirase itashimasu.']]),
+        EX([M('Kashikomarimashita', 'certainly,understood,very well'), exInput('"I\'m very sorry": {{Moushiwake ___________.}}', 'arimasen'), M('Shitsurei shimasu', 'excuse me,goodbye,i am leaving')], '💼 Business humility'))
+    ],
+    culture: `The humble forms are used for <em>your own</em> group — including your company. On the phone you say <strong>Tanaka wa tadaima seki o hazushite orimasu</strong> ("Tanaka is away from his desk") about your own colleague without adding <strong>-san</strong> — because to the outside caller, your company is "inside" (<strong>uchi</strong>).`
+  });
+
+  /* ---------------- UNIT 11 — business keigo ---------------- */
+  units.push({
+    title: '🏢 Unit 11 — Business Japanese in Practice',
+    topics: [
+      T('📞', 'On the phone',
+        `Business phone calls follow a fixed script. Answer with <strong>Hai, [Company] de gozaimasu</strong>. Ask for someone with <strong>[Name]-san wa irasshaimasu ka?</strong>. If they're away: <strong>Tadaima seki o hazushite orimasu</strong>. Take a message with <strong>Oshirase shimashou ka?</strong>.`,
+        [['De gozaimasu', 'Is (very polite)'], ['Tadaima', 'Right now'], ['Seki o hazusu', 'Be away from the desk'], ['Dengon', 'Message'], ['Kakunin', 'Confirmation'], ['Kakenaoshi', 'Call back']],
+        G([['Hai, Sakura Kaisha de gozaimasu.', 'Hello, this is Sakura Company.'], ['Tanaka wa tadaima seki o hazushite orimasu.', 'Tanaka is away from his desk at the moment.'], ['Ato de kakenaoshimasu.', "I'll call back later."]]),
+        dialogBox('Dialogue — Phone call', [['A', 'Hai, Sakura Kaisha de gozaimasu.'], ['B', 'Tanaka-san wa irasshaimasu ka?'], ['A', 'Moushiwake arimasen. Tadaima seki o hazushite orimasu.']]),
+        EX([M('Tadaima', 'right now,just now,at the moment'), M('Dengon', 'message'), exInput('"I will confirm": {{Kakunin ___________.}}', 'itashimasu,shimasu')])),
+      T('✉️', 'Business emails and greetings',
+        `Emails start with <strong>Itsumo osewa ni natte orimasu</strong> ("Thank you for your continued support") and end with <strong>Yoroshiku onegai itashimasu</strong>. Other fixed phrases: <strong>Ryoukai shimashita</strong> ("Understood"), <strong>Gokakunin kudasai</strong> ("Please confirm"), <strong>Otsukaresama desu</strong> ("Thank you for your hard work").`,
+        [['Osewa ni naru', 'Be indebted to / thank'], ['Ryoukai', 'Understood'], ['Gokakunin', 'Confirmation (honorific)'], ['Otsukaresama', 'Thank you for your work'], ['Kenshuu', 'Training']],
+        G([['Itsumo osewa ni natte orimasu.', 'Thank you for your continued support.'], ['Gokakunin kudasai.', 'Please confirm.'], ['Otsukaresama desu.', 'Thank you for your hard work.']]),
+        '',
+        EX([M('Ryoukai', 'understood,roger,ok,acknowledged'), M('Otsukaresama', 'thank you for your hard work,good work'), exInput('"Please confirm": {{Go___________ kudasai.}}', 'kakunin')])),
+      T('📋', 'Meetings, deadlines and reports',
+        `Common meeting words: <strong>kaigi</strong> (meeting), <strong>shiryou</strong> (documents), <strong>shimekiri</strong> (deadline), <strong>houkoku</strong> (report), <strong>kentou</strong> (consideration). Polite patterns: <strong>~ no ken de</strong> ("regarding…"), <strong>~ made ni onegai shimasu</strong> ("by …, please"), <strong>kentou sasete itadakimasu</strong> ("we will consider it").`,
+        [['Kaigi', 'Meeting'], ['Shiryou', 'Documents / materials'], ['Shimekiri', 'Deadline'], ['Houkoku', 'Report'], ['Kentou', 'Consideration'], ['No ken de', 'Regarding']],
+        G([['Kaigi no shiryou o okurimasu.', "I'll send the meeting documents."], ['Kinyoubi made ni onegai shimasu.', 'By Friday, please.'], ['Kentou sasete itadakimasu.', "We will consider it."]]),
+        '',
+        EX([M('Shimekiri', 'deadline'), M('Houkoku', 'report'), exInput('"Regarding…": {{~ no ___________ de}}', 'ken')], '📋 Work words'))
+    ],
+    culture: `The Japanese office has its own etiquette: bowing, exchanging business cards (<strong>meishi</strong>) with both hands, and saying <strong>Otsukaresama desu</strong> to colleagues. <strong>Ho-ren-sou</strong> (<em>houkoku</em>, <em>renraku</em>, <em>soudan</em> — report, inform, consult) is a famous workplace rule.`
+  });
+
+  /* ---------------- UNIT 12 — temo / hoshii / iku kuru ---------------- */
+  units.push({
+    title: '🔗 Unit 12 — Even If, Wanting Others to Act, Going and Coming',
+    topics: [
+      T('☂️', 'Even if: te mo',
+        `<strong>V-te mo / i-adj -kute mo / na-adj-noun de mo</strong> means "even if / even though": <strong>Ame ga futte mo, ikimasu</strong> ("Even if it rains, I'll go"). With question words it becomes "no matter…": <strong>Nani o tabete mo futoranai</strong> ("No matter what I eat, I don't gain weight"), <strong>Dare demo</strong>, <strong>Itsu demo</strong>.`,
+        [['Te mo', 'Even if'], ['Nani demo', 'Anything'], ['Dare demo', 'Anyone'], ['Itsu demo', 'Anytime'], ['Futoru', 'Gain weight'], ['Ikura', 'How much']],
+        G([['Ame ga futte mo, ikimasu.', "Even if it rains, I'll go."], ['Takakute mo, kaimasu.', "Even if it's expensive, I'll buy it."], ['Dare demo kimasu yo.', 'Anyone can come.']]),
+        '',
+        EX([M('Te mo', 'even if,even though'), exInput('"Even if it rains": {{Ame ga futte ___________.}}', 'mo'), M('Itsu demo', 'anytime,any time,whenever')])),
+      T('🥺', 'Wanting someone to do something: te hoshii',
+        `<strong>[Person] ni V-te hoshii desu</strong> = "I want [person] to V": <strong>Tomodachi ni kite hoshii desu</strong>. Negative: <strong>V-nai de hoshii</strong> ("I don't want you to V"): <strong>Tabako o suwanai de hoshii desu</strong>. The person who should act takes <strong>ni</strong>.`,
+        [['Te hoshii', 'Want (someone) to'], ['Naide hoshii', "Want (someone) not to"], ['Kimochi', 'Feeling'], ['Wakatte', 'Understand (te-form)'], ['Warai', 'Laughter']],
+        G([['Tomodachi ni kite hoshii desu.', 'I want my friend to come.'], ['Tabako o suwanaide hoshii desu.', "I don't want you to smoke."], ['Watashi no kimochi o wakatte hoshii.', 'I want you to understand how I feel.']]),
+        '',
+        EX([M('Kimochi', 'feeling'), exInput('"I want you to come": {{Kite ___________ desu.}}', 'hoshii'), exInput('"I don\'t want you to smoke": {{Suwanai de ___________ desu.}}', 'hoshii')])),
+      T('➡️', 'Going and coming: te iku, te kuru',
+        `<strong>V-te iku</strong> means "V and go" or a change <em>moving away from now</em>: <strong>Bentou o katte ikimasu</strong> ("I'll buy a lunch and go"), <strong>Dandan samuku natte ikimasu</strong> ("It will get colder and colder"). <strong>V-te kuru</strong> = "V and come back" or a change <em>approaching now</em>: <strong>Kono mise wa ninki ga dete kimashita</strong> ("This shop has become popular").`,
+        [['Te iku', 'Do and go / change onwards'], ['Te kuru', 'Do and come / change until now'], ['Dandan', 'Gradually'], ['Fueru', 'Increase'], ['Heru', 'Decrease'], ['Ninki', 'Popularity']],
+        G([['Bentou o katte ikimasu.', "I'll buy a lunch and take it."], ['Dandan samuku natte ikimasu.', 'It will get colder and colder.'], ['Gaikokujin ga fuete kimashita.', 'The number of foreigners has been increasing.']]),
+        '',
+        EX([M('Dandan', 'gradually,little by little'), M('Fueru', 'increase,grow'), exInput('"It has become popular": {{Ninki ga dete ___________.}}', 'kimashita')])),
+      T('😢', 'Showing feelings: ~ garu',
+        `<strong>~ garu</strong> shows another person's visible feelings: <strong>Kodomo wa sabishigatte imasu</strong> ("The child seems lonely"), <strong>Imouto wa kowagatte imasu</strong> ("My sister is scared"). Use <strong>~ garu</strong> for third persons; for yourself use the plain adjective (<strong>kowai desu</strong>).`,
+        [['Garu', 'Show / seem to feel'], ['Kowagaru', 'Be scared (visibly)'], ['Sabishigaru', 'Be lonely (visibly)'], ['Hazukashigaru', 'Be embarrassed (visibly)'], ['Iyagaru', 'Dislike (visibly)']],
+        G([['Kodomo wa sabishigatte imasu.', 'The child seems lonely.'], ['Imouto wa inu o kowagatte imasu.', 'My sister is afraid of dogs.'], ['Kare wa kusuri o iyagarimasu.', 'He dislikes taking medicine.']]),
+        '',
+        EX([M('Kowagaru', 'be scared,be afraid'), exInput('"My sister is scared": {{Imouto wa kowa___________ imasu.}}', 'gatte'), exSelect('For third-person feelings use:', 'garu', ['Garu', 'Tai desu'])], '😢 Others\' feelings'))
+    ],
+    culture: `Japanese culture prefers describing situations rather than forcing opinions — hence <strong>~te hoshii</strong> ("I want you to…") is often softened to <strong>~te itadakitai</strong> ("I'd like you to kindly…") in polite company. And <strong>~garu</strong> reminds speakers that you can't know another person's feelings for sure.`
+  });
+
+  /* ---------------- UNIT 13 — sugiru / compounds ---------------- */
+  units.push({
+    title: '🧩 Unit 13 — Compound Verbs, Nouns from Adjectives and Ease',
+    topics: [
+      T('🚀', 'Compound verbs: dasu, hajimeru, tsuzukeru',
+        `Attach a second verb to the stem: <strong>V-dasu</strong> = "suddenly start" (<strong>nakidasu</strong>, <strong>furidasu</strong>), <strong>V-hajimeru</strong> = "begin" (<strong>benkyou shihajimeru</strong>), <strong>V-tsuzukeru</strong> = "keep on V-ing" (<strong>hashiritsuzukeru</strong>), <strong>V-owaru</strong> = "finish V-ing" (<strong>yomiowaru</strong>).`,
+        [['Nakidasu', 'Burst into tears'], ['Furidasu', 'Start raining'], ['Hajimeru', 'Begin'], ['Tsuzukeru', 'Continue'], ['Yomiowaru', 'Finish reading'], ['Hashiritsuzukeru', 'Keep running']],
+        G([['Kodomo ga nakidashimashita.', 'The child burst into tears.'], ['Nihongo o benkyou shihajimemashita.', 'I started studying Japanese.'], ['Hon o yomiowarimashita.', 'I finished reading the book.'], ['Ame ga furidashita.', 'It started to rain.']], '<strong>-dasu</strong> = sudden start · <strong>-hajimeru</strong> = planned start.'),
+        '',
+        EX([M('Tsuzukeru', 'continue,keep on'), exInput('"I started studying": {{Benkyou shi___________.}}', 'hajimemashita'), exInput('"It started to rain": {{Ame ga furi___________.}}', 'dashita,dashimashita')])),
+      T('📏', 'Nouns from adjectives: -sa and -mi',
+        `Drop the <strong>-i</strong> of an i-adjective (or the <strong>na</strong> of a na-adjective) and add <strong>-sa</strong> to make a noun: <strong>takai → takasa</strong> ("height"), <strong>omoi → omosa</strong> ("weight"), <strong>shizuka → shizukasa</strong> ("quietness"). <strong>-mi</strong> gives a feeling: <strong>itami</strong> ("pain"), <strong>amami</strong> ("sweetness").`,
+        [['Takasa', 'Height'], ['Nagasa', 'Length'], ['Omosa', 'Weight'], ['Fukasa', 'Depth'], ['Shizukasa', 'Quietness'], ['Itami', 'Pain'], ['Amami', 'Sweetness']],
+        G([['Kono tatemono no takasa wa nan meetoru desu ka?', 'How tall is this building?'], ['Machi no shizukasa ga suki desu.', 'I like the quietness of the town.'], ['Itami ga arimasu ka?', 'Do you feel pain?']]),
+        '',
+        EX([M('Omosa', 'weight'), exInput('"Height" (from {{takai}}): {{___________}}', 'takasa'), exInput('"Length" (from {{nagai}}): {{___________}}', 'nagasa')])),
+      T('🛠️', 'Ways of doing: kata, and ease',
+        `<strong>V-stem + kata</strong> = "way of V-ing": <strong>Tsukaikata</strong> ("how to use"), <strong>Yomikata</strong> ("how to read"), <strong>Tabekata</strong> ("way of eating"). Compare <strong>~ yasui / ~ nikui</strong> (N5) and <strong>~ koto wa nai</strong> ("no need to").`,
+        [['Tsukaikata', 'How to use'], ['Yomikata', 'How to read'], ['Tabekata', 'Way of eating'], ['Tsukurikata', 'How to make'], ['Hashi', 'Chopsticks'], ['Oshieru', 'Teach']],
+        G([['Hashi no tsukaikata o oshiete kudasai.', 'Please teach me how to use chopsticks.'], ['Kono kanji no yomikata ga wakarimasen.', "I don't know how to read this kanji."], ['Shinpai suru koto wa arimasen.', "There's no need to worry."]]),
+        '',
+        EX([M('Tsukaikata', 'how to use,way of using'), exInput('"How to read": {{Yomi___________}}', 'kata'), exInput('"How to make": {{Tsukuri___________}}', 'kata')], '🛠️ How to…'))
+    ],
+    culture: `Japanese is full of compound verbs, which pack subtle meaning into a short word — <strong>Furidasu</strong> (it began to rain) is more vivid than "it started raining". Nouns ending in <strong>-sa</strong> like <strong>takasa</strong> and <strong>omosa</strong> appear in product descriptions and weather reports.`
+  });
+
+  /* ---------------- UNIT 14 — omou / kadouka ---------------- */
+  units.push({
+    title: '💭 Unit 14 — Thinking, Quoting, Whether, Imitating and Commanding',
+    topics: [
+      T('🤔', 'I think that…: to omou',
+        `<strong>[Plain sentence] + to omoimasu</strong> = "I think that…": <strong>Ashita ame ga furu to omoimasu</strong>. <strong>~ to omotte imasu</strong> shows an ongoing thought or plan (<strong>Nihon ni ikou to omotte imasu</strong>). Negative opinions put <strong>nai</strong> inside: <strong>ikanai to omoimasu</strong> ("I think he won't go").`,
+        [['Omou', 'Think'], ['Omotte iru', 'Be thinking'], ['Kangaeru', 'Consider'], ['Kitai suru', 'Expect / hope'], ['Shinjiru', 'Believe']],
+        G([['Ashita ame ga furu to omoimasu.', 'I think it will rain tomorrow.'], ['Nihon e ikou to omotte imasu.', "I'm thinking of going to Japan."], ['Kare wa konai to omoimasu.', "I don't think he will come."]]),
+        '',
+        EX([M('Omou', 'think'), exInput('"I think it\'s good": {{Ii ___________ omoimasu.}}', 'to'), exInput('"I\'m thinking of going": {{Ikou to ___________ imasu.}}', 'omotte')])),
+      T('❓', 'Whether or not: ka dou ka',
+        `<strong>[Plain sentence] + ka dou ka</strong> = "whether or not": <strong>Kuru ka dou ka wakarimasen</strong> ("I don't know whether he will come"). With a question word, just add <strong>ka</strong>: <strong>Nani o tabetai ka kimemashita</strong>. It works inside a bigger sentence.`,
+        [['Ka dou ka', 'Whether or not'], ['Wakaranai', "Don't know"], ['Shiritai', 'Want to know'], ['Tashikameru', 'Check'], ['Kakunin suru', 'Confirm']],
+        G([['Kare ga kuru ka dou ka wakarimasen.', "I don't know whether he will come or not."], ['Oishii ka dou ka tabete mimasu.', "I'll try it to see if it's tasty."], ['Hontou ka dou ka tashikamemasu.', "I'll check if it's true."]]),
+        '',
+        EX([M('Tashikameru', 'check,make sure,confirm'), exInput('"Whether or not": {{~ ka ___________ ka}}', 'dou'), exInput('"I don\'t know whether it\'s true": {{Hontou ka dou ka ___________.}}', 'wakarimasen')])),
+      T('🌷', 'Like and such as: no you ni, no you na',
+        `<strong>[Noun] no you ni</strong> = "like [noun]" (adverb) and <strong>[Noun] no you na</strong> = "[noun]-like" (adjective): <strong>Yume no you na hanashi</strong> ("a dream-like story"), <strong>Kodomo no you ni warau</strong> ("laugh like a child"). With verbs: <strong>Gaikokujin no you ni nihongo o hanasu</strong>.`,
+        [['No you na', '[Noun]-like'], ['No you ni', 'Like / as if'], ['Yume', 'Dream'], ['Hanashi', 'Story'], ['Warau', 'Laugh'], ['Mitai na', 'Like (casual)']],
+        G([['Yume no you na hanashi desu.', "It's a dream-like story."], ['Kodomo no you ni waraimasu.', 'She laughs like a child.'], ['Ame no you ni namida ga ochimashita.', 'Tears fell like rain.']]),
+        '',
+        EX([M('Yume', 'dream'), exInput('"A dream-like story": {{Yume no ___________ hanashi.}}', 'you na'), exInput('"Laugh like a child": {{Kodomo no ___________ warau.}}', 'you ni')])),
+      T('📢', 'Commands, feelings and necessity: nasai, ga suru, hitsuyou',
+        `<strong>V-stem + nasai</strong> is a gentle command (parents, teachers): <strong>Hayaku nenasai</strong> ("Go to sleep"). <strong>~ ga suru</strong> expresses senses: <strong>Ii nioi ga suru</strong> ("It smells nice"), <strong>Aji ga suru</strong> ("It tastes like…"). <strong>~ hitsuyou ga aru</strong> = "need to", <strong>hitsuyou wa nai</strong> = "no need".`,
+        [['Nasai', 'Do (gentle order)'], ['Nioi', 'Smell'], ['Aji', 'Taste'], ['Oto', 'Sound'], ['Hitsuyou', 'Need'], ['Hitsuyou ga aru', 'Need to']],
+        G([['Hayaku nenasai.', 'Go to bed quickly.'], ['Ii nioi ga shimasu.', 'It smells nice.'], ['Kono shigoto wa kuruma ga hitsuyou desu.', 'You need a car for this job.'], ['Ikanakute mo hitsuyou wa arimasen.', "You don't need to go."]]),
+        '',
+        EX([M('Nioi', 'smell,scent'), M('Hitsuyou', 'need,necessity'), exInput('"Go to sleep!": {{Hayaku ___________.}}', 'nenasai')])),
+      T('⚡', 'Imperative and prohibitive: -e / -ro and na',
+        `The <strong>imperative</strong> (strong command, rough or on signs) ends <strong>godan: -e</strong> (<strong>ike!</strong>, <strong>hashire!</strong>, <strong>tomare!</strong>), <strong>ichidan: -ro</strong> (<strong>mite!</strong> → <strong>miro!</strong>, <strong>yamero!</strong>), <strong>suru → shiro</strong>, <strong>kuru → koi</strong>. The <strong>prohibitive</strong> adds <strong>na</strong> to the dictionary form: <strong>Iku na!</strong>, <strong>Suru na!</strong>, <strong>Naku na!</strong>.`,
+        [['Hashire', 'Run!'], ['Tomare', 'Stop!'], ['Yamero', 'Stop it!'], ['Iku na', "Don't go!"], ['Suru na', "Don't do it!"], ['Naku na', "Don't cry!"]],
+        G([['Hashire!', 'Run!'], ['Tomare!', 'Stop!'], ['Koko ni hairu na!', "Don't enter here!"]], 'These forms are blunt — you will see them on road signs, in manga and shouted at sports matches, not in polite conversation.'),
+        '',
+        EX([M('Tomare', 'stop'), exInput('"Don\'t go!": {{Iku ___________!}}', 'na'), exSelect('A blunt command to a friend is:', 'yamero', ['Yamero', 'Yamete kudasai'])], '⚡ Know them, recognise them'))
+    ],
+    culture: `Road signs in Japan use blunt imperative forms like <strong>Tomare</strong> ("Stop") — drawn in red triangles. In polite language you almost never use commands; you request with <strong>-te kudasai</strong> instead. Knowing the blunt forms helps you understand signs, anime and sports.`
+  });
+
+  /* ---------------- UNIT 15 — aida / made ni ---------------- */
+  units.push({
+    title: '⌛ Unit 15 — During, By, Every, If and Regret',
+    topics: [
+      T('🕰️', 'While and during: aida, aida ni',
+        `<strong>[Plain form] + aida</strong> = "during / while (the whole period)": <strong>Kodomo ga neteiru aida, ryouri o shimasu</strong>. <strong>Aida ni</strong> = "at some point during": <strong>Ryokou no aida ni, takusan shashin o torimashita</strong>. <strong>Uchi ni</strong> = "while it's still…": <strong>Wakai uchi ni, ryokou shitai</strong>.`,
+        [['Aida', 'During / while'], ['Aida ni', 'Sometime during'], ['Uchi ni', 'While (still)'], ['Ryokou', 'Trip'], ['Wakai', 'Young'], ['Neteiru', 'Is sleeping']],
+        G([['Kodomo ga neteiru aida, ryouri o shimasu.', 'I cook while the child sleeps.'], ['Ryokou no aida ni, takusan shashin o torimashita.', 'I took many photos during the trip.'], ['Wakai uchi ni, ryokou shitai desu.', 'I want to travel while I am young.']]),
+        '',
+        EX([M('Aida', 'during,while'), exSelect('"While it is still young / cold…" uses:', 'uchi ni', ['Uchi ni', 'Made ni', 'Oki ni']), exInput('"During the trip": {{Ryokou no ___________.}}', 'aida,aida ni')])),
+      T('📌', 'Deadlines and intervals: made ni, oki ni',
+        `<strong>[Time] made ni</strong> = "by [time]" (a deadline): <strong>Kinyoubi made ni shukudai o dashite kudasai</strong>. Compare <strong>made</strong> ("until", a continuing action). <strong>[Number] + oki ni</strong> = "every other / at intervals of": <strong>Ichi-jikan oki ni kusuri o nomimasu</strong> ("I take medicine every hour"), <strong>Ni-nichi oki ni</strong> ("every second day").`,
+        [['Made ni', 'By (deadline)'], ['Oki ni', 'Every other / at intervals'], ['Shimekiri', 'Deadline'], ['Ichijikan oki', 'Every hour'], ['Nichi oki', 'Every other day']],
+        G([['Kinyoubi made ni shukudai o dashite kudasai.', 'Please hand in your homework by Friday.'], ['Juuniji made matte kudasai.', 'Please wait until twelve.'], ['Ichijikan oki ni basu ga kimasu.', 'A bus comes every hour.']]) +
+          PT([['Time made ni', 'by (deadline)'], ['Time made', 'until (continuing)'], ['N + oki ni', 'every other N']]),
+        '',
+        EX([M('Made ni', 'by,by (deadline)'), exInput('"By Friday": {{Kinyoubi ___________.}}', 'made ni'), exSelect('A deadline uses:', 'made ni', ['Made ni', 'Made'])])),
+      T('🔔', 'In case of and suggestions: baai wa, tara dou',
+        `<strong>[Plain form] + baai wa</strong> = "in case of / if": <strong>Hitsuyou na baai wa, denwa shite kudasai</strong>. <strong>V-tara dou desu ka?</strong> = "Why don't you…?" (a gentle suggestion): <strong>Sukoshi yasundara dou desu ka?</strong>.`,
+        [['Baai', 'Case / situation'], ['Baai wa', 'In case of'], ['Tara dou', "Why not…?"], ['Hitsuyou', 'Need'], ['Kinkyuu', 'Emergency']],
+        G([['Hitsuyou na baai wa, denwa shite kudasai.', 'If necessary, please call.'], ['Kinkyuu no baai wa, 119 ni denwa shimasu.', "In an emergency, call 119."], ['Sukoshi yasundara dou desu ka?', 'Why not take a short rest?']]),
+        dialogBox('Dialogue — A suggestion', [['A', 'Sukoshi tsukaremashita.'], ['B', 'Sukoshi yasundara dou desu ka?']]),
+        EX([M('Baai', 'case,situation'), exInput('"In case of emergency": {{Kinkyuu no ___________}}', 'baai,baai wa'), exInput('"Why don\'t you rest?": {{Yasun ___________ dou desu ka?}}', 'dara')])),
+      T('😅', 'Relief, apology and regret: te yokatta, te sumimasen, ba yokatta',
+        `<strong>V-te yokatta</strong> = "I'm glad I V-ed": <strong>Kite yokatta</strong>. <strong>V-te sumimasen</strong> = "sorry for V-ing": <strong>Matasete sumimasen</strong> ("sorry to keep you waiting"). <strong>V-ba yokatta</strong> = "I should have / wish I had": <strong>Motto benkyou sureba yokatta</strong>.`,
+        [['Te yokatta', "I'm glad (that)"], ['Te sumimasen', 'Sorry for (doing)'], ['Ba yokatta', 'I wish I had'], ['Kookai', 'Regret'], ['Matasete', 'Making (someone) wait']],
+        G([['Kite yokatta desu.', "I'm glad I came."], ['Omataseshite sumimasen.', 'Sorry to have kept you waiting.'], ['Motto benkyou sureba yokatta.', 'I wish I had studied more.']]),
+        '',
+        EX([M('Kookai', 'regret'), exInput('"I\'m glad I came": {{Kite ___________.}}', 'yokatta'), exInput('"I wish I had studied": {{Benkyou sureba ___________.}}', 'yokatta')], '😅 Feelings after the fact'))
+    ],
+    culture: `Deadlines (<strong>shimekiri</strong>) are taken seriously in Japan. <strong>Made ni</strong> means "no later than" — so <strong>Kinyoubi made ni</strong> means you must deliver before Friday ends. The humble apology <strong>Omataseshite sumimasen</strong> is heard constantly in shops, stations and offices.`
+  });
+
+  /* ---------------- UNIT 16 — review ---------------- */
+  units.push({
+    title: '🎓 Unit 16 — N4 Review: Choosing the Right Pattern',
+    topics: [
+      T('⚖️', 'Look-alike patterns compared',
+        `Many N4 patterns look similar. Use this table to choose: the <strong>subject of the decision</strong> (<strong>suru</strong> = I, <strong>naru</strong> = circumstances), the <strong>direction of favour</strong> (<strong>ageru / kureru / morau</strong>), and the <strong>speaker's confidence</strong> (<strong>hazu</strong> = expectation, <strong>wake</strong> = logical conclusion).`,
+        [['Koto ni suru', 'I decide'], ['Koto ni naru', 'It gets decided'], ['You ni suru', 'Make an effort'], ['You ni naru', 'Come to be able'], ['Hazu', 'Should be (expectation)'], ['Wake', 'No wonder (logic)']],
+        PT([['koto ni suru / naru', 'decide / it has been decided'], ['you ni suru / naru', 'make an effort / come to be able'], ['hazu da / wake da', 'should be / that explains it'], ['bakari / tokoro da', 'just did / at the moment of'], ['ageru / kureru / morau', 'I give / someone gives me / I receive']]) +
+          G([['Raigetsu kekkon suru koto ni narimashita.', "It was decided I'll marry next month."], ['Mainichi aruku you ni shite imasu.', 'I try to walk every day.']]),
+        '',
+        EX([exSelect('"I decided myself" uses:', 'koto ni suru', ['Koto ni suru', 'Koto ni naru']), exSelect('"It was arranged for me" uses:', 'koto ni naru', ['Koto ni suru', 'Koto ni naru']), exSelect('"Come to be able" uses:', 'you ni naru', ['You ni naru', 'You ni suru'])])),
+      T('🪜', 'The politeness ladder',
+        `The same meaning can be said at four levels. <strong>Casual</strong> (plain form), <strong>polite</strong> (-masu), <strong>honorific</strong> (for the other person's action) and <strong>humble</strong> (for your own). <strong>Taberu → tabemasu → meshiagaru → itadaku</strong>. Choose the level by the listener: friends, strangers, superiors.`,
+        [['Taberu', 'Eat (casual)'], ['Tabemasu', 'Eat (polite)'], ['Meshiagaru', 'Eat (honorific)'], ['Itadaku', 'Eat / receive (humble)'], ['Iku', 'Go (casual)'], ['Irassharu', 'Go (honorific)'], ['Mairu', 'Go (humble)']],
+        G([['Taberu? (casual)', 'Are you eating?'], ['Tabemasu ka? (polite)', 'Will you eat?'], ['Meshiagarimasu ka? (honorific)', 'Will you have something? (to a superior)'], ['Itadakimasu. (humble)', "I'll have it. (to start a meal)"]]),
+        '',
+        EX([M('Irassharu', 'go (honorific),come (honorific),be (honorific)'), M('Mairu', 'go (humble),come (humble)'), exSelect('For your own action, use:', 'kenjougo', ['Kenjougo', 'Sonkeigo'])])),
+      T('🗣️', 'Putting it together',
+        `Combine what you know: use the <strong>causative / passive</strong> for responsibilities, <strong>giving / receiving</strong> for favours, <strong>koto ni naru</strong> for arrangements and <strong>keigo</strong> for politeness: <strong>Buchou ni setsumei sasete itadakimasu</strong> ("I will explain to the department head"), <strong>Tanaka-san ni tetsudatte moraimashita</strong> ("Tanaka helped me").`,
+        [['Setsumei', 'Explanation'], ['Tetsudau', 'Help'], ['Anzen', 'Safety'], ['Kakunin', 'Confirmation']],
+        G([['Kaigi de setsumei sasete itadakimasu.', 'I will explain at the meeting.'], ['Tanaka-san ni tetsudatte moraimashita.', 'Tanaka helped me.'], ['Raigetsu Oosaka ni tenkin suru koto ni narimashita.', "It's been decided that I'll transfer to Osaka."]]),
+        dialogBox('Dialogue — At work', [['A', 'Raigetsu Oosaka ni tenkin suru koto ni narimashita.'], ['B', 'Sou desu ka. Sabishiku naru wake desu ne.'], ['A', 'Hai, demo ganbarou to omoimasu.']]),
+        EX([M('Setsumei', 'explanation'), exInput('"I\'ll explain (humble)": {{Setsumei sasete ___________.}}', 'itadakimasu'), exInput('"Tanaka helped me": {{Tanaka-san ni tetsudatte ___________.}}', 'moraimashita')], '🗣️ Mixed practice'))
+    ],
+    culture: `Congratulations — you have covered the grammar of <strong>JLPT N4</strong>! The next step is reading real material: news for learners, graded readers and manga with furigana. Keep using the checkpoints and the vocabulary recaps to review.`
+  });
+
+  units.forEach(u => lectureData.push(u));
+  units.forEach(u => {
+    const plain = { group: '', rows: [] }, groups = {}, seen = {};
+    u.topics.forEach(t => {
+      t._rows.forEach(r => {
+        const low = r[0].toLowerCase();
+        if (seen[low]) return;
+        seen[low] = true;
+        if (t._group) (groups[t._group] = groups[t._group] || { group: t._group, rows: [] }).rows.push(r);
+        else plain.rows.push(r);
+      });
+    });
+    RECAP.push([plain].concat(Object.keys(groups).map(k => groups[k])).filter(g => g.rows.length));
+  });
+})();
 
 /* =========================================================
    COURSE STRUCTURE
@@ -1882,7 +2213,10 @@ const UNIT_WORD = "Unit", UNIT_BASE = 1;
 const CHECKPOINTS = [
   { id: 'cpA', letter: 'A', units: [0, 1, 2], after: 2 },
   { id: 'cpB', letter: 'B', units: [3, 4, 5], after: 5 },
-  { id: 'cpFinal', letter: 'Final', units: [0, 1, 2, 3, 4, 5], after: 5 }
+  { id: 'cpC', letter: 'C', units: [6, 7, 8], after: 8 },
+  { id: 'cpD', letter: 'D', units: [9, 10, 11], after: 11 },
+  { id: 'cpE', letter: 'E', units: [12, 13, 14], after: 14 },
+  { id: 'cpFinal', letter: 'Final', units: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], after: 15 }
 ];
 const COURSE = [];
 lectureData.forEach(function(u, i) {
