@@ -572,6 +572,17 @@
   button.spk.big { font-size: 0.95rem; padding: 6px 14px; font-weight: 600; margin-right: 6px; }
   #recapTbl.hide-en td.en-cell { filter: blur(6px); transition: filter .15s ease; }
   #recapTbl.hide-en tr:hover td.en-cell { filter: none; }
+  .skill-block { border-left: 4px solid var(--accent2); }
+  .skill-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 10px; }
+  button.skill-btn { background: var(--accent2); color: #fff; border: 0; border-radius: 999px; padding: 7px 16px; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+  button.skill-btn.alt { background: var(--accent2-soft); color: var(--ink); border: 1px solid var(--line); }
+  button.skill-btn:hover { filter: brightness(.95); }
+  .skill-bar label { font-size: 0.85rem; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .skill-hidden { display: none; }
+  .read-text { background: var(--card-bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; line-height: 1.9; font-size: 1.02rem; margin: 0 0 8px; }
+  .skill-en { color: var(--muted); font-style: italic; font-size: 0.92rem; margin: 0 0 8px; }
+  .skill-q-title { margin: 14px 0 4px; font-size: 0.85rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .04em; }
+  .skill-note { color: var(--muted); font-size: 0.88rem; margin: 0 0 8px; }
   .recap-done {
     margin-top: 20px; padding: 14px 16px; border-radius: 10px;
     background: linear-gradient(135deg, #e4f2ee 0%, #f3f9f6 100%);
@@ -1350,6 +1361,111 @@ hayaku|はやく|早く
 toki|とき|時
 ongaku|おんがく|音楽
 
+maria|マリア
+amerika-jin|アメリカじん|アメリカ人
+tanaka-san|たなかさん|田中さん
+mina-san|みなさん|皆さん
+minasan|みなさん|皆さん
+kaado|カード
+pen|ペン
+suupaa|スーパー
+hiragana|ひらがな
+kanji|かんじ|漢字
+toukyou|とうきょう|東京
+nattou|なっとう|納豆
+kuruma|くるま|車
+hana|はな|花
+umi|うみ|海
+natsuyasumi|なつやすみ|夏休み
+otera|おてら|お寺
+tenki|てんき|天気
+shinbun|しんぶん|新聞
+shiken|しけん|試験
+toshokan|としょかん|図書館
+keitai|けいたい|携帯
+sukoshi|すこし|少し
+benri|べんり|便利
+kirei|きれい
+asagohan|あさごはん|朝ご飯
+chikai|ちかい|近い
+maiasa|まいあさ|毎朝
+hairu|はいる|入る
+suwatte|すわって|座って
+misete|みせて|見せて
+nuide|ぬいで|脱いで
+hashitte|はしって|走って
+kyou|きょう|今日
+dakara|だから
+osoku|おそく|遅く
+wasurenai|わすれない|忘れない
+kooen|こうえん|公園
+natsu|なつ|夏
+atsui|あつい|暑い
+fuyu|ふゆ|冬
+samui|さむい|寒い
+omoshiroi|おもしろい|面白い
+sakimasu|さきます|咲きます
+ooku|おおく|多く
+owattara|おわったら|終わったら
+eigakan|えいがかん|映画館
+kaettara|かえったら|帰ったら
+hima|ひま|暇
+oshiete|おしえて|教えて
+hanasemasu|はなせます|話せます
+yomemasu|よめます|読めます
+yomemasen|よめません|読めません
+kanashii|かなしい|悲しい
+oyogemasu|およげます|泳げます
+oyogemasen|およげません|泳げません
+oyogu|およぐ|泳ぐ
+isogashii|いそがしい|忙しい
+okureta|おくれた|遅れた
+sugu|すぐ
+kare|かれ|彼
+kanojo|かのじょ|彼女
+byouki|びょうき|病気
+genki|げんき|元気
+warui|わるい|悪い
+sora|そら|空
+kuroi|くろい|黒い
+tsukareta|つかれた|疲れた
+tsukarete|つかれて|疲れて
+soto|そと|外
+asobu|あそぶ|遊ぶ
+zannen|ざんねん|残念
+arau|あらう|洗う
+tabesugimashita|たべすぎました|食べ過ぎました
+itakatta|いたかった|痛かった
+chiketto|チケット
+meeru|メール
+hoteru|ホテル
+aisu|アイス
+metoru|メートル
+fujisan|ふじさん|富士山
+shinkansen|しんかんせん|新幹線
+wabi-sabi|わびさび
+yamada|やまだ|山田
+tanaka|たなか|田中
+tanaka-sama|たなかさま|田中様
+suzuki|すずき|鈴木
+meishi|めいし|名刺
+shachou|しゃちょう|社長
+karada|からだ|体
+kasa|かさ|傘
+hataraite|はたらいて|働いて
+kawa|かわ|川
+yama|やま|山
+tokei|とけい|時計
+kondo|こんど|今度
+hontou|ほんとう|本当
+saikin|さいきん|最近
+oto|おと|音
+bunka|ぶんか|文化
+mondai|もんだい|問題
+renraku|れんらく|連絡
+shiryou|しりょう|資料
+takoyaki|たこやき|たこ焼き
+
 `);
 
 addWords(`
@@ -1397,6 +1513,111 @@ irai|いらい|以来
 tokoro|ところ
 bakari|ばかり
 zenbu|ぜんぶ|全部
+
+maria|マリア
+amerika-jin|アメリカじん|アメリカ人
+tanaka-san|たなかさん|田中さん
+mina-san|みなさん|皆さん
+minasan|みなさん|皆さん
+kaado|カード
+pen|ペン
+suupaa|スーパー
+hiragana|ひらがな
+kanji|かんじ|漢字
+toukyou|とうきょう|東京
+nattou|なっとう|納豆
+kuruma|くるま|車
+hana|はな|花
+umi|うみ|海
+natsuyasumi|なつやすみ|夏休み
+otera|おてら|お寺
+tenki|てんき|天気
+shinbun|しんぶん|新聞
+shiken|しけん|試験
+toshokan|としょかん|図書館
+keitai|けいたい|携帯
+sukoshi|すこし|少し
+benri|べんり|便利
+kirei|きれい
+asagohan|あさごはん|朝ご飯
+chikai|ちかい|近い
+maiasa|まいあさ|毎朝
+hairu|はいる|入る
+suwatte|すわって|座って
+misete|みせて|見せて
+nuide|ぬいで|脱いで
+hashitte|はしって|走って
+kyou|きょう|今日
+dakara|だから
+osoku|おそく|遅く
+wasurenai|わすれない|忘れない
+kooen|こうえん|公園
+natsu|なつ|夏
+atsui|あつい|暑い
+fuyu|ふゆ|冬
+samui|さむい|寒い
+omoshiroi|おもしろい|面白い
+sakimasu|さきます|咲きます
+ooku|おおく|多く
+owattara|おわったら|終わったら
+eigakan|えいがかん|映画館
+kaettara|かえったら|帰ったら
+hima|ひま|暇
+oshiete|おしえて|教えて
+hanasemasu|はなせます|話せます
+yomemasu|よめます|読めます
+yomemasen|よめません|読めません
+kanashii|かなしい|悲しい
+oyogemasu|およげます|泳げます
+oyogemasen|およげません|泳げません
+oyogu|およぐ|泳ぐ
+isogashii|いそがしい|忙しい
+okureta|おくれた|遅れた
+sugu|すぐ
+kare|かれ|彼
+kanojo|かのじょ|彼女
+byouki|びょうき|病気
+genki|げんき|元気
+warui|わるい|悪い
+sora|そら|空
+kuroi|くろい|黒い
+tsukareta|つかれた|疲れた
+tsukarete|つかれて|疲れて
+soto|そと|外
+asobu|あそぶ|遊ぶ
+zannen|ざんねん|残念
+arau|あらう|洗う
+tabesugimashita|たべすぎました|食べ過ぎました
+itakatta|いたかった|痛かった
+chiketto|チケット
+meeru|メール
+hoteru|ホテル
+aisu|アイス
+metoru|メートル
+fujisan|ふじさん|富士山
+shinkansen|しんかんせん|新幹線
+wabi-sabi|わびさび
+yamada|やまだ|山田
+tanaka|たなか|田中
+tanaka-sama|たなかさま|田中様
+suzuki|すずき|鈴木
+meishi|めいし|名刺
+shachou|しゃちょう|社長
+karada|からだ|体
+kasa|かさ|傘
+hataraite|はたらいて|働いて
+kawa|かわ|川
+yama|やま|山
+tokei|とけい|時計
+kondo|こんど|今度
+hontou|ほんとう|本当
+saikin|さいきん|最近
+oto|おと|音
+bunka|ぶんか|文化
+mondai|もんだい|問題
+renraku|れんらく|連絡
+shiryou|しりょう|資料
+takoyaki|たこやき|たこ焼き
 
 `);
 
@@ -1448,11 +1669,15 @@ function applyScript(html) {
 }
 
 // canonical romaji used to compare typed answers (kana, kanji or romaji all collapse to the same form)
+// listening / reading / writing practice per lesson (filled in by the course content below)
+const SKILLS = [];
+
 function canon(s) {
   s = String(s).normalize('NFKC').toLowerCase();
   KANJI_KEYS.forEach(function(k) { if (s.indexOf(k) >= 0) s = s.split(k).join(' ' + KANJI_REV[k] + ' '); });
   s = kanaToRomaji(s);
   return s.replace(/[ōô]/g, 'o').replace(/[ūû]/g, 'u').replace(/[^a-z0-9]/g, '')
+    .replace(/si/g, 'shi').replace(/ti/g, 'chi').replace(/tu/g, 'tsu').replace(/zi/g, 'ji').replace(/sy/g, 'sh').replace(/ty/g, 'ch').replace(/jy/g, 'j').replace(/wo/g, 'o')
     .replace(/ou|oo/g, 'o').replace(/uu/g, 'u').replace(/nani/g, 'nan');
 }
 // equality that tolerates particle spellings: は/ha~wa, へ/he~e
@@ -1561,6 +1786,7 @@ function countTotalExercises() {
   lectureData.forEach(function(u) {
     u.topics.forEach(function(t) { total += (t.exercises.match(/class="check-btn"/g) || []).length; });
   });
+  SKILLS.forEach(function(s) { total += s.listen.qs.length + s.read.qs.length + s.write.length; });
   return total;
 }
 function renderProfileBar() {
@@ -2203,6 +2429,245 @@ const UNIT_WORD = "Unit", UNIT_BASE = 1;
     RECAP.push([plain].concat(Object.keys(groups).map(k => groups[k])).filter(g => g.rows.length));
   });
 })();
+/* =========================================================
+   N4 — listening, reading and writing practice for each lesson
+   ========================================================= */
+(function() {
+  const W = (en, ans) => {
+    const a = ans.split(','), extra = [];
+    a.forEach(x => { if (/^watashi wa /.test(x)) extra.push(x.slice(11)); });
+    return [en, a.concat(extra).join(',')];
+  };
+  const S = (listen, read, write) => ({ listen: listen, read: read, write: write });
+  const A = (title, lines, qs) => ({ title: title, lines: lines, qs: qs });
+  const R = (title, text, en, qs) => ({ title: title, text: text, en: en, qs: qs });
+  SKILLS.length = 0;
+
+
+  // Unit 1 — causative
+  SKILLS.push(S(
+    A('At the restaurant', [['A', 'Sumimasen. Kono ryouri o tabesasete kudasai.'], ['B', 'Hai, douzo.'], ['A', 'Haha wa itsumo watashi ni yasai o tabesaseru n desu.'], ['B', 'Soo desu ka. Karada ni ii desu ne.']], [
+      ['What does A ask to do?', 'Try the dish', ['Try the dish', 'Cook the dish', 'Pay for the dish']],
+      ['What does A\'s mother make A eat?', 'Vegetables', ['Vegetables', 'Fish', 'Sweets']],
+      ['What does B say about it?', 'It is good for the body', ['It is good for the body', 'It is bad', 'It is expensive']]]),
+    R('My father', 'Chichi wa kodomo no toki, watashi ni mainichi hon o yomasemashita. Ima wa, watashi ga musuko ni sooji o saseru. Demo, tokidoki asobasemasu.',
+      'When I was a child, my father made me read a book every day. Now I make my son clean. But sometimes I let him play.', [
+        ['What did the father make the writer do?', 'Read a book every day', ['Read a book every day', 'Clean', 'Cook']],
+        ['What does the writer make the son do now?', 'Clean', ['Clean', 'Study', 'Read']],
+        ['What does the writer sometimes let the son do?', 'Play', ['Play', 'Sleep', 'Watch TV']]]),
+    [W('Please let me go.', 'ikasete kudasai'), W('Please let me think.', 'kangaesasete kudasai'), W('The teacher made the students read.', 'sensei wa gakusei ni yomasemashita,sensei wa gakusei ni yomaseta'), W('Mother made me eat vegetables.', 'haha wa watashi ni yasai o tabesasemashita'), W('Please let me try this.', 'kore o tabesasete kudasai,kore o tameshite kudasai')]
+  ));
+
+  // Unit 2 — passive and causative-passive
+  SKILLS.push(S(
+    A('A bad day', [['A', 'Kyou wa ame ni furarete, nurete shimaimashita.'], ['B', 'Taihen deshita ne.'], ['A', 'Hai. Sono ue, buchou ni zangyou o saseraremashita.']], [
+      ['What happened to A because of the rain?', 'Got wet', ['Got wet', 'Got lost', 'Got sick']],
+      ['What was A made to do by the boss?', 'Work overtime', ['Work overtime', 'Go home early', 'Clean']],
+      ['How does B react?', 'Sympathetically', ['Sympathetically', 'Angrily', 'Happily']]]),
+    R('Yesterday', 'Kinou, watashi wa tomodachi ni shigoto o tanomaremashita. Soshite, ame ni furaremashita. Uchi ni kaette, haha ni shikararemashita.',
+      'Yesterday a friend asked me to do some work. Then I was rained on. When I got home, my mother scolded me.', [
+        ['Who asked the writer to work?', 'A friend', ['A friend', 'The boss', 'Mother']],
+        ['What else happened?', 'It rained on the writer', ['It rained on the writer', 'The writer fell', 'The writer lost a bag']],
+        ['Who scolded the writer?', 'Mother', ['Mother', 'A friend', 'The teacher']]]),
+    [W('I was scolded by my mother.', 'haha ni shikararemashita,watashi wa haha ni shikararemashita'), W('I was praised by the teacher.', 'sensei ni homeraremashita,watashi wa sensei ni homeraremashita'), W('I was rained on.', 'ame ni furaremashita,watashi wa ame ni furaremashita'), W('I was made to study.', 'benkyou saseraremashita,watashi wa benkyou saseraremashita'), W('This book is read by many people.', 'kono hon wa ooku no hito ni yomarete imasu')]
+  ));
+
+  // Unit 3 — giving and receiving
+  SKILLS.push(S(
+    A('A present', [['A', 'Kore wa tomodachi ni moratta tokei desu.'], ['B', 'Ii desu ne. Watashi mo imouto ni kutsu o agemashita.'], ['A', 'Sono tomodachi wa itsumo watashi ni shinsetsu ni shite kuremasu.']], [
+      ['What did A receive?', 'A watch', ['A watch', 'A bag', 'Shoes']],
+      ['What did B give to the younger sister?', 'Shoes', ['Shoes', 'A watch', 'A book']],
+      ['How does the friend treat A?', 'Kindly', ['Kindly', 'Coldly', 'Rudely']]]),
+    R('Teacher\'s help', 'Sensei wa watashi ni jisho o kashite kuremashita. Watashi wa sensei ni hana o agemashita. Tomodachi ni shukudai o oshiete moraimashita.',
+      'My teacher lent me a dictionary. I gave the teacher flowers. I had a friend teach me the homework.', [
+        ['What did the teacher lend?', 'A dictionary', ['A dictionary', 'A pen', 'A book']],
+        ['What did the writer give the teacher?', 'Flowers', ['Flowers', 'A dictionary', 'A cake']],
+        ['Who taught the homework?', 'A friend', ['A friend', 'The teacher', 'Mother']]]),
+    [W('I gave my friend a present.', 'tomodachi ni purezento o agemashita,watashi wa tomodachi ni purezento o agemashita'), W('I received a book from my teacher.', 'sensei ni hon o moraimashita,sensei kara hon o moraimashita'), W('My friend taught me.', 'tomodachi ga oshiete kuremashita'), W('Could you help me?', 'tetsudatte moraemasen ka,tetsudatte itadakemasen ka'), W('I helped my friend.', 'tomodachi o tetsudatte agemashita')]
+  ));
+
+  // Unit 4 — you ni family
+  SKILLS.push(S(
+    A('Getting better', [['A', 'Saikin, mainichi hashiru you ni shite imasu.'], ['B', 'Sugoi desu ne.'], ['A', 'Ima wa nijuppun hashireru you ni narimashita.']], [
+      ['What does A try to do every day?', 'Run', ['Run', 'Swim', 'Cycle']],
+      ['How long can A run now?', '20 minutes', ['20 minutes', '2 minutes', '2 hours']],
+      ['What does B think?', 'It is great', ['It is great', 'It is boring', 'It is strange']]]),
+    R('Learning Japanese', 'Nihongo ga jouzu ni naru you ni, mainichi benkyou shite imasu. Ima wa kanji mo sukoshi yomeru you ni narimashita. Sensei wa osoku made nenai you ni to iimashita.',
+      'To get better at Japanese, I study every day. Now I have become able to read a little kanji too. The teacher told me not to stay up late.', [
+        ['Why does the writer study every day?', 'To get better at Japanese', ['To get better at Japanese', 'To pass a driving test', 'To travel']],
+        ['What can the writer read now?', 'A little kanji', ['A little kanji', 'Nothing', 'All kanji']],
+        ['What did the teacher say?', 'Do not stay up late', ['Do not stay up late', 'Study more', 'Come early']]]),
+    [W('I try to exercise every day.', 'mainichi undou suru you ni shite imasu'), W('I can swim now.', 'oyogeru you ni narimashita,ima wa oyogeru you ni narimashita'), W('I study so that I can speak Japanese.', 'nihongo ga hanaseru you ni benkyou shite imasu'), W('Please be careful.', 'ki o tsukeru you ni shite kudasai'), W('I told him to come early.', 'hayaku kuru you ni iimashita')]
+  ));
+
+  // Unit 5 — decisions, arrangements, expectations
+  SKILLS.push(S(
+    A('A big decision', [['A', 'Kondo no haru, Nihon ni iku koto ni shimashita.'], ['B', 'Hontou desu ka. Itsu made imasu ka?'], ['A', 'Ni-nen kan imasu. Kaisha no tenkin de, iku koto ni narimashita.']], [
+      ['What did A decide?', 'To go to Japan', ['To go to Japan', 'To buy a house', 'To change jobs']],
+      ['How long will A stay?', 'Two years', ['Two years', 'Two weeks', 'Two months']],
+      ['Why is A going?', 'A company transfer', ['A company transfer', 'A holiday', 'Study']]]),
+    R('Tanaka-san', 'Tanaka-san wa maiasa roku-ji ni okiru koto ni shite imasu. Kyou mo okita hazu desu. Ima wa kooen o hashitte iru hazu desu.',
+      'Mr. Tanaka has made it a rule to get up at six every morning. He should have gotten up today too. He should be running in the park now.', [
+        ['What is Tanaka\'s rule?', 'Get up at six', ['Get up at six', 'Sleep at six', 'Run at six']],
+        ['What is he expected to be doing now?', 'Running in the park', ['Running in the park', 'Sleeping', 'Working']],
+        ['What does the writer use to show expectation?', 'Hazu', ['Hazu', 'Kamo', 'Souda']]]),
+    [W('I decided to study abroad.', 'ryuugaku suru koto ni shimashita'), W('It has been decided that I will go to Osaka.', 'oosaka ni iku koto ni narimashita'), W('He should be at the office.', 'kare wa kaisha ni iru hazu desu,kaisha ni iru hazu desu'), W('I decided to quit.', 'yameru koto ni shimashita'), W('The meeting should start at three.', 'kaigi wa sanji ni hajimaru hazu desu')]
+  ));
+
+  // Unit 6 — timing and auxiliary verbs
+  SKILLS.push(S(
+    A('Just finished', [['A', 'Mou shukudai o shite shimaimashita ka?'], ['B', 'Ima shita bakari desu.'], ['A', 'Jaa, asobi ni ikimashou. Chotto matte, saifu o motte oku.']], [
+      ['What did B just do?', 'Finished homework', ['Finished homework', 'Ate lunch', 'Went shopping']],
+      ['What does A suggest?', 'Going out to play', ['Going out to play', 'Studying more', 'Sleeping']],
+      ['What does A prepare?', 'A wallet', ['A wallet', 'An umbrella', 'A map']]]),
+    R('Ever since', 'Nihon ni kite irai, mainichi nihongo o benkyou shite imasu. Kinou wa tabesugite, onaka ga itaku natte shimaimashita. Ima kara kusuri o nomu tokoro desu.',
+      'Since coming to Japan, I have studied Japanese every day. Yesterday I ate too much and ended up with a stomachache. I am just about to take medicine.', [
+        ['What has the writer done since coming to Japan?', 'Studied Japanese every day', ['Studied Japanese every day', 'Travelled', 'Worked']],
+        ['What happened yesterday?', 'A stomachache from eating too much', ['A stomachache from eating too much', 'A cold', 'A fall']],
+        ['What is the writer about to do?', 'Take medicine', ['Take medicine', 'Eat lunch', 'Go to bed']]]),
+    [W('I have just eaten.', 'tabeta bakari desu,ima tabeta bakari desu'), W('I am about to leave.', 'ima deru tokoro desu'), W('I forgot my umbrella.', 'kasa o wasurete shimaimashita'), W('I will buy the ticket beforehand.', 'mae motte chiketto o katte okimasu,mae motte kippu o katte okimasu'), W('The door is open.', 'doa ga akete arimasu,doa ga aite imasu')]
+  ));
+
+  // Unit 7 — toiu family
+  SKILLS.push(S(
+    A('What is this?', [['A', 'Kore wa nan to iu tabemono desu ka?'], ['B', 'Takoyaki to iu tabemono desu.'], ['A', 'Takoyaki to ieba, Oosaka desu ne.'], ['B', 'Soo desu. Oosaka no meibutsu da tte.']], [
+      ['What is the food called?', 'Takoyaki', ['Takoyaki', 'Okonomiyaki', 'Sushi']],
+      ['Which city is it famous for?', 'Osaka', ['Osaka', 'Tokyo', 'Kyoto']],
+      ['How does B know?', 'It is said to be a local specialty', ['It is said to be a local specialty', 'B lives there', 'B is a cook']]]),
+    R('A new word', 'Sensei wa "wabi-sabi" to iu kotoba o oshiete kuremashita. Sore wa furui mono no utsukushisa to iu imi desu. Nihon no bunka to ieba, wabi-sabi ga yuumei desu.',
+      'The teacher taught us a word called wabi-sabi. It means the beauty of old things. Speaking of Japanese culture, wabi-sabi is famous.', [
+        ['What is the word?', 'Wabi-sabi', ['Wabi-sabi', 'Sakura', 'Origami']],
+        ['What does it mean?', 'The beauty of old things', ['The beauty of old things', 'A kind of food', 'A festival']],
+        ['What is it famous in?', 'Japanese culture', ['Japanese culture', 'Cooking', 'Sports']]]),
+    [W('A person called Tanaka.', 'tanaka to iu hito'), W('Speaking of Japan, it is Mt. Fuji.', 'nihon to ieba fujisan desu'), W('What does this mean?', 'kore wa dou iu imi desu ka,kore wa donna imi desu ka'), W('I heard it is delicious.', 'oishii to iu koto desu,oishii tte'), W('The word is called shinkansen.', 'shinkansen to iu kotoba desu')]
+  ));
+
+  // Unit 8 — wake and mono
+  SKILLS.push(S(
+    A('A natural result', [['A', 'Kare wa mainichi osoku made hataraite imasu.'], ['B', 'Soo desu ka. Tsukareru wake desu ne.'], ['A', 'Demo, yasumu wake ni wa ikanai to itte imasu.']], [
+      ['What does B conclude?', 'He gets tired, naturally', ['He gets tired, naturally', 'He is lazy', 'He is rich']],
+      ['What does he say?', 'He cannot take a break', ['He cannot take a break', 'He likes working', 'He will quit']],
+      ['When does he work until?', 'Late', ['Late', 'Noon', 'Dawn']]]),
+    R('Memories', 'Kodomo no toki wa yoku kawa de asonda mono desu. Ima wa isogashikute, asobu wake ni wa ikimasen. Demo, ano koro ga natsukashii mono desu.',
+      'When I was a child I used to play in the river often. Now I am busy and cannot play. But those days are something I miss.', [
+        ['Where did the writer play as a child?', 'In the river', ['In the river', 'In the park', 'At school']],
+        ['Why can the writer not play now?', 'Busy', ['Busy', 'Sick', 'Tired of it']],
+        ['How does the writer feel about those days?', 'Nostalgic', ['Nostalgic', 'Angry', 'Scared']]]),
+    [W('It is no wonder he is tired.', 'tsukareru wake desu,kare ga tsukareru no wa touzen desu'), W('That cannot be true.', 'sonna wake ga arimasen'), W('I cannot refuse.', 'kotowaru wake ni wa ikimasen'), W('It is not that I dislike it.', 'kirai na wake dewa arimasen,kirai na wake ja arimasen'), W('I cannot go home yet.', 'mada kaeru wake ni wa ikimasen')]
+  ));
+
+  // Unit 9 — sonkeigo
+  SKILLS.push(S(
+    A('Meeting the president', [['A', 'Shachou wa irasshaimasu ka?'], ['B', 'Hai. Ima, ocha o meshiagatte imasu.'], ['A', 'Soo desu ka. Dewa, o-machi kudasai.']], [
+      ['Who is being asked about?', 'The president', ['The president', 'The teacher', 'A friend']],
+      ['What is the person doing?', 'Drinking tea', ['Drinking tea', 'Eating lunch', 'Sleeping']],
+      ['What is A asked to do?', 'Wait', ['Wait', 'Come back', 'Call']]]),
+    R('In the shop', 'Irasshaimase. Nani ni nasaimasu ka? Kochira de omachi kudasai. Sensei wa ima oikaeri ni narimashita.',
+      'Welcome. What will you have? Please wait here. The teacher has just gone home.', [
+        ['Who says the first line?', 'A shop clerk', ['A shop clerk', 'A student', 'A doctor']],
+        ['Where should the guest wait?', 'Here', ['Here', 'Outside', 'At home']],
+        ['What happened to the teacher?', 'Went home', ['Went home', 'Arrived', 'Fell asleep']]]),
+    [W('Welcome!', 'irasshaimase'), W('Please wait a moment.', 'shoushou omachi kudasai,chotto omachi kudasai'), W('Please have some tea.', 'ocha o meshiagatte kudasai,ocha o douzo'), W('The teacher is coming.', 'sensei ga irasshaimasu,sensei ga oide ni narimasu'), W('Please look at this.', 'kore o goran kudasai,kore o goran ni natte kudasai')]
+  ));
+
+  // Unit 10 — kenjougo
+  SKILLS.push(S(
+    A('At the front desk', [['A', 'Sumimasen. Yamada to moushimasu. Tanaka-sama ni oai shitai n desu ga.'], ['B', 'Hai. Shoushou omachi kudasai.'], ['A', 'Hai. Kore wa watashi no meishi desu.']], [
+      ['Who is the visitor?', 'Yamada', ['Yamada', 'Tanaka', 'Sato']],
+      ['Who does the visitor want to meet?', 'Tanaka', ['Tanaka', 'Yamada', 'Sato']],
+      ['What does the visitor hand over?', 'A business card', ['A business card', 'A letter', 'A ticket']]]),
+    R('Self-introduction', 'Hajimemashite. Suzuki to moushimasu. Doozo yoroshiku onegai itashimasu. Kyou wa kaigi ni sanka sasete itadakimasu. Nani ka go-shitsumon ga arimashitara, ukagaimasu.',
+      'Nice to meet you. My name is Suzuki. Pleased to meet you. Today I am allowed to take part in the meeting. If you have any questions, I will ask.', [
+        ['What is the speaker\'s name?', 'Suzuki', ['Suzuki', 'Tanaka', 'Yamada']],
+        ['What is the occasion?', 'A meeting', ['A meeting', 'A party', 'A class']],
+        ['Is the speaker polite?', 'Yes, very', ['Yes, very', 'No', 'A little rude']]]),
+    [W('I am Suzuki.', 'suzuki to moushimasu,suzuki desu'), W('I will do it.', 'itashimasu'), W('I will go now.', 'mairimasu,ima mairimasu'), W('Nice to meet you.', 'hajimemashite,douzo yoroshiku onegai shimasu'), W('Please allow me to introduce myself.', 'jikoshoukai sasete itadakimasu')]
+  ));
+
+  // Unit 11 — business Japanese
+  SKILLS.push(S(
+    A('On the phone', [['A', 'Moshi moshi. ABC Kaisha no Yamada to moushimasu. Tanaka-san wa irasshaimasu ka?'], ['B', 'Mooshiwake arimasen ga, tadaima gaishutsu shite orimasu.'], ['A', 'Sou desu ka. Dewa, mata odenwa shimasu.']], [
+      ['Who is the caller?', 'Yamada from ABC', ['Yamada from ABC', 'Tanaka', 'A customer']],
+      ['Where is Tanaka?', 'Out', ['Out', 'In a meeting', 'On holiday']],
+      ['What will the caller do?', 'Call again', ['Call again', 'Wait', 'Leave a message']]]),
+    R('An email', 'Itsumo osewa ni natte orimasu. Kinou no kaigi no shiryou o okurimasu. Go-kakunin no hodo, yoroshiku onegai itashimasu. Shitsurei shimasu.',
+      'Thank you for your continued support. I am sending the materials from yesterday\'s meeting. Please check them. Goodbye.', [
+        ['What is being sent?', 'Meeting materials', ['Meeting materials', 'A bill', 'A gift']],
+        ['What does the writer ask?', 'To check them', ['To check them', 'To reply today', 'To visit']],
+        ['What is the email like?', 'Formal', ['Formal', 'Casual', 'Angry']]]),
+    [W('Thank you for your help.', 'osewa ni natte orimasu,osewa ni narimasu'), W('Excuse me.', 'shitsurei shimasu'), W('I am sorry.', 'mooshiwake arimasen,mooshiwake gozaimasen'), W('Please check this.', 'go-kakunin kudasai,gokakunin kudasai'), W('I will send an email.', 'meeru o okurimasu')]
+  ));
+
+  // Unit 12 — te mo, te hoshii, te iku/kuru, garu
+  SKILLS.push(S(
+    A('A rainy day', [['A', 'Ame ga futte mo, ikimasu ka?'], ['B', 'Hai. Ame ga futte mo, iku tsumori desu.'], ['A', 'Jaa, kasa o motte itte hoshii desu.']], [
+      ['Will B go even in rain?', 'Yes', ['Yes', 'No', 'Maybe']],
+      ['What does A want B to take?', 'An umbrella', ['An umbrella', 'A coat', 'A bag']],
+      ['What does the pattern te mo mean?', 'Even if', ['Even if', 'Because', 'Before']]]),
+    R('Summer', 'Atsukute mo, watashi wa mainichi sanpo ni itte kimasu. Imouto wa atsui to, aisu o tabetagarimasu. Haha wa watashi ni shukudai o shite hoshii to iimasu.',
+      'Even if it is hot, I go for a walk every day. When it is hot, my younger sister wants to eat ice cream. Mother wants me to do my homework.', [
+        ['What does the writer do even in heat?', 'Walks every day', ['Walks every day', 'Stays home', 'Swims']],
+        ['What does the sister want in the heat?', 'Ice cream', ['Ice cream', 'Tea', 'Soup']],
+        ['What does Mother want?', 'Homework done', ['Homework done', 'A walk', 'Dinner']]]),
+    [W('Even if it rains, I will go.', 'ame ga futte mo ikimasu'), W('I want you to come.', 'kite hoshii desu,kite hoshii'), W('My sister wants a dog.', 'imouto wa inu o hoshigatte imasu'), W('Even if it is expensive, I will buy it.', 'takakute mo kaimasu'), W('Please bring it.', 'motte kite kudasai')]
+  ));
+
+  // Unit 13 — compound verbs, -sa/-mi, kata
+  SKILLS.push(S(
+    A('A sudden start', [['A', 'Ame ga furi dashimashita ne.'], ['B', 'Soo desu ne. Kono ame wa furi tsuzukeru deshou.'], ['A', 'Kono kasa wa tsukaiyasui desu yo.']], [
+      ['What started?', 'Rain', ['Rain', 'Snow', 'Wind']],
+      ['What does B expect?', 'It will keep raining', ['It will keep raining', 'It will stop soon', 'It will snow']],
+      ['What is A\'s umbrella like?', 'Easy to use', ['Easy to use', 'Heavy', 'Broken']]]),
+    R('Mt. Fuji', 'Fujisan no takasa wa sanzen nanahyaku metoru desu. Yama no utsukushisa ni odorokimashita. Noborikata wa muzukashiku arimasen. Demo, aruki tsuzukeru no wa taihen desu.',
+      'Mt. Fuji is 3,776 meters high. I was amazed at the mountain\'s beauty. The way to climb is not difficult. But continuing to walk is hard.', [
+        ['What is amazing?', 'The beauty of the mountain', ['The beauty of the mountain', 'The food', 'The weather']],
+        ['Is the way to climb difficult?', 'Not really', ['Not really', 'Very', 'Impossible']],
+        ['What is hard?', 'Continuing to walk', ['Continuing to walk', 'Starting', 'Coming back']]]),
+    [W('It started to rain.', 'ame ga furi dashimashita'), W('Please keep going.', 'tsuzukete kudasai'), W('How to use this.', 'kono tsukaikata,tsukaikata'), W('This is easy to eat.', 'kore wa tabeyasui desu'), W('The height is high.', 'takasa ga takai desu,takasa wa takai desu')]
+  ));
+
+  // Unit 14 — to omou, ka dou ka, you ni, nasai, imperative
+  SKILLS.push(S(
+    A('Plans', [['A', 'Ashita, ame ga furu to omoimasu ka?'], ['B', 'Furu to omoimasu. Kasa o motte iku hou ga ii desu.'], ['A', 'Itte miru ka dou ka, mada wakarimasen.']], [
+      ['What does B think?', 'It will rain', ['It will rain', 'It will be sunny', 'It will snow']],
+      ['What does B recommend?', 'Taking an umbrella', ['Taking an umbrella', 'Staying home', 'Wearing a hat']],
+      ['What does A not know yet?', 'Whether to go', ['Whether to go', 'The weather', 'The time']]]),
+    R('Mother\'s advice', 'Haha wa itsumo "Hayaku nenasai" to iimasu. Watashi wa mada nenakute mo ii to omoimasu. Demo, kyou wa ookina oto ga shite, nemukunai desu. Shizuka ni shiro to haha ga iimashita.',
+      'Mother always says go to bed early. I think I do not have to sleep yet. But today there is a loud sound and I am not sleepy. Mother said be quiet.', [
+        ['What does Mother always say?', 'Go to bed early', ['Go to bed early', 'Study', 'Eat']],
+        ['What was there today?', 'A loud sound', ['A loud sound', 'A smell', 'A light']],
+        ['What did Mother tell the writer?', 'To be quiet', ['To be quiet', 'To go outside', 'To read']]]),
+    [W('I think it is delicious.', 'oishii to omoimasu'), W('I do not know whether he will come.', 'kare ga kuru ka dou ka wakarimasen'), W('Go to bed early.', 'hayaku nenasai'), W('Do not touch.', 'sawaru na'), W('It is necessary to study.', 'benkyou suru hitsuyou ga arimasu')]
+  ));
+
+  // Unit 15 — aida, made ni, oki ni, baai wa, te yokatta
+  SKILLS.push(S(
+    A('Deadlines', [['A', 'Raishuu no kinyoubi made ni, shiryou o dashite kudasai.'], ['B', 'Hai. Sono aida, mondai ga attara, renraku shimasu.'], ['A', 'Ee. Wakaranai baai wa, kiite kudasai.']], [
+      ['When is the deadline?', 'Next Friday', ['Next Friday', 'Tomorrow', 'Next month']],
+      ['What should B do if there is a problem?', 'Contact A', ['Contact A', 'Wait', 'Ignore it']],
+      ['What should B do if unsure?', 'Ask', ['Ask', 'Guess', 'Stop']]]),
+    R('Holiday', 'Natsuyasumi no aida, tomodachi to Hokkaidou e ikimashita. Basu wa juppun oki ni kimasu. Ame no baai wa, hoteru ni imashita. Ikite yokatta desu.',
+      'During the summer holiday I went to Hokkaido with a friend. Buses came every ten minutes. In case of rain, we stayed in the hotel. I am glad I went.', [
+        ['Where did they go?', 'Hokkaido', ['Hokkaido', 'Okinawa', 'Tokyo']],
+        ['How often did the buses come?', 'Every ten minutes', ['Every ten minutes', 'Every hour', 'Once a day']],
+        ['How does the writer feel?', 'Glad they went', ['Glad they went', 'Disappointed', 'Tired']]]),
+    [W('I read during the holidays.', 'yasumi no aida hon o yomimasu'), W('Please come by five.', 'goji made ni kite kudasai'), W('The bus comes every ten minutes.', 'basu wa juppun oki ni kimasu'), W('I am glad I came.', 'kite yokatta desu'), W('In case of rain, I will not go.', 'ame no baai wa ikimasen')]
+  ));
+
+  // Unit 16 — review
+  SKILLS.push(S(
+    A('Choosing a pattern', [['A', 'Nihongo ga jouzu ni naru you ni, nani o shite imasu ka?'], ['B', 'Mainichi hanasu you ni shite imasu. Demo, wakaranai baai wa, sensei ni kiku koto ni shite imasu.'], ['A', 'Soo desu ka. Watashi mo yatte miru koto ni shimasu.']], [
+      ['What does B do every day?', 'Speaks Japanese', ['Speaks Japanese', 'Writes letters', 'Watches TV']],
+      ['What does B do when unsure?', 'Asks the teacher', ['Asks the teacher', 'Gives up', 'Looks it up']],
+      ['What does A decide?', 'To try it too', ['To try it too', 'To quit', 'To wait']]]),
+    R('Review', 'Kono ichinen de, watashi wa nihongo ga hanaseru you ni narimashita. Mainichi benkyou suru koto ni shita node, kanji mo yomeru you ni narimashita. Raigetsu, shiken o ukeru tsumori desu.',
+      'In this year I have become able to speak Japanese. Because I decided to study every day, I can read kanji too. Next month I plan to take an exam.', [
+        ['What has the writer become able to do?', 'Speak Japanese', ['Speak Japanese', 'Drive', 'Swim']],
+        ['What did the writer decide?', 'To study every day', ['To study every day', 'To move', 'To quit']],
+        ['What is planned next month?', 'An exam', ['An exam', 'A trip', 'A party']]]),
+    [W('I decided to study every day.', 'mainichi benkyou suru koto ni shimashita'), W('I have become able to read.', 'yomeru you ni narimashita'), W('I plan to take the exam.', 'shiken o ukeru tsumori desu'), W('Even if it is difficult, I will do it.', 'muzukashikute mo yarimasu'), W('I think it is interesting.', 'omoshiroi to omoimasu')]
+  ));
+})();
 
 /* =========================================================
    COURSE STRUCTURE
@@ -2225,7 +2690,7 @@ lectureData.forEach(function(u, i) {
 });
 let currentView = { kind: 'unit', unit: 0, page: 0 };
 
-function unitPageCount(u) { return lectureData[u].topics.length + 2; } // topics + culture + recap
+function unitPageCount(u) { return lectureData[u].topics.length + 2 + (SKILLS[u] ? 1 : 0); } // topics + culture + recap (+ skills practice)
 function cpTitle(cp) { return (cp.letter === 'Final' ? 'Final Checkpoint' : 'Checkpoint ' + cp.letter) + ' — ' + UNIT_WORD + 's ' + (cp.units[0] + UNIT_BASE) + '–' + (cp.units[cp.units.length - 1] + UNIT_BASE); }
 function courseIndexOf(view) {
   for (let i = 0; i < COURSE.length; i++) {
@@ -2324,7 +2789,7 @@ function renderUnitPage() {
   const u = currentView.unit, page = currentView.page;
   const unit = lectureData[u];
   const nTopics = unit.topics.length;
-  const totalPages = nTopics + 2;
+  const totalPages = unitPageCount(u);
   progress.pages['u' + u + '_p' + page] = true;
 
   let html = '<div class="lecture-crumb">' + unit.title + ' · Page ' + (page + 1) + ' of ' + totalPages + '</div>';
@@ -2339,14 +2804,16 @@ function renderUnitPage() {
   } else if (page === nTopics) {
     html += '<h3 class="lecture-title">⛩️ Cultural Notes</h3>';
     html += '<div class="culture-box">' + unit.culture + '</div>';
-  } else {
+  } else if (page === nTopics + 1) {
     html += recapHtml(u);
+  } else {
+    html += skillsHtml(u);
   }
 
   let dots = '';
   for (let i = 0; i < totalPages; i++) {
-    const cls = (i === page ? 'active ' : '') + (i === nTopics ? 'culture-dot ' : '') + (i === nTopics + 1 ? 'recap-dot' : '');
-    const title = i < nTopics ? unit.topics[i].title : (i === nTopics ? 'Cultural Notes' : 'Vocabulary Recap');
+    const cls = (i === page ? 'active ' : '') + (i === nTopics ? 'culture-dot ' : '') + (i >= nTopics + 1 ? 'recap-dot' : '');
+    const title = i < nTopics ? unit.topics[i].title : (i === nTopics ? 'Cultural Notes' : (i === nTopics + 1 ? 'Vocabulary Recap' : 'Listening, Reading & Writing'));
     dots += '<span class="' + cls + '" onclick="openLecture(' + u + ',' + i + ')" title="' + esc(title) + '"></span>';
   }
   const isLast = page === totalPages - 1;
@@ -2356,6 +2823,7 @@ function renderUnitPage() {
   pane.innerHTML = html;
   pane.scrollTop = 0;
   if (page < nTopics) { addScriptColumn(pane); tagAndRestoreExercises(); }
+  else if (page === nTopics + 2) { tagAndRestoreExercises(); fixWritingPlaceholders(pane); }
   saveProgress(progress);
   renderSidebar();
 }
@@ -2413,6 +2881,65 @@ function recapHtml(u) {
   }
   return h;
 }
+/* ===== listening, reading & writing practice (last page of every lesson) ===== */
+function skillMc(q) {
+  const ans = normalize(q[1]);
+  let h = '<li>' + q[0] + ' <select data-answer="' + esc(ans) + '"><option value="">-- choose --</option>';
+  shuffle(q[2].slice()).forEach(function(o) { h += '<option value="' + esc(normalize(o)) + '">' + esc(o) + '</option>'; });
+  return h + '</select> <button class="check-btn" onclick="checkSelect(this)">Check</button> <span class="feedback"></span></li>';
+}
+function skillLines(lines) { return lines.map(function(l) { return l[1]; }); }
+function skillsHtml(u) {
+  const s = SKILLS[u], lis = s.listen, rd = s.read;
+  const jp = progress.script !== 'romaji' ? ' lang="ja"' : '';
+  let h = '<h3 class="lecture-title">🎧 Listening, Reading &amp; Writing</h3>';
+  h += '<p class="recap-intro">Three short activities to finish <strong>' + esc(lectureData[u].title) + '</strong>. Answer the questions, then write a few simple sentences — you can type <strong>hiragana, katakana or romaji</strong>.</p>';
+  // listening
+  h += '<div class="lecture-block skill-block"><h4>🎧 Listening — ' + esc(lis.title) + '</h4>';
+  h += '<p class="skill-note">Press play and listen (as many times as you like), then answer. Only tick the transcript if you get stuck.</p>';
+  h += '<div class="skill-bar"><button class="skill-btn" onclick="playSkill(' + u + ')">▶ Play</button><button class="skill-btn alt" onclick="playSkill(' + u + ',true)">🐢 Slow</button>' +
+       '<label><input type="checkbox" onchange="document.getElementById(\'skTr\').classList.toggle(\'skill-hidden\', !this.checked)"> Show transcript</label></div>';
+  h += '<div id="skTr" class="skill-hidden">' + dialogBox('Transcript', lis.lines.map(function(l) {
+    return [l[0], '<span' + jp + '>' + esc(toJP(l[1], progress.script)) + '</span> <button class="spk" data-say="' + esc(l[1]) + '" title="Listen">🔊</button>' +
+      (progress.script !== 'romaji' ? ' <span class="skill-en">' + esc(l[1]) + '</span>' : '')];
+  })) + '</div>';
+  h += '<div class="skill-q-title">Questions</div><div class="exercise"><ol>' + lis.qs.map(skillMc).join('') + '</ol></div></div>';
+  // reading
+  h += '<div class="lecture-block skill-block"><h4>📖 Reading — ' + esc(rd.title) + '</h4>';
+  h += '<div class="skill-bar"><button class="skill-btn alt" onclick="playSkillText(' + u + ')">🔊 Read aloud</button>' +
+       '<label><input type="checkbox" onchange="document.getElementById(\'skEn\').classList.toggle(\'skill-hidden\', !this.checked)"> Show English</label></div>';
+  h += '<p class="read-text"' + jp + '>' + esc(toJP(rd.text, progress.script)) + '</p>';
+  h += '<p id="skEn" class="skill-en skill-hidden">' + esc(rd.en) + '</p>';
+  h += '<div class="skill-q-title">Questions</div><div class="exercise"><ol>' + rd.qs.map(skillMc).join('') + '</ol></div></div>';
+  // writing
+  h += '<div class="lecture-block skill-block"><h4>✍️ Writing — simple sentences</h4>';
+  h += '<p class="skill-note">Write each sentence in Japanese. Hiragana, katakana or romaji are all accepted (long vowels: <em>ou</em>/<em>oo</em> and <em>o</em>/<em>wo</em> both work).</p>';
+  h += '<div class="exercise skill-write"><ol>' + s.write.map(function(w) {
+    return '<li>' + esc(w[0]) + ' <input type="text" data-lang="jp" data-answer="' + esc(w[1]) + '" placeholder="hiragana, katakana or romaji"> <button class="check-btn" onclick="checkAnswer(this)">Check</button> <span class="feedback"></span></li>';
+  }).join('') + '</ol></div></div>';
+  return h;
+}
+function fixWritingPlaceholders(pane) {
+  pane.querySelectorAll('.skill-write input[type="text"]').forEach(function(i) { i.placeholder = 'hiragana, katakana or romaji'; i.lang = 'ja'; });
+}
+function speakQueue(lines, slow) {
+  if (!window.speechSynthesis) return;
+  try {
+    speechSynthesis.cancel();
+    const voice = (speechSynthesis.getVoices() || []).filter(function(v) { return /^ja/i.test(v.lang); })[0];
+    lines.forEach(function(l) {
+      const ut = new SpeechSynthesisUtterance(toJP(l[1], 'kana'));
+      ut.lang = 'ja-JP';
+      if (voice) ut.voice = voice;
+      ut.rate = slow ? 0.6 : 0.85;
+      ut.pitch = l[0] === 'B' ? 1.25 : 1;
+      speechSynthesis.speak(ut);
+    });
+  } catch (e) { /* ignore */ }
+}
+function playSkill(u, slow) { speakQueue(SKILLS[u].listen.lines, slow); }
+function playSkillText(u) { speakQueue([['A', SKILLS[u].read.text]], false); }
+
 document.addEventListener('click', function(e) {
   const b = e.target.closest && e.target.closest('.spk');
   if (b) speak(b.getAttribute('data-say'));
