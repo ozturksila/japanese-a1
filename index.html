@@ -3311,8 +3311,38 @@ function viewForCourse(ci, atEnd) {
   const saved = progress.unitPage[c.unit] || 0;
   return { kind: 'unit', unit: c.unit, page: atEnd ? last : Math.min(saved, last) };
 }
-function setView(view) {
+/* ===== URL routes: #lesson-3/page-2 (or #unit-… on N4), #checkpoint-a ===== */
+function routeOf(view) {
+  if (view.kind === 'cp') return 'checkpoint-' + String(view.cp.letter).toLowerCase();
+  return UNIT_WORD.toLowerCase() + '-' + (view.unit + UNIT_BASE) + '/page-' + (view.page + 1);
+}
+function viewFromHash() {
+  const h = decodeURIComponent(location.hash.replace(/^#\/?/, '')).toLowerCase();
+  let m = h.match(/^checkpoint-(\w+)$/);
+  if (m) {
+    const cp = CHECKPOINTS.filter(function(c) { return String(c.letter).toLowerCase() === m[1]; })[0];
+    return cp ? { kind: 'cp', cp: cp } : null;
+  }
+  m = h.match(/^(?:lesson|unit)-(\d+)(?:\/page-(\d+))?$/);
+  if (!m) return null;
+  const u = parseInt(m[1], 10) - UNIT_BASE;
+  if (u < 0 || u >= lectureData.length) return null;
+  const last = unitPageCount(u) - 1;
+  const page = m[2] ? Math.min(Math.max(parseInt(m[2], 10) - 1, 0), last) : Math.min(progress.unitPage[u] || 0, last);
+  return { kind: 'unit', unit: u, page: page };
+}
+function syncUrl(view, replace) {
+  const h = '#' + routeOf(view);
+  if (location.hash === h) return;
+  try { history[replace ? 'replaceState' : 'pushState'](null, '', h); } catch (e) { location.hash = h; }
+}
+window.addEventListener('popstate', function() {
+  const v = viewFromHash();
+  if (v) setView(v, true);
+});
+function setView(view, fromUrl) {
   currentView = view;
+  if (!fromUrl) syncUrl(view);
   if (view.kind === 'unit') {
     progress.lastUnit = view.unit;
     progress.lastTopic = view.page;
@@ -3341,7 +3371,10 @@ function lectureNext() {
   if (ci < COURSE.length - 1) setView(viewForCourse(ci + 1, false));
 }
 
+const BASE_TITLE = document.title;
 function renderAll() {
+  const label = currentView.kind === 'cp' ? cpTitle(currentView.cp) : lectureData[currentView.unit].title.replace(/^\S+\s/, '') + ' · p.' + (currentView.page + 1);
+  document.title = label + ' — ' + BASE_TITLE;
   renderProfileBar();
   renderSidebar();
   renderLecture();
@@ -3842,7 +3875,10 @@ async function init() {
   else if (progress.lastUnit >= 0 && progress.lastUnit < lectureData.length) {
     view = { kind: 'unit', unit: progress.lastUnit, page: Math.min(progress.lastTopic || 0, unitPageCount(progress.lastUnit) - 1) };
   }
+  const fromUrl = viewFromHash();
+  if (fromUrl) view = fromUrl;
   currentView = view;
+  syncUrl(view, true);
   renderAll();
 }
 document.addEventListener('DOMContentLoaded', init);
